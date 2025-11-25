@@ -877,7 +877,7 @@ Cell[BoxData[{
   "In[158]:=",ExpressionUUID->"d7069650-74d6-4f40-a067-226964ca6ce6"],
 
 Cell[BoxData[
- DynamicModuleBox[{$CellContext`gdpThreshold$$ = 28200.}, 
+ DynamicModuleBox[{$CellContext`gdpThreshold$$ = 25800.}, 
   TagBox[GridBox[{
      {
       SliderBox[Dynamic[$CellContext`gdpThreshold$$], {0, 60000}]},
