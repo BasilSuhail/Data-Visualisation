@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[     14411,        381]
-NotebookOptionsPosition[     13720,        361]
-NotebookOutlinePosition[     14132,        378]
-CellTagsIndexPosition[     14089,        375]
+NotebookDataLength[     25039,        640]
+NotebookOptionsPosition[     24120,        616]
+NotebookOutlinePosition[     24531,        633]
+CellTagsIndexPosition[     24488,        630]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -211,36 +211,34 @@ Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{
-   RowBox[{"dataQuestion2", "=", 
-    RowBox[{"Select", "[", 
+  RowBox[{"dataQuestion2", "=", 
+   RowBox[{"Select", "[", 
+    RowBox[{
      RowBox[{
       RowBox[{
-       RowBox[{
-        RowBox[{"{", 
-         RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"CountryData", "[", 
+          RowBox[{"#", ",", "\"\<Name\>\""}], "]"}], ",", 
+         RowBox[{"QuantityMagnitude", "[", 
           RowBox[{"CountryData", "[", 
-           RowBox[{"#", ",", "\"\<Name\>\""}], "]"}], ",", 
-          RowBox[{"QuantityMagnitude", "[", 
-           RowBox[{"CountryData", "[", 
-            RowBox[{"#", ",", "\"\<GDPPerCapita\>\""}], "]"}], "]"}], ",", 
-          RowBox[{"QuantityMagnitude", "[", 
-           RowBox[{"CountryData", "[", 
-            RowBox[{"#", ",", "\"\<LiteracyFraction\>\""}], "]"}], "]"}]}], 
-         "}"}], "&"}], "/@", 
-       RowBox[{"CountryData", "[", "]"}]}], ",", 
+           RowBox[{"#", ",", "\"\<GDPPerCapita\>\""}], "]"}], "]"}], ",", 
+         RowBox[{"QuantityMagnitude", "[", 
+          RowBox[{"CountryData", "[", 
+           RowBox[{"#", ",", "\"\<LiteracyFraction\>\""}], "]"}], "]"}]}], 
+        "}"}], "&"}], "/@", 
+      RowBox[{"CountryData", "[", "]"}]}], ",", 
+     RowBox[{
       RowBox[{
-       RowBox[{
-        RowBox[{"NumericQ", "[", 
-         RowBox[{"#", "[", 
-          RowBox[{"[", "2", "]"}], "]"}], "]"}], "&&", 
-        RowBox[{"NumericQ", "[", 
-         RowBox[{"#", "[", 
-          RowBox[{"[", "3", "]"}], "]"}], "]"}]}], "&"}]}], "]"}]}], ";"}], 
-  "\n"}], "\[IndentingNewLine]", 
+       RowBox[{"NumericQ", "[", 
+        RowBox[{"#", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "]"}], "&&", 
+       RowBox[{"NumericQ", "[", 
+        RowBox[{"#", "[", 
+         RowBox[{"[", "3", "]"}], "]"}], "]"}]}], "&"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
-   RowBox[{"maximumvalue", "=", "60000"}], ";"}], "\n"}], "\[IndentingNewLine]", 
+   RowBox[{"maximumvalue", "=", "60000"}], ";"}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{"Question2", "=", 
   RowBox[{"DynamicModule", "[", 
    RowBox[{
@@ -299,7 +297,7 @@ Cell[BoxData[{
                 "&"}]}], "]"}]}]}], "}"}], ",", 
           RowBox[{"PlotStyle", "->", 
            RowBox[{"{", 
-            RowBox[{"Blue", ",", "Orange"}], "}"}]}], ",", 
+            RowBox[{"Pink", ",", "Green"}], "}"}]}], ",", 
           RowBox[{"PlotLegends", "->", 
            RowBox[{"{", 
             RowBox[{
@@ -315,12 +313,13 @@ Cell[BoxData[{
             RowBox[{"\"\<literacy\>\"", ",", "\"\<wealth\>\""}], "}"}]}]}], 
          "]"}], "]"}]}], "}"}], "]"}]}], "]"}]}]}], "Input",
  CellChangeTimes->{{3.973070042168998*^9, 3.973070042171056*^9}, {
-  3.973070137306513*^9, 
-  3.973070143805675*^9}},ExpressionUUID->"d7069650-74d6-4f40-a067-\
-226964ca6ce6"],
+  3.973070137306513*^9, 3.973070186283279*^9}, {3.973070231561569*^9, 
+  3.973070283289034*^9}},
+ CellLabel->
+  "In[158]:=",ExpressionUUID->"d7069650-74d6-4f40-a067-226964ca6ce6"],
 
 Cell[BoxData[
- DynamicModuleBox[{$CellContext`gdpThreshold$$ = 22700.}, 
+ DynamicModuleBox[{$CellContext`gdpThreshold$$ = 28200.}, 
   TagBox[GridBox[{
      {
       SliderBox[Dynamic[$CellContext`gdpThreshold$$], {0, 60000}]},
@@ -341,27 +340,283 @@ Cell[BoxData[
            
            Select[$CellContext`dataQuestion2, 
             Part[#, 2] > $CellContext`gdpThreshold$$& ]]}, 
-         PlotStyle -> {Blue, Orange}, 
-         PlotLegends -> {"GDP pc less than $" <> ToString[
-             Round[$CellContext`gdpThreshold$$]], "GDP pc greater than $" <> 
+         PlotStyle -> {Pink, Green}, 
+         PlotLegends -> {"GDP % less than $" <> ToString[
+             Round[$CellContext`gdpThreshold$$]], "GDP % greater than $" <> 
            ToString[
              Round[$CellContext`gdpThreshold$$]]}, 
          AxesLabel -> {"literacy", "wealth"}], StandardForm],
-       ImageSizeCache->{709.2576171875, {148.744777555758, 154.476711149508}}]}
+       ImageSizeCache->{
+        613.9499999999999, {119.96394866168816`, 125.69588225543819`}}]}
     },
     DefaultBaseStyle->"Column",
     GridBoxAlignment->{"Columns" -> {{Left}}},
     GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
    "Column"],
   DynamicModuleValues:>{}]], "Output",
- CellChangeTimes->{3.9730700432307*^9},
+ CellChangeTimes->{
+  3.9730700432307*^9, 3.973070148631206*^9, {3.973070233106838*^9, 
+   3.973070253279077*^9}, 3.973071211475381*^9},
  CellLabel->
-  "Out[145]=",ExpressionUUID->"3df91c48-6d4a-4964-a158-96d89f6a36c8"]
+  "Out[160]=",ExpressionUUID->"15630957-502b-476b-8ef1-d9f35fdec48d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"dataQuestion2", "=", 
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"CountryData", "[", 
+           RowBox[{"#", ",", "\"\<Name\>\""}], "]"}], ",", 
+          RowBox[{"QuantityMagnitude", "[", 
+           RowBox[{"CountryData", "[", 
+            RowBox[{"#", ",", "\"\<GDPPerCapita\>\""}], "]"}], "]"}], ",", 
+          RowBox[{"QuantityMagnitude", "[", 
+           RowBox[{"CountryData", "[", 
+            RowBox[{"#", ",", "\"\<LiteracyFraction\>\""}], "]"}], "]"}]}], 
+         "}"}], "&"}], "/@", 
+       RowBox[{"CountryData", "[", "]"}]}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"NumericQ", "[", 
+         RowBox[{"#", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "]"}], "&&", 
+        RowBox[{"NumericQ", "[", 
+         RowBox[{"#", "[", 
+          RowBox[{"[", "3", "]"}], "]"}], "]"}]}], "&"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"maximumvalue", "=", "60000"}], ";"}], "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"dataQuestion2", "=", 
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"CountryData", "[", 
+           RowBox[{"#", ",", "\"\<Name\>\""}], "]"}], ",", 
+          RowBox[{"QuantityMagnitude", "[", 
+           RowBox[{"CountryData", "[", 
+            RowBox[{"#", ",", "\"\<GDPPerCapita\>\""}], "]"}], "]"}], ",", 
+          RowBox[{"QuantityMagnitude", "[", 
+           RowBox[{"CountryData", "[", 
+            RowBox[{"#", ",", "\"\<LiteracyFraction\>\""}], "]"}], "]"}]}], 
+         "}"}], "&"}], "/@", 
+       RowBox[{"CountryData", "[", "]"}]}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"NumericQ", "[", 
+         RowBox[{"#", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "]"}], "&&", 
+        RowBox[{"NumericQ", "[", 
+         RowBox[{"#", "[", 
+          RowBox[{"[", "3", "]"}], "]"}], "]"}]}], "&"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{"maximumvalue", "=", "60000"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"scaleFactor", "=", "1000000"}], ";"}], "\[IndentingNewLine]"}], "\n", 
+ RowBox[{"Question2", "=", 
+  RowBox[{"DynamicModule", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"gdpThreshold", "=", "10000"}], "}"}], ",", 
+    RowBox[{"Column", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Row", "[", 
+        RowBox[{"{", 
+         RowBox[{"\"\<gdpThreshold \>\"", ",", 
+          RowBox[{"Slider", "[", 
+           RowBox[{
+            RowBox[{"Dynamic", "[", "gdpThreshold", "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "maximumvalue"}], "}"}]}], "]"}]}], "}"}], 
+        "]"}], ",", 
+       RowBox[{"Dynamic", "[", 
+        RowBox[{"Module", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+           "belowThreshold", ",", "aboveThreshold", ",", "plotData", ",", 
+            "plotColors", ",", "legendLabels"}], "}"}], ",", 
+          RowBox[{
+           RowBox[{"belowThreshold", "=", 
+            RowBox[{"Select", "[", 
+             RowBox[{"dataQuestion2", ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], "<=", "gdpThreshold"}], 
+               "&"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"aboveThreshold", "=", 
+            RowBox[{"Select", "[", 
+             RowBox[{"dataQuestion2", ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], ">", "gdpThreshold"}], 
+               "&"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"plotData", "=", 
+            RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"plotColors", "=", 
+            RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"legendLabels", "=", 
+            RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Length", "[", "belowThreshold", "]"}], ">", "0"}], ",", 
+             RowBox[{
+              RowBox[{"AppendTo", "[", 
+               RowBox[{"plotData", ",", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"Tooltip", "[", 
+                   RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], ",", 
+                    RowBox[{
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "/", "scaleFactor"}]}], 
+                    "}"}], ",", 
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}], "]"}], "&"}], "/@", 
+                 "belowThreshold"}]}], "]"}], ";", "\[IndentingNewLine]", 
+              RowBox[{"AppendTo", "[", 
+               RowBox[{"plotColors", ",", "Blue"}], "]"}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"AppendTo", "[", 
+               RowBox[{"legendLabels", ",", 
+                RowBox[{"\"\<GDP pc less than $\>\"", "<>", 
+                 RowBox[{"ToString", "[", 
+                  RowBox[{"Round", "[", "gdpThreshold", "]"}], "]"}]}]}], 
+               "]"}]}]}], "]"}], ";", "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Length", "[", "aboveThreshold", "]"}], ">", "0"}], ",", 
+             RowBox[{
+              RowBox[{"AppendTo", "[", 
+               RowBox[{"plotData", ",", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"Tooltip", "[", 
+                   RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], ",", 
+                    RowBox[{
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "/", "scaleFactor"}]}], 
+                    "}"}], ",", 
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}], "]"}], "&"}], "/@", 
+                 "aboveThreshold"}]}], "]"}], ";", "\[IndentingNewLine]", 
+              RowBox[{"AppendTo", "[", 
+               RowBox[{"plotColors", ",", "Orange"}], "]"}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"AppendTo", "[", 
+               RowBox[{"legendLabels", ",", 
+                RowBox[{"\"\<GDP pc greater than $\>\"", "<>", 
+                 RowBox[{"ToString", "[", 
+                  RowBox[{"Round", "[", "gdpThreshold", "]"}], "]"}]}]}], 
+               "]"}]}]}], "]"}], ";", "\[IndentingNewLine]", 
+           RowBox[{"ListPlot", "[", 
+            RowBox[{"plotData", ",", 
+             RowBox[{"PlotStyle", "->", "plotColors"}], ",", 
+             RowBox[{"PlotLegends", "->", "legendLabels"}], ",", 
+             RowBox[{"AxesLabel", "->", 
+              RowBox[{"{", 
+               RowBox[{"\"\<literacy\>\"", ",", "\"\<wealth\>\""}], "}"}]}], ",", 
+             RowBox[{"Ticks", "->", 
+              RowBox[{"{", 
+               RowBox[{"Automatic", ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                 "0", ",", "0.02", ",", "0.04", ",", "0.06", ",", "0.08", ",",
+                   "0.10"}], "}"}]}], "}"}]}]}], "]"}]}]}], "]"}], "]"}]}], 
+      "}"}], "]"}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.9730713880252657`*^9, 3.973071425466586*^9}, {
+  3.973071647630089*^9, 
+  3.973071663218177*^9}},ExpressionUUID->"b8f556ba-ce81-43f0-b696-\
+22921861cda9"],
+
+Cell[BoxData[
+ DynamicModuleBox[{$CellContext`gdpThreshold$$ = 20300.}, 
+  TagBox[GridBox[{
+     {
+      TemplateBox[{"\"gdpThreshold \"", 
+        SliderBox[
+         Dynamic[$CellContext`gdpThreshold$$], {0, 60000}]},
+       "RowDefault"]},
+     {
+      DynamicBox[ToBoxes[
+        Module[{$CellContext`belowThreshold$, $CellContext`aboveThreshold$, \
+$CellContext`plotData$, $CellContext`plotColors$, \
+$CellContext`legendLabels$}, $CellContext`belowThreshold$ = 
+          Select[$CellContext`dataQuestion2, 
+            Part[#, 2] <= $CellContext`gdpThreshold$$& ]; \
+$CellContext`aboveThreshold$ = 
+          Select[$CellContext`dataQuestion2, 
+            Part[#, 2] > $CellContext`gdpThreshold$$& ]; \
+$CellContext`plotData$ = {}; $CellContext`plotColors$ = {}; \
+$CellContext`legendLabels$ = {}; 
+         If[Length[$CellContext`belowThreshold$] > 0, 
+           AppendTo[$CellContext`plotData$, 
+             Map[Tooltip[{
+                Part[#, 3], Part[#, 2]/$CellContext`scaleFactor}, 
+               Part[#, 1]]& , $CellContext`belowThreshold$]]; 
+           AppendTo[$CellContext`plotColors$, Blue]; 
+           AppendTo[$CellContext`legendLabels$, "GDP pc less than $" <> 
+             ToString[
+               Round[$CellContext`gdpThreshold$$]]]]; 
+         If[Length[$CellContext`aboveThreshold$] > 0, 
+           AppendTo[$CellContext`plotData$, 
+             Map[Tooltip[{
+                Part[#, 3], Part[#, 2]/$CellContext`scaleFactor}, 
+               Part[#, 1]]& , $CellContext`aboveThreshold$]]; 
+           AppendTo[$CellContext`plotColors$, Orange]; 
+           AppendTo[$CellContext`legendLabels$, "GDP pc greater than $" <> 
+             ToString[
+               Round[$CellContext`gdpThreshold$$]]]]; 
+         ListPlot[$CellContext`plotData$, 
+           PlotStyle -> $CellContext`plotColors$, 
+           PlotLegends -> $CellContext`legendLabels$, 
+           AxesLabel -> {"literacy", "wealth"}, 
+           Ticks -> {Automatic, {0, 0.02, 0.04, 0.06, 0.08, 0.1}}]], 
+        StandardForm],
+       ImageSizeCache->{
+        378.09746093749993`, {49.41834635338557, 55.15027994713557}}]}
+    },
+    DefaultBaseStyle->"Column",
+    GridBoxAlignment->{"Columns" -> {{Left}}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+   "Column"],
+  DynamicModuleValues:>{}]], "Output",
+ CellChangeTimes->{3.9730713895194187`*^9, 3.973071652193829*^9},
+ CellLabel->
+  "Out[169]=",ExpressionUUID->"e31bd760-50e8-482c-9d20-0e7471a21f1d"]
 }, Open  ]]
 },
 WindowSize->{Full, Full},
 WindowMargins->{{4, Automatic}, {Automatic, 4}},
-LightDark->"Light",
+LightDark->"Dark",
 FrontEndVersion->"14.3 for Mac OS X ARM (64-bit) (July 8, 2025)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"34d8e8cd-ded6-4655-a5a8-0ddf7748eb75"
@@ -380,8 +635,12 @@ Notebook[{
 Cell[554, 20, 7382, 180, 539, "Input",ExpressionUUID->"493072f5-1034-44bd-b70e-e22815e0eebc"],
 Cell[7939, 202, 232, 5, 90, "Input",ExpressionUUID->"3b2b0f3c-3ded-485e-90f7-d800bd57e2f3"],
 Cell[CellGroupData[{
-Cell[8196, 211, 4109, 108, 233, "Input",ExpressionUUID->"d7069650-74d6-4f40-a067-226964ca6ce6"],
-Cell[12308, 321, 1396, 37, 351, "Output",ExpressionUUID->"3df91c48-6d4a-4964-a158-96d89f6a36c8"]
+Cell[8196, 211, 4133, 107, 213, "Input",ExpressionUUID->"d7069650-74d6-4f40-a067-226964ca6ce6"],
+Cell[12332, 320, 1508, 40, 293, "Output",ExpressionUUID->"15630957-502b-476b-8ef1-d9f35fdec48d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13877, 365, 7738, 192, 539, "Input",ExpressionUUID->"b8f556ba-ce81-43f0-b696-22921861cda9"],
+Cell[21618, 559, 2486, 54, 152, "Output",ExpressionUUID->"e31bd760-50e8-482c-9d20-0e7471a21f1d"]
 }, Open  ]]
 }
 ]
