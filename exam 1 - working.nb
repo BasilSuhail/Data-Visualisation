@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[     31096,        751]
-NotebookOptionsPosition[     30514,        733]
-NotebookOutlinePosition[     30906,        749]
-CellTagsIndexPosition[     30863,        746]
+NotebookDataLength[     32575,        789]
+NotebookOptionsPosition[     31993,        771]
+NotebookOutlinePosition[     32385,        787]
+CellTagsIndexPosition[     32342,        784]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -64,15 +64,10 @@ Cell[BoxData[{
         RowBox[{"cleanedDataQ1", ",", 
          RowBox[{
           RowBox[{
-           RowBox[{"NumericQ", "[", 
-            RowBox[{"#", "[", 
-             RowBox[{"[", "2", "]"}], "]"}], "]"}], "&&", 
-           RowBox[{
-            RowBox[{"#", "[", 
-             RowBox[{"[", "1", "]"}], "]"}], ">=", "1960"}], "&&", 
-           RowBox[{
-            RowBox[{"#", "[", 
-             RowBox[{"[", "1", "]"}], "]"}], "<=", "2022"}]}], "&"}]}], 
+           RowBox[{"NumberQ", "[", 
+            RowBox[{"Last", "[", "#", "]"}], "]"}], "&&", 
+           RowBox[{"1960", "<=", 
+            RowBox[{"First", "[", "#", "]"}], "<=", "2022"}]}], "&"}]}], 
         "]"}]}], ";", "\[IndentingNewLine]", 
       RowBox[{"valuesQ1", "=", 
        RowBox[{"cleanedDataQ1", "[", 
@@ -86,21 +81,16 @@ Cell[BoxData[{
       RowBox[{"minimumvalues", "=", 
        RowBox[{"Min", "[", "valuesQ1", "]"}]}], ";", "\[IndentingNewLine]", 
       RowBox[{"maximumpoint", "=", 
-       RowBox[{"SelectFirst", "[", 
-        RowBox[{"cleanedDataQ1", ",", 
-         RowBox[{
-          RowBox[{
-           RowBox[{"#", "[", 
-            RowBox[{"[", "2", "]"}], "]"}], "==", "maximumvalues"}], "&"}]}], 
-        "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"SortBy", "[", 
+         RowBox[{"cleanedDataQ1", ",", "Last"}], "]"}], "[", 
+        RowBox[{"[", 
+         RowBox[{"-", "1"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
       RowBox[{"minimumpoint", "=", 
-       RowBox[{"SelectFirst", "[", 
-        RowBox[{"cleanedDataQ1", ",", 
-         RowBox[{
-          RowBox[{
-           RowBox[{"#", "[", 
-            RowBox[{"[", "2", "]"}], "]"}], "==", "minimumvalues"}], "&"}]}], 
-        "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"SortBy", "[", 
+         RowBox[{"cleanedDataQ1", ",", "Last"}], "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
       RowBox[{"xAXISminimum", "=", 
        RowBox[{"Min", "[", 
         RowBox[{"cleanedDataQ1", "[", 
@@ -113,6 +103,40 @@ Cell[BoxData[{
          RowBox[{"[", 
           RowBox[{"All", ",", "1"}], "]"}], "]"}], "]"}]}], ";", 
       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"plotLines", "=", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"Thick", ",", "Dashed", ",", 
+           RowBox[{"InfiniteLine", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "averagevalues"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"1", ",", "0"}], "}"}]}], "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"Thin", ",", "Dashed", ",", 
+           RowBox[{"InfiniteLine", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "maximumvalues"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"1", ",", "0"}], "}"}]}], "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"Thin", ",", "Dashed", ",", 
+           RowBox[{"InfiniteLine", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "minimumvalues"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"1", ",", "0"}], "}"}]}], "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"Black", ",", 
+           RowBox[{"PointSize", "[", "Large", "]"}], ",", 
+           RowBox[{"Point", "[", 
+            RowBox[{"{", 
+             RowBox[{"maximumpoint", ",", "minimumpoint"}], "}"}], "]"}]}], 
+          "}"}]}], "}"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
       RowBox[{"ListLinePlot", "[", 
        RowBox[{"cleanedDataQ1", ",", 
         RowBox[{"PlotLabel", "->", 
@@ -172,8 +196,10 @@ Cell[BoxData[{
  RowBox[{"propPlot", "[", 
   RowBox[{"\"\<Pakistan\>\"", ",", "\"\<GDPPerCapita\>\""}], "]"}]}], "Input",\
 
- CellChangeTimes->{{3.9730670093462152`*^9, 3.9730670695554457`*^9}},
- CellLabel->"In[94]:=",ExpressionUUID->"493072f5-1034-44bd-b70e-e22815e0eebc"],
+ CellChangeTimes->{{3.9730670093462152`*^9, 3.9730670695554457`*^9}, {
+  3.973068198703148*^9, 3.9730682850004377`*^9}, {3.9730684255710278`*^9, 
+  3.9730684462677317`*^9}},ExpressionUUID->"493072f5-1034-44bd-b70e-\
+e22815e0eebc"],
 
 Cell[BoxData[
  GraphicsBox[{{}, 
@@ -369,6 +395,9 @@ vxJhZUBZv5DA+TZCutusW5mqnVyDILjw3tEv5jn8BZhIDvM=
   GridLines->{None, None},
   GridLinesStyle->Directive[
     GrayLevel[0.5, 0.4]],
+  ImageMargins->0.,
+  ImageSize->Automatic,
+  ImageSizeRaw->Automatic,
   Method->{
    "AxisPadding" -> Scaled[0.02], "DefaultBoundaryStyle" -> Automatic, 
     "DefaultGraphicsInteraction" -> {
@@ -449,8 +478,11 @@ vxJhZUBZv5DA+TZCutusW5mqnVyDILjw3tEv5jn8BZhIDvM=
      Scaled[0.05]}},
   Ticks->{Automatic, Automatic}]], "Output",
  CellChangeTimes->{
-  3.9730670718741837`*^9, {3.97306738381388*^9, 3.973067385545196*^9}},
- CellLabel->"Out[95]=",ExpressionUUID->"dfed2dd8-f80f-4a50-9284-3170fe112135"],
+  3.9730670718741837`*^9, {3.97306738381388*^9, 3.973067385545196*^9}, {
+   3.973068211050281*^9, 3.973068220730176*^9}, 3.973068286269195*^9, 
+   3.973068431049076*^9},
+ CellLabel->
+  "Out[113]=",ExpressionUUID->"1e285206-1b0b-42ff-90bc-9a701fb45826"],
 
 Cell[BoxData[
  GraphicsBox[{{}, 
@@ -647,6 +679,9 @@ s7cs7RTPd83Tf6H6alc0dy1C4dRRtS68Hv4B7N0FXA==
   GridLines->{None, None},
   GridLinesStyle->Directive[
     GrayLevel[0.5, 0.4]],
+  ImageMargins->0.,
+  ImageSize->Automatic,
+  ImageSizeRaw->Automatic,
   Method->{
    "AxisPadding" -> Scaled[0.02], "DefaultBoundaryStyle" -> Automatic, 
     "DefaultGraphicsInteraction" -> {
@@ -727,8 +762,11 @@ s7cs7RTPd83Tf6H6alc0dy1C4dRRtS68Hv4B7N0FXA==
      Scaled[0.05]}},
   Ticks->{Automatic, Automatic}]], "Output",
  CellChangeTimes->{
-  3.9730670718741837`*^9, {3.97306738381388*^9, 3.97306738557822*^9}},
- CellLabel->"Out[96]=",ExpressionUUID->"e4220a5c-a2b5-4988-9cad-4d6560e76182"]
+  3.9730670718741837`*^9, {3.97306738381388*^9, 3.973067385545196*^9}, {
+   3.973068211050281*^9, 3.973068220730176*^9}, 3.973068286269195*^9, 
+   3.973068431081634*^9},
+ CellLabel->
+  "Out[114]=",ExpressionUUID->"03a4f902-6b46-44f7-9410-9d407dd4d870"]
 }, Open  ]]
 },
 WindowSize->{Full, Full},
@@ -749,13 +787,11 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[576, 22, 6224, 153, 478, "Input",ExpressionUUID->"493072f5-1034-44bd-b70e-e22815e0eebc"],
-Cell[6803, 177, 11836, 275, 247, "Output",ExpressionUUID->"dfed2dd8-f80f-4a50-9284-3170fe112135"],
-Cell[18642, 454, 11856, 276, 247, "Output",ExpressionUUID->"e4220a5c-a2b5-4988-9cad-4d6560e76182"]
+Cell[576, 22, 7356, 179, 539, "Input",ExpressionUUID->"493072f5-1034-44bd-b70e-e22815e0eebc"],
+Cell[7935, 203, 12009, 281, 247, "Output",ExpressionUUID->"1e285206-1b0b-42ff-90bc-9a701fb45826"],
+Cell[19947, 486, 12030, 282, 247, "Output",ExpressionUUID->"03a4f902-6b46-44f7-9410-9d407dd4d870"]
 }, Open  ]]
 }
 ]
 *)
-
-(* End of internal cache information *)
 
