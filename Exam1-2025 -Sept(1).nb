@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    179999,       3213]
-NotebookOptionsPosition[    177761,       3164]
-NotebookOutlinePosition[    178174,       3181]
-CellTagsIndexPosition[    178131,       3178]
+NotebookDataLength[    190344,       3457]
+NotebookOptionsPosition[    187969,       3405]
+NotebookOutlinePosition[    188382,       3422]
+CellTagsIndexPosition[    188339,       3419]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -2391,8 +2391,249 @@ Cell[CellGroupData[{
 Cell[TextData[StyleBox["Answer:",
  FontWeight->"Bold"]], "ItemParagraph",ExpressionUUID->"532c23b7-6485-4405-a202-82dbcffb6288"],
 
-Cell[BoxData[""], "Code",
- CellLabel->"In[2]:=",ExpressionUUID->"b019f515-4236-4b20-9130-d9e229780905"]
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"dataQuestion2", "=", 
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"CountryData", "[", 
+           RowBox[{"c", ",", "\"\<Name\>\""}], "]"}], ",", 
+          RowBox[{"QuantityMagnitude", "[", 
+           RowBox[{"CountryData", "[", 
+            RowBox[{"c", ",", "\"\<GDPPerCapita\>\""}], "]"}], "]"}], ",", 
+          RowBox[{"QuantityMagnitude", "[", 
+           RowBox[{"CountryData", "[", 
+            RowBox[{"c", ",", "\"\<LiteracyFraction\>\""}], "]"}], "]"}]}], 
+         "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"c", ",", 
+          RowBox[{"CountryData", "[", "]"}]}], "}"}]}], "]"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"NumericQ", "[", 
+         RowBox[{"#", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "]"}], "&&", 
+        RowBox[{"NumericQ", "[", 
+         RowBox[{"#", "[", 
+          RowBox[{"[", "3", "]"}], "]"}], "]"}]}], "&"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"maximumvalue", "=", "60000"}], ";"}], "\[IndentingNewLine]"}], "\n", 
+ RowBox[{"Question2", "=", 
+  RowBox[{"Manipulate", "[", 
+   RowBox[{
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "belowData", ",", "aboveData", ",", "plotData", ",", "plotColors", ",",
+         "legendLabels"}], "}"}], ",", 
+      RowBox[{
+       RowBox[{"belowData", "=", 
+        RowBox[{"Select", "[", 
+         RowBox[{"dataQuestion2", ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"#", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], "<=", "threshold"}], "&"}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"aboveData", "=", 
+        RowBox[{"Select", "[", 
+         RowBox[{"dataQuestion2", ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"#", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], ">", "threshold"}], "&"}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"plotData", "=", 
+        RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"plotColors", "=", 
+        RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"legendLabels", "=", 
+        RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Length", "[", "belowData", "]"}], ">", "0"}], ",", 
+         RowBox[{
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"plotData", ",", 
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"Tooltip", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"row", "[", 
+                   RowBox[{"[", "3", "]"}], "]"}], ",", 
+                  RowBox[{"row", "[", 
+                   RowBox[{"[", "2", "]"}], "]"}]}], "}"}], ",", 
+                RowBox[{"row", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"row", ",", "belowData"}], "}"}]}], "]"}]}], "]"}], ";",
+           "\[IndentingNewLine]", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"plotColors", ",", "Pink"}], "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"legendLabels", ",", 
+            RowBox[{"\"\<GDP % less than $\>\"", "<>", 
+             RowBox[{"ToString", "[", 
+              RowBox[{"Round", "[", "threshold", "]"}], "]"}]}]}], "]"}]}]}], 
+        "]"}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Length", "[", "aboveData", "]"}], ">=", "0"}], ",", 
+         RowBox[{
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"plotData", ",", 
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"Tooltip", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"row", "[", 
+                   RowBox[{"[", "3", "]"}], "]"}], ",", 
+                  RowBox[{"row", "[", 
+                   RowBox[{"[", "2", "]"}], "]"}]}], "}"}], ",", 
+                RowBox[{"row", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"row", ",", "aboveData"}], "}"}]}], "]"}]}], "]"}], ";",
+           "\[IndentingNewLine]", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"plotColors", ",", " ", 
+            RowBox[{"RGBColor", "[", 
+             RowBox[{"0.05", ",", " ", "0.5", ",", " ", "0.1"}], "]"}]}], 
+           "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"legendLabels", ",", 
+            RowBox[{"\"\<GDP % greater than $\>\"", "<>", 
+             RowBox[{"ToString", "[", 
+              RowBox[{"Round", "[", "threshold", "]"}], "]"}]}]}], "]"}]}]}], 
+        "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"ListPlot", "[", 
+        RowBox[{"plotData", ",", 
+         RowBox[{"PlotStyle", "->", "plotColors"}], ",", 
+         RowBox[{"PlotLegends", "->", "legendLabels"}], ",", 
+         RowBox[{"AxesLabel", "->", 
+          RowBox[{"{", 
+           RowBox[{"\"\<literacy\>\"", ",", "\"\<wealth\>\""}], "}"}]}], ",", 
+         
+         RowBox[{"PlotRange", "->", 
+          RowBox[{"{", 
+           RowBox[{"Automatic", ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "All"}], "}"}]}], "}"}]}]}], "]"}]}]}], "]"}], 
+    ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"threshold", ",", "10000", ",", "\"\<gdpThreshold\>\""}], 
+       "}"}], ",", "0", ",", "maximumvalue"}], "}"}]}], "]"}]}]}], "Code",
+ CellChangeTimes->{
+  3.9730705938590612`*^9, {3.973072451068617*^9, 3.973072451602662*^9}, {
+   3.973072517294283*^9, 3.973072550768113*^9}, {3.973072589428257*^9, 
+   3.9730727474794693`*^9}, {3.973072781541524*^9, 3.973072797490754*^9}, {
+   3.973072846062935*^9, 3.973072847807116*^9}, {3.973072888010804*^9, 
+   3.973072916217628*^9}, {3.973072959653427*^9, 3.973073048669932*^9}},
+ CellLabel->
+  "In[300]:=",ExpressionUUID->"b019f515-4236-4b20-9130-d9e229780905"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`threshold$$ = 39400., Typeset`show$$ = True,
+     Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`threshold$$], 10000, "gdpThreshold"}, 0, 60000, 
+      ControlType -> Manipulator}}, Typeset`size$$ = {
+    555.9265624999999, {102.0908132461949, 107.82274683994487`}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
+    Typeset`keyframeActionsQ$$ = False, Typeset`keyframeList$$ = {}}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`threshold$$ = 10000}, 
+      "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$, Typeset`keyframeActionsQ$$, 
+        Typeset`keyframeList$$}, "Body" :> 
+      Module[{$CellContext`belowData$, $CellContext`aboveData$, \
+$CellContext`plotData$, $CellContext`plotColors$, \
+$CellContext`legendLabels$}, $CellContext`belowData$ = 
+         Select[$CellContext`dataQuestion2, 
+           Part[#, 2] <= $CellContext`threshold$$& ]; $CellContext`aboveData$ = 
+         Select[$CellContext`dataQuestion2, 
+           Part[#, 2] > $CellContext`threshold$$& ]; $CellContext`plotData$ = \
+{}; $CellContext`plotColors$ = {}; $CellContext`legendLabels$ = {}; 
+        If[Length[$CellContext`belowData$] > 0, 
+          AppendTo[$CellContext`plotData$, 
+            Table[
+             Tooltip[{
+               Part[$CellContext`row, 3], 
+               Part[$CellContext`row, 2]}, 
+              
+              Part[$CellContext`row, 
+               1]], {$CellContext`row, $CellContext`belowData$}]]; 
+          AppendTo[$CellContext`plotColors$, Pink]; 
+          AppendTo[$CellContext`legendLabels$, "GDP % less than $" <> ToString[
+              Round[$CellContext`threshold$$]]]]; 
+        If[Length[$CellContext`aboveData$] >= 0, 
+          AppendTo[$CellContext`plotData$, 
+            Table[
+             Tooltip[{
+               Part[$CellContext`row, 3], 
+               Part[$CellContext`row, 2]}, 
+              
+              Part[$CellContext`row, 
+               1]], {$CellContext`row, $CellContext`aboveData$}]]; 
+          AppendTo[$CellContext`plotColors$, 
+            RGBColor[0.05, 0.5, 0.1]]; 
+          AppendTo[$CellContext`legendLabels$, "GDP % greater than $" <> 
+            ToString[
+              Round[$CellContext`threshold$$]]]]; 
+        ListPlot[$CellContext`plotData$, 
+          PlotStyle -> $CellContext`plotColors$, 
+          PlotLegends -> $CellContext`legendLabels$, 
+          AxesLabel -> {"literacy", "wealth"}, 
+          PlotRange -> {Automatic, {0, All}}]], 
+      "Specifications" :> {{{$CellContext`threshold$$, 10000, "gdpThreshold"},
+          0, 60000}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{
+      605.0265624999998, {149.76123866123393`, 155.49317225498393`}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.9730705960083637`*^9, 3.9730724528206663`*^9, {3.973072518865417*^9, 
+   3.973072551297381*^9}, {3.973072590616046*^9, 3.973072748022089*^9}, 
+   3.9730727841325274`*^9, 3.973072848301255*^9, {3.9730728953115587`*^9, 
+   3.9730729168189907`*^9}, {3.973072962273304*^9, 3.973073049255722*^9}},
+ CellLabel->
+  "Out[302]=",ExpressionUUID->"e849eeef-caa0-4ba6-bc10-c880667c62db"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -3204,15 +3445,18 @@ Cell[75915, 1449, 1656, 39, 169, "ItemNumbered",ExpressionUUID->"bda09c22-53bf-4
 Cell[77574, 1490, 54308, 896, 402, "Input",ExpressionUUID->"47dc501a-614d-489c-83d9-6bb3cdc463d7"],
 Cell[CellGroupData[{
 Cell[131907, 2390, 128, 1, 23, "ItemParagraph",ExpressionUUID->"532c23b7-6485-4405-a202-82dbcffb6288"],
-Cell[132038, 2393, 103, 1, 51, "Code",ExpressionUUID->"b019f515-4236-4b20-9130-d9e229780905"]
+Cell[CellGroupData[{
+Cell[132060, 2395, 6276, 157, 371, "Code",ExpressionUUID->"b019f515-4236-4b20-9130-d9e229780905"],
+Cell[138339, 2554, 3998, 80, 322, "Output",ExpressionUUID->"e849eeef-caa0-4ba6-bc10-c880667c62db"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[132190, 2400, 1883, 35, 209, "ItemNumbered",ExpressionUUID->"8ed1e7f8-70cf-4314-a5b6-f1fe9d0e5f6f"],
-Cell[134076, 2437, 43417, 716, 375, "Input",ExpressionUUID->"6991f7fb-4f26-43c7-b6cd-b62ea7ff65f5"]
+Cell[142398, 2641, 1883, 35, 209, "ItemNumbered",ExpressionUUID->"8ed1e7f8-70cf-4314-a5b6-f1fe9d0e5f6f"],
+Cell[144284, 2678, 43417, 716, 375, "Input",ExpressionUUID->"6991f7fb-4f26-43c7-b6cd-b62ea7ff65f5"]
 }, Open  ]],
-Cell[177508, 3156, 119, 1, 33, "Text",ExpressionUUID->"b4b9f40c-9255-4a61-8697-64d250c15402"],
-Cell[177630, 3159, 103, 1, 51, "Code",ExpressionUUID->"85e7c866-c798-486c-a8d3-81097775f02d"]
+Cell[187716, 3397, 119, 1, 33, "Text",ExpressionUUID->"b4b9f40c-9255-4a61-8697-64d250c15402"],
+Cell[187838, 3400, 103, 1, 51, "Code",ExpressionUUID->"85e7c866-c798-486c-a8d3-81097775f02d"]
 }, Open  ]]
 }, Open  ]]
 }
