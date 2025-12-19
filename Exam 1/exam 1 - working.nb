@@ -1,0 +1,3432 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[    167439,       3424]
+NotebookOptionsPosition[    164973,       3376]
+NotebookOutlinePosition[    165384,       3393]
+CellTagsIndexPosition[    165341,       3390]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"propPlot", "[", 
+    RowBox[{"country_", ",", "property_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "Question1", ",", "dataQuestion1", ",", "cleanedDataQ1", ",", 
+       "valuesQ1", ",", "averagevalues", ",", "maximumvalues", ",", 
+       "minimumvalues", ",", "maximumpoint", ",", "minimumpoint", ",", 
+       "xAXISminimum", ",", "xAXISmaximum"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Question1", "=", 
+       RowBox[{"CountryData", "[", 
+        RowBox[{"country", ",", 
+         RowBox[{"{", 
+          RowBox[{"property", ",", "All"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"dataQuestion1", "=", 
+       RowBox[{"Normal", "[", 
+        RowBox[{"Question1", "[", "\"\<Path\>\"", "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"cleanedDataQ1", "=", 
+       RowBox[{"Map", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"DateValue", "[", 
+             RowBox[{
+              RowBox[{"#", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], ",", "\"\<Year\>\""}], "]"}], ",", 
+            RowBox[{"QuantityMagnitude", "[", 
+             RowBox[{"#", "[", 
+              RowBox[{"[", "2", "]"}], "]"}], "]"}]}], "}"}], "&"}], ",", 
+         "dataQuestion1"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"cleanedDataQ1", "=", 
+       RowBox[{"Select", "[", 
+        RowBox[{"cleanedDataQ1", ",", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"NumberQ", "[", 
+            RowBox[{"Last", "[", "#", "]"}], "]"}], "&&", 
+           RowBox[{"1960", "<=", 
+            RowBox[{"First", "[", "#", "]"}], "<=", "2022"}]}], "&"}]}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"valuesQ1", "=", 
+       RowBox[{"cleanedDataQ1", "[", 
+        RowBox[{"[", 
+         RowBox[{"All", ",", "2"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"averagevalues", "=", 
+       RowBox[{"Mean", "[", "valuesQ1", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"maximumvalues", "=", 
+       RowBox[{"Max", "[", "valuesQ1", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"minimumvalues", "=", 
+       RowBox[{"Min", "[", "valuesQ1", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"maximumpoint", "=", 
+       RowBox[{
+        RowBox[{"SortBy", "[", 
+         RowBox[{"cleanedDataQ1", ",", "Last"}], "]"}], "[", 
+        RowBox[{"[", 
+         RowBox[{"-", "1"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"minimumpoint", "=", 
+       RowBox[{
+        RowBox[{"SortBy", "[", 
+         RowBox[{"cleanedDataQ1", ",", "Last"}], "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"xAXISminimum", "=", 
+       RowBox[{"Min", "[", 
+        RowBox[{"cleanedDataQ1", "[", 
+         RowBox[{"[", 
+          RowBox[{"All", ",", "1"}], "]"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"xAXISmaximum", "=", 
+       RowBox[{"Max", "[", 
+        RowBox[{"cleanedDataQ1", "[", 
+         RowBox[{"[", 
+          RowBox[{"All", ",", "1"}], "]"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"plotLines", "=", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"Thick", ",", "Dashed", ",", 
+           RowBox[{"InfiniteLine", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "averagevalues"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"1", ",", "0"}], "}"}]}], "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"Thin", ",", "Dashed", ",", 
+           RowBox[{"InfiniteLine", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "maximumvalues"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"1", ",", "0"}], "}"}]}], "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"Thin", ",", "Dashed", ",", 
+           RowBox[{"InfiniteLine", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "minimumvalues"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"1", ",", "0"}], "}"}]}], "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"Black", ",", 
+           RowBox[{"PointSize", "[", "Large", "]"}], ",", 
+           RowBox[{"Point", "[", 
+            RowBox[{"{", 
+             RowBox[{"maximumpoint", ",", "minimumpoint"}], "}"}], "]"}]}], 
+          "}"}]}], "}"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"ListLinePlot", "[", 
+       RowBox[{"cleanedDataQ1", ",", 
+        RowBox[{"PlotLabel", "->", 
+         RowBox[{
+         "property", "<>", "\"\< for \>\"", "<>", "country", 
+          "<>", "\"\< over the years\>\""}]}], ",", 
+        RowBox[{"AxesLabel", "->", 
+         RowBox[{"{", 
+          RowBox[{"\"\<year\>\"", ",", "property"}], "}"}]}], ",", 
+        RowBox[{"Epilog", "->", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"Thick", ",", "Dashed", ",", 
+             RowBox[{"Line", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"xAXISminimum", ",", "averagevalues"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"xAXISmaximum", ",", "averagevalues"}], "}"}]}], 
+               "}"}], "]"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"Thin", ",", "Dashed", ",", 
+             RowBox[{"Line", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"xAXISminimum", ",", "maximumvalues"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"xAXISmaximum", ",", "maximumvalues"}], "}"}]}], 
+               "}"}], "]"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"Thin", ",", "Dashed", ",", 
+             RowBox[{"Line", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"xAXISminimum", ",", "minimumvalues"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"xAXISmaximum", ",", "minimumvalues"}], "}"}]}], 
+               "}"}], "]"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"Black", ",", 
+             RowBox[{"PointSize", "[", "Large", "]"}], ",", 
+             RowBox[{"Point", "[", "maximumpoint", "]"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"Black", ",", 
+             RowBox[{"PointSize", "[", "Large", "]"}], ",", 
+             RowBox[{"Point", "[", "minimumpoint", "]"}]}], "}"}]}], 
+          "}"}]}]}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"Testing", " ", "Functions"}], "*)"}]}], "\n", 
+ RowBox[{"propPlot", "[", 
+  RowBox[{"\"\<Brazil\>\"", ",", "\"\<GDPPerCapita\>\""}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"propPlot", "[", 
+  RowBox[{"\"\<Pakistan\>\"", ",", "\"\<GDPPerCapita\>\""}], "]"}]}], "Input",\
+
+ CellChangeTimes->{{3.9730670093462152`*^9, 3.9730670695554457`*^9}, {
+  3.973068198703148*^9, 3.9730682850004377`*^9}, {3.9730684255710278`*^9, 
+  3.9730684462677317`*^9}},
+ CellLabel->
+  "In[317]:=",ExpressionUUID->"493072f5-1034-44bd-b70e-e22815e0eebc"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   InterpretationBox[{
+     TagBox[{{}, {}, 
+       TagBox[
+        {RGBColor[0.24, 0.6, 0.8], PointSize[
+          NCache[
+           Rational[1, 60], 0.016666666666666666`]], AbsoluteThickness[2], 
+         LineBox[CompressedData["
+1:eJw10XtI01EUB/A5HwjmIyrLUWhRmDRjiYWKymFWG7aGqJkvwoVKiWhWPkKz
+Uls2JWNqKpv3QHMVw/4wZw81cYU5S1EkMSIfq9S0gkwx0yYtz68Ll8uHczjn
+C3fn6ezoND6Pxwu03X/v+jEzmBAXSn1+5sG6+xnkzxzPGre7RB5iMH7DfZ8g
+4wr5LQMW8tHq33ad/I7BHnvVTbOwgvyBQVfLSev4wSryJIO2uAAnf0c1+TOD
+PLl0mF9UQ/7CQPm71+T65A75GwNtnp9YkVtP/mHrR48gdQlXX2QwmxvgquZr
+ycsMpqb1wZLVRvIfBpcLVr11Om4+DyF8aXTNoOTsgOB1KzF+prSW7IwwJjjW
+NxDXQN6AMBhkSbOEaMgeCA3aikLdCDd/M8JaV3iH45yOvA2hPC46MfOAnrwd
+IaNz2hCp4Oo+CJ6lwrBI8V3yboSUiMkxD78m8l6Exqd23d7yZrIQQbm1q36w
++RFZhPDq69p36RYjORChqnaiZ0TJOciWj28Xo6prJYciyDwPtbtYDGRAKP6l
+PYE7HpIPI7jYv3AoqHxAliKENU05Z228R5YhGBMyjsos98lRCPPF1uzz//PF
+IvgktfCP6Ll88QivnymCneYek5MRIiK8ekSaTnIKQv5S6H6LyERORfB3Pxu1
+0NlNPoOgMMob9Ms95EyE5ARrjsTcRz6HIO3vsJo2mckXbf8jWZFJ53vJBQjV
+bu1vWqs5FyHUXfuUo/Hl9l1FGG4R7zq1yO0rQzAUpY8mxb4klyPIBanqkiGu
+vxJhZUBZv5DA+TZCutusW5mqnVyDILjw3tEv5jn8BZhIDvM=
+          "]]},
+        Annotation[#, "Charting`Private`Tag#1"]& ]},
+      {"WolframDynamicHighlight", <|
+       "Label" -> {"XYLabel"}, "Ball" -> {"InterpolatedBall"}|>}], 
+     StyleBox[
+      DynamicBox[(Charting`HighlightActionBox["DynamicHighlight", {}, 
+        Slot["HighlightElements"], 
+        Slot["LayoutOptions"], 
+        Slot["Meta"], 
+        Charting`HighlightActionFunction["DynamicHighlight", {{{}, {}, 
+           Annotation[{
+             Hue[0.67, 0.6, 0.6], 
+             Directive[
+              PointSize[
+               Rational[1, 60]], 
+              RGBColor[0.24, 0.6, 0.8], 
+              AbsoluteThickness[2]], 
+             Line[CompressedData["
+1:eJw10XtI01EUB/A5HwjmIyrLUWhRmDRjiYWKymFWG7aGqJkvwoVKiWhWPkKz
+Uls2JWNqKpv3QHMVw/4wZw81cYU5S1EkMSIfq9S0gkwx0yYtz68Ll8uHczjn
+C3fn6ezoND6Pxwu03X/v+jEzmBAXSn1+5sG6+xnkzxzPGre7RB5iMH7DfZ8g
+4wr5LQMW8tHq33ad/I7BHnvVTbOwgvyBQVfLSev4wSryJIO2uAAnf0c1+TOD
+PLl0mF9UQ/7CQPm71+T65A75GwNtnp9YkVtP/mHrR48gdQlXX2QwmxvgquZr
+ycsMpqb1wZLVRvIfBpcLVr11Om4+DyF8aXTNoOTsgOB1KzF+prSW7IwwJjjW
+NxDXQN6AMBhkSbOEaMgeCA3aikLdCDd/M8JaV3iH45yOvA2hPC46MfOAnrwd
+IaNz2hCp4Oo+CJ6lwrBI8V3yboSUiMkxD78m8l6Exqd23d7yZrIQQbm1q36w
++RFZhPDq69p36RYjORChqnaiZ0TJOciWj28Xo6prJYciyDwPtbtYDGRAKP6l
+PYE7HpIPI7jYv3AoqHxAliKENU05Z228R5YhGBMyjsos98lRCPPF1uzz//PF
+IvgktfCP6Ll88QivnymCneYek5MRIiK8ekSaTnIKQv5S6H6LyERORfB3Pxu1
+0NlNPoOgMMob9Ms95EyE5ARrjsTcRz6HIO3vsJo2mckXbf8jWZFJ53vJBQjV
+bu1vWqs5FyHUXfuUo/Hl9l1FGG4R7zq1yO0rQzAUpY8mxb4klyPIBanqkiGu
+vxJhZUBZv5DA+TZCutusW5mqnVyDILjw3tEv5jn8BZhIDvM=
+              "]]}, "Charting`Private`Tag#1"]}}, <|
+         "HighlightElements" -> <|
+           "Label" -> {"XYLabel"}, "Ball" -> {"InterpolatedBall"}|>, 
+          "LayoutOptions" -> <|
+           "PanelPlotLayout" -> <||>, 
+            "PlotRange" -> {{1968.9375000000043`, 2021.}, {
+              0, 13200.55816618789}}, 
+            "Frame" -> {{False, False}, {False, False}}, 
+            "AxesOrigin" -> {1968.9375000000043`, 0}, 
+            "ImageSize" -> {360, 360/GoldenRatio}, "Axes" -> {True, True}, 
+            "LabelStyle" -> {}, "AspectRatio" -> GoldenRatio^(-1), 
+            "DefaultStyle" -> {
+              Directive[
+               PointSize[
+                Rational[1, 60]], 
+               RGBColor[0.24, 0.6, 0.8], 
+               AbsoluteThickness[2]]}, 
+            "HighlightLabelingFunctions" -> <|"CoordinatesToolOptions" -> ({
+                (Identity[#]& )[
+                 Part[#, 1]], 
+                (Identity[#]& )[
+                 Part[#, 2]]}& ), 
+              "ScalingFunctions" -> {{Identity, Identity}, {
+                Identity, Identity}}|>, "Primitives" -> {}, "GCFlag" -> 
+            False|>, 
+          "Meta" -> <|
+           "DefaultHighlight" -> {"Dynamic", None}, "Index" -> {}, "Function" -> 
+            ListLinePlot, "GroupHighlight" -> False|>|>]]& )[<|
+        "HighlightElements" -> <|
+          "Label" -> {"XYLabel"}, "Ball" -> {"InterpolatedBall"}|>, 
+         "LayoutOptions" -> <|
+          "PanelPlotLayout" -> <||>, 
+           "PlotRange" -> {{1968.9375000000043`, 2021.}, {
+             0, 13200.55816618789}}, 
+           "Frame" -> {{False, False}, {False, False}}, 
+           "AxesOrigin" -> {1968.9375000000043`, 0}, 
+           "ImageSize" -> {360, 360/GoldenRatio}, "Axes" -> {True, True}, 
+           "LabelStyle" -> {}, "AspectRatio" -> GoldenRatio^(-1), 
+           "DefaultStyle" -> {
+             Directive[
+              PointSize[
+               Rational[1, 60]], 
+              RGBColor[0.24, 0.6, 0.8], 
+              AbsoluteThickness[2]]}, 
+           "HighlightLabelingFunctions" -> <|"CoordinatesToolOptions" -> ({
+               (Identity[#]& )[
+                Part[#, 1]], 
+               (Identity[#]& )[
+                Part[#, 2]]}& ), 
+             "ScalingFunctions" -> {{Identity, Identity}, {
+               Identity, Identity}}|>, "Primitives" -> {}, "GCFlag" -> 
+           False|>, 
+         "Meta" -> <|
+          "DefaultHighlight" -> {"Dynamic", None}, "Index" -> {}, "Function" -> 
+           ListLinePlot, "GroupHighlight" -> False|>|>],
+       ImageSizeCache->{{4.503599627370496*^15, -4.503599627370496*^15}, {
+        4.503599627370496*^15, -4.503599627370496*^15}}],
+      Selectable->False]},
+    Annotation[{{{}, {}, 
+       Annotation[{
+         Hue[0.67, 0.6, 0.6], 
+         Directive[
+          PointSize[
+           Rational[1, 60]], 
+          RGBColor[0.24, 0.6, 0.8], 
+          AbsoluteThickness[2]], 
+         Line[CompressedData["
+1:eJw10XtI01EUB/A5HwjmIyrLUWhRmDRjiYWKymFWG7aGqJkvwoVKiWhWPkKz
+Uls2JWNqKpv3QHMVw/4wZw81cYU5S1EkMSIfq9S0gkwx0yYtz68Ll8uHczjn
+C3fn6ezoND6Pxwu03X/v+jEzmBAXSn1+5sG6+xnkzxzPGre7RB5iMH7DfZ8g
+4wr5LQMW8tHq33ad/I7BHnvVTbOwgvyBQVfLSev4wSryJIO2uAAnf0c1+TOD
+PLl0mF9UQ/7CQPm71+T65A75GwNtnp9YkVtP/mHrR48gdQlXX2QwmxvgquZr
+ycsMpqb1wZLVRvIfBpcLVr11Om4+DyF8aXTNoOTsgOB1KzF+prSW7IwwJjjW
+NxDXQN6AMBhkSbOEaMgeCA3aikLdCDd/M8JaV3iH45yOvA2hPC46MfOAnrwd
+IaNz2hCp4Oo+CJ6lwrBI8V3yboSUiMkxD78m8l6Exqd23d7yZrIQQbm1q36w
++RFZhPDq69p36RYjORChqnaiZ0TJOciWj28Xo6prJYciyDwPtbtYDGRAKP6l
+PYE7HpIPI7jYv3AoqHxAliKENU05Z228R5YhGBMyjsos98lRCPPF1uzz//PF
+IvgktfCP6Ll88QivnymCneYek5MRIiK8ekSaTnIKQv5S6H6LyERORfB3Pxu1
+0NlNPoOgMMob9Ms95EyE5ARrjsTcRz6HIO3vsJo2mckXbf8jWZFJ53vJBQjV
+bu1vWqs5FyHUXfuUo/Hl9l1FGG4R7zq1yO0rQzAUpY8mxb4klyPIBanqkiGu
+vxJhZUBZv5DA+TZCutusW5mqnVyDILjw3tEv5jn8BZhIDvM=
+          "]]}, "Charting`Private`Tag#1"]}}, <|
+     "HighlightElements" -> <|
+       "Label" -> {"XYLabel"}, "Ball" -> {"InterpolatedBall"}|>, 
+      "LayoutOptions" -> <|
+       "PanelPlotLayout" -> <||>, 
+        "PlotRange" -> {{1968.9375000000043`, 2021.}, {0, 13200.55816618789}},
+         "Frame" -> {{False, False}, {False, False}}, 
+        "AxesOrigin" -> {1968.9375000000043`, 0}, 
+        "ImageSize" -> {360, 360/GoldenRatio}, "Axes" -> {True, True}, 
+        "LabelStyle" -> {}, "AspectRatio" -> GoldenRatio^(-1), "DefaultStyle" -> {
+          Directive[
+           PointSize[
+            Rational[1, 60]], 
+           RGBColor[0.24, 0.6, 0.8], 
+           AbsoluteThickness[2]]}, 
+        "HighlightLabelingFunctions" -> <|"CoordinatesToolOptions" -> ({
+            (Identity[#]& )[
+             Part[#, 1]], 
+            (Identity[#]& )[
+             Part[#, 2]]}& ), 
+          "ScalingFunctions" -> {{Identity, Identity}, {
+            Identity, Identity}}|>, "Primitives" -> {}, "GCFlag" -> False|>, 
+      "Meta" -> <|
+       "DefaultHighlight" -> {"Dynamic", None}, "Index" -> {}, "Function" -> 
+        ListLinePlot, "GroupHighlight" -> False|>|>, 
+     "DynamicHighlight"]], {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox["\"year\"", HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox["\"GDPPerCapita\"", HoldForm], TraditionalForm]},
+  AxesOrigin->{1968.9375000000043`, 0},
+  DefaultBaseStyle->{"PlotGraphics", "Graphics"},
+  DisplayFunction->Identity,
+  Epilog->{{
+     Thickness[Large], 
+     Dashing[{Small, Small}], 
+     LineBox[{{1970, 4541.389176875686}, {2021, 4541.389176875686}}]}, {
+     Thickness[Tiny], 
+     Dashing[{Small, Small}], 
+     LineBox[{{1970, 13200.55816618789}, {2021, 13200.55816618789}}]}, {
+     Thickness[Tiny], 
+     Dashing[{Small, Small}], 
+     LineBox[{{1970, 367.1328816237346}, {2021, 367.1328816237346}}]}, {
+     GrayLevel[0], 
+     PointSize[Large], 
+     PointBox[{2011, 13200.55816618789}]}, {
+     GrayLevel[0], 
+     PointSize[Large], 
+     PointBox[{1970, 367.1328816237346}]}},
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  Method->{
+   "AxisPadding" -> Scaled[0.02], "DefaultBoundaryStyle" -> Automatic, 
+    "DefaultGraphicsInteraction" -> {
+     "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
+      "Effects" -> {
+       "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2}, 
+        "Droplines" -> {
+         "freeformCursorMode" -> True, 
+          "placement" -> {"x" -> "All", "y" -> "None"}}}}, "DefaultMeshStyle" -> 
+    AbsolutePointSize[6], "DefaultPlotStyle" -> {
+      Directive[
+       RGBColor[0.24, 0.6, 0.8], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.95, 0.627, 0.1425], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.455, 0.7, 0.21], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.922526, 0.385626, 0.209179], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.578, 0.51, 0.85], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.772079, 0.431554, 0.102387], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.4, 0.64, 1.], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[1., 0.75, 0.], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.8, 0.4, 0.76], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.637, 0.65, 0.], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.915, 0.3325, 0.2125], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.40082222609352647`, 0.5220066643438841, 0.85], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.9728288904374106, 0.621644452187053, 0.07336199581899142], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.736782672705901, 0.358, 0.5030266573755369], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.28026441037696703`, 0.715, 0.4292089322474965], 
+       AbsoluteThickness[2]]}, "DomainPadding" -> Scaled[0.02], 
+    "RangePadding" -> Scaled[0.05], "OptimizePlotMarkers" -> True, 
+    "IncludeHighlighting" -> Automatic, "HighlightStyle" -> Automatic, 
+    "OptimizePlotMarkers" -> True, "IncludeHighlighting" -> "CurrentSet", 
+    "HighlightStyle" -> Automatic, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& )}},
+  PlotInteractivity:>True,
+  PlotLabel->FormBox[
+   "\"GDPPerCapita for Brazil over the years\"", TraditionalForm],
+  PlotRange->{{1968.9375000000043`, 2021.}, {0, 13200.55816618789}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.9730742521041803`*^9},
+ CellLabel->
+  "Out[318]=",ExpressionUUID->"be7903b6-88db-407c-a9e3-37f61851cf79"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   InterpretationBox[{
+     TagBox[{{}, {}, 
+       TagBox[
+        {RGBColor[0.24, 0.6, 0.8], PointSize[
+          NCache[
+           Rational[1, 60], 0.016666666666666666`]], AbsoluteThickness[2], 
+         LineBox[CompressedData["
+1:eJwt0A1IE0AUAOCloiZJYYoTtrJStmqV4Cwpo2dICVnOOUGjUpeVOWuuFv7M
+1fyJlq5oYlpG9yoNm0FEplGhwRIsNAkxGc7QWUaCaYSVWriW7w6O4+PdvXvv
+rVFrlce8BAKB3LP/n4vrDYOR7s5QTasGFt3LIEaVEhvxJJ/8nkGAo6VeYcoi
+DzAYO7hhrEGeTXYwKDHaBof8j5OHGeQ2jz/7484jjzK4OWgouNd2mvyZgdyY
+IZgS6shfGdQe9hr5aDpLnmQwN6HKTB3Qk78zUCU87h/xLSLPMOhIylI4DxjI
+swzudmms4opi8l8G2mFJ4v55fl+AcP9d4Hjm0hKyD0JzwLmnjQs87o9Q/0nZ
+0y/h75ch7Eh+ndzn4F6B8HP9LZtOX0oORvjtGkzzNfD/hQgnhzdut8xzixCC
+9BnS2XQjORwhUeJot680kSMQIqeLa8xT58lShPKiIL8tm3lchjDXamkyrCsn
+RyFsY6O2JnMZWY4gqXqrnBBxxyJcTq3uFL/k7+MQRHHS521x3ICw79ur4OlV
+F8gJCJpNO5e77LyfRIStvQsfXth5PUkIZ9rLGgMDeH4FglLYccdbVEFWIfwK
+dXinCS+S0xHiXbIlislL5EMI3ZNtu0W6KnIWwpcjwY9SBdw5CA2uzNW3y6vJ
+uZ76zPHRYSeukPMRhkJsec4WK7kAIWrP/ANZH7ceYZc9+4c4poZchKDTqrLD
+zLXkUgSrwien0n2dbPLM0zKjUjvryJUIIV4P3SnpN8hmBD9R5NrQUR63eObb
+s7cs7RTPd83Tf6H6alc0dy1C4dRRtS68Hv4B7N0FXA==
+          "]]},
+        Annotation[#, "Charting`Private`Tag#1"]& ]},
+      {"WolframDynamicHighlight", <|
+       "Label" -> {"XYLabel"}, "Ball" -> {"InterpolatedBall"}|>}], 
+     StyleBox[
+      DynamicBox[(Charting`HighlightActionBox["DynamicHighlight", {}, 
+        Slot["HighlightElements"], 
+        Slot["LayoutOptions"], 
+        Slot["Meta"], 
+        Charting`HighlightActionFunction["DynamicHighlight", {{{}, {}, 
+           Annotation[{
+             Hue[0.67, 0.6, 0.6], 
+             Directive[
+              PointSize[
+               Rational[1, 60]], 
+              RGBColor[0.24, 0.6, 0.8], 
+              AbsoluteThickness[2]], 
+             Line[CompressedData["
+1:eJwt0A1IE0AUAOCloiZJYYoTtrJStmqV4Cwpo2dICVnOOUGjUpeVOWuuFv7M
+1fyJlq5oYlpG9yoNm0FEplGhwRIsNAkxGc7QWUaCaYSVWriW7w6O4+PdvXvv
+rVFrlce8BAKB3LP/n4vrDYOR7s5QTasGFt3LIEaVEhvxJJ/8nkGAo6VeYcoi
+DzAYO7hhrEGeTXYwKDHaBof8j5OHGeQ2jz/7484jjzK4OWgouNd2mvyZgdyY
+IZgS6shfGdQe9hr5aDpLnmQwN6HKTB3Qk78zUCU87h/xLSLPMOhIylI4DxjI
+swzudmms4opi8l8G2mFJ4v55fl+AcP9d4Hjm0hKyD0JzwLmnjQs87o9Q/0nZ
+0y/h75ch7Eh+ndzn4F6B8HP9LZtOX0oORvjtGkzzNfD/hQgnhzdut8xzixCC
+9BnS2XQjORwhUeJot680kSMQIqeLa8xT58lShPKiIL8tm3lchjDXamkyrCsn
+RyFsY6O2JnMZWY4gqXqrnBBxxyJcTq3uFL/k7+MQRHHS521x3ICw79ur4OlV
+F8gJCJpNO5e77LyfRIStvQsfXth5PUkIZ9rLGgMDeH4FglLYccdbVEFWIfwK
+dXinCS+S0xHiXbIlislL5EMI3ZNtu0W6KnIWwpcjwY9SBdw5CA2uzNW3y6vJ
+uZ76zPHRYSeukPMRhkJsec4WK7kAIWrP/ANZH7ceYZc9+4c4poZchKDTqrLD
+zLXkUgSrwien0n2dbPLM0zKjUjvryJUIIV4P3SnpN8hmBD9R5NrQUR63eObb
+s7cs7RTPd83Tf6H6alc0dy1C4dRRtS68Hv4B7N0FXA==
+              "]]}, "Charting`Private`Tag#1"]}}, <|
+         "HighlightElements" -> <|
+           "Label" -> {"XYLabel"}, "Ball" -> {"InterpolatedBall"}|>, 
+          "LayoutOptions" -> <|
+           "PanelPlotLayout" -> <||>, 
+            "PlotRange" -> {{1968.9375000000043`, 2021.}, {
+              0, 1558.0800768585225`}}, 
+            "Frame" -> {{False, False}, {False, False}}, 
+            "AxesOrigin" -> {1968.9375000000043`, 0}, 
+            "ImageSize" -> {360, 360/GoldenRatio}, "Axes" -> {True, True}, 
+            "LabelStyle" -> {}, "AspectRatio" -> GoldenRatio^(-1), 
+            "DefaultStyle" -> {
+              Directive[
+               PointSize[
+                Rational[1, 60]], 
+               RGBColor[0.24, 0.6, 0.8], 
+               AbsoluteThickness[2]]}, 
+            "HighlightLabelingFunctions" -> <|"CoordinatesToolOptions" -> ({
+                (Identity[#]& )[
+                 Part[#, 1]], 
+                (Identity[#]& )[
+                 Part[#, 2]]}& ), 
+              "ScalingFunctions" -> {{Identity, Identity}, {
+                Identity, Identity}}|>, "Primitives" -> {}, "GCFlag" -> 
+            False|>, 
+          "Meta" -> <|
+           "DefaultHighlight" -> {"Dynamic", None}, "Index" -> {}, "Function" -> 
+            ListLinePlot, "GroupHighlight" -> False|>|>]]& )[<|
+        "HighlightElements" -> <|
+          "Label" -> {"XYLabel"}, "Ball" -> {"InterpolatedBall"}|>, 
+         "LayoutOptions" -> <|
+          "PanelPlotLayout" -> <||>, 
+           "PlotRange" -> {{1968.9375000000043`, 2021.}, {
+             0, 1558.0800768585225`}}, 
+           "Frame" -> {{False, False}, {False, False}}, 
+           "AxesOrigin" -> {1968.9375000000043`, 0}, 
+           "ImageSize" -> {360, 360/GoldenRatio}, "Axes" -> {True, True}, 
+           "LabelStyle" -> {}, "AspectRatio" -> GoldenRatio^(-1), 
+           "DefaultStyle" -> {
+             Directive[
+              PointSize[
+               Rational[1, 60]], 
+              RGBColor[0.24, 0.6, 0.8], 
+              AbsoluteThickness[2]]}, 
+           "HighlightLabelingFunctions" -> <|"CoordinatesToolOptions" -> ({
+               (Identity[#]& )[
+                Part[#, 1]], 
+               (Identity[#]& )[
+                Part[#, 2]]}& ), 
+             "ScalingFunctions" -> {{Identity, Identity}, {
+               Identity, Identity}}|>, "Primitives" -> {}, "GCFlag" -> 
+           False|>, 
+         "Meta" -> <|
+          "DefaultHighlight" -> {"Dynamic", None}, "Index" -> {}, "Function" -> 
+           ListLinePlot, "GroupHighlight" -> False|>|>],
+       ImageSizeCache->{{4.503599627370496*^15, -4.503599627370496*^15}, {
+        4.503599627370496*^15, -4.503599627370496*^15}}],
+      Selectable->False]},
+    Annotation[{{{}, {}, 
+       Annotation[{
+         Hue[0.67, 0.6, 0.6], 
+         Directive[
+          PointSize[
+           Rational[1, 60]], 
+          RGBColor[0.24, 0.6, 0.8], 
+          AbsoluteThickness[2]], 
+         Line[CompressedData["
+1:eJwt0A1IE0AUAOCloiZJYYoTtrJStmqV4Cwpo2dICVnOOUGjUpeVOWuuFv7M
+1fyJlq5oYlpG9yoNm0FEplGhwRIsNAkxGc7QWUaCaYSVWriW7w6O4+PdvXvv
+rVFrlce8BAKB3LP/n4vrDYOR7s5QTasGFt3LIEaVEhvxJJ/8nkGAo6VeYcoi
+DzAYO7hhrEGeTXYwKDHaBof8j5OHGeQ2jz/7484jjzK4OWgouNd2mvyZgdyY
+IZgS6shfGdQe9hr5aDpLnmQwN6HKTB3Qk78zUCU87h/xLSLPMOhIylI4DxjI
+swzudmms4opi8l8G2mFJ4v55fl+AcP9d4Hjm0hKyD0JzwLmnjQs87o9Q/0nZ
+0y/h75ch7Eh+ndzn4F6B8HP9LZtOX0oORvjtGkzzNfD/hQgnhzdut8xzixCC
+9BnS2XQjORwhUeJot680kSMQIqeLa8xT58lShPKiIL8tm3lchjDXamkyrCsn
+RyFsY6O2JnMZWY4gqXqrnBBxxyJcTq3uFL/k7+MQRHHS521x3ICw79ur4OlV
+F8gJCJpNO5e77LyfRIStvQsfXth5PUkIZ9rLGgMDeH4FglLYccdbVEFWIfwK
+dXinCS+S0xHiXbIlislL5EMI3ZNtu0W6KnIWwpcjwY9SBdw5CA2uzNW3y6vJ
+uZ76zPHRYSeukPMRhkJsec4WK7kAIWrP/ANZH7ceYZc9+4c4poZchKDTqrLD
+zLXkUgSrwien0n2dbPLM0zKjUjvryJUIIV4P3SnpN8hmBD9R5NrQUR63eObb
+s7cs7RTPd83Tf6H6alc0dy1C4dRRtS68Hv4B7N0FXA==
+          "]]}, "Charting`Private`Tag#1"]}}, <|
+     "HighlightElements" -> <|
+       "Label" -> {"XYLabel"}, "Ball" -> {"InterpolatedBall"}|>, 
+      "LayoutOptions" -> <|
+       "PanelPlotLayout" -> <||>, 
+        "PlotRange" -> {{1968.9375000000043`, 2021.}, {
+          0, 1558.0800768585225`}}, 
+        "Frame" -> {{False, False}, {False, False}}, 
+        "AxesOrigin" -> {1968.9375000000043`, 0}, 
+        "ImageSize" -> {360, 360/GoldenRatio}, "Axes" -> {True, True}, 
+        "LabelStyle" -> {}, "AspectRatio" -> GoldenRatio^(-1), "DefaultStyle" -> {
+          Directive[
+           PointSize[
+            Rational[1, 60]], 
+           RGBColor[0.24, 0.6, 0.8], 
+           AbsoluteThickness[2]]}, 
+        "HighlightLabelingFunctions" -> <|"CoordinatesToolOptions" -> ({
+            (Identity[#]& )[
+             Part[#, 1]], 
+            (Identity[#]& )[
+             Part[#, 2]]}& ), 
+          "ScalingFunctions" -> {{Identity, Identity}, {
+            Identity, Identity}}|>, "Primitives" -> {}, "GCFlag" -> False|>, 
+      "Meta" -> <|
+       "DefaultHighlight" -> {"Dynamic", None}, "Index" -> {}, "Function" -> 
+        ListLinePlot, "GroupHighlight" -> False|>|>, 
+     "DynamicHighlight"]], {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox["\"year\"", HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox["\"GDPPerCapita\"", HoldForm], TraditionalForm]},
+  AxesOrigin->{1968.9375000000043`, 0},
+  DefaultBaseStyle->{"PlotGraphics", "Graphics"},
+  DisplayFunction->Identity,
+  Epilog->{{
+     Thickness[Large], 
+     Dashing[{Small, Small}], 
+     LineBox[{{1970, 651.7815004976418}, {2021, 651.7815004976418}}]}, {
+     Thickness[Tiny], 
+     Dashing[{Small, Small}], 
+     LineBox[{{1970, 1558.0800768585225`}, {2021, 1558.0800768585225`}}]}, {
+     Thickness[Tiny], 
+     Dashing[{Small, Small}], 
+     LineBox[{{1970, 132.00983794563246`}, {2021, 132.00983794563246`}}]}, {
+     GrayLevel[0], 
+     PointSize[Large], 
+     PointBox[{2017, 1558.0800768585225`}]}, {
+     GrayLevel[0], 
+     PointSize[Large], 
+     PointBox[{1972, 132.00983794563246`}]}},
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  Method->{
+   "AxisPadding" -> Scaled[0.02], "DefaultBoundaryStyle" -> Automatic, 
+    "DefaultGraphicsInteraction" -> {
+     "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
+      "Effects" -> {
+       "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2}, 
+        "Droplines" -> {
+         "freeformCursorMode" -> True, 
+          "placement" -> {"x" -> "All", "y" -> "None"}}}}, "DefaultMeshStyle" -> 
+    AbsolutePointSize[6], "DefaultPlotStyle" -> {
+      Directive[
+       RGBColor[0.24, 0.6, 0.8], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.95, 0.627, 0.1425], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.455, 0.7, 0.21], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.922526, 0.385626, 0.209179], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.578, 0.51, 0.85], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.772079, 0.431554, 0.102387], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.4, 0.64, 1.], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[1., 0.75, 0.], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.8, 0.4, 0.76], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.637, 0.65, 0.], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.915, 0.3325, 0.2125], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.40082222609352647`, 0.5220066643438841, 0.85], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.9728288904374106, 0.621644452187053, 0.07336199581899142], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.736782672705901, 0.358, 0.5030266573755369], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.28026441037696703`, 0.715, 0.4292089322474965], 
+       AbsoluteThickness[2]]}, "DomainPadding" -> Scaled[0.02], 
+    "RangePadding" -> Scaled[0.05], "OptimizePlotMarkers" -> True, 
+    "IncludeHighlighting" -> Automatic, "HighlightStyle" -> Automatic, 
+    "OptimizePlotMarkers" -> True, "IncludeHighlighting" -> "CurrentSet", 
+    "HighlightStyle" -> Automatic, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& )}},
+  PlotInteractivity:>True,
+  PlotLabel->FormBox[
+   "\"GDPPerCapita for Pakistan over the years\"", TraditionalForm],
+  PlotRange->{{1968.9375000000043`, 2021.}, {0, 1558.0800768585225`}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.973074252139765*^9},
+ CellLabel->
+  "Out[319]=",ExpressionUUID->"2a79e67d-a228-47b4-991c-536708a18953"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.973069802434393*^9, 
+  3.973069803839026*^9}},ExpressionUUID->"3b2b0f3c-3ded-485e-90f7-\
+d800bd57e2f3"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"dataQuestion2", "=", 
+   RowBox[{"Select", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"CountryData", "[", 
+          RowBox[{"#", ",", "\"\<Name\>\""}], "]"}], ",", 
+         RowBox[{"QuantityMagnitude", "[", 
+          RowBox[{"CountryData", "[", 
+           RowBox[{"#", ",", "\"\<GDPPerCapita\>\""}], "]"}], "]"}], ",", 
+         RowBox[{"QuantityMagnitude", "[", 
+          RowBox[{"CountryData", "[", 
+           RowBox[{"#", ",", "\"\<LiteracyFraction\>\""}], "]"}], "]"}]}], 
+        "}"}], "&"}], "/@", 
+      RowBox[{"CountryData", "[", "]"}]}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"NumericQ", "[", 
+        RowBox[{"#", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "]"}], "&&", 
+       RowBox[{"NumericQ", "[", 
+        RowBox[{"#", "[", 
+         RowBox[{"[", "3", "]"}], "]"}], "]"}]}], "&"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"maximumvalue", "=", "60000"}], ";"}], "\[IndentingNewLine]"}], "\n", 
+ RowBox[{"Question2", "=", 
+  RowBox[{"DynamicModule", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"gdpThreshold", "=", "10000"}], "}"}], ",", 
+    RowBox[{"Column", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Slider", "[", 
+        RowBox[{
+         RowBox[{"Dynamic", "[", "gdpThreshold", "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "maximumvalue"}], "}"}]}], "]"}], ",", 
+       RowBox[{"Dynamic", "[", 
+        RowBox[{"ListPlot", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"Tooltip", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"#", "[", 
+                   RowBox[{"[", "3", "]"}], "]"}], ",", 
+                  RowBox[{"#", "[", 
+                   RowBox[{"[", "2", "]"}], "]"}]}], "}"}], ",", 
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}]}], "]"}], "&"}], "/@", 
+             RowBox[{"Select", "[", 
+              RowBox[{"dataQuestion2", ",", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"#", "[", 
+                  RowBox[{"[", "2", "]"}], "]"}], "<=", "gdpThreshold"}], 
+                "&"}]}], "]"}]}], ",", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Tooltip", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"#", "[", 
+                   RowBox[{"[", "3", "]"}], "]"}], ",", 
+                  RowBox[{"#", "[", 
+                   RowBox[{"[", "2", "]"}], "]"}]}], "}"}], ",", 
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}]}], "]"}], "&"}], "/@", 
+             RowBox[{"Select", "[", 
+              RowBox[{"dataQuestion2", ",", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"#", "[", 
+                  RowBox[{"[", "2", "]"}], "]"}], ">", "gdpThreshold"}], 
+                "&"}]}], "]"}]}]}], "}"}], ",", 
+          RowBox[{"PlotStyle", "->", 
+           RowBox[{"{", 
+            RowBox[{"Pink", ",", "Green"}], "}"}]}], ",", 
+          RowBox[{"PlotLegends", "->", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"\"\<GDP % less than $\>\"", "<>", 
+              RowBox[{"ToString", "[", 
+               RowBox[{"Round", "[", "gdpThreshold", "]"}], "]"}]}], ",", 
+             RowBox[{"\"\<GDP % greater than $\>\"", "<>", 
+              RowBox[{"ToString", "[", 
+               RowBox[{"Round", "[", "gdpThreshold", "]"}], "]"}]}]}], 
+            "}"}]}], ",", 
+          RowBox[{"AxesLabel", "->", 
+           RowBox[{"{", 
+            RowBox[{"\"\<literacy\>\"", ",", "\"\<wealth\>\""}], "}"}]}]}], 
+         "]"}], "]"}]}], "}"}], "]"}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.973070042168998*^9, 3.973070042171056*^9}, {
+  3.973070137306513*^9, 3.973070186283279*^9}, {3.973070231561569*^9, 
+  3.973070283289034*^9}},
+ CellLabel->
+  "In[158]:=",ExpressionUUID->"d7069650-74d6-4f40-a067-226964ca6ce6"],
+
+Cell[BoxData[
+ DynamicModuleBox[{$CellContext`gdpThreshold$$ = 25800.}, 
+  TagBox[GridBox[{
+     {
+      SliderBox[Dynamic[$CellContext`gdpThreshold$$], {0, 60000}]},
+     {
+      DynamicBox[ToBoxes[
+        ListPlot[{
+          Map[Tooltip[{
+             Part[#, 3], 
+             Part[#, 2]}, 
+            Part[#, 1]]& , 
+           
+           Select[$CellContext`dataQuestion2, 
+            Part[#, 2] <= $CellContext`gdpThreshold$$& ]], 
+          Map[Tooltip[{
+             Part[#, 3], 
+             Part[#, 2]}, 
+            Part[#, 1]]& , 
+           
+           Select[$CellContext`dataQuestion2, 
+            Part[#, 2] > $CellContext`gdpThreshold$$& ]]}, 
+         PlotStyle -> {Pink, Green}, 
+         PlotLegends -> {"GDP % less than $" <> ToString[
+             Round[$CellContext`gdpThreshold$$]], "GDP % greater than $" <> 
+           ToString[
+             Round[$CellContext`gdpThreshold$$]]}, 
+         AxesLabel -> {"literacy", "wealth"}], StandardForm],
+       ImageSizeCache->{
+        613.9499999999999, {119.96394866168816`, 125.69588225543819`}}]}
+    },
+    DefaultBaseStyle->"Column",
+    GridBoxAlignment->{"Columns" -> {{Left}}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+   "Column"],
+  DynamicModuleValues:>{}]], "Output",
+ CellChangeTimes->{
+  3.9730700432307*^9, 3.973070148631206*^9, {3.973070233106838*^9, 
+   3.973070253279077*^9}, 3.973071211475381*^9},
+ CellLabel->
+  "Out[160]=",ExpressionUUID->"15630957-502b-476b-8ef1-d9f35fdec48d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"dataQuestion2", "=", 
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"CountryData", "[", 
+           RowBox[{"#", ",", "\"\<Name\>\""}], "]"}], ",", 
+          RowBox[{"QuantityMagnitude", "[", 
+           RowBox[{"CountryData", "[", 
+            RowBox[{"#", ",", "\"\<GDPPerCapita\>\""}], "]"}], "]"}], ",", 
+          RowBox[{"QuantityMagnitude", "[", 
+           RowBox[{"CountryData", "[", 
+            RowBox[{"#", ",", "\"\<LiteracyFraction\>\""}], "]"}], "]"}]}], 
+         "}"}], "&"}], "/@", 
+       RowBox[{"CountryData", "[", "]"}]}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"NumericQ", "[", 
+         RowBox[{"#", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "]"}], "&&", 
+        RowBox[{"NumericQ", "[", 
+         RowBox[{"#", "[", 
+          RowBox[{"[", "3", "]"}], "]"}], "]"}]}], "&"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"maximumvalue", "=", "60000"}], ";"}], "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"dataQuestion2", "=", 
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"CountryData", "[", 
+           RowBox[{"#", ",", "\"\<Name\>\""}], "]"}], ",", 
+          RowBox[{"QuantityMagnitude", "[", 
+           RowBox[{"CountryData", "[", 
+            RowBox[{"#", ",", "\"\<GDPPerCapita\>\""}], "]"}], "]"}], ",", 
+          RowBox[{"QuantityMagnitude", "[", 
+           RowBox[{"CountryData", "[", 
+            RowBox[{"#", ",", "\"\<LiteracyFraction\>\""}], "]"}], "]"}]}], 
+         "}"}], "&"}], "/@", 
+       RowBox[{"CountryData", "[", "]"}]}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"NumericQ", "[", 
+         RowBox[{"#", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "]"}], "&&", 
+        RowBox[{"NumericQ", "[", 
+         RowBox[{"#", "[", 
+          RowBox[{"[", "3", "]"}], "]"}], "]"}]}], "&"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{"maximumvalue", "=", "60000"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"scaleFactor", "=", "1000000"}], ";"}], "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Question2", "=", 
+    RowBox[{"dataQuestion2", "=", 
+     RowBox[{"Select", "[", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"CountryData", "[", 
+            RowBox[{"c", ",", "\"\<Name\>\""}], "]"}], ",", 
+           RowBox[{"QuantityMagnitude", "[", 
+            RowBox[{"CountryData", "[", 
+             RowBox[{"c", ",", "\"\<GDPPerCapita\>\""}], "]"}], "]"}], ",", 
+           RowBox[{"QuantityMagnitude", "[", 
+            RowBox[{"CountryData", "[", 
+             RowBox[{"c", ",", "\"\<LiteracyFraction\>\""}], "]"}], "]"}]}], 
+          "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"c", ",", 
+           RowBox[{"CountryData", "[", "]"}]}], "}"}]}], "]"}], ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"NumericQ", "[", 
+          RowBox[{"#", "[", 
+           RowBox[{"[", "2", "]"}], "]"}], "]"}], "&&", 
+         RowBox[{"NumericQ", "[", 
+          RowBox[{"#", "[", 
+           RowBox[{"[", "3", "]"}], "]"}], "]"}]}], "&"}]}], "]"}]}]}], ";"}],
+   "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{"maximumvalue", "=", "60000"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"scaleFactor", "=", "1000000"}], ";"}], "\[IndentingNewLine]"}], "\n", 
+ RowBox[{"Question2", "=", 
+  RowBox[{"Manipulate", "[", 
+   RowBox[{
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"belowData", ",", "aboveData"}], "}"}], ",", 
+      RowBox[{
+       RowBox[{"belowData", "=", 
+        RowBox[{"Select", "[", 
+         RowBox[{"dataQuestion2", ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"#", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], "<=", "threshold"}], "&"}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"aboveData", "=", 
+        RowBox[{"Select", "[", 
+         RowBox[{"dataQuestion2", ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"#", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], ">", "threshold"}], "&"}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"ListPlot", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Length", "[", "belowData", "]"}], ">", "0"}], ",", 
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"Tooltip", "[", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"row", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], ",", 
+                   RowBox[{
+                    RowBox[{"row", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "/", "scaleFactor"}]}], 
+                  "}"}], ",", 
+                 RowBox[{"row", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"row", ",", "belowData"}], "}"}]}], "]"}], ",", 
+             RowBox[{"{", "}"}]}], "]"}], ",", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Length", "[", "aboveData", "]"}], ">", "0"}], ",", 
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"Tooltip", "[", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"row", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], ",", 
+                   RowBox[{
+                    RowBox[{"row", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "/", "scaleFactor"}]}], 
+                  "}"}], ",", 
+                 RowBox[{"row", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"row", ",", "aboveData"}], "}"}]}], "]"}], ",", 
+             RowBox[{"{", "}"}]}], "]"}]}], "}"}], ",", 
+         RowBox[{"PlotStyle", "->", 
+          RowBox[{"{", 
+           RowBox[{"Blue", ",", "Orange"}], "}"}]}], ",", 
+         RowBox[{"PlotLegends", "->", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"\"\<GDP pc less than $\>\"", "<>", 
+             RowBox[{"ToString", "[", 
+              RowBox[{"Round", "[", "threshold", "]"}], "]"}]}], ",", 
+            RowBox[{"\"\<GDP pc greater than $\>\"", "<>", 
+             RowBox[{"ToString", "[", 
+              RowBox[{"Round", "[", "threshold", "]"}], "]"}]}]}], "}"}]}], ",", 
+         RowBox[{"AxesLabel", "->", 
+          RowBox[{"{", 
+           RowBox[{"\"\<literacy\>\"", ",", "\"\<wealth\>\""}], "}"}]}], ",", 
+         
+         RowBox[{"Ticks", "->", 
+          RowBox[{"{", 
+           RowBox[{"Automatic", ",", 
+            RowBox[{"{", 
+             RowBox[{
+             "0", ",", "0.02", ",", "0.04", ",", "0.06", ",", "0.08", ",", 
+              "0.10"}], "}"}]}], "}"}]}]}], "]"}]}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"threshold", ",", "10000", ",", "\"\<gdpThreshold\>\""}], 
+       "}"}], ",", "0", ",", "maximumvalue"}], "}"}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.9730713880252657`*^9, 3.973071425466586*^9}, {
+   3.973071647630089*^9, 3.973071663218177*^9}, {3.9730717365315437`*^9, 
+   3.973071746206936*^9}, 3.973071885025281*^9, {3.973071942505641*^9, 
+   3.973071943999312*^9}},ExpressionUUID->"b8f556ba-ce81-43f0-b696-\
+22921861cda9"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`threshold$$ = 46500., Typeset`show$$ = True,
+     Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`threshold$$], 10000, "gdpThreshold"}, 0, 60000, 
+      ControlType -> Manipulator}}, Typeset`size$$ = {
+    558.0974609374999, {105.04140534087611`, 110.77333893462611`}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
+    Typeset`keyframeActionsQ$$ = False, Typeset`keyframeList$$ = {}}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`threshold$$ = 10000}, 
+      "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$, Typeset`keyframeActionsQ$$, 
+        Typeset`keyframeList$$}, "Body" :> 
+      Module[{$CellContext`belowData$, $CellContext`aboveData$}, \
+$CellContext`belowData$ = 
+         Select[$CellContext`dataQuestion2, 
+           Part[#, 2] <= $CellContext`threshold$$& ]; $CellContext`aboveData$ = 
+         Select[$CellContext`dataQuestion2, 
+           Part[#, 2] > $CellContext`threshold$$& ]; ListPlot[{
+           If[Length[$CellContext`belowData$] > 0, 
+            Table[
+             Tooltip[{
+               Part[$CellContext`row, 3], 
+               Part[$CellContext`row, 2]/$CellContext`scaleFactor}, 
+              
+              Part[$CellContext`row, 
+               1]], {$CellContext`row, $CellContext`belowData$}], {}], 
+           If[Length[$CellContext`aboveData$] > 0, 
+            Table[
+             Tooltip[{
+               Part[$CellContext`row, 3], 
+               Part[$CellContext`row, 2]/$CellContext`scaleFactor}, 
+              
+              Part[$CellContext`row, 
+               1]], {$CellContext`row, $CellContext`aboveData$}], {}]}, 
+          PlotStyle -> {Blue, Orange}, 
+          PlotLegends -> {"GDP pc less than $" <> ToString[
+              Round[$CellContext`threshold$$]], "GDP pc greater than $" <> 
+            ToString[
+              Round[$CellContext`threshold$$]]}, 
+          AxesLabel -> {"literacy", "wealth"}, 
+          Ticks -> {Automatic, {0, 0.02, 0.04, 0.06, 0.08, 0.1}}]], 
+      "Specifications" :> {{{$CellContext`threshold$$, 10000, "gdpThreshold"},
+          0, 60000}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{
+      607.1974609374998, {152.71183075591517`, 158.44376434966517`}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.9730713895194187`*^9, 3.973071652193829*^9, {3.973071738091503*^9, 
+   3.9730717475554*^9}, 3.973071886944293*^9},
+ CellLabel->
+  "Out[190]=",ExpressionUUID->"5c762df8-906f-4f5a-8aad-8c27cf3e45e8"]
+}, Open  ]],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  3.973072020518557*^9},ExpressionUUID->"54a08d10-75cd-4b24-b120-\
+21dcd1bd3d82"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"dataQuestion2", "=", 
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"CountryData", "[", 
+           RowBox[{"c", ",", "\"\<Name\>\""}], "]"}], ",", 
+          RowBox[{"QuantityMagnitude", "[", 
+           RowBox[{"CountryData", "[", 
+            RowBox[{"c", ",", "\"\<GDPPerCapita\>\""}], "]"}], "]"}], ",", 
+          RowBox[{"QuantityMagnitude", "[", 
+           RowBox[{"CountryData", "[", 
+            RowBox[{"c", ",", "\"\<LiteracyFraction\>\""}], "]"}], "]"}]}], 
+         "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"c", ",", 
+          RowBox[{"CountryData", "[", "]"}]}], "}"}]}], "]"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"NumericQ", "[", 
+         RowBox[{"#", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "]"}], "&&", 
+        RowBox[{"NumericQ", "[", 
+         RowBox[{"#", "[", 
+          RowBox[{"[", "3", "]"}], "]"}], "]"}]}], "&"}]}], "]"}]}], ";"}], 
+  "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"maximumvalue", "=", "60000"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"scaleFactor", "=", "1000000"}], ";"}], "\n"}], "\[IndentingNewLine]", 
+ RowBox[{"Question2", "=", 
+  RowBox[{"Manipulate", "[", 
+   RowBox[{
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "belowData", ",", "aboveData", ",", "plotData", ",", "plotColors", ",",
+         "legendLabels"}], "}"}], ",", 
+      RowBox[{
+       RowBox[{"belowData", "=", 
+        RowBox[{"Select", "[", 
+         RowBox[{"dataQuestion2", ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"#", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], "<=", "threshold"}], "&"}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"aboveData", "=", 
+        RowBox[{"Select", "[", 
+         RowBox[{"dataQuestion2", ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"#", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], ">", "threshold"}], "&"}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"plotData", "=", 
+        RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"plotColors", "=", 
+        RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"legendLabels", "=", 
+        RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Length", "[", "belowData", "]"}], ">", "0"}], ",", 
+         RowBox[{
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"plotData", ",", 
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"Tooltip", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"row", "[", 
+                   RowBox[{"[", "3", "]"}], "]"}], ",", 
+                  RowBox[{
+                   RowBox[{"row", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "/", "scaleFactor"}]}], 
+                 "}"}], ",", 
+                RowBox[{"row", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"row", ",", "belowData"}], "}"}]}], "]"}]}], "]"}], ";",
+           "\[IndentingNewLine]", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"plotColors", ",", "Blue"}], "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"legendLabels", ",", 
+            RowBox[{"\"\<GDP pc less than $\>\"", "<>", 
+             RowBox[{"ToString", "[", 
+              RowBox[{"Round", "[", "threshold", "]"}], "]"}]}]}], "]"}]}]}], 
+        "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Length", "[", "aboveData", "]"}], ">", "0"}], ",", 
+         RowBox[{
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"plotData", ",", 
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"Tooltip", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"row", "[", 
+                   RowBox[{"[", "3", "]"}], "]"}], ",", 
+                  RowBox[{
+                   RowBox[{"row", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "/", "scaleFactor"}]}], 
+                 "}"}], ",", 
+                RowBox[{"row", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"row", ",", "aboveData"}], "}"}]}], "]"}]}], "]"}], ";",
+           "\[IndentingNewLine]", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"plotColors", ",", "Orange"}], "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"legendLabels", ",", 
+            RowBox[{"\"\<GDP pc greater than $\>\"", "<>", 
+             RowBox[{"ToString", "[", 
+              RowBox[{"Round", "[", "threshold", "]"}], "]"}]}]}], "]"}]}]}], 
+        "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"ListPlot", "[", 
+        RowBox[{"plotData", ",", 
+         RowBox[{"PlotStyle", "->", "plotColors"}], ",", 
+         RowBox[{"PlotLegends", "->", "legendLabels"}], ",", 
+         RowBox[{"AxesLabel", "->", 
+          RowBox[{"{", 
+           RowBox[{"\"\<literacy\>\"", ",", "\"\<wealth\>\""}], "}"}]}], ",", 
+         
+         RowBox[{"Ticks", "->", 
+          RowBox[{"{", 
+           RowBox[{"Automatic", ",", 
+            RowBox[{"{", 
+             RowBox[{
+             "0", ",", "0.02", ",", "0.04", ",", "0.06", ",", "0.08", ",", 
+              "0.10"}], "}"}]}], "}"}]}]}], "]"}]}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"threshold", ",", "10000", ",", "\"\<gdpThreshold\>\""}], 
+       "}"}], ",", "0", ",", "maximumvalue"}], "}"}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.973072021508994*^9, 3.973072021511133*^9}},
+ CellLabel->
+  "In[191]:=",ExpressionUUID->"a633c55a-6240-4646-a53b-e4279d19921f"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`threshold$$ = 31300., Typeset`show$$ = True,
+     Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`threshold$$], 10000, "gdpThreshold"}, 0, 60000, 
+      ControlType -> Manipulator}}, Typeset`size$$ = {
+    558.0974609374999, {105.04140534087611`, 110.77333893462611`}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
+    Typeset`keyframeActionsQ$$ = False, Typeset`keyframeList$$ = {}}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`threshold$$ = 10000}, 
+      "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$, Typeset`keyframeActionsQ$$, 
+        Typeset`keyframeList$$}, "Body" :> 
+      Module[{$CellContext`belowData$, $CellContext`aboveData$, \
+$CellContext`plotData$, $CellContext`plotColors$, \
+$CellContext`legendLabels$}, $CellContext`belowData$ = 
+         Select[$CellContext`dataQuestion2, 
+           Part[#, 2] <= $CellContext`threshold$$& ]; $CellContext`aboveData$ = 
+         Select[$CellContext`dataQuestion2, 
+           Part[#, 2] > $CellContext`threshold$$& ]; $CellContext`plotData$ = \
+{}; $CellContext`plotColors$ = {}; $CellContext`legendLabels$ = {}; 
+        If[Length[$CellContext`belowData$] > 0, 
+          AppendTo[$CellContext`plotData$, 
+            Table[
+             Tooltip[{
+               Part[$CellContext`row, 3], 
+               Part[$CellContext`row, 2]/$CellContext`scaleFactor}, 
+              
+              Part[$CellContext`row, 
+               1]], {$CellContext`row, $CellContext`belowData$}]]; 
+          AppendTo[$CellContext`plotColors$, Blue]; 
+          AppendTo[$CellContext`legendLabels$, "GDP pc less than $" <> 
+            ToString[
+              Round[$CellContext`threshold$$]]]]; 
+        If[Length[$CellContext`aboveData$] > 0, 
+          AppendTo[$CellContext`plotData$, 
+            Table[
+             Tooltip[{
+               Part[$CellContext`row, 3], 
+               Part[$CellContext`row, 2]/$CellContext`scaleFactor}, 
+              
+              Part[$CellContext`row, 
+               1]], {$CellContext`row, $CellContext`aboveData$}]]; 
+          AppendTo[$CellContext`plotColors$, Orange]; 
+          AppendTo[$CellContext`legendLabels$, "GDP pc greater than $" <> 
+            ToString[
+              Round[$CellContext`threshold$$]]]]; 
+        ListPlot[$CellContext`plotData$, 
+          PlotStyle -> $CellContext`plotColors$, 
+          PlotLegends -> $CellContext`legendLabels$, 
+          AxesLabel -> {"literacy", "wealth"}, 
+          Ticks -> {Automatic, {0, 0.02, 0.04, 0.06, 0.08, 0.1}}]], 
+      "Specifications" :> {{{$CellContext`threshold$$, 10000, "gdpThreshold"},
+          0, 60000}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{
+      607.1974609374998, {152.71183075591517`, 158.44376434966517`}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.97307202236801*^9},
+ CellLabel->
+  "Out[194]=",ExpressionUUID->"cc564de8-810d-421e-95e0-cd01062bcdca"]
+}, Open  ]],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  3.9730721292831717`*^9},ExpressionUUID->"54a9f8cd-28e6-4f94-b5b8-\
+f758f31a290d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"dataQuestion2", "=", 
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"CountryData", "[", 
+           RowBox[{"c", ",", "\"\<Name\>\""}], "]"}], ",", 
+          RowBox[{"QuantityMagnitude", "[", 
+           RowBox[{"CountryData", "[", 
+            RowBox[{"c", ",", "\"\<GDPPerCapita\>\""}], "]"}], "]"}], ",", 
+          RowBox[{"QuantityMagnitude", "[", 
+           RowBox[{"CountryData", "[", 
+            RowBox[{"c", ",", "\"\<LiteracyFraction\>\""}], "]"}], "]"}]}], 
+         "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"c", ",", 
+          RowBox[{"CountryData", "[", "]"}]}], "}"}]}], "]"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"NumericQ", "[", 
+         RowBox[{"#", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "]"}], "&&", 
+        RowBox[{"NumericQ", "[", 
+         RowBox[{"#", "[", 
+          RowBox[{"[", "3", "]"}], "]"}], "]"}]}], "&"}]}], "]"}]}], ";"}], 
+  "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"maximumvalue", "=", "60000"}], ";"}], "\n"}], "\[IndentingNewLine]", 
+ RowBox[{"Question2", "=", 
+  RowBox[{"Manipulate", "[", 
+   RowBox[{
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "belowData", ",", "aboveData", ",", "plotData", ",", "plotColors", ",",
+         "legendLabels"}], "}"}], ",", 
+      RowBox[{
+       RowBox[{"belowData", "=", 
+        RowBox[{"Select", "[", 
+         RowBox[{"dataQuestion2", ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"#", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], "<=", "threshold"}], "&"}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"aboveData", "=", 
+        RowBox[{"Select", "[", 
+         RowBox[{"dataQuestion2", ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"#", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], ">", "threshold"}], "&"}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"plotData", "=", 
+        RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"plotColors", "=", 
+        RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"legendLabels", "=", 
+        RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Length", "[", "belowData", "]"}], ">", "0"}], ",", 
+         RowBox[{
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"plotData", ",", 
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"Tooltip", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"row", "[", 
+                   RowBox[{"[", "3", "]"}], "]"}], ",", 
+                  RowBox[{"row", "[", 
+                   RowBox[{"[", "2", "]"}], "]"}]}], "}"}], ",", 
+                RowBox[{"row", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"row", ",", "belowData"}], "}"}]}], "]"}]}], "]"}], ";",
+           "\[IndentingNewLine]", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"plotColors", ",", "Blue"}], "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"legendLabels", ",", 
+            RowBox[{"\"\<GDP % less than $\>\"", "<>", 
+             RowBox[{"ToString", "[", 
+              RowBox[{"Round", "[", "threshold", "]"}], "]"}]}]}], "]"}]}]}], 
+        "]"}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Length", "[", "aboveData", "]"}], ">", "0"}], ",", 
+         RowBox[{
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"plotData", ",", 
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"Tooltip", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"row", "[", 
+                   RowBox[{"[", "3", "]"}], "]"}], ",", 
+                  RowBox[{"row", "[", 
+                   RowBox[{"[", "2", "]"}], "]"}]}], "}"}], ",", 
+                RowBox[{"row", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"row", ",", "aboveData"}], "}"}]}], "]"}]}], "]"}], ";",
+           "\[IndentingNewLine]", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"plotColors", ",", "Orange"}], "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"legendLabels", ",", 
+            RowBox[{"\"\<GDP % greater than $\>\"", "<>", 
+             RowBox[{"ToString", "[", 
+              RowBox[{"Round", "[", "threshold", "]"}], "]"}]}]}], "]"}]}]}], 
+        "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"ListPlot", "[", 
+        RowBox[{"plotData", ",", 
+         RowBox[{"PlotStyle", "->", "plotColors"}], ",", 
+         RowBox[{"PlotLegends", "->", "legendLabels"}], ",", 
+         RowBox[{"AxesLabel", "->", 
+          RowBox[{"{", 
+           RowBox[{"\"\<literacy\>\"", ",", "\"\<wealth\>\""}], "}"}]}], ",", 
+         
+         RowBox[{"PlotRange", "->", 
+          RowBox[{"{", 
+           RowBox[{"Automatic", ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "All"}], "}"}]}], "}"}]}]}], "]"}]}]}], "]"}], 
+    ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"threshold", ",", "10000", ",", "\"\<gdpThreshold\>\""}], 
+       "}"}], ",", "0", ",", "maximumvalue"}], "}"}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.97307213007094*^9, 3.973072170129287*^9}, {
+  3.973072392089518*^9, 3.973072395692183*^9}},
+ CellLabel->
+  "In[201]:=",ExpressionUUID->"002ed529-ca79-46c0-8ba0-7dfbe23f0e1e"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`threshold$$ = 10000, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`threshold$$], 10000, "gdpThreshold"}, 0, 60000, 
+      ControlType -> Manipulator}}, Typeset`size$$ = {
+    555.9265624999999, {102.0908132461949, 107.82274683994487`}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
+    Typeset`keyframeActionsQ$$ = False, Typeset`keyframeList$$ = {}}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`threshold$$ = 10000}, 
+      "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$, Typeset`keyframeActionsQ$$, 
+        Typeset`keyframeList$$}, "Body" :> 
+      Module[{$CellContext`belowData$, $CellContext`aboveData$, \
+$CellContext`plotData$, $CellContext`plotColors$, \
+$CellContext`legendLabels$}, $CellContext`belowData$ = 
+         Select[$CellContext`dataQuestion2, 
+           Part[#, 2] <= $CellContext`threshold$$& ]; $CellContext`aboveData$ = 
+         Select[$CellContext`dataQuestion2, 
+           Part[#, 2] > $CellContext`threshold$$& ]; $CellContext`plotData$ = \
+{}; $CellContext`plotColors$ = {}; $CellContext`legendLabels$ = {}; 
+        If[Length[$CellContext`belowData$] > 0, 
+          AppendTo[$CellContext`plotData$, 
+            Table[
+             Tooltip[{
+               Part[$CellContext`row, 3], 
+               Part[$CellContext`row, 2]}, 
+              
+              Part[$CellContext`row, 
+               1]], {$CellContext`row, $CellContext`belowData$}]]; 
+          AppendTo[$CellContext`plotColors$, Blue]; 
+          AppendTo[$CellContext`legendLabels$, "GDP % less than $" <> ToString[
+              Round[$CellContext`threshold$$]]]]; 
+        If[Length[$CellContext`aboveData$] > 0, 
+          AppendTo[$CellContext`plotData$, 
+            Table[
+             Tooltip[{
+               Part[$CellContext`row, 3], 
+               Part[$CellContext`row, 2]}, 
+              
+              Part[$CellContext`row, 
+               1]], {$CellContext`row, $CellContext`aboveData$}]]; 
+          AppendTo[$CellContext`plotColors$, Orange]; 
+          AppendTo[$CellContext`legendLabels$, "GDP % greater than $" <> 
+            ToString[
+              Round[$CellContext`threshold$$]]]]; 
+        ListPlot[$CellContext`plotData$, 
+          PlotStyle -> $CellContext`plotColors$, 
+          PlotLegends -> $CellContext`legendLabels$, 
+          AxesLabel -> {"literacy", "wealth"}, 
+          PlotRange -> {Automatic, {0, All}}]], 
+      "Specifications" :> {{{$CellContext`threshold$$, 10000, "gdpThreshold"},
+          0, 60000}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{
+      605.0265624999998, {149.76123866123393`, 155.49317225498393`}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.973072130902686*^9, {3.973072397398117*^9, 3.973072418716526*^9}},
+ CellLabel->
+  "Out[203]=",ExpressionUUID->"78ce5b13-2f8b-441d-a2b0-e3cc1415722c"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.973073589412675*^9, 
+  3.9730735898201103`*^9}},ExpressionUUID->"7582c1a3-b628-4486-b2cf-\
+90d709592fd9"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"parliament", "[", 
+    RowBox[{"labour_", ",", "tories_", ",", "libdems_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "others", ",", "allseats", ",", "seatcolors", ",", "squares", ",", 
+       "title", ",", "legend"}], "}"}], ",", 
+     RowBox[{
+      RowBox[{"others", "=", 
+       RowBox[{"650", "-", "labour", "-", "tories", "-", "libdems"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"allseats", "=", 
+       RowBox[{"Join", "[", 
+        RowBox[{
+         RowBox[{"Table", "[", 
+          RowBox[{"Red", ",", "labour"}], "]"}], ",", 
+         RowBox[{"Table", "[", 
+          RowBox[{"Blue", ",", "tories"}], "]"}], ",", 
+         RowBox[{"Table", "[", 
+          RowBox[{"Yellow", ",", "libdems"}], "]"}], ",", 
+         RowBox[{"Table", "[", 
+          RowBox[{"Black", ",", "others"}], "]"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"seatcolors", "=", 
+       RowBox[{"Partition", "[", 
+        RowBox[{"allseats", ",", "50"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      
+      RowBox[{"squares", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"seatcolors", "[", 
+            RowBox[{"[", 
+             RowBox[{"row", ",", "col"}], "]"}], "]"}], ",", 
+           RowBox[{"Rectangle", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"col", "-", "1"}], ",", 
+               RowBox[{"13", "-", "row"}]}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"col", "-", "0.2"}], ",", 
+               RowBox[{"13", "-", "row", "+", "0.8"}]}], "}"}]}], "]"}]}], 
+          "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"row", ",", "1", ",", "13"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"col", ",", "1", ",", "50"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"title", "=", 
+       RowBox[{"Text", "[", 
+        RowBox[{
+         RowBox[{"Style", "[", 
+          
+          RowBox[{"\"\<Composition of the UK parliament\>\"", ",", "20", ",", 
+           "Gray"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"25", ",", "15"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"legend", "=", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"Red", ",", 
+           RowBox[{"Rectangle", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"10", ",", "13.8"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"10.8", ",", "14.6"}], "}"}]}], "]"}]}], "}"}], ",", 
+         RowBox[{"Text", "[", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<Labour\>\"", ",", "14", ",", "Red"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"13", ",", "14.2"}], "}"}]}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"Blue", ",", 
+           RowBox[{"Rectangle", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"18", ",", "13.8"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"18.8", ",", "14.6"}], "}"}]}], "]"}]}], "}"}], ",", 
+         RowBox[{"Text", "[", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<Tories\>\"", ",", "14", ",", "Blue"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"21", ",", "14.2"}], "}"}]}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"Yellow", ",", 
+           RowBox[{"Rectangle", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"26", ",", "13.8"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"26.8", ",", "14.6"}], "}"}]}], "]"}]}], "}"}], ",", 
+         RowBox[{"Text", "[", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<LibDems\>\"", ",", "14", ",", "Yellow"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"29.5", ",", "14.2"}], "}"}]}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"Black", ",", 
+           RowBox[{"Rectangle", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"34", ",", "13.8"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"34.8", ",", "14.6"}], "}"}]}], "]"}]}], "}"}], ",", 
+         RowBox[{"Text", "[", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<others\>\"", ",", "14", ",", "Black"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"37", ",", "14.2"}], "}"}]}], "]"}]}], "}"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Graphics", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"squares", ",", "title", ",", "legend"}], "}"}], ",", 
+        RowBox[{"ImageSize", "->", "800"}]}], "]"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"parliament", "[", 
+  RowBox[{"357", ",", "200", ",", "44"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.973073590432969*^9, 3.9730736105500174`*^9}},
+ CellLabel->
+  "In[305]:=",ExpressionUUID->"6906de02-d4a8-4ceb-9222-f59cd9d79d24"],
+
+Cell[BoxData[
+ GraphicsBox[{{{
+     {RGBColor[1, 0, 0], RectangleBox[{0, 12}, {0.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{1, 12}, {1.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{2, 12}, {2.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{3, 12}, {3.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{4, 12}, {4.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{5, 12}, {5.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{6, 12}, {6.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{7, 12}, {7.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{8, 12}, {8.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{9, 12}, {9.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{10, 12}, {10.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{11, 12}, {11.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{12, 12}, {12.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{13, 12}, {13.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{14, 12}, {14.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{15, 12}, {15.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{16, 12}, {16.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{17, 12}, {17.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{18, 12}, {18.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{19, 12}, {19.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{20, 12}, {20.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{21, 12}, {21.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{22, 12}, {22.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{23, 12}, {23.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{24, 12}, {24.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{25, 12}, {25.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{26, 12}, {26.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{27, 12}, {27.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{28, 12}, {28.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{29, 12}, {29.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{30, 12}, {30.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{31, 12}, {31.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{32, 12}, {32.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{33, 12}, {33.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{34, 12}, {34.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{35, 12}, {35.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{36, 12}, {36.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{37, 12}, {37.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{38, 12}, {38.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{39, 12}, {39.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{40, 12}, {40.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{41, 12}, {41.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{42, 12}, {42.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{43, 12}, {43.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{44, 12}, {44.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{45, 12}, {45.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{46, 12}, {46.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{47, 12}, {47.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{48, 12}, {48.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{49, 12}, {49.8, 12.8}]}}, {
+     {RGBColor[1, 0, 0], RectangleBox[{0, 11}, {0.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{1, 11}, {1.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{2, 11}, {2.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{3, 11}, {3.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{4, 11}, {4.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{5, 11}, {5.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{6, 11}, {6.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{7, 11}, {7.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{8, 11}, {8.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{9, 11}, {9.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{10, 11}, {10.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{11, 11}, {11.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{12, 11}, {12.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{13, 11}, {13.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{14, 11}, {14.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{15, 11}, {15.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{16, 11}, {16.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{17, 11}, {17.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{18, 11}, {18.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{19, 11}, {19.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{20, 11}, {20.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{21, 11}, {21.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{22, 11}, {22.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{23, 11}, {23.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{24, 11}, {24.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{25, 11}, {25.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{26, 11}, {26.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{27, 11}, {27.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{28, 11}, {28.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{29, 11}, {29.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{30, 11}, {30.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{31, 11}, {31.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{32, 11}, {32.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{33, 11}, {33.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{34, 11}, {34.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{35, 11}, {35.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{36, 11}, {36.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{37, 11}, {37.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{38, 11}, {38.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{39, 11}, {39.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{40, 11}, {40.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{41, 11}, {41.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{42, 11}, {42.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{43, 11}, {43.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{44, 11}, {44.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{45, 11}, {45.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{46, 11}, {46.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{47, 11}, {47.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{48, 11}, {48.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{49, 11}, {49.8, 11.8}]}}, {
+     {RGBColor[1, 0, 0], RectangleBox[{0, 10}, {0.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{1, 10}, {1.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{2, 10}, {2.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{3, 10}, {3.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{4, 10}, {4.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{5, 10}, {5.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{6, 10}, {6.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{7, 10}, {7.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{8, 10}, {8.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{9, 10}, {9.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{10, 10}, {10.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{11, 10}, {11.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{12, 10}, {12.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{13, 10}, {13.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{14, 10}, {14.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{15, 10}, {15.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{16, 10}, {16.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{17, 10}, {17.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{18, 10}, {18.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{19, 10}, {19.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{20, 10}, {20.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{21, 10}, {21.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{22, 10}, {22.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{23, 10}, {23.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{24, 10}, {24.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{25, 10}, {25.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{26, 10}, {26.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{27, 10}, {27.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{28, 10}, {28.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{29, 10}, {29.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{30, 10}, {30.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{31, 10}, {31.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{32, 10}, {32.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{33, 10}, {33.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{34, 10}, {34.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{35, 10}, {35.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{36, 10}, {36.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{37, 10}, {37.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{38, 10}, {38.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{39, 10}, {39.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{40, 10}, {40.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{41, 10}, {41.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{42, 10}, {42.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{43, 10}, {43.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{44, 10}, {44.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{45, 10}, {45.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{46, 10}, {46.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{47, 10}, {47.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{48, 10}, {48.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{49, 10}, {49.8, 10.8}]}}, {
+     {RGBColor[1, 0, 0], RectangleBox[{0, 9}, {0.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{1, 9}, {1.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{2, 9}, {2.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{3, 9}, {3.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{4, 9}, {4.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{5, 9}, {5.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{6, 9}, {6.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{7, 9}, {7.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{8, 9}, {8.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{9, 9}, {9.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{10, 9}, {10.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{11, 9}, {11.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{12, 9}, {12.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{13, 9}, {13.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{14, 9}, {14.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{15, 9}, {15.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{16, 9}, {16.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{17, 9}, {17.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{18, 9}, {18.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{19, 9}, {19.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{20, 9}, {20.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{21, 9}, {21.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{22, 9}, {22.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{23, 9}, {23.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{24, 9}, {24.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{25, 9}, {25.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{26, 9}, {26.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{27, 9}, {27.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{28, 9}, {28.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{29, 9}, {29.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{30, 9}, {30.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{31, 9}, {31.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{32, 9}, {32.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{33, 9}, {33.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{34, 9}, {34.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{35, 9}, {35.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{36, 9}, {36.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{37, 9}, {37.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{38, 9}, {38.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{39, 9}, {39.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{40, 9}, {40.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{41, 9}, {41.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{42, 9}, {42.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{43, 9}, {43.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{44, 9}, {44.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{45, 9}, {45.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{46, 9}, {46.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{47, 9}, {47.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{48, 9}, {48.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{49, 9}, {49.8, 9.8}]}}, {
+     {RGBColor[1, 0, 0], RectangleBox[{0, 8}, {0.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{1, 8}, {1.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{2, 8}, {2.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{3, 8}, {3.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{4, 8}, {4.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{5, 8}, {5.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{6, 8}, {6.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{7, 8}, {7.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{8, 8}, {8.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{9, 8}, {9.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{10, 8}, {10.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{11, 8}, {11.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{12, 8}, {12.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{13, 8}, {13.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{14, 8}, {14.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{15, 8}, {15.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{16, 8}, {16.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{17, 8}, {17.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{18, 8}, {18.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{19, 8}, {19.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{20, 8}, {20.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{21, 8}, {21.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{22, 8}, {22.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{23, 8}, {23.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{24, 8}, {24.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{25, 8}, {25.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{26, 8}, {26.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{27, 8}, {27.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{28, 8}, {28.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{29, 8}, {29.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{30, 8}, {30.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{31, 8}, {31.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{32, 8}, {32.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{33, 8}, {33.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{34, 8}, {34.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{35, 8}, {35.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{36, 8}, {36.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{37, 8}, {37.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{38, 8}, {38.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{39, 8}, {39.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{40, 8}, {40.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{41, 8}, {41.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{42, 8}, {42.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{43, 8}, {43.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{44, 8}, {44.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{45, 8}, {45.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{46, 8}, {46.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{47, 8}, {47.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{48, 8}, {48.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{49, 8}, {49.8, 8.8}]}}, {
+     {RGBColor[1, 0, 0], RectangleBox[{0, 7}, {0.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{1, 7}, {1.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{2, 7}, {2.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{3, 7}, {3.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{4, 7}, {4.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{5, 7}, {5.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{6, 7}, {6.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{7, 7}, {7.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{8, 7}, {8.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{9, 7}, {9.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{10, 7}, {10.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{11, 7}, {11.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{12, 7}, {12.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{13, 7}, {13.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{14, 7}, {14.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{15, 7}, {15.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{16, 7}, {16.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{17, 7}, {17.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{18, 7}, {18.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{19, 7}, {19.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{20, 7}, {20.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{21, 7}, {21.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{22, 7}, {22.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{23, 7}, {23.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{24, 7}, {24.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{25, 7}, {25.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{26, 7}, {26.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{27, 7}, {27.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{28, 7}, {28.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{29, 7}, {29.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{30, 7}, {30.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{31, 7}, {31.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{32, 7}, {32.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{33, 7}, {33.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{34, 7}, {34.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{35, 7}, {35.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{36, 7}, {36.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{37, 7}, {37.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{38, 7}, {38.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{39, 7}, {39.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{40, 7}, {40.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{41, 7}, {41.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{42, 7}, {42.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{43, 7}, {43.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{44, 7}, {44.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{45, 7}, {45.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{46, 7}, {46.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{47, 7}, {47.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{48, 7}, {48.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{49, 7}, {49.8, 7.8}]}}, {
+     {RGBColor[1, 0, 0], RectangleBox[{0, 6}, {0.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{1, 6}, {1.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{2, 6}, {2.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{3, 6}, {3.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{4, 6}, {4.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{5, 6}, {5.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{6, 6}, {6.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{7, 6}, {7.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{8, 6}, {8.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{9, 6}, {9.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{10, 6}, {10.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{11, 6}, {11.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{12, 6}, {12.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{13, 6}, {13.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{14, 6}, {14.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{15, 6}, {15.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{16, 6}, {16.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{17, 6}, {17.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{18, 6}, {18.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{19, 6}, {19.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{20, 6}, {20.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{21, 6}, {21.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{22, 6}, {22.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{23, 6}, {23.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{24, 6}, {24.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{25, 6}, {25.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{26, 6}, {26.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{27, 6}, {27.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{28, 6}, {28.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{29, 6}, {29.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{30, 6}, {30.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{31, 6}, {31.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{32, 6}, {32.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{33, 6}, {33.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{34, 6}, {34.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{35, 6}, {35.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{36, 6}, {36.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{37, 6}, {37.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{38, 6}, {38.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{39, 6}, {39.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{40, 6}, {40.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{41, 6}, {41.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{42, 6}, {42.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{43, 6}, {43.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{44, 6}, {44.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{45, 6}, {45.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{46, 6}, {46.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{47, 6}, {47.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{48, 6}, {48.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{49, 6}, {49.8, 6.8}]}}, {
+     {RGBColor[1, 0, 0], RectangleBox[{0, 5}, {0.8, 5.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{1, 5}, {1.8, 5.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{2, 5}, {2.8, 5.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{3, 5}, {3.8, 5.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{4, 5}, {4.8, 5.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{5, 5}, {5.8, 5.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{6, 5}, {6.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{7, 5}, {7.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{8, 5}, {8.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{9, 5}, {9.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{10, 5}, {10.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{11, 5}, {11.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{12, 5}, {12.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{13, 5}, {13.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{14, 5}, {14.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{15, 5}, {15.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{16, 5}, {16.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{17, 5}, {17.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{18, 5}, {18.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{19, 5}, {19.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{20, 5}, {20.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{21, 5}, {21.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{22, 5}, {22.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{23, 5}, {23.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{24, 5}, {24.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{25, 5}, {25.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{26, 5}, {26.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{27, 5}, {27.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{28, 5}, {28.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{29, 5}, {29.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{30, 5}, {30.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{31, 5}, {31.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{32, 5}, {32.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{33, 5}, {33.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{34, 5}, {34.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{35, 5}, {35.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{36, 5}, {36.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{37, 5}, {37.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{38, 5}, {38.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{39, 5}, {39.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{40, 5}, {40.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{41, 5}, {41.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{42, 5}, {42.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{43, 5}, {43.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{44, 5}, {44.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{45, 5}, {45.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{46, 5}, {46.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{47, 5}, {47.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{48, 5}, {48.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{49, 5}, {49.8, 5.8}]}}, {
+     {RGBColor[0, 0, 1], RectangleBox[{0, 4}, {0.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{1, 4}, {1.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{2, 4}, {2.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{3, 4}, {3.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{4, 4}, {4.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{5, 4}, {5.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{6, 4}, {6.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{7, 4}, {7.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{8, 4}, {8.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{9, 4}, {9.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{10, 4}, {10.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{11, 4}, {11.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{12, 4}, {12.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{13, 4}, {13.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{14, 4}, {14.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{15, 4}, {15.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{16, 4}, {16.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{17, 4}, {17.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{18, 4}, {18.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{19, 4}, {19.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{20, 4}, {20.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{21, 4}, {21.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{22, 4}, {22.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{23, 4}, {23.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{24, 4}, {24.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{25, 4}, {25.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{26, 4}, {26.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{27, 4}, {27.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{28, 4}, {28.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{29, 4}, {29.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{30, 4}, {30.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{31, 4}, {31.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{32, 4}, {32.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{33, 4}, {33.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{34, 4}, {34.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{35, 4}, {35.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{36, 4}, {36.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{37, 4}, {37.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{38, 4}, {38.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{39, 4}, {39.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{40, 4}, {40.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{41, 4}, {41.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{42, 4}, {42.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{43, 4}, {43.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{44, 4}, {44.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{45, 4}, {45.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{46, 4}, {46.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{47, 4}, {47.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{48, 4}, {48.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{49, 4}, {49.8, 4.8}]}}, {
+     {RGBColor[0, 0, 1], RectangleBox[{0, 3}, {0.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{1, 3}, {1.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{2, 3}, {2.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{3, 3}, {3.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{4, 3}, {4.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{5, 3}, {5.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{6, 3}, {6.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{7, 3}, {7.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{8, 3}, {8.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{9, 3}, {9.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{10, 3}, {10.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{11, 3}, {11.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{12, 3}, {12.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{13, 3}, {13.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{14, 3}, {14.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{15, 3}, {15.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{16, 3}, {16.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{17, 3}, {17.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{18, 3}, {18.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{19, 3}, {19.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{20, 3}, {20.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{21, 3}, {21.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{22, 3}, {22.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{23, 3}, {23.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{24, 3}, {24.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{25, 3}, {25.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{26, 3}, {26.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{27, 3}, {27.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{28, 3}, {28.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{29, 3}, {29.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{30, 3}, {30.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{31, 3}, {31.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{32, 3}, {32.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{33, 3}, {33.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{34, 3}, {34.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{35, 3}, {35.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{36, 3}, {36.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{37, 3}, {37.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{38, 3}, {38.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{39, 3}, {39.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{40, 3}, {40.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{41, 3}, {41.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{42, 3}, {42.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{43, 3}, {43.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{44, 3}, {44.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{45, 3}, {45.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{46, 3}, {46.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{47, 3}, {47.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{48, 3}, {48.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{49, 3}, {49.8, 3.8}]}}, {
+     {RGBColor[0, 0, 1], RectangleBox[{0, 2}, {0.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{1, 2}, {1.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{2, 2}, {2.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{3, 2}, {3.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{4, 2}, {4.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{5, 2}, {5.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{6, 2}, {6.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{7, 2}, {7.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{8, 2}, {8.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{9, 2}, {9.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{10, 2}, {10.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{11, 2}, {11.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{12, 2}, {12.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{13, 2}, {13.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{14, 2}, {14.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{15, 2}, {15.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{16, 2}, {16.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{17, 2}, {17.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{18, 2}, {18.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{19, 2}, {19.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{20, 2}, {20.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{21, 2}, {21.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{22, 2}, {22.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{23, 2}, {23.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{24, 2}, {24.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{25, 2}, {25.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{26, 2}, {26.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{27, 2}, {27.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{28, 2}, {28.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{29, 2}, {29.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{30, 2}, {30.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{31, 2}, {31.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{32, 2}, {32.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{33, 2}, {33.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{34, 2}, {34.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{35, 2}, {35.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{36, 2}, {36.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{37, 2}, {37.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{38, 2}, {38.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{39, 2}, {39.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{40, 2}, {40.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{41, 2}, {41.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{42, 2}, {42.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{43, 2}, {43.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{44, 2}, {44.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{45, 2}, {45.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{46, 2}, {46.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{47, 2}, {47.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{48, 2}, {48.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{49, 2}, {49.8, 2.8}]}}, {
+     {RGBColor[0, 0, 1], RectangleBox[{0, 1}, {0.8, 1.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{1, 1}, {1.8, 1.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{2, 1}, {2.8, 1.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{3, 1}, {3.8, 1.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{4, 1}, {4.8, 1.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{5, 1}, {5.8, 1.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{6, 1}, {6.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{7, 1}, {7.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{8, 1}, {8.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{9, 1}, {9.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{10, 1}, {10.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{11, 1}, {11.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{12, 1}, {12.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{13, 1}, {13.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{14, 1}, {14.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{15, 1}, {15.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{16, 1}, {16.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{17, 1}, {17.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{18, 1}, {18.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{19, 1}, {19.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{20, 1}, {20.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{21, 1}, {21.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{22, 1}, {22.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{23, 1}, {23.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{24, 1}, {24.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{25, 1}, {25.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{26, 1}, {26.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{27, 1}, {27.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{28, 1}, {28.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{29, 1}, {29.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{30, 1}, {30.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{31, 1}, {31.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{32, 1}, {32.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{33, 1}, {33.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{34, 1}, {34.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{35, 1}, {35.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{36, 1}, {36.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{37, 1}, {37.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{38, 1}, {38.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{39, 1}, {39.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{40, 1}, {40.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{41, 1}, {41.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{42, 1}, {42.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{43, 1}, {43.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{44, 1}, {44.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{45, 1}, {45.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{46, 1}, {46.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{47, 1}, {47.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{48, 1}, {48.8, 1.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{49, 1}, {49.8, 1.8}]}}, {
+     {RGBColor[1, 1, 0], RectangleBox[{0, 0}, {0.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{1, 0}, {1.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{2, 0}, {2.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{3, 0}, {3.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{4, 0}, {4.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{5, 0}, {5.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{6, 0}, {6.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{7, 0}, {7.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{8, 0}, {8.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{9, 0}, {9.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{10, 0}, {10.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{11, 0}, {11.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{12, 0}, {12.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{13, 0}, {13.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{14, 0}, {14.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{15, 0}, {15.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{16, 0}, {16.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{17, 0}, {17.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{18, 0}, {18.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{19, 0}, {19.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{20, 0}, {20.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{21, 0}, {21.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{22, 0}, {22.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{23, 0}, {23.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{24, 0}, {24.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{25, 0}, {25.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{26, 0}, {26.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{27, 0}, {27.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{28, 0}, {28.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{29, 0}, {29.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{30, 0}, {30.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{31, 0}, {31.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{32, 0}, {32.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{33, 0}, {33.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{34, 0}, {34.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{35, 0}, {35.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{36, 0}, {36.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{37, 0}, {37.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{38, 0}, {38.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{39, 0}, {39.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{40, 0}, {40.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{41, 0}, {41.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{42, 0}, {42.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{43, 0}, {43.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{44, 0}, {44.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{45, 0}, {45.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{46, 0}, {46.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{47, 0}, {47.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{48, 0}, {48.8, 0.8}]}, 
+     {GrayLevel[0], RectangleBox[{49, 0}, {49.8, 0.8}]}}}, InsetBox[
+    StyleBox["\<\"Composition of the UK parliament\"\>",
+     StripOnInput->False,
+     LineColor->GrayLevel[0.5],
+     FrontFaceColor->GrayLevel[0.5],
+     BackFaceColor->GrayLevel[0.5],
+     GraphicsColor->GrayLevel[0.5],
+     FontSize->20,
+     FontColor->GrayLevel[0.5]], {25, 15}], {
+    {RGBColor[1, 0, 0], RectangleBox[{10, 13.8}, {10.8, 14.6}]}, InsetBox[
+     StyleBox["\<\"Labour\"\>",
+      StripOnInput->False,
+      LineColor->RGBColor[1, 0, 0],
+      FrontFaceColor->RGBColor[1, 0, 0],
+      BackFaceColor->RGBColor[1, 0, 0],
+      GraphicsColor->RGBColor[1, 0, 0],
+      FontSize->14,
+      FontColor->RGBColor[1, 0, 0]], {13, 14.2}], 
+    {RGBColor[0, 0, 1], RectangleBox[{18, 13.8}, {18.8, 14.6}]}, InsetBox[
+     StyleBox["\<\"Tories\"\>",
+      StripOnInput->False,
+      LineColor->RGBColor[0, 0, 1],
+      FrontFaceColor->RGBColor[0, 0, 1],
+      BackFaceColor->RGBColor[0, 0, 1],
+      GraphicsColor->RGBColor[0, 0, 1],
+      FontSize->14,
+      FontColor->RGBColor[0, 0, 1]], {21, 14.2}], 
+    {RGBColor[1, 1, 0], RectangleBox[{26, 13.8}, {26.8, 14.6}]}, InsetBox[
+     StyleBox["\<\"LibDems\"\>",
+      StripOnInput->False,
+      LineColor->RGBColor[1, 1, 0],
+      FrontFaceColor->RGBColor[1, 1, 0],
+      BackFaceColor->RGBColor[1, 1, 0],
+      GraphicsColor->RGBColor[1, 1, 0],
+      FontSize->14,
+      FontColor->RGBColor[1, 1, 0]], {29.5, 14.2}], 
+    {GrayLevel[0], RectangleBox[{34, 13.8}, {34.8, 14.6}]}, InsetBox[
+     StyleBox["\<\"others\"\>",
+      StripOnInput->False,
+      LineColor->GrayLevel[0],
+      FrontFaceColor->GrayLevel[0],
+      BackFaceColor->GrayLevel[0],
+      GraphicsColor->GrayLevel[0],
+      FontSize->14,
+      FontColor->GrayLevel[0]], {37, 14.2}]}},
+  ImageSize->{875.859375, Automatic}]], "Output",
+ CellChangeTimes->{3.9730736110538387`*^9},
+ CellLabel->
+  "Out[306]=",ExpressionUUID->"8faf0370-edce-4354-bf27-7ba177207c5b"]
+}, Open  ]],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  3.973073742928598*^9},ExpressionUUID->"7625902d-6704-4f8a-905b-\
+45b5f97fe86d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"parliament", "[", 
+    RowBox[{"labourseats_", ",", "toryseats_", ",", "libdemseats_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "otherseats", ",", "allseatsquestion3", ",", "gridquestion3", ",", 
+       "squaresquestion3", ",", "titlequestion3", ",", "legendquestion3"}], 
+      "}"}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"otherseats", "=", 
+       RowBox[{
+       "650", "-", "labourseats", "-", "toryseats", "-", "libdemseats"}]}], ";",
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"allseatsquestion3", "=", 
+       RowBox[{"Flatten", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Table", "[", 
+           RowBox[{"Red", ",", "labourseats"}], "]"}], ",", 
+          RowBox[{"Table", "[", 
+           RowBox[{"Blue", ",", "toryseats"}], "]"}], ",", 
+          RowBox[{"Table", "[", 
+           RowBox[{"Yellow", ",", "libdemseats"}], "]"}], ",", 
+          RowBox[{"Table", "[", 
+           RowBox[{"Black", ",", "otherseats"}], "]"}]}], "}"}], "]"}]}], ";",
+       "\[IndentingNewLine]", 
+      RowBox[{"gridquestion3", "=", 
+       RowBox[{"Partition", "[", 
+        RowBox[{"allseatsquestion3", ",", "50"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"squaresquestion3", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"gridquestion3", "[", 
+            RowBox[{"[", 
+             RowBox[{"row", ",", "col"}], "]"}], "]"}], ",", 
+           RowBox[{"Rectangle", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"col", ",", 
+               RowBox[{"14", "-", "row"}]}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"col", "+", "0.8"}], ",", 
+               RowBox[{"14", "-", "row", "+", "0.8"}]}], "}"}]}], "]"}]}], 
+          "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"row", ",", "13"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"col", ",", "50"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"titlequestion3", "=", 
+       RowBox[{"Text", "[", 
+        RowBox[{
+         RowBox[{"Style", "[", 
+          
+          RowBox[{"\"\<Composition of the UK parliament\>\"", ",", "20", ",", 
+           "Gray"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"25", ",", "16"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"legendquestion3", "=", 
+       RowBox[{"{", 
+        RowBox[{"Red", ",", 
+         RowBox[{"Rectangle", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"10", ",", "14.5"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"10.8", ",", "15.3"}], "}"}]}], "]"}], ",", 
+         RowBox[{"Text", "[", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<Labour\>\"", ",", "14", ",", "Red"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"13", ",", "14.9"}], "}"}]}], "]"}], ",", "Blue", ",", 
+         RowBox[{"Rectangle", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"18", ",", "14.5"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"18.8", ",", "15.3"}], "}"}]}], "]"}], ",", 
+         RowBox[{"Text", "[", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<Tories\>\"", ",", "14", ",", "Blue"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"21", ",", "14.9"}], "}"}]}], "]"}], ",", "Yellow", ",", 
+         RowBox[{"Rectangle", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"26", ",", "14.5"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"26.8", ",", "15.3"}], "}"}]}], "]"}], ",", 
+         RowBox[{"Text", "[", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<LibDems\>\"", ",", "14", ",", "Yellow"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"29.5", ",", "14.9"}], "}"}]}], "]"}], ",", "Black", ",", 
+         
+         RowBox[{"Rectangle", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"34", ",", "14.5"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"34.8", ",", "15.3"}], "}"}]}], "]"}], ",", 
+         RowBox[{"Text", "[", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<others\>\"", ",", "14", ",", "Black"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"37", ",", "14.9"}], "}"}]}], "]"}]}], "}"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"Graphics", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+         "squaresquestion3", ",", "titlequestion3", ",", "legendquestion3"}], 
+         "}"}], ",", 
+        RowBox[{"ImageSize", "->", "700"}]}], "]"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"parliament", "[", 
+  RowBox[{"357", ",", "200", ",", "44"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.9730737443633127`*^9, 3.973073778867351*^9}, {
+  3.973073885859365*^9, 3.97307389509449*^9}, {3.973074039716367*^9, 
+  3.973074051960112*^9}},
+ CellLabel->
+  "In[313]:=",ExpressionUUID->"2d659589-f7bd-429b-ba52-8561bacd5e3d"],
+
+Cell[BoxData[
+ GraphicsBox[{{{
+     {RGBColor[1, 0, 0], RectangleBox[{1, 13}, {1.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{2, 13}, {2.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{3, 13}, {3.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{4, 13}, {4.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{5, 13}, {5.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{6, 13}, {6.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{7, 13}, {7.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{8, 13}, {8.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{9, 13}, {9.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{10, 13}, {10.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{11, 13}, {11.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{12, 13}, {12.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{13, 13}, {13.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{14, 13}, {14.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{15, 13}, {15.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{16, 13}, {16.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{17, 13}, {17.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{18, 13}, {18.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{19, 13}, {19.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{20, 13}, {20.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{21, 13}, {21.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{22, 13}, {22.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{23, 13}, {23.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{24, 13}, {24.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{25, 13}, {25.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{26, 13}, {26.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{27, 13}, {27.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{28, 13}, {28.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{29, 13}, {29.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{30, 13}, {30.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{31, 13}, {31.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{32, 13}, {32.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{33, 13}, {33.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{34, 13}, {34.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{35, 13}, {35.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{36, 13}, {36.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{37, 13}, {37.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{38, 13}, {38.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{39, 13}, {39.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{40, 13}, {40.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{41, 13}, {41.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{42, 13}, {42.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{43, 13}, {43.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{44, 13}, {44.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{45, 13}, {45.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{46, 13}, {46.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{47, 13}, {47.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{48, 13}, {48.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{49, 13}, {49.8, 13.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{50, 13}, {50.8, 13.8}]}}, {
+     {RGBColor[1, 0, 0], RectangleBox[{1, 12}, {1.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{2, 12}, {2.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{3, 12}, {3.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{4, 12}, {4.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{5, 12}, {5.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{6, 12}, {6.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{7, 12}, {7.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{8, 12}, {8.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{9, 12}, {9.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{10, 12}, {10.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{11, 12}, {11.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{12, 12}, {12.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{13, 12}, {13.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{14, 12}, {14.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{15, 12}, {15.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{16, 12}, {16.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{17, 12}, {17.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{18, 12}, {18.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{19, 12}, {19.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{20, 12}, {20.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{21, 12}, {21.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{22, 12}, {22.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{23, 12}, {23.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{24, 12}, {24.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{25, 12}, {25.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{26, 12}, {26.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{27, 12}, {27.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{28, 12}, {28.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{29, 12}, {29.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{30, 12}, {30.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{31, 12}, {31.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{32, 12}, {32.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{33, 12}, {33.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{34, 12}, {34.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{35, 12}, {35.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{36, 12}, {36.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{37, 12}, {37.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{38, 12}, {38.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{39, 12}, {39.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{40, 12}, {40.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{41, 12}, {41.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{42, 12}, {42.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{43, 12}, {43.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{44, 12}, {44.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{45, 12}, {45.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{46, 12}, {46.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{47, 12}, {47.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{48, 12}, {48.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{49, 12}, {49.8, 12.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{50, 12}, {50.8, 12.8}]}}, {
+     {RGBColor[1, 0, 0], RectangleBox[{1, 11}, {1.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{2, 11}, {2.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{3, 11}, {3.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{4, 11}, {4.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{5, 11}, {5.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{6, 11}, {6.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{7, 11}, {7.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{8, 11}, {8.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{9, 11}, {9.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{10, 11}, {10.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{11, 11}, {11.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{12, 11}, {12.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{13, 11}, {13.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{14, 11}, {14.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{15, 11}, {15.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{16, 11}, {16.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{17, 11}, {17.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{18, 11}, {18.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{19, 11}, {19.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{20, 11}, {20.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{21, 11}, {21.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{22, 11}, {22.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{23, 11}, {23.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{24, 11}, {24.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{25, 11}, {25.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{26, 11}, {26.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{27, 11}, {27.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{28, 11}, {28.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{29, 11}, {29.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{30, 11}, {30.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{31, 11}, {31.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{32, 11}, {32.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{33, 11}, {33.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{34, 11}, {34.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{35, 11}, {35.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{36, 11}, {36.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{37, 11}, {37.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{38, 11}, {38.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{39, 11}, {39.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{40, 11}, {40.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{41, 11}, {41.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{42, 11}, {42.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{43, 11}, {43.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{44, 11}, {44.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{45, 11}, {45.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{46, 11}, {46.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{47, 11}, {47.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{48, 11}, {48.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{49, 11}, {49.8, 11.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{50, 11}, {50.8, 11.8}]}}, {
+     {RGBColor[1, 0, 0], RectangleBox[{1, 10}, {1.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{2, 10}, {2.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{3, 10}, {3.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{4, 10}, {4.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{5, 10}, {5.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{6, 10}, {6.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{7, 10}, {7.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{8, 10}, {8.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{9, 10}, {9.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{10, 10}, {10.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{11, 10}, {11.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{12, 10}, {12.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{13, 10}, {13.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{14, 10}, {14.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{15, 10}, {15.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{16, 10}, {16.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{17, 10}, {17.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{18, 10}, {18.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{19, 10}, {19.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{20, 10}, {20.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{21, 10}, {21.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{22, 10}, {22.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{23, 10}, {23.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{24, 10}, {24.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{25, 10}, {25.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{26, 10}, {26.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{27, 10}, {27.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{28, 10}, {28.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{29, 10}, {29.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{30, 10}, {30.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{31, 10}, {31.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{32, 10}, {32.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{33, 10}, {33.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{34, 10}, {34.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{35, 10}, {35.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{36, 10}, {36.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{37, 10}, {37.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{38, 10}, {38.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{39, 10}, {39.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{40, 10}, {40.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{41, 10}, {41.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{42, 10}, {42.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{43, 10}, {43.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{44, 10}, {44.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{45, 10}, {45.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{46, 10}, {46.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{47, 10}, {47.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{48, 10}, {48.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{49, 10}, {49.8, 10.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{50, 10}, {50.8, 10.8}]}}, {
+     {RGBColor[1, 0, 0], RectangleBox[{1, 9}, {1.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{2, 9}, {2.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{3, 9}, {3.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{4, 9}, {4.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{5, 9}, {5.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{6, 9}, {6.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{7, 9}, {7.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{8, 9}, {8.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{9, 9}, {9.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{10, 9}, {10.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{11, 9}, {11.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{12, 9}, {12.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{13, 9}, {13.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{14, 9}, {14.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{15, 9}, {15.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{16, 9}, {16.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{17, 9}, {17.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{18, 9}, {18.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{19, 9}, {19.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{20, 9}, {20.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{21, 9}, {21.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{22, 9}, {22.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{23, 9}, {23.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{24, 9}, {24.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{25, 9}, {25.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{26, 9}, {26.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{27, 9}, {27.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{28, 9}, {28.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{29, 9}, {29.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{30, 9}, {30.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{31, 9}, {31.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{32, 9}, {32.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{33, 9}, {33.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{34, 9}, {34.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{35, 9}, {35.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{36, 9}, {36.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{37, 9}, {37.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{38, 9}, {38.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{39, 9}, {39.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{40, 9}, {40.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{41, 9}, {41.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{42, 9}, {42.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{43, 9}, {43.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{44, 9}, {44.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{45, 9}, {45.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{46, 9}, {46.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{47, 9}, {47.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{48, 9}, {48.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{49, 9}, {49.8, 9.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{50, 9}, {50.8, 9.8}]}}, {
+     {RGBColor[1, 0, 0], RectangleBox[{1, 8}, {1.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{2, 8}, {2.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{3, 8}, {3.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{4, 8}, {4.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{5, 8}, {5.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{6, 8}, {6.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{7, 8}, {7.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{8, 8}, {8.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{9, 8}, {9.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{10, 8}, {10.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{11, 8}, {11.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{12, 8}, {12.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{13, 8}, {13.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{14, 8}, {14.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{15, 8}, {15.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{16, 8}, {16.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{17, 8}, {17.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{18, 8}, {18.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{19, 8}, {19.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{20, 8}, {20.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{21, 8}, {21.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{22, 8}, {22.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{23, 8}, {23.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{24, 8}, {24.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{25, 8}, {25.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{26, 8}, {26.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{27, 8}, {27.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{28, 8}, {28.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{29, 8}, {29.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{30, 8}, {30.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{31, 8}, {31.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{32, 8}, {32.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{33, 8}, {33.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{34, 8}, {34.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{35, 8}, {35.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{36, 8}, {36.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{37, 8}, {37.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{38, 8}, {38.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{39, 8}, {39.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{40, 8}, {40.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{41, 8}, {41.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{42, 8}, {42.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{43, 8}, {43.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{44, 8}, {44.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{45, 8}, {45.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{46, 8}, {46.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{47, 8}, {47.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{48, 8}, {48.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{49, 8}, {49.8, 8.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{50, 8}, {50.8, 8.8}]}}, {
+     {RGBColor[1, 0, 0], RectangleBox[{1, 7}, {1.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{2, 7}, {2.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{3, 7}, {3.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{4, 7}, {4.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{5, 7}, {5.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{6, 7}, {6.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{7, 7}, {7.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{8, 7}, {8.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{9, 7}, {9.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{10, 7}, {10.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{11, 7}, {11.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{12, 7}, {12.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{13, 7}, {13.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{14, 7}, {14.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{15, 7}, {15.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{16, 7}, {16.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{17, 7}, {17.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{18, 7}, {18.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{19, 7}, {19.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{20, 7}, {20.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{21, 7}, {21.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{22, 7}, {22.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{23, 7}, {23.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{24, 7}, {24.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{25, 7}, {25.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{26, 7}, {26.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{27, 7}, {27.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{28, 7}, {28.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{29, 7}, {29.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{30, 7}, {30.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{31, 7}, {31.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{32, 7}, {32.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{33, 7}, {33.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{34, 7}, {34.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{35, 7}, {35.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{36, 7}, {36.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{37, 7}, {37.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{38, 7}, {38.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{39, 7}, {39.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{40, 7}, {40.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{41, 7}, {41.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{42, 7}, {42.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{43, 7}, {43.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{44, 7}, {44.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{45, 7}, {45.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{46, 7}, {46.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{47, 7}, {47.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{48, 7}, {48.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{49, 7}, {49.8, 7.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{50, 7}, {50.8, 7.8}]}}, {
+     {RGBColor[1, 0, 0], RectangleBox[{1, 6}, {1.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{2, 6}, {2.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{3, 6}, {3.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{4, 6}, {4.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{5, 6}, {5.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{6, 6}, {6.8, 6.8}]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{7, 6}, {7.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{8, 6}, {8.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{9, 6}, {9.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{10, 6}, {10.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{11, 6}, {11.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{12, 6}, {12.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{13, 6}, {13.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{14, 6}, {14.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{15, 6}, {15.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{16, 6}, {16.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{17, 6}, {17.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{18, 6}, {18.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{19, 6}, {19.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{20, 6}, {20.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{21, 6}, {21.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{22, 6}, {22.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{23, 6}, {23.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{24, 6}, {24.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{25, 6}, {25.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{26, 6}, {26.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{27, 6}, {27.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{28, 6}, {28.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{29, 6}, {29.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{30, 6}, {30.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{31, 6}, {31.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{32, 6}, {32.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{33, 6}, {33.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{34, 6}, {34.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{35, 6}, {35.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{36, 6}, {36.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{37, 6}, {37.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{38, 6}, {38.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{39, 6}, {39.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{40, 6}, {40.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{41, 6}, {41.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{42, 6}, {42.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{43, 6}, {43.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{44, 6}, {44.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{45, 6}, {45.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{46, 6}, {46.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{47, 6}, {47.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{48, 6}, {48.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{49, 6}, {49.8, 6.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{50, 6}, {50.8, 6.8}]}}, {
+     {RGBColor[0, 0, 1], RectangleBox[{1, 5}, {1.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{2, 5}, {2.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{3, 5}, {3.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{4, 5}, {4.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{5, 5}, {5.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{6, 5}, {6.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{7, 5}, {7.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{8, 5}, {8.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{9, 5}, {9.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{10, 5}, {10.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{11, 5}, {11.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{12, 5}, {12.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{13, 5}, {13.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{14, 5}, {14.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{15, 5}, {15.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{16, 5}, {16.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{17, 5}, {17.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{18, 5}, {18.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{19, 5}, {19.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{20, 5}, {20.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{21, 5}, {21.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{22, 5}, {22.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{23, 5}, {23.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{24, 5}, {24.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{25, 5}, {25.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{26, 5}, {26.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{27, 5}, {27.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{28, 5}, {28.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{29, 5}, {29.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{30, 5}, {30.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{31, 5}, {31.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{32, 5}, {32.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{33, 5}, {33.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{34, 5}, {34.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{35, 5}, {35.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{36, 5}, {36.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{37, 5}, {37.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{38, 5}, {38.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{39, 5}, {39.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{40, 5}, {40.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{41, 5}, {41.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{42, 5}, {42.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{43, 5}, {43.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{44, 5}, {44.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{45, 5}, {45.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{46, 5}, {46.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{47, 5}, {47.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{48, 5}, {48.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{49, 5}, {49.8, 5.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{50, 5}, {50.8, 5.8}]}}, {
+     {RGBColor[0, 0, 1], RectangleBox[{1, 4}, {1.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{2, 4}, {2.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{3, 4}, {3.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{4, 4}, {4.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{5, 4}, {5.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{6, 4}, {6.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{7, 4}, {7.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{8, 4}, {8.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{9, 4}, {9.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{10, 4}, {10.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{11, 4}, {11.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{12, 4}, {12.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{13, 4}, {13.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{14, 4}, {14.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{15, 4}, {15.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{16, 4}, {16.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{17, 4}, {17.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{18, 4}, {18.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{19, 4}, {19.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{20, 4}, {20.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{21, 4}, {21.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{22, 4}, {22.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{23, 4}, {23.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{24, 4}, {24.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{25, 4}, {25.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{26, 4}, {26.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{27, 4}, {27.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{28, 4}, {28.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{29, 4}, {29.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{30, 4}, {30.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{31, 4}, {31.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{32, 4}, {32.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{33, 4}, {33.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{34, 4}, {34.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{35, 4}, {35.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{36, 4}, {36.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{37, 4}, {37.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{38, 4}, {38.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{39, 4}, {39.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{40, 4}, {40.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{41, 4}, {41.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{42, 4}, {42.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{43, 4}, {43.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{44, 4}, {44.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{45, 4}, {45.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{46, 4}, {46.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{47, 4}, {47.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{48, 4}, {48.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{49, 4}, {49.8, 4.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{50, 4}, {50.8, 4.8}]}}, {
+     {RGBColor[0, 0, 1], RectangleBox[{1, 3}, {1.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{2, 3}, {2.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{3, 3}, {3.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{4, 3}, {4.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{5, 3}, {5.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{6, 3}, {6.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{7, 3}, {7.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{8, 3}, {8.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{9, 3}, {9.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{10, 3}, {10.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{11, 3}, {11.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{12, 3}, {12.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{13, 3}, {13.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{14, 3}, {14.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{15, 3}, {15.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{16, 3}, {16.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{17, 3}, {17.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{18, 3}, {18.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{19, 3}, {19.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{20, 3}, {20.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{21, 3}, {21.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{22, 3}, {22.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{23, 3}, {23.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{24, 3}, {24.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{25, 3}, {25.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{26, 3}, {26.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{27, 3}, {27.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{28, 3}, {28.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{29, 3}, {29.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{30, 3}, {30.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{31, 3}, {31.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{32, 3}, {32.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{33, 3}, {33.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{34, 3}, {34.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{35, 3}, {35.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{36, 3}, {36.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{37, 3}, {37.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{38, 3}, {38.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{39, 3}, {39.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{40, 3}, {40.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{41, 3}, {41.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{42, 3}, {42.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{43, 3}, {43.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{44, 3}, {44.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{45, 3}, {45.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{46, 3}, {46.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{47, 3}, {47.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{48, 3}, {48.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{49, 3}, {49.8, 3.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{50, 3}, {50.8, 3.8}]}}, {
+     {RGBColor[0, 0, 1], RectangleBox[{1, 2}, {1.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{2, 2}, {2.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{3, 2}, {3.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{4, 2}, {4.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{5, 2}, {5.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{6, 2}, {6.8, 2.8}]}, 
+     {RGBColor[0, 0, 1], RectangleBox[{7, 2}, {7.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{8, 2}, {8.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{9, 2}, {9.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{10, 2}, {10.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{11, 2}, {11.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{12, 2}, {12.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{13, 2}, {13.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{14, 2}, {14.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{15, 2}, {15.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{16, 2}, {16.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{17, 2}, {17.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{18, 2}, {18.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{19, 2}, {19.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{20, 2}, {20.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{21, 2}, {21.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{22, 2}, {22.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{23, 2}, {23.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{24, 2}, {24.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{25, 2}, {25.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{26, 2}, {26.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{27, 2}, {27.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{28, 2}, {28.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{29, 2}, {29.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{30, 2}, {30.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{31, 2}, {31.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{32, 2}, {32.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{33, 2}, {33.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{34, 2}, {34.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{35, 2}, {35.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{36, 2}, {36.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{37, 2}, {37.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{38, 2}, {38.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{39, 2}, {39.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{40, 2}, {40.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{41, 2}, {41.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{42, 2}, {42.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{43, 2}, {43.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{44, 2}, {44.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{45, 2}, {45.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{46, 2}, {46.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{47, 2}, {47.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{48, 2}, {48.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{49, 2}, {49.8, 2.8}]}, 
+     {RGBColor[1, 1, 0], RectangleBox[{50, 2}, {50.8, 2.8}]}}, {
+     {RGBColor[1, 1, 0], RectangleBox[{1, 1}, {1.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{2, 1}, {2.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{3, 1}, {3.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{4, 1}, {4.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{5, 1}, {5.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{6, 1}, {6.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{7, 1}, {7.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{8, 1}, {8.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{9, 1}, {9.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{10, 1}, {10.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{11, 1}, {11.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{12, 1}, {12.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{13, 1}, {13.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{14, 1}, {14.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{15, 1}, {15.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{16, 1}, {16.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{17, 1}, {17.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{18, 1}, {18.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{19, 1}, {19.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{20, 1}, {20.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{21, 1}, {21.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{22, 1}, {22.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{23, 1}, {23.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{24, 1}, {24.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{25, 1}, {25.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{26, 1}, {26.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{27, 1}, {27.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{28, 1}, {28.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{29, 1}, {29.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{30, 1}, {30.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{31, 1}, {31.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{32, 1}, {32.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{33, 1}, {33.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{34, 1}, {34.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{35, 1}, {35.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{36, 1}, {36.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{37, 1}, {37.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{38, 1}, {38.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{39, 1}, {39.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{40, 1}, {40.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{41, 1}, {41.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{42, 1}, {42.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{43, 1}, {43.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{44, 1}, {44.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{45, 1}, {45.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{46, 1}, {46.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{47, 1}, {47.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{48, 1}, {48.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{49, 1}, {49.8, 1.8}]}, 
+     {GrayLevel[0], RectangleBox[{50, 1}, {50.8, 1.8}]}}}, InsetBox[
+    StyleBox["\<\"Composition of the UK parliament\"\>",
+     StripOnInput->False,
+     LineColor->GrayLevel[0.5],
+     FrontFaceColor->GrayLevel[0.5],
+     BackFaceColor->GrayLevel[0.5],
+     GraphicsColor->GrayLevel[0.5],
+     FontSize->20,
+     FontColor->GrayLevel[0.5]], {25, 16}], {
+    {RGBColor[1, 0, 0], RectangleBox[{10, 14.5}, {10.8, 15.3}], InsetBox[
+      StyleBox["\<\"Labour\"\>",
+       StripOnInput->False,
+       LineColor->RGBColor[1, 0, 0],
+       FrontFaceColor->RGBColor[1, 0, 0],
+       BackFaceColor->RGBColor[1, 0, 0],
+       GraphicsColor->RGBColor[1, 0, 0],
+       FontSize->14,
+       FontColor->RGBColor[1, 0, 0]], {13, 14.9}]}, 
+    {RGBColor[0, 0, 1], RectangleBox[{18, 14.5}, {18.8, 15.3}], InsetBox[
+      StyleBox["\<\"Tories\"\>",
+       StripOnInput->False,
+       LineColor->RGBColor[0, 0, 1],
+       FrontFaceColor->RGBColor[0, 0, 1],
+       BackFaceColor->RGBColor[0, 0, 1],
+       GraphicsColor->RGBColor[0, 0, 1],
+       FontSize->14,
+       FontColor->RGBColor[0, 0, 1]], {21, 14.9}]}, 
+    {RGBColor[1, 1, 0], RectangleBox[{26, 14.5}, {26.8, 15.3}], InsetBox[
+      StyleBox["\<\"LibDems\"\>",
+       StripOnInput->False,
+       LineColor->RGBColor[1, 1, 0],
+       FrontFaceColor->RGBColor[1, 1, 0],
+       BackFaceColor->RGBColor[1, 1, 0],
+       GraphicsColor->RGBColor[1, 1, 0],
+       FontSize->14,
+       FontColor->RGBColor[1, 1, 0]], {29.5, 14.9}]}, 
+    {GrayLevel[0], RectangleBox[{34, 14.5}, {34.8, 15.3}], InsetBox[
+      StyleBox["\<\"others\"\>",
+       StripOnInput->False,
+       LineColor->GrayLevel[0],
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontSize->14,
+       FontColor->GrayLevel[0]], {37, 14.9}]}}},
+  ImageSize->700]], "Output",
+ CellChangeTimes->{3.973073779353066*^9, 3.973073895858038*^9, 
+  3.973074054642579*^9},
+ CellLabel->
+  "Out[314]=",ExpressionUUID->"010f1bb9-21f7-4e70-a9ba-f8f1b4d02770"]
+}, Open  ]]
+},
+WindowSize->{Full, Full},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+LightDark->"Dark",
+FrontEndVersion->"14.3 for Mac OS X ARM (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"34d8e8cd-ded6-4655-a5a8-0ddf7748eb75"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 7382, 180, 539, "Input",ExpressionUUID->"493072f5-1034-44bd-b70e-e22815e0eebc"],
+Cell[7961, 204, 11792, 275, 247, "Output",ExpressionUUID->"be7903b6-88db-407c-a9e3-37f61851cf79"],
+Cell[19756, 481, 11811, 276, 247, "Output",ExpressionUUID->"2a79e67d-a228-47b4-991c-536708a18953"]
+}, Open  ]],
+Cell[31582, 760, 232, 5, 90, "Input",ExpressionUUID->"3b2b0f3c-3ded-485e-90f7-d800bd57e2f3"],
+Cell[CellGroupData[{
+Cell[31839, 769, 4133, 107, 213, "Input",ExpressionUUID->"d7069650-74d6-4f40-a067-226964ca6ce6"],
+Cell[35975, 878, 1508, 40, 293, "Output",ExpressionUUID->"15630957-502b-476b-8ef1-d9f35fdec48d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37520, 923, 7680, 203, 499, "Input",ExpressionUUID->"b8f556ba-ce81-43f0-b696-22921861cda9"],
+Cell[45203, 1128, 3338, 68, 328, "Output",ExpressionUUID->"5c762df8-906f-4f5a-8aad-8c27cf3e45e8"]
+}, Open  ]],
+Cell[48556, 1199, 147, 3, 49, "Input",ExpressionUUID->"54a08d10-75cd-4b24-b120-21dcd1bd3d82"],
+Cell[CellGroupData[{
+Cell[48728, 1206, 6074, 156, 397, "Input",ExpressionUUID->"a633c55a-6240-4646-a53b-e4279d19921f"],
+Cell[54805, 1364, 3777, 76, 328, "Output",ExpressionUUID->"cc564de8-810d-421e-95e0-cd01062bcdca"]
+}, Open  ]],
+Cell[58597, 1443, 149, 3, 49, "Input",ExpressionUUID->"54a9f8cd-28e6-4f94-b5b8-f758f31a290d"],
+Cell[CellGroupData[{
+Cell[58771, 1450, 5896, 151, 417, "Input",ExpressionUUID->"002ed529-ca79-46c0-8ba0-7dfbe23f0e1e"],
+Cell[64670, 1603, 3739, 76, 322, "Output",ExpressionUUID->"78ce5b13-2f8b-441d-a2b0-e3cc1415722c"]
+}, Open  ]],
+Cell[68424, 1682, 257, 5, 111, "Input",ExpressionUUID->"7582c1a3-b628-4486-b2cf-90d709592fd9"],
+Cell[CellGroupData[{
+Cell[68706, 1691, 5139, 135, 233, "Input",ExpressionUUID->"6906de02-d4a8-4ceb-9222-f59cd9d79d24"],
+Cell[73848, 1828, 42698, 699, 304, "Output",ExpressionUUID->"8faf0370-edce-4354-bf27-7ba177207c5b"]
+}, Open  ]],
+Cell[116561, 2530, 147, 3, 49, "Input",ExpressionUUID->"7625902d-6704-4f8a-905b-45b5f97fe86d"],
+Cell[CellGroupData[{
+Cell[116733, 2537, 5340, 134, 376, "Input",ExpressionUUID->"2d659589-f7bd-429b-ba52-8561bacd5e3d"],
+Cell[122076, 2673, 42881, 700, 246, "Output",ExpressionUUID->"010f1bb9-21f7-4e70-a9ba-f8f1b4d02770"]
+}, Open  ]]
+}
+]
+*)
+
