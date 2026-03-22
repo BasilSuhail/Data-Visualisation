@@ -1,0 +1,2867 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[    113810,       2859]
+NotebookOptionsPosition[     86172,       2441]
+NotebookOutlinePosition[     90371,       2518]
+CellTagsIndexPosition[     90258,       2512]
+WindowTitle->Getting and Organizing the Data
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["", "SlideShowNavigationBar", "FirstSlide",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"7fe14d54-619e-4b9a-912a-c005f4469b58"],
+
+Cell[TextData[StyleBox["MSc Data Science - \nIntroduction to Programming (PX \
+5007)\norganising data",
+ FontSize->48,
+ FontWeight->"Plain"]], "Title",
+ CellChangeTimes->{
+  3.559948400406288*^9, {3.600347072661291*^9, 3.6003470883239827`*^9}, {
+   3.600347267444807*^9, 3.600347302458372*^9}, 3.600351256733713*^9, {
+   3.75639173699656*^9, 3.756391764331141*^9}, 3.756391797772762*^9, {
+   3.77696646305013*^9, 3.776966487752973*^9}, 3.7769667210947104`*^9, {
+   3.8101992966747427`*^9, 3.810199301073271*^9}, {3.810833517717135*^9, 
+   3.81083352046656*^9}, {3.811231216965016*^9, 
+   3.8112312229782133`*^9}},ExpressionUUID->"6fb3aaea-08a6-4b07-868f-\
+fe990331d2d0"],
+
+Cell[TextData[{
+ StyleBox["Marco Thiel \n", "Subtitle",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["office: ", "Subtitle",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0.5]],
+ StyleBox["Meston Building 340\n", "Subtitle",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["Email:", "Subtitle",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0.5]],
+ StyleBox[" m.thiel@abdn.ac.uk\n", "Subtitle",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["Tel:", "Subtitle",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0.5]],
+ StyleBox[" 01224 27 3160", "Subtitle",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\nTwitter: ", "Subtitle",
+  FontWeight->"Plain"],
+ StyleBox["@DataScienceUoA\n", "Subtitle",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["Office hours:", "Subtitle",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0.5]],
+ StyleBox[" Wednesday 1pm-2:30pm in office and on ", "Subtitle",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox[ButtonBox["Zoom",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://us02web.zoom.us/j/268409842"], None},
+  ButtonNote->"https://us02web.zoom.us/j/268409842"],
+  FontSize->24,
+  FontWeight->"Plain",
+  FontVariations->{"Underline"->True},
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["\n\n", "Subtitle",
+  FontWeight->"Plain"],
+ StyleBox["Feedback link: https://wolfr.am/11JHosTl0\n", "Subtitle",
+  FontWeight->"Plain",
+  FontColor->GrayLevel[0]],
+ StyleBox["\n",
+  FontSize->24],
+ StyleBox["28 October, 2025", "Subsubtitle",
+  FontSize->24,
+  FontWeight->"Bold"]
+}], "Title",
+ CellChangeTimes->{{3.60034730923414*^9, 3.600347439316887*^9}, {
+   3.600347479914999*^9, 3.600347497562113*^9}, {3.600347540402256*^9, 
+   3.600347541616744*^9}, {3.600347639074224*^9, 3.600347671905989*^9}, {
+   3.600538600080698*^9, 3.6005386003048477`*^9}, {3.662234067685869*^9, 
+   3.6622340773780136`*^9}, {3.693678668374742*^9, 3.693678683750639*^9}, {
+   3.725127391175259*^9, 3.725127394026742*^9}, 3.72512821001304*^9, 
+   3.725128472375903*^9, {3.756391455331602*^9, 3.756391455754607*^9}, {
+   3.756391499149806*^9, 3.756391514469605*^9}, {3.756391546458716*^9, 
+   3.7563915520991993`*^9}, {3.77696670643705*^9, 3.7769667132802887`*^9}, {
+   3.776967432053108*^9, 3.776967433361176*^9}, {3.776967465701057*^9, 
+   3.776967465702392*^9}, {3.810145504054003*^9, 3.810145530197674*^9}, {
+   3.810145660685894*^9, 3.810145662001947*^9}, {3.810145766928216*^9, 
+   3.810145795267787*^9}, {3.81014584639028*^9, 3.810145892123823*^9}, {
+   3.81014594109026*^9, 3.810145961657024*^9}, {3.810146038453968*^9, 
+   3.810146044216269*^9}, {3.810199162587419*^9, 3.810199162910087*^9}, {
+   3.81048524536629*^9, 3.810485249727303*^9}, {3.810833522886812*^9, 
+   3.810833524119318*^9}, {3.811230991293314*^9, 3.811230995087042*^9}, {
+   3.811479811496257*^9, 3.8114798115600367`*^9}, {3.873705414571991*^9, 
+   3.8737054265329103`*^9}, {3.884763411761386*^9, 3.884763427191523*^9}, {
+   3.916375141645043*^9, 3.916375162507614*^9}, {3.948873532291987*^9, 
+   3.948873549059478*^9}, {3.9706408872123337`*^9, 
+   3.970640895141663*^9}},ExpressionUUID->"8a607f59-d262-4713-a73f-\
+46a07f7cd1a5"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"0d809d1f-0d57-4014-bb81-f5524e0169b5"],
+
+Cell[CellGroupData[{
+
+Cell["Course Overview", "Section",
+ CellChangeTimes->{{3.573719511312056*^9, 
+  3.573719516762042*^9}},ExpressionUUID->"6c8cadd3-d208-4af2-9843-\
+686538f686a0"],
+
+Cell["\<\
+The goal of this course is to show how to use the Wolfram \
+Language\[Trademark] to carry out various operations in applied statistics. A \
+basic working knowledge of the Wolfram Language and statistics will be \
+assumed throughout the course. It should also be understood that a particular \
+approach to statistics is not being advocated. That is up to the statistician \
+and depends on the analysis being done. It is the intention of the course to \
+give an illustration of what can be done using the Wolfram Language.\
+\>", "Text",
+ CellChangeTimes->{{3.573719533004735*^9, 3.573719801311317*^9}, {
+  3.58003052676939*^9, 3.580030543216104*^9}, {3.580030626271303*^9, 
+  3.580030668075529*^9}, {3.622382128556423*^9, 
+  3.622382178911221*^9}},ExpressionUUID->"d3c4c96b-954e-4222-acc8-\
+ab66a01dd2b4"],
+
+Cell["This course covers:", "Text",
+ CellChangeTimes->{{3.573719806406876*^9, 3.573719859000028*^9}, {
+  3.631643284656372*^9, 
+  3.631643287733848*^9}},ExpressionUUID->"c965549e-8699-4f4e-a67b-\
+9739bff152df"],
+
+Cell["Importing and cleaning up data", "Subitem",
+ CellChangeTimes->{{3.573719870872937*^9, 
+  3.573719883496536*^9}},ExpressionUUID->"7d7e562e-eeb0-4fca-b5f4-\
+3a66dc43bf75"],
+
+Cell["Getting basic properties of the data", "Subitem",
+ CellChangeTimes->{{3.573719909049009*^9, 
+  3.573719917997539*^9}},ExpressionUUID->"de293f23-e879-48ad-ad99-\
+e1c443b3a9f7"],
+
+Cell["Fitting data to distributions", "Subitem",
+ CellChangeTimes->{{3.573719925272892*^9, 
+  3.5737199338647*^9}},ExpressionUUID->"780ed56d-bcb7-43f9-8061-e51904a68844"],
+
+Cell["Curve fitting", "Subitem",
+ CellChangeTimes->{{3.573719944774781*^9, 
+  3.573719948245111*^9}},ExpressionUUID->"249bd739-d932-4a85-bcc4-\
+34e777778b6e"],
+
+Cell["Time series", "Subitem",
+ CellChangeTimes->{{3.57371999743377*^9, 
+  3.573720000201477*^9}},ExpressionUUID->"f4317e12-43ca-4286-9565-\
+382758443684"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"74927421-9028-4b88-80af-513348dd540d"],
+
+Cell[CellGroupData[{
+
+Cell["Overview", "Section",
+ CellChangeTimes->{{3.5722538441221743`*^9, 
+  3.572253845823849*^9}},ExpressionUUID->"573674b0-8c29-4977-b632-\
+4f186682b647"],
+
+Cell["This section covers:", "Text",
+ CellChangeTimes->{{3.57225385268824*^9, 3.572253885416585*^9}, {
+  3.572253928890505*^9, 3.572253930393491*^9}, {3.631643295719547*^9, 
+  3.631643298157379*^9}},ExpressionUUID->"059bf69c-4977-4b65-bb4a-\
+4912c4e76344"],
+
+Cell["Getting data into the Wolfram Language ", "Subitem",
+ CellChangeTimes->{{3.572253941946394*^9, 3.5722539503616037`*^9}, {
+  3.580030692045161*^9, 3.580030697651088*^9}, {3.622382188688965*^9, 
+  3.622382194414385*^9}},ExpressionUUID->"bb6e9679-3207-4b2f-9154-\
+b19b4470a506"],
+
+Cell["Extracting parts from data", "Subitem",
+ CellChangeTimes->{{3.5722539629379997`*^9, 3.572253975266865*^9}, {
+  3.631643303277529*^9, 
+  3.63164330378124*^9}},ExpressionUUID->"da68be9e-947c-4fd7-81b4-\
+26ce68166a9e"],
+
+Cell["Manipulating data", "Subitem",
+ CellChangeTimes->{{3.572254133853074*^9, 
+  3.572254138877603*^9}},ExpressionUUID->"6ddfbdd2-1205-4890-b7e9-\
+73136c17a480"],
+
+Cell["Temporal data from plain data", "Subitem",
+ CellChangeTimes->{{3.572253996754791*^9, 
+  3.572254015698779*^9}},ExpressionUUID->"d04a9a32-2f0e-4e79-9be9-\
+37ca1635d05c"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"92c4aec7-5d05-4142-ad0f-73820bda49c7"],
+
+Cell[CellGroupData[{
+
+Cell["Organizing Files", "Section",
+ CellChangeTimes->{{3.572254953279671*^9, 
+  3.572254957556932*^9}},ExpressionUUID->"93ae67bf-e1c6-4ea1-8e95-\
+00549b6683fc"],
+
+Cell[CellGroupData[{
+
+Cell["Using SetDirectory", "Subsection",
+ CellChangeTimes->{{3.57720126030111*^9, 
+  3.577201264636352*^9}},ExpressionUUID->"3fa6b1e4-6a6b-4ea3-8d3b-\
+04a8d6fa1242"],
+
+Cell[TextData[{
+ "One good way to organize your data files is to use the ",
+ StyleBox[ButtonBox["SetDirectory",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/SetDirectory"],
+  FontWeight->"Bold"],
+ " function. Once you have set the working directory, the Wolfram Language \
+will automatically look in the selected directory, so all you will need is \
+the name of the file to import it. ",
+ StyleBox[ButtonBox["FileNameJoin",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/FileNameJoin"],
+  FontWeight->"Bold"],
+ " will construct a proper file path for the operating system you are using. \
+If you keep your data file directory and notebooks in the same location, you \
+can move your work from one machine to another, and everything will work with \
+the same inputs."
+}], "Text",
+ CellChangeTimes->{{3.572255766206848*^9, 3.572255878965869*^9}, {
+   3.57225590922456*^9, 3.572255909227263*^9}, {3.572256170664897*^9, 
+   3.5722563252621512`*^9}, {3.577201269751493*^9, 3.577201298381508*^9}, {
+   3.580030763883905*^9, 3.580030782057995*^9}, {3.580030813450475*^9, 
+   3.580030825481023*^9}, 3.5800308616081142`*^9, {3.622293554263653*^9, 
+   3.622293615320734*^9}, {3.622382202945721*^9, 
+   3.622382207934277*^9}},ExpressionUUID->"8252abf9-f2bd-4d55-b152-\
+93469547239d"],
+
+Cell[BoxData[
+ RowBox[{"SetDirectory", "[", 
+  RowBox[{"FileNameJoin", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<DataDir\>\""}], "}"}],
+    "]"}], "]"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.572255886245702*^9, 3.572255888254821*^9}, {
+  3.572255924288731*^9, 
+  3.57225595427416*^9}},ExpressionUUID->"b89430c0-766f-41e4-af4b-\
+2f8f3475b18f"],
+
+Cell[TextData[{
+ "Get the names of the files in the selected directory using ",
+ StyleBox[ButtonBox["FileNames",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/FileNames"],
+  FontWeight->"Bold"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.57225597058585*^9, 3.572255994783943*^9}, {
+  3.572256156094061*^9, 3.5722561560975327`*^9}, {3.577201356586913*^9, 
+  3.5772013816324797`*^9}, {3.631643393107199*^9, 
+  3.63164341148072*^9}},ExpressionUUID->"963cd0d0-ac96-46b5-9b5e-\
+7ac42223243e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FileNames", "[", "]"}], "//", "Short"}]], "Input",
+ CellChangeTimes->{{3.572256003245813*^9, 
+  3.57225604002569*^9}},ExpressionUUID->"ef69db9f-e2a4-4047-a9f7-\
+a910d5b3d87c"],
+
+Cell["Choose the type of file you want to shorten the list.", "Text",
+ CellChangeTimes->{{3.572256051177164*^9, 3.572256059704811*^9}, {
+  3.572256091202088*^9, 3.572256099082182*^9}, {3.631643415354017*^9, 
+  3.631643421055337*^9}},ExpressionUUID->"0415df62-991a-4dc1-a5ab-\
+f52e638dd41b"],
+
+Cell[BoxData[
+ RowBox[{"FileNames", "[", "\"\<*.csv\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.572256102710837*^9, 
+  3.572256120299741*^9}},ExpressionUUID->"f6e1f945-1814-4a69-8e89-\
+735de1230f93"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"fff015d9-61d2-4ab3-a5a9-af21cd7efb15"],
+
+Cell[CellGroupData[{
+
+Cell["Organizing Files", "Section",
+ CellChangeTimes->{{3.572271990458034*^9, 3.572271996319758*^9}, 
+   3.57397886898416*^9},ExpressionUUID->"b64613bb-2145-4823-bf1e-\
+17534636f754"],
+
+Cell[CellGroupData[{
+
+Cell["Defining a Path", "Subsection",
+ CellChangeTimes->{{3.572256428075194*^9, 
+  3.572256431984587*^9}},ExpressionUUID->"04d13430-7453-4a73-94b0-\
+44ba08276628"],
+
+Cell[TextData[{
+ "You can use ",
+ StyleBox[ButtonBox["FileNameJoin",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/FileNameJoin"],
+  FontWeight->"Bold"],
+ " to create a path for your computer that you can use in defining a function \
+to get files using only the file name. You may find a function ",
+ StyleBox[ButtonBox["ToFileName",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/ToFileName"],
+  FontWeight->"Bold"],
+ " in some documentation examples, but you should use ",
+ StyleBox[ButtonBox["FileNameJoin",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/FileNameJoin"],
+  FontWeight->"Bold"],
+ ". The older ",
+ StyleBox[ButtonBox["ToFileName",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/ToFileName"],
+  FontWeight->"Bold"],
+ " has been replaced."
+}], "Text",
+ CellChangeTimes->{{3.5722573608522*^9, 3.572257434053492*^9}, {
+   3.572509902681224*^9, 3.572509904094261*^9}, {3.573213579964053*^9, 
+   3.573213707611375*^9}, {3.577201429895431*^9, 3.5772014449760737`*^9}, 
+   3.5772014917608433`*^9, 3.580030891720973*^9, {3.622293678214429*^9, 
+   3.622293740944936*^9}, {3.622382240382709*^9, 3.622382253411712*^9}, {
+   3.622383082933924*^9, 
+   3.6223830834828243`*^9}},ExpressionUUID->"f6d150a5-f6ee-4967-86d2-\
+bca65488390c"],
+
+Cell["Define the path.", "Text",
+ CellChangeTimes->{{3.572257493510109*^9, 3.5722574965546484`*^9}, 
+   3.580031033092041*^9},ExpressionUUID->"eb2d0160-0156-4cde-830d-\
+ade1ca1432f9"],
+
+Cell[BoxData[
+ RowBox[{"myPath", "=", " ", 
+  RowBox[{"FileNameJoin", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<DataDir\>\""}], "}"}],
+    "]"}]}]], "Input",
+ CellChangeTimes->{{3.572257443240239*^9, 
+  3.572257473701651*^9}},ExpressionUUID->"f29ba706-d8dc-4d36-a3b6-\
+8bc2fd1c10da"],
+
+Cell["Define a function to get files.", "Text",
+ CellChangeTimes->{{3.572257504395741*^9, 
+  3.572257513443898*^9}},ExpressionUUID->"8f816a53-15ce-4019-b7bf-\
+b316099802dc"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"getFile", "[", "nm_String", "]"}], ":=", " ", 
+  RowBox[{"Import", "[", 
+   RowBox[{"FileNameJoin", "[", 
+    RowBox[{"{", 
+     RowBox[{"myPath", ",", "nm"}], "}"}], "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.572257523773017*^9, 
+  3.57225756599129*^9}},ExpressionUUID->"9ee2b179-e74f-4eac-a779-\
+53a2e955e95c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"getFile", "[", "\"\<chicagotemps.csv\>\"", "]"}], "//", 
+  "Short"}]], "Input",
+ CellChangeTimes->{{3.5722575968454657`*^9, 
+  3.572257636514041*^9}},ExpressionUUID->"b03c6d7b-bf1f-415d-a477-\
+c84706f1b848"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"738ea7bb-46e7-4da0-8f33-6e66dfbcf94f"],
+
+Cell[CellGroupData[{
+
+Cell["Importing Data: Excel-XLS", "Section",
+ CellChangeTimes->{{3.5722540746219873`*^9, 3.572254078460119*^9}, {
+  3.57347085338712*^9, 
+  3.573470860940666*^9}},ExpressionUUID->"7714aaad-a92d-4ada-9c93-\
+c044eb804076"],
+
+Cell[TextData[{
+ "Data can be brought into the Wolfram Language using the ",
+ StyleBox[ButtonBox["Import",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Import"],
+  FontWeight->"Bold"],
+ " function. A variety of formats are supported, but this course focuses on \
+Excel and comma- or tab-separated values. In these examples the ",
+ StyleBox[ButtonBox["SetDirectory",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/SetDirectory"],
+  FontWeight->"Bold"],
+ " approach to organizing files is used. This is done in the initialization \
+cell where the directory is set."
+}], "Text",
+ CellChangeTimes->{{3.5722542289043083`*^9, 3.572254318480649*^9}, {
+   3.572254390785643*^9, 3.572254392194046*^9}, {3.573213750942642*^9, 
+   3.573213813893153*^9}, 3.5734702575557137`*^9, {3.5735492348477697`*^9, 
+   3.573549250708749*^9}, 3.577201507838497*^9, 3.5800310744083157`*^9, {
+   3.5800311122592487`*^9, 3.58003113540031*^9}, {3.5801470591889157`*^9, 
+   3.5801470910338078`*^9}, 3.580217780999578*^9, {3.6316435698426943`*^9, 
+   3.631643653124262*^9}, {3.63266383391244*^9, 
+   3.632663838859825*^9}},ExpressionUUID->"32917d12-3fa2-4841-8dde-\
+7cf0698bcc00"],
+
+Cell["\<\
+It is prudent once you have the file contents in the Wolfram Language to look \
+at the data to see if it is in a form that can be used for analysis. It is \
+possible to bring a file into the Wolfram Language only to find you have one \
+long string. This is not going to be useful for analysis, unless you are \
+analyzing sentence structures or something of that sort. This section looks \
+at various issues that can arise and illustrates some methods of avoiding the \
+problems. Examples are also given of how to manipulate the data to get it in \
+a form suitable for investigations.\
+\>", "Text",
+ CellChangeTimes->{{3.57347051196591*^9, 3.573470678361255*^9}, {
+   3.573470726425921*^9, 3.5734708248198223`*^9}, 3.573978873644375*^9, {
+   3.580031187648431*^9, 3.580031188351347*^9}, {3.580031231967136*^9, 
+   3.5800312836686897`*^9}, {3.580147129224382*^9, 3.5801471315292473`*^9}, {
+   3.622382289207072*^9, 3.622382304387287*^9}, {3.622394658345359*^9, 
+   3.622394707925086*^9}},ExpressionUUID->"60a6022c-330f-4883-9e30-\
+f791b953bbe8"],
+
+Cell[CellGroupData[{
+
+Cell["Excel Files", "Subsection",
+ CellChangeTimes->{{3.577201542547813*^9, 
+  3.577201546837699*^9}},ExpressionUUID->"ed21e0b3-b1cb-492d-893e-\
+a872f1caacad"],
+
+Cell[TextData[{
+ "Excel files consist of one or more sheets. With the default behavior, the \
+Wolfram Language",
+ StyleBox[" ",
+  FontSlant->"Italic"],
+ "will bring in all the sheets as a list of arrays. In the first example, an \
+entire file is brought in, with the older extension ",
+ ButtonBox["XLS",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Format/XLS"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.572254476411639*^9, 3.572254480267836*^9}, {
+   3.572254807508409*^9, 3.572254890155323*^9}, {3.5722577561409693`*^9, 
+   3.5722577561438303`*^9}, 3.5722578181796923`*^9, {3.572257862545891*^9, 
+   3.572257882082941*^9}, {3.57225791731479*^9, 3.572257939315538*^9}, {
+   3.572257988132707*^9, 3.572257991100554*^9}, {3.5772015510614157`*^9, 
+   3.577201585901967*^9}, {3.577201616319685*^9, 3.577201616655199*^9}, {
+   3.5772016570342617`*^9, 3.577201657076669*^9}, {3.580031313534252*^9, 
+   3.580031335612912*^9}, {3.622382320034409*^9, 3.6223823216024117`*^9}, {
+   3.622394716078754*^9, 
+   3.622394734339118*^9}},ExpressionUUID->"00625342-c599-4944-86ac-\
+68a9f78671ec"],
+
+Cell["Check to make sure you are in the correct directory.", "Text",
+ CellChangeTimes->{{3.5722592677965393`*^9, 3.572259281843086*^9}, {
+  3.6325073977737427`*^9, 
+  3.632507398051406*^9}},ExpressionUUID->"4f8a3997-af83-4f4e-80a9-\
+30e8a19696f7"],
+
+Cell[BoxData[
+ RowBox[{"Directory", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.572257887085602*^9, 
+  3.572257889725679*^9}},ExpressionUUID->"ffa6a8eb-05dd-4df7-9b66-\
+03f98db52db0"],
+
+Cell[TextData[{
+ "Find the names of the Excel files. The Wolfram Language supports both ",
+ ButtonBox["XLS",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Format/XLS"],
+ " and ",
+ ButtonBox["XLSX",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Format/XLSX"],
+ " formats."
+}], "Text",
+ CellChangeTimes->{{3.572259290755014*^9, 3.572259300395837*^9}, {
+  3.572259570799739*^9, 3.5722595708143883`*^9}, {3.573213844702262*^9, 
+  3.573213875446349*^9}, {3.57720166892801*^9, 3.577201719225113*^9}, {
+  3.580031366620131*^9, 3.5800313673715887`*^9}, {3.6223823265443897`*^9, 
+  3.622382332479288*^9}},ExpressionUUID->"71faf5d6-6479-4d1f-bc8b-\
+7ac1fc9e4e18"],
+
+Cell[BoxData[
+ RowBox[{"FileNames", "[", 
+  RowBox[{"\"\<*.xls\>\"", "|", "\"\<*.xlsx\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.5722578953415728`*^9, 3.572257912860519*^9}, {
+  3.573720317295259*^9, 
+  3.573720333867044*^9}},ExpressionUUID->"15425552-9e33-4615-aad9-\
+e671669fdaaa"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"a5559a94-920c-46f3-9cd6-3be1f256757f"],
+
+Cell[CellGroupData[{
+
+Cell["Importing Data: Excel-XLS", "Section",
+ CellChangeTimes->{{3.5734924969557734`*^9, 
+  3.573492508336969*^9}},ExpressionUUID->"1eacd7ed-be60-4e48-b863-\
+6d0d4f911440"],
+
+Cell["Import the file with all the sheets.", "Text",
+ CellChangeTimes->{{3.572259307747368*^9, 
+  3.5722593371322403`*^9}},ExpressionUUID->"95ffd7cd-c7f8-4ba2-92c0-\
+a49ce44f9bde"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"dataFull", "=", 
+    RowBox[{"Import", "[", "\"\<RenewablesGrowth.xls\>\"", "]"}]}], ")"}], "//",
+   "Short"}]], "Input",
+ CellChangeTimes->{{3.572257955457075*^9, 3.572258016462833*^9}, {
+  3.573720791774933*^9, 
+  3.5737207927375603`*^9}},ExpressionUUID->"30c4b136-7103-4524-b854-\
+879a14742cda"],
+
+Cell["This imports the data from the first row of the first sheet.", "Text",
+ CellChangeTimes->{{3.572259350556533*^9, 3.572259395685363*^9}, 
+   3.572259668323365*^9},ExpressionUUID->"89e92078-0953-4cab-b311-\
+c9b9041940f9"],
+
+Cell[BoxData[
+ RowBox[{"Import", "[", 
+  RowBox[{"\"\<RenewablesGrowth.xls\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"\"\<Data\>\"", ",", "1", ",", "1"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.572259411635525*^9, 
+  3.57225946208055*^9}},ExpressionUUID->"5cca11e5-e73f-4241-a50d-\
+2afb69396800"],
+
+Cell["\<\
+This gets the first row out of the first sheet in the full file.\
+\>", "Text",
+ CellChangeTimes->{{3.573213945690276*^9, 
+  3.573213972551983*^9}},ExpressionUUID->"8978d593-65ba-4746-b272-\
+146598d88db3"],
+
+Cell[BoxData[
+ RowBox[{"dataFull", "[", 
+  RowBox[{"[", 
+   RowBox[{"1", ",", "1"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.572259498414099*^9, 3.572259506119651*^9}, {
+  3.573720798257146*^9, 
+  3.5737207990727*^9}},ExpressionUUID->"e309c070-a607-4533-967e-889e18f7087a"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"0541526e-1ce4-4992-8231-db1c0d04e181"],
+
+Cell[CellGroupData[{
+
+Cell["Checking the File", "Section",
+ CellChangeTimes->{{3.573214037876679*^9, 
+  3.573214048793353*^9}},ExpressionUUID->"5de067f9-eefc-43b5-8c94-\
+e3080f78697e"],
+
+Cell[TextData[{
+ "The Wolfram Language",
+ StyleBox[" ",
+  FontSlant->"Italic"],
+ "contains an undocumented function, ",
+ StyleBox["TableView",
+  FontWeight->"Bold"],
+ ", that is very useful for looking at the form of smaller files. You can use \
+it to investigate the data you have imported."
+}], "Text",
+ CellChangeTimes->{{3.573214060210988*^9, 3.573214140083061*^9}, 
+   3.577201741173923*^9, {3.577201781041584*^9, 3.577201803456039*^9}, {
+   3.631643805632524*^9, 3.6316438193559303`*^9}, {3.632507487056356*^9, 
+   3.632507506557754*^9}},ExpressionUUID->"4e6df645-d5b9-480e-a018-\
+61d787d95afb"],
+
+Cell["\<\
+This gives an idea of the size of the file: one sheet with 15 rows and three \
+columns.\
+\>", "Text",
+ CellChangeTimes->{{3.573214164507824*^9, 3.573214206035904*^9}, {
+  3.580031434394374*^9, 3.580031435601119*^9}, {3.622293890020361*^9, 
+  3.6222938903642063`*^9}},ExpressionUUID->"c72b2ecb-aa1b-4479-8aee-\
+bbce634b4bf1"],
+
+Cell[BoxData[
+ RowBox[{"Dimensions", "[", "dataFull", "]"}]], "Input",
+ CellChangeTimes->{{3.573214143861928*^9, 3.573214150281468*^9}, {
+  3.5737208075233936`*^9, 
+  3.57372080831347*^9}},ExpressionUUID->"6b744259-d1eb-457f-b9c8-\
+ec203971d5c1"],
+
+Cell[TextData[{
+ "In its current form, ",
+ StyleBox["TableView",
+  FontWeight->"Bold"],
+ " will not automatically expand cells or use word wrapping to display the \
+full contents of a cell, but the columns can be expanded to display the full \
+contents."
+}], "Text",
+ CellChangeTimes->{{3.573214327982854*^9, 3.573214407967141*^9}, 
+   3.577201822039942*^9, 3.580031485753309*^9, {3.631643747873807*^9, 
+   3.631643783477579*^9}, 
+   3.632507530430395*^9},ExpressionUUID->"1460e656-caf1-4a5a-9460-\
+cdeb255c9822"],
+
+Cell[BoxData[
+ RowBox[{"TableView", "[", 
+  RowBox[{"dataFull", "[", 
+   RowBox[{"[", "1", "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.573214210505636*^9, 3.573214219115657*^9}, {
+  3.573720816441718*^9, 
+  3.573720817209684*^9}},ExpressionUUID->"e5fb7075-22fd-4731-afa6-\
+f9a2d3862e86"],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", "dataFull", "]"}]], "Input",
+ CellChangeTimes->{{3.573216753300809*^9, 3.573216756795937*^9}, {
+  3.573720822744611*^9, 
+  3.573720823561677*^9}},ExpressionUUID->"df197550-207c-4f52-b5f1-\
+b8328b19d470"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"cd2d6971-be5a-42cc-bd63-9f40c5b618d4"],
+
+Cell[CellGroupData[{
+
+Cell["Importing Data: Excel-XLSX", "Section",
+ CellChangeTimes->{{3.573216705660878*^9, 3.573216714802392*^9}, {
+  3.573467603186885*^9, 
+  3.5734676132255487`*^9}},ExpressionUUID->"617e30d0-fab7-412f-bc70-\
+95977e2d164a"],
+
+Cell[CellGroupData[{
+
+Cell["Excel XLSX", "Subsection",
+ CellChangeTimes->{{3.5732167300594883`*^9, 3.573216736682599*^9}, {
+  3.577201835499742*^9, 
+  3.5772018377602262`*^9}},ExpressionUUID->"2fc958ed-e69a-49d5-b04a-\
+0288b8acf3f2"],
+
+Cell["Find the more recent Excel files in your data directory.", "Text",
+ CellChangeTimes->{{3.573216954985051*^9, 3.5732169737993507`*^9}, {
+   3.57346738268592*^9, 3.573467388910128*^9}, 
+   3.631643860260314*^9},ExpressionUUID->"73d03b35-c2c1-427d-a70a-\
+dab91ddb8ad8"],
+
+Cell[BoxData[
+ RowBox[{"FileNames", "[", "\"\<*.xlsx\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.573216978474862*^9, 
+  3.57321700627389*^9}},ExpressionUUID->"48d84966-e206-42d9-abda-\
+7e05854dad43"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"data", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<table_1_14_a.xlsx\>\"", ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<XLSX\>\"", ",", "\"\<Data\>\"", ",", "1"}], "}"}]}], 
+    "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.573216762515282*^9, 3.573216769526681*^9}, {
+  3.573217036269288*^9, 3.573217083699712*^9}, {3.573217153868919*^9, 
+  3.573217160557212*^9}},ExpressionUUID->"9162de33-1e13-4cf0-a913-\
+1a7adffad87a"],
+
+Cell[BoxData[
+ RowBox[{"Dimensions", "[", "data", "]"}]], "Input",
+ CellChangeTimes->{{3.573217098813888*^9, 
+  3.5732171045076737`*^9}},ExpressionUUID->"7a4cc694-a84c-415e-8560-\
+5aaa4c1eaa21"],
+
+Cell[BoxData[
+ RowBox[{"TableView", "[", "data", "]"}]], "Input",
+ CellChangeTimes->{{3.5732170512963676`*^9, 3.573217059690249*^9}, {
+  3.573217114439019*^9, 3.5732171165241833`*^9}, {3.573217174269044*^9, 
+  3.573217175196173*^9}},ExpressionUUID->"422e410b-2366-4d4e-a8a9-\
+c23c6455146b"],
+
+Cell[TextData[{
+ "This gets the first row from the data. Note that in ",
+ StyleBox[ButtonBox["InputForm",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/InputForm"],
+  FontWeight->"Bold"],
+ " there are a number of empty strings. These are placeholders for cells in \
+the Excel document having no content."
+}], "Text",
+ CellChangeTimes->{{3.573465846158018*^9, 3.573465926251943*^9}, 
+   3.577201846659831*^9, {3.631643864561726*^9, 
+   3.631643875224627*^9}},ExpressionUUID->"551b09c5-fcad-4641-8030-\
+d505b2c1f660"],
+
+Cell[BoxData[
+ RowBox[{"Column", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"data", "[", 
+     RowBox[{"[", "1", "]"}], "]"}], ",", "\"\<  \>\"", ",", 
+    RowBox[{
+     RowBox[{"data", "[", 
+      RowBox[{"[", "1", "]"}], "]"}], "//", "InputForm"}]}], "}"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.573217181994218*^9, 3.573217237733484*^9}, {
+  3.573720859246907*^9, 
+  3.573720863379075*^9}},ExpressionUUID->"73940990-6ca9-4d49-b026-\
+2a672523db34"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"79c6d041-66cd-4506-84b7-22ece4cf7673"],
+
+Cell[CellGroupData[{
+
+Cell["Examining the Data: Excel-XLSX", "Section",
+ CellChangeTimes->{{3.573217324185228*^9, 3.5732173347416277`*^9}, {
+  3.573465936580796*^9, 3.573465939676096*^9}, {3.573467631617847*^9, 
+  3.573467652074898*^9}, {3.573470891349139*^9, 
+  3.573470897293269*^9}},ExpressionUUID->"762795e5-9bbf-46d8-8db6-\
+e0cc3446b68d"],
+
+Cell[TextData[StyleBox["Here, get the first six rows from the file. Numerical \
+data begins in the sixth row of the array.", "Text"]], "Text",
+ CellChangeTimes->{{3.573465956387935*^9, 3.573466034157804*^9}, {
+  3.580031559360266*^9, 3.580031564309948*^9}, {3.631643919439043*^9, 
+  3.6316439203348823`*^9}},ExpressionUUID->"b2581ba3-47a1-48a1-aa08-\
+a075d4bcd3be"],
+
+Cell[BoxData[
+ RowBox[{"data", "[", 
+  RowBox[{"[", 
+   RowBox[{";;", "6"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.573217342020973*^9, 
+  3.573217373857584*^9}},ExpressionUUID->"13da2e42-6b23-4354-bede-\
+f0862a9d0681"],
+
+Cell[TextData[{
+ "This is a clear illustration of how ",
+ StyleBox["TableView",
+  FontWeight->"Bold"],
+ " can help in understanding how the file is structured."
+}], "Text",
+ CellChangeTimes->{{3.573720930261271*^9, 3.573720986420153*^9}, 
+   3.577201883939774*^9, 3.580031593686182*^9, {3.63164391491537*^9, 
+   3.631643915761439*^9}},ExpressionUUID->"8f3b387a-0dd3-4e87-be0a-\
+a380ee641545"],
+
+Cell[BoxData[
+ RowBox[{"TableView", "[", 
+  RowBox[{
+   RowBox[{"data", "[", 
+    RowBox[{"[", 
+     RowBox[{";;", "6"}], "]"}], "]"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", " ", "1200"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.573217458530437*^9, 3.573217488851344*^9}, {
+  3.573217578437911*^9, 3.573217600612494*^9}, {3.573217744401511*^9, 
+  3.573217754023902*^9}, {3.573217802699049*^9, 
+  3.573217854825625*^9}},ExpressionUUID->"63c6cf3f-02ca-41d4-aa6c-\
+ac4192ddcb26"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"308d9f22-7af6-41f2-922b-e5f367ba0683"],
+
+Cell[CellGroupData[{
+
+Cell["Manipulating the Data: Excel-XLSX", "Section",
+ CellChangeTimes->{{3.573467694806151*^9, 3.573467713291117*^9}, {
+  3.573470908522791*^9, 
+  3.573470913677424*^9}},ExpressionUUID->"14036b89-90c8-47fa-9425-\
+13b02abd9b82"],
+
+Cell["\<\
+Here are the first four elements of the sixth row, together with the \
+associated data types. While it may seem to be overkill to look at such \
+things, many users overlook these details and then wonder why they do not get \
+answers.\
+\>", "Text",
+ CellChangeTimes->{{3.573466071006408*^9, 3.573466179160433*^9}, {
+  3.58003163093382*^9, 3.580031653012314*^9}, {3.631643945680018*^9, 
+  3.631643950397559*^9}},ExpressionUUID->"179aa63d-0667-494d-b5f8-\
+ad0579062e1f"],
+
+Cell[BoxData[
+ RowBox[{"Grid", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"data", "[", 
+     RowBox[{"[", 
+      RowBox[{"6", ",", 
+       RowBox[{";;", "4"}]}], "]"}], "]"}], ",", 
+    RowBox[{"Head", "/@", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"6", ",", 
+        RowBox[{";;", "4"}]}], "]"}], "]"}]}]}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5732179104142647`*^9, 3.573217937018621*^9}, {
+  3.573217972674769*^9, 3.573218002550811*^9}, {3.5732181430542307`*^9, 
+  3.573218191098767*^9}},ExpressionUUID->"d7f37e02-f0ec-4d82-9861-\
+f6b700a0ed70"],
+
+Cell["\<\
+This gets the second element from the first eight rows and then checks to see \
+which are numeric. \
+\>", "Text",
+ CellChangeTimes->{{3.5734662317692423`*^9, 3.5734662643457603`*^9}, {
+  3.573721045132649*^9, 3.5737210465923996`*^9}, {3.580031663899707*^9, 
+  3.580031664708081*^9}},ExpressionUUID->"bb03456a-b0e0-469b-a681-\
+c4051baa2c48"],
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{
+   RowBox[{"data", "[", 
+    RowBox[{"[", 
+     RowBox[{
+      RowBox[{";;", "8"}], ",", "2"}], "]"}], "]"}], ",", 
+   RowBox[{"_", "?", "NumericQ"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.5732183483457627`*^9, 
+  3.5732184146130443`*^9}},ExpressionUUID->"ce181436-688c-4a4f-97bf-\
+6b1468bc7e1e"],
+
+Cell[TextData[{
+ "You can use the ",
+ StyleBox[ButtonBox["Extract",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Extract"],
+  FontWeight->"Bold"],
+ " function together with the ",
+ StyleBox[ButtonBox["Position",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Position"],
+  FontWeight->"Bold"],
+ " function to get the values that are numeric."
+}], "Text",
+ CellChangeTimes->{{3.573466280026219*^9, 3.573466300762566*^9}, {
+  3.573466341803144*^9, 3.573466360811591*^9}, {3.57720189652843*^9, 
+  3.5772019000446663`*^9}, {3.631643965469195*^9, 
+  3.6316439907433767`*^9}},ExpressionUUID->"cd5b9967-f6c2-48be-9fb5-\
+cd0c1df3704c"],
+
+Cell["The numeric values are in the second column.", "Text",
+ CellChangeTimes->{{3.573466428452697*^9, 3.573466440373025*^9}, {
+  3.580031691860319*^9, 
+  3.580031692379047*^9}},ExpressionUUID->"358b791e-45f3-4e0c-ae01-\
+d949094d5e46"],
+
+Cell[BoxData[
+ RowBox[{"Extract", "[", 
+  RowBox[{
+   RowBox[{"data", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "2"}], "]"}], "]"}], ",", 
+   RowBox[{"Position", "[", 
+    RowBox[{
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "2"}], "]"}], "]"}], ",", 
+     RowBox[{"_", "?", "NumericQ"}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.573218449554356*^9, 
+  3.573218494782268*^9}},ExpressionUUID->"81f6c890-e599-47d5-902c-\
+615e711f02eb"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"20444a3c-4306-481d-a173-22bb43f9293b"],
+
+Cell[CellGroupData[{
+
+Cell["Importing Data: Excel-XLSX", "Section",
+ CellChangeTimes->{{3.573467737901903*^9, 
+  3.573467752948031*^9}},ExpressionUUID->"8c7d02f0-367d-40bb-ad38-\
+47154dc1c549"],
+
+Cell[TextData[{
+ "An alternate approach uses ",
+ StyleBox[ButtonBox["Part",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Part"],
+  FontWeight->"Bold"],
+ " and ",
+ StyleBox[ButtonBox["Cases",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Cases"],
+  FontWeight->"Bold"],
+ " to get the same values. ",
+ StyleBox[ButtonBox["Cases",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Cases"],
+  FontWeight->"Bold"],
+ " requires knowing something about level specifications in expressions, and \
+elements not at the top level of an expression may not be found."
+}], "Text",
+ CellChangeTimes->{{3.573466495652101*^9, 3.573466524358539*^9}, {
+   3.5734666366647177`*^9, 3.573466711522058*^9}, {3.577201932074946*^9, 
+   3.577201935636107*^9}, 3.577201966227972*^9, {3.631644006949006*^9, 
+   3.631644039179403*^9}},ExpressionUUID->"260f5278-7fed-406f-a6df-\
+4106e0b3f05c"],
+
+Cell[BoxData[
+ RowBox[{"Cases", "[", 
+  RowBox[{
+   RowBox[{"data", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "2"}], "]"}], "]"}], ",", 
+   RowBox[{"_", "?", "NumericQ"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.573466549734416*^9, 
+  3.573466596801938*^9}},ExpressionUUID->"87e2859a-2a90-4e0c-8b0f-\
+9316da5274a8"],
+
+Cell["\<\
+To get values in the second and third columns, you need to specify levels.\
+\>", "Text",
+ CellChangeTimes->{{3.573466773643408*^9, 3.5734668007312117`*^9}, 
+   3.580031723476834*^9, {3.631644049984724*^9, 
+   3.631644050200382*^9}},ExpressionUUID->"8a110f6b-94b3-42d9-9183-\
+de998962440d"],
+
+Cell[BoxData[
+ RowBox[{"Cases", "[", 
+  RowBox[{
+   RowBox[{"data", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", "3"}], "}"}]}], "]"}], "]"}], ",", 
+   RowBox[{"_", "?", "NumericQ"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.573466549734416*^9, 3.573466596801938*^9}, {
+  3.57346672126229*^9, 
+  3.573466755060219*^9}},ExpressionUUID->"78416c05-008d-40f2-b5a7-\
+c869f1a5dea4"],
+
+Cell[TextData[{
+ "The numerical values are at the second level, so specifying any integer \
+greater than 1 will work. Note that ",
+ StyleBox[ButtonBox["Cases",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Cases"],
+  FontWeight->"Bold"],
+ " does not preserve the data structure."
+}], "Text",
+ CellChangeTimes->{{3.573466819163866*^9, 3.573466869876745*^9}, {
+   3.573466908853361*^9, 3.573466933142037*^9}, 3.577201972155014*^9, {
+   3.580031745298869*^9, 3.580031763401425*^9}, 
+   3.631644061458147*^9},ExpressionUUID->"68f1c0d8-2162-4a73-87ed-\
+2390a41bb288"],
+
+Cell[BoxData[
+ RowBox[{"Cases", "[", 
+  RowBox[{
+   RowBox[{"data", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", "3"}], "}"}]}], "]"}], "]"}], ",", 
+   RowBox[{"_", "?", "NumericQ"}], ",", "2"}], "]"}]], "Input",
+ CellChangeTimes->{{3.573466549734416*^9, 3.573466596801938*^9}, {
+  3.57346672126229*^9, 3.573466755060219*^9}, {3.573466873586511*^9, 
+  3.573466879535264*^9}},ExpressionUUID->"da309a6c-32de-4cd6-a2df-\
+9627a5f566a8"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"b29ac36c-01ba-4c14-b723-3096348f83cb"],
+
+Cell[CellGroupData[{
+
+Cell["Importing Data: Excel-XLSX", "Section",
+ CellChangeTimes->{
+  3.573467802295506*^9},ExpressionUUID->"5bea998d-da4e-4f6d-a79e-\
+86d41907baf1"],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["Part",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Part"],
+  FontWeight->"Bold"],
+ " keeps the structure but takes everything. This leads to ordered pairs of \
+strings and empty strings from empty cells in the original spreadsheet."
+}], "Text",
+ CellChangeTimes->{{3.57346783099146*^9, 3.5734679459917793`*^9}, 
+   3.577201981035075*^9, {3.631644091241201*^9, 
+   3.63164409935585*^9}},ExpressionUUID->"2948bda3-24de-4e6e-81eb-\
+80899810afd5"],
+
+Cell[BoxData[
+ RowBox[{"data", "[", 
+  RowBox[{"[", 
+   RowBox[{
+    RowBox[{"6", ";;"}], ",", 
+    RowBox[{"2", ";;", "3"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.573466961033867*^9, 
+  3.573466981507127*^9}},ExpressionUUID->"d72b6dfc-042a-4683-9911-\
+ae3282d60488"],
+
+Cell[TextData[{
+ "If you are more specific with what you want, ",
+ StyleBox[ButtonBox["Cases",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Cases"],
+  FontWeight->"Bold"],
+ " will give numerical ordered pairs and maintain the structure."
+}], "Text",
+ CellChangeTimes->{{3.573467083780654*^9, 3.5734671299933987`*^9}, 
+   3.577201991362624*^9, 3.580147188372986*^9, {3.62229414730756*^9, 
+   3.622294182213612*^9}, {3.622394807729549*^9, 
+   3.6223948088668003`*^9}},ExpressionUUID->"fd1c1763-35b3-4646-b507-\
+777606c389d1"],
+
+Cell[BoxData[
+ RowBox[{"Cases", "[", 
+  RowBox[{
+   RowBox[{"data", "[", 
+    RowBox[{"[", 
+     RowBox[{
+      RowBox[{"6", ";;"}], ",", 
+      RowBox[{"2", ";;", "3"}]}], "]"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"_", "?", "NumericQ"}], ",", 
+     RowBox[{"_", "?", "NumericQ"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.573466961033867*^9, 3.573466981507127*^9}, {
+  3.573467135447438*^9, 
+  3.573467170012649*^9}},ExpressionUUID->"f17ed0d1-3546-4f99-bd03-\
+2aa1aeb36c8d"],
+
+Cell["Get the column headings for your data.", "Text",
+ CellChangeTimes->{{3.573467477481946*^9, 3.573467491591567*^9}, 
+   3.632507592746986*^9},ExpressionUUID->"031486a7-749f-4b70-bcf8-\
+29972543dbec"],
+
+Cell[BoxData[
+ RowBox[{"data", "[", 
+  RowBox[{"[", 
+   RowBox[{"5", ",", 
+    RowBox[{"2", ";;", "3"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.573467494846751*^9, 
+  3.573467510289034*^9}},ExpressionUUID->"aba905f4-7862-4bce-af6b-\
+74a60ac8efcc"],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", "data", "]"}]], "Input",
+ CellChangeTimes->{{3.573470214727788*^9, 
+  3.573470217856717*^9}},ExpressionUUID->"53899403-c11f-4aaa-9986-\
+62cad991a491"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"89a93a05-73e1-46f1-92fa-ff3360e928f5"],
+
+Cell[CellGroupData[{
+
+Cell["Importing Data: Comma- or Tab-Separated Values ", "Section",
+ CellChangeTimes->{{3.572254538221219*^9, 3.57225454205244*^9}, {
+   3.5734712481036882`*^9, 3.573471269124423*^9}, {3.5800318532654543`*^9, 
+   3.580031858231058*^9}, 
+   3.580217716906458*^9},ExpressionUUID->"88fdca54-d171-4f0d-98b8-\
+de64f0537255"],
+
+Cell[CellGroupData[{
+
+Cell["Comma- or Tab-Separated Values", "Subsection",
+ CellChangeTimes->{{3.572254548868926*^9, 3.572254561436851*^9}, {
+   3.577202000869389*^9, 3.577202005188673*^9}, {3.580031873329661*^9, 
+   3.580031878054779*^9}, 
+   3.580217721342798*^9},ExpressionUUID->"67c2685a-1cb6-47af-8b29-\
+a6988a80c515"],
+
+Cell[TextData[{
+ "This is a less well-defined area, as some files will have the extension ",
+ ButtonBox["CSV",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Format/CSV"],
+ " or ",
+ ButtonBox["TSV",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Format/TSV"],
+ ", but more often the extension will be ",
+ ButtonBox[".txt",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Format/Text"],
+ " or .dat. In some cases the best approach is to include a second argument \
+of \[OpenCurlyDoubleQuote]Table\[CloseCurlyDoubleQuote] or \
+\[OpenCurlyDoubleQuote]List\[CloseCurlyDoubleQuote] to ensure the data is \
+formatted correctly on import. Experience will teach when to use the format \
+argument and when it is not necessary."
+}], "Text",
+ CellChangeTimes->{{3.572260814249333*^9, 3.572260939993057*^9}, {
+   3.572509974093165*^9, 3.572509981690977*^9}, {3.573721195918004*^9, 
+   3.573721235652679*^9}, {3.577202011951426*^9, 3.577202075097075*^9}, {
+   3.5772021842690473`*^9, 3.577202187490365*^9}, {3.577202219940762*^9, 
+   3.57720222662853*^9}, 3.5800318911836777`*^9, 3.580031933774598*^9, {
+   3.580147215439978*^9, 3.5801472391659207`*^9}, {3.6316442286000834`*^9, 
+   3.6316442413839483`*^9}},ExpressionUUID->"e51c5bc6-2b22-4637-9cc5-\
+e9e4eeb71fff"],
+
+Cell[TextData[{
+ "Check to see what ",
+ ButtonBox["CSV",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Format/CSV"],
+ " files are present."
+}], "Text",
+ CellChangeTimes->{{3.572261145373029*^9, 3.572261167652338*^9}, 
+   3.577202256302507*^9},ExpressionUUID->"d1bbe82e-67df-482a-96d6-\
+50cd2762d073"],
+
+Cell[BoxData[
+ RowBox[{"FileNames", "[", "\"\<*.csv\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.572260950316493*^9, 
+  3.5722609641790643`*^9}},ExpressionUUID->"969ff728-42b2-47b0-94bb-\
+d0a9f964d3df"],
+
+Cell["Import the stock data.", "Text",
+ CellChangeTimes->{{3.572261187916894*^9, 
+  3.572261193508978*^9}},ExpressionUUID->"d120159d-f676-46a5-bdb7-\
+8d3790eb7782"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"stkDat", "=", 
+    RowBox[{"Import", "[", 
+     RowBox[{"\"\<stockdata.csv\>\"", ",", "\"\<Table\>\""}], "]"}]}], ")"}], 
+  "//", "Short"}]], "Input",
+ CellChangeTimes->{{3.572260985007032*^9, 
+  3.572261050732808*^9}},ExpressionUUID->"3a066a14-b7b8-4ed9-8230-\
+75ef1e8cee66"],
+
+Cell["Check the dimensions.", "Text",
+ CellChangeTimes->{{3.572261198829179*^9, 
+  3.572261203389184*^9}},ExpressionUUID->"2ebe884c-8f04-47ab-8b30-\
+46b01b360c2c"],
+
+Cell[BoxData[
+ RowBox[{"Dimensions", "[", "stkDat", "]"}]], "Input",
+ CellChangeTimes->{{3.572261056643101*^9, 
+  3.572261062516797*^9}},ExpressionUUID->"a4443190-bb8a-4307-a824-\
+233e7e2f7324"],
+
+Cell[TextData[{
+ "This does not seem to conform to what you see above, as it would seem there \
+are four elements in each row. Check to see what is going on by putting a row \
+in ",
+ StyleBox[ButtonBox["InputForm",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/InputForm"],
+  FontWeight->"Bold"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.572261211918181*^9, 3.5722613255512*^9}, {
+   3.5772022647878857`*^9, 3.577202275195403*^9}, 3.580032007724883*^9, {
+   3.631644180596451*^9, 3.631644193984511*^9}, {3.631644264862645*^9, 
+   3.631644271110357*^9}},ExpressionUUID->"9d70df48-4db5-482b-a3b1-\
+8df8e9b62931"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"stkDat", "[", 
+   RowBox[{"[", "1", "]"}], "]"}], "//", "InputForm"}]], "Input",
+ CellChangeTimes->{{3.572261097711093*^9, 
+  3.572261112933576*^9}},ExpressionUUID->"058b4291-0bba-4320-a97e-\
+f80cc9ecd8a9"],
+
+Cell[TextData[{
+ "The year and the value of the stock are returned as a single string. You \
+can clean this up using rules and the ",
+ StyleBox[ButtonBox["ReplaceAll",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/ReplaceAll"],
+  FontWeight->"Bold"],
+ " function."
+}], "Text",
+ CellChangeTimes->{{3.572261392617795*^9, 3.5722615018912888`*^9}, 
+   3.5737212759751678`*^9, {3.577202293805185*^9, 3.577202305398396*^9}, {
+   3.631644197179657*^9, 3.6316442072696877`*^9}, {3.631644278366046*^9, 
+   3.631644278637354*^9}},ExpressionUUID->"926736ca-c0c5-4a89-bca9-\
+5584d06f76f5"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"61958262-f849-4ff0-908b-e9314785552d"],
+
+Cell[CellGroupData[{
+
+Cell["Cleaning Up the Data", "Section",
+ CellChangeTimes->{{3.572261515968816*^9, 
+  3.572261526930423*^9}},ExpressionUUID->"6081329c-48c5-426b-a3e8-\
+9d71b7fef2e4"],
+
+Cell[TextData[{
+ "You can use some string manipulations to make things work. Break a string \
+into usable parts using ",
+ StyleBox[ButtonBox["StringSplit",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/StringSplit"],
+  FontWeight->"Bold"],
+ ". After breaking the string up, rearrange the terms in the expression and \
+reassemble them in a usable form through repeated use of ",
+ StyleBox[ButtonBox["ReplaceAll",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/ReplaceAll"],
+  FontWeight->"Bold"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.5722615406595984`*^9, 3.572261612097159*^9}, {
+   3.5722630270696483`*^9, 3.572263101341097*^9}, 3.573223368047204*^9, 
+   3.573978916588591*^9, {3.577202331600691*^9, 3.577202372199977*^9}, 
+   3.580032053322791*^9, {3.631644316573867*^9, 
+   3.631644375777169*^9}},ExpressionUUID->"851f05d8-e7ad-444f-bfbf-\
+8a589c47cf3f"],
+
+Cell["Checking on the abbreviations used for the months.", "Text",
+ CellChangeTimes->{{3.5722632135373087`*^9, 
+  3.572263229735656*^9}},ExpressionUUID->"791b7c73-474d-409b-856d-\
+10cdfccb085a"],
+
+Cell[BoxData[
+ RowBox[{"DeleteDuplicates", "[", 
+  RowBox[{"stkDat", "[", 
+   RowBox[{"[", 
+    RowBox[{"All", ",", "1"}], "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5722622438222427`*^9, 3.572262250808961*^9}, {
+  3.572263239219561*^9, 
+  3.572263249937586*^9}},ExpressionUUID->"5bda8e87-bcfd-46f4-b7a3-\
+51140156908c"],
+
+Cell["\<\
+Experimenting with a single row of the data. Begin by splitting the year and \
+value.\
+\>", "Text",
+ CellChangeTimes->{{3.572263123326219*^9, 3.572263136302199*^9}, {
+   3.572263998508725*^9, 3.572264023572999*^9}, 
+   3.631644389440041*^9},ExpressionUUID->"8c77946c-80c6-4e14-a180-\
+d9a42b2d5d3d"],
+
+Cell[BoxData[
+ RowBox[{"res", "=", 
+  RowBox[{
+   RowBox[{"stkDat", "[", 
+    RowBox[{"[", "1", "]"}], "]"}], "/.", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a_String", ",", "b_", ",", "c_String"}], "}"}], 
+     "\[RuleDelayed]", " ", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{"{", 
+       RowBox[{"a", ",", "b", ",", 
+        RowBox[{"StringSplit", "[", 
+         RowBox[{"c", ",", "\"\<,\>\""}], "]"}]}], "}"}], "]"}]}], 
+    "}"}]}]}]], "Input",
+ CellChangeTimes->{{3.572261658454211*^9, 3.572261726176689*^9}, {
+  3.572261758219551*^9, 3.5722618549145193`*^9}, {3.572262297309276*^9, 
+  3.572262314418522*^9}, {3.572262425556299*^9, 3.572262562797961*^9}, {
+  3.572262596909192*^9, 3.5722626456712003`*^9}, {3.572262702552659*^9, 
+  3.572262752650581*^9}, {3.572262873080887*^9, 3.572262946135728*^9}, {
+  3.572262990752038*^9, 3.572262995183275*^9}, {3.57226394523134*^9, 
+  3.572263956445804*^9}},ExpressionUUID->"d900f5ad-688e-4ac0-aada-\
+b55b859829d8"],
+
+Cell["\<\
+Now take the result from applying the first set of rules and rearrange the \
+terms into a usable form with a second set of rules.\
+\>", "Text",
+ CellChangeTimes->{{3.572264033156918*^9, 3.572264067781884*^9}, {
+   3.5722641790212092`*^9, 3.572264205384185*^9}, 3.573978924340609*^9, {
+   3.6316443950636177`*^9, 
+   3.6316443955355577`*^9}},ExpressionUUID->"76683038-adb1-4af1-88b5-\
+00346bcad139"],
+
+Cell[BoxData[
+ RowBox[{"res", "/.", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"a_", ",", "b_", ",", "c_", ",", "d_"}], "}"}], "\[RuleDelayed]",
+     " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"ToExpression", "@", 
+       RowBox[{"DateList", "[", 
+        RowBox[{"StringJoin", "[", 
+         RowBox[{"c", ",", "\"\</\>\"", ",", 
+          RowBox[{"a", "/.", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"\"\<Jul\>\"", "\[Rule]", " ", "\"\<7\>\""}], ",", 
+             RowBox[{"\"\<Aug\>\"", "\[Rule]", " ", "\"\<8\>\""}], ",", 
+             RowBox[{"\"\<Sep\>\"", "\[Rule]", " ", "9"}]}], "}"}]}], ",", 
+          "\"\</\>\"", ",", 
+          RowBox[{"ToString", "[", "b", "]"}]}], "]"}], "]"}]}], ",", 
+      RowBox[{"ToExpression", "[", "d", "]"}]}], "}"}]}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.572261658454211*^9, 3.572261726176689*^9}, {
+  3.572261758219551*^9, 3.5722618549145193`*^9}, {3.572262297309276*^9, 
+  3.572262314418522*^9}, {3.572262425556299*^9, 3.572262562797961*^9}, {
+  3.572262596909192*^9, 3.5722626456712003`*^9}, {3.572262702552659*^9, 
+  3.572262752650581*^9}, {3.572262873080887*^9, 3.572262946135728*^9}, {
+  3.572262990752038*^9, 3.572262995183275*^9}, {3.57226394523134*^9, 
+  3.572263960118987*^9}, {3.572264933282131*^9, 3.572264934399866*^9}, {
+  3.5722650447701387`*^9, 3.572265045457687*^9}, {3.572265275121215*^9, 
+  3.572265281365003*^9}},ExpressionUUID->"3ac9c9ae-257e-4183-b5b8-\
+febc36ed2141"],
+
+Cell["\<\
+You can easily assign a name to the rules you have created to make them \
+easier to use, with a number of datasets sharing a given form. Use of the \
+second set of rules will follow the application of the first set.\
+\>", "Text",
+ CellChangeTimes->{{3.5722637188567038`*^9, 3.57226377108849*^9}, {
+  3.572264227440274*^9, 3.572264247745263*^9}, {3.580032078154586*^9, 
+  3.5800320982179537`*^9}, {3.631644402111796*^9, 
+  3.6316444086870413`*^9}},ExpressionUUID->"5abb7e0e-792c-49d4-bf2f-\
+9dd63e9612b5"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"rules1", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a_String", ",", "b_", ",", "c_String"}], "}"}], 
+     "\[RuleDelayed]", " ", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{"{", 
+       RowBox[{"a", ",", "b", ",", 
+        RowBox[{"StringSplit", "[", 
+         RowBox[{"c", ",", "\"\<,\>\""}], "]"}]}], "}"}], "]"}]}], "}"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.572263781602197*^9, 3.572263791951167*^9}, {
+  3.57226451573738*^9, 
+  3.572264560992695*^9}},ExpressionUUID->"73cf6e56-bf96-4c2e-ab36-\
+84b38c2109a8"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"rules2", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a_", ",", "b_", ",", "c_", ",", "d_"}], "}"}], 
+     "\[RuleDelayed]", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"ToExpression", "@", 
+        RowBox[{"DateList", "[", 
+         RowBox[{"StringJoin", "[", 
+          RowBox[{"c", ",", "\"\</\>\"", ",", 
+           RowBox[{"a", "/.", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"\"\<Jul\>\"", "\[Rule]", " ", "\"\<7\>\""}], ",", 
+              RowBox[{"\"\<Aug\>\"", "\[Rule]", " ", "\"\<8\>\""}], ",", 
+              RowBox[{"\"\<Sep\>\"", "\[Rule]", " ", "\"\<9\>\""}]}], "}"}]}],
+            ",", "\"\</\>\"", ",", 
+           RowBox[{"ToString", "[", "b", "]"}]}], "]"}], "]"}]}], ",", 
+       RowBox[{"ToExpression", "[", "d", "]"}]}], "}"}]}], "}"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.572263781602197*^9, 3.572263791951167*^9}, {
+  3.57226451573738*^9, 3.572264557913082*^9}, {3.5722649482885237`*^9, 
+  3.572264949247697*^9}, {3.572265053778517*^9, 3.572265054850378*^9}, {
+  3.572265295006783*^9, 
+  3.572265299174111*^9}},ExpressionUUID->"a6309940-64e2-46d2-b72c-\
+c0decbfb158e"],
+
+Cell["Fix all the data at once.", "Text",
+ CellChangeTimes->{{3.5722633228733797`*^9, 3.57226332854516*^9}, {
+  3.5722636269500427`*^9, 
+  3.572263630630286*^9}},ExpressionUUID->"139cce31-512d-4fc5-be76-\
+2d1f33c737aa"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"stkDat2", "=", 
+    RowBox[{
+     RowBox[{"stkDat", "/.", "rules1"}], "/.", "rules2"}]}], ")"}], "//", 
+  "Short"}]], "Input",
+ CellChangeTimes->{{3.572263331622582*^9, 3.572263362304443*^9}, {
+  3.572263586244313*^9, 3.572263616185083*^9}, {3.572264138564197*^9, 
+  3.572264149362299*^9}, {3.57226433489954*^9, 3.572264338308036*^9}, {
+  3.57226457257794*^9, 3.572264575760167*^9}, {3.572264981406535*^9, 
+  3.572264985567046*^9}, {3.572265387798705*^9, 3.572265420198478*^9}, {
+  3.572265492888483*^9, 3.5722655011828747`*^9}, {3.572265543624644*^9, 
+  3.572265591529357*^9}, {3.572265787386655*^9, 
+  3.572265824166586*^9}},ExpressionUUID->"8222a945-9f6b-4e15-a6f2-\
+48e8fcc0428a"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"1603c7fc-220f-4e04-aa99-bfffde1fec96"],
+
+Cell[CellGroupData[{
+
+Cell["Replacing Missing or Incorrect Data", "Section",
+ CellChangeTimes->{{3.572510233278285*^9, 3.572510255563554*^9}},
+ CellTags->
+  "SelectFishData",ExpressionUUID->"fb3409dd-05fd-4104-9723-58f88589e2c5"],
+
+Cell[TextData[{
+ "While this is certainly not an appropriate approach in all cases, there are \
+situations where it is a reasonable thing to do. The file breamData.csv \
+contains an example. This file contains a subset of data collected in Finland \
+in the early twentieth century. Begin by bringing the data into the Wolfram \
+Language and formatting it using ",
+ StyleBox["TableView",
+  FontWeight->"Bold"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.572510245916135*^9, 3.572510297748297*^9}, {
+   3.573315917916918*^9, 3.573316004999151*^9}, {3.573316123490313*^9, 
+   3.573316159547317*^9}, 3.577202693704156*^9, 3.5800321519776373`*^9, {
+   3.622296965310443*^9, 3.622296968626876*^9}, {3.622382389727498*^9, 
+   3.622382396206953*^9}},ExpressionUUID->"81b825eb-669b-464e-a8d3-\
+4fa3fb392760"],
+
+Cell[BoxData[
+ RowBox[{"FileNames", "[", "\"\<*.csv\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.573315856922288*^9, 3.57331586142234*^9}, {
+  3.573315897519186*^9, 
+  3.573315904260964*^9}},ExpressionUUID->"51963d83-0e46-41d8-ba8e-\
+633e54eef99c"],
+
+Cell["\<\
+The breamData.csv file consists of information about 159 fish taken from Lake \
+Laengelmavesi, Finland. The data included seven species, and this file \
+contains the information on one of the most frequent species.\
+\>", "Text",
+ CellChangeTimes->{{3.573471485784218*^9, 3.573471510176966*^9}, {
+  3.573484689660863*^9, 3.573484860947659*^9}, {3.574113370800948*^9, 
+  3.574113372942309*^9}, {3.5800322333187304`*^9, 
+  3.580032286725535*^9}},ExpressionUUID->"6c6b09dc-3d5c-4778-a0d4-\
+1fc8ad699f2d"],
+
+Cell[BoxData[
+ RowBox[{"TableView", "[", 
+  RowBox[{
+   RowBox[{"breamDat", "=", " ", 
+    RowBox[{"Import", "[", 
+     RowBox[{"\"\<breamData.csv\>\"", ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<CSV\>\"", ",", "\"\<Data\>\""}], "}"}]}], "]"}]}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", " ", 
+    RowBox[{"{", 
+     RowBox[{"850", ",", "500"}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.5733161801674347`*^9, 3.573316221638349*^9}, 
+   3.573316546739156*^9, {3.573316581134945*^9, 3.573316617840407*^9}, {
+   3.573316701810638*^9, 3.573316721307282*^9}, 
+   3.5733167889812727`*^9},ExpressionUUID->"a930148d-8367-4af5-9c5d-\
+e31f90716386"],
+
+Cell["\<\
+The first thing you notice is that the first column consists entirely of \
+ones. You can also see there is an NA in the second column. Also, the last \
+row does not seem to be consistent with the others.\
+\>", "Text",
+ CellChangeTimes->{{3.573316851084699*^9, 3.573316918549624*^9}, {
+  3.573317748588705*^9, 3.573317766786007*^9}, {3.580032360733803*^9, 
+  3.580032384931041*^9}, {3.631644464108568*^9, 
+  3.631644469173711*^9}},ExpressionUUID->"172ae068-2d9f-42f8-88e0-\
+ff6e7e658d0a"],
+
+Cell["The full last row.", "Text",
+ CellChangeTimes->{{3.573721471250571*^9, 
+  3.5737214759924607`*^9}},ExpressionUUID->"388fc9f4-d8c7-4089-a92e-\
+9a413597c6d6"],
+
+Cell[BoxData[
+ RowBox[{"breamDat", "[", 
+  RowBox[{"[", 
+   RowBox[{"-", "1"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.573317772518018*^9, 
+  3.573317779221143*^9}},ExpressionUUID->"c25b86ed-bdf0-41c0-8a75-\
+330ade402eb2"],
+
+Cell["\<\
+Get rid of the first column and last row and check the dimensions of the \
+resulting set.\
+\>", "Text",
+ CellChangeTimes->{{3.573316939966869*^9, 3.573316946654764*^9}, {
+   3.5733177972586827`*^9, 3.573317801826724*^9}, {3.573318364986586*^9, 
+   3.57331838041687*^9}, 
+   3.5734814398837843`*^9},ExpressionUUID->"8e01bbff-c4b7-4f63-8063-\
+30a505ab9b5f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"breamDat2", "=", " ", 
+   RowBox[{"breamDat", "[", 
+    RowBox[{"[", 
+     RowBox[{
+      RowBox[{";;", 
+       RowBox[{"-", "2"}]}], ",", 
+      RowBox[{"2", ";;"}]}], "]"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.57331694985284*^9, 3.573316971440776*^9}, {
+  3.573317807365217*^9, 
+  3.573317809309355*^9}},ExpressionUUID->"3625a71e-9f2c-4ec8-88e7-\
+1a151fcc149f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{"rows", ",", "cols"}], "}"}], "=", 
+  RowBox[{"Dimensions", "[", "breamDat2", "]"}]}]], "Input",
+ CellChangeTimes->{{3.5733183159596024`*^9, 
+  3.573318342457525*^9}},ExpressionUUID->"7ca331dd-20b0-4537-9ec2-\
+acab7f858d74"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"795a0d08-a5a2-435c-ace7-b84113aeab3b"],
+
+Cell[CellGroupData[{
+
+Cell["Cleaning Up the Data", "Section",
+ CellChangeTimes->{{3.57349300809984*^9, 
+  3.573493021394466*^9}},ExpressionUUID->"e7b2f64b-cd34-4faf-9411-\
+ba8432b2e54e"],
+
+Cell[TextData[{
+ "Get information about the NA seen in the file. It will either be a symbol \
+or a string. Note how the Wolfram Language",
+ StyleBox[" ",
+  FontSlant->"Italic"],
+ "allows you to get several pieces of information at once."
+}], "Text",
+ CellChangeTimes->{{3.573316992482376*^9, 3.573317004391695*^9}, {
+  3.573317052185282*^9, 3.573317083522008*^9}, {3.573317386372629*^9, 
+  3.573317422906397*^9}, {3.622297028123259*^9, 3.622297028695499*^9}, {
+  3.622382466100559*^9, 
+  3.622382473570636*^9}},ExpressionUUID->"bbed95fc-96f1-4b03-8cfd-\
+40b1011444b9"],
+
+Cell["The location and data type of the offending entry.", "Text",
+ CellChangeTimes->{{3.573471371758706*^9, 
+  3.573471383678502*^9}},ExpressionUUID->"a9fdac86-9006-4cae-87a1-\
+181f4f5e7433"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"pos", ",", "#", ",", 
+     RowBox[{"Head", "[", "#", "]"}]}], "}"}], "&"}], "/@", 
+  RowBox[{"Extract", "[", 
+   RowBox[{"breamDat2", ",", 
+    RowBox[{"pos", "=", 
+     RowBox[{"Position", "[", 
+      RowBox[{"breamDat2", ",", 
+       RowBox[{"NA", "|", "\"\<NA\>\""}]}], "]"}]}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.573317011005155*^9, 3.5733170464287667`*^9}, {
+  3.5733171103008204`*^9, 
+  3.573317234960649*^9}},ExpressionUUID->"fbba4144-3e53-4aaf-bbda-\
+23bc20128a22"],
+
+Cell[BoxData[
+ RowBox[{"TableView", "[", 
+  RowBox[{"breamDat2", ",", 
+   RowBox[{"ImageSize", "\[Rule]", " ", 
+    RowBox[{"{", 
+     RowBox[{"750", ",", "400"}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.573318001022554*^9, 3.573318027746916*^9}, 
+   3.573318086579527*^9},ExpressionUUID->"40d4c698-5567-4dce-89fd-\
+2be75854a7c2"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"07b29ad5-63cf-45fd-88f5-8e5f60c1ae5c"],
+
+Cell[CellGroupData[{
+
+Cell["Determining a Replacement Value", "Section",
+ CellChangeTimes->{{3.573721531046061*^9, 
+  3.573721541261653*^9}},ExpressionUUID->"00785c5f-0bbf-47e7-95fe-\
+358b687040c5"],
+
+Cell["The column headings of the original file were as follows.", "Text",
+ CellChangeTimes->{{3.573484956341121*^9, 3.573484990838006*^9}, 
+   3.632507677878386*^9},ExpressionUUID->"470a373d-99a7-48d8-92ee-\
+b685764cee66"],
+
+Cell[BoxData[
+ RowBox[{"breamDat", "[", 
+  RowBox[{"[", 
+   RowBox[{"-", "1"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.573484918319709*^9, 
+  3.573484930038865*^9}},ExpressionUUID->"08d0ef5b-871a-464b-aefe-\
+7c9be4bf7ae5"],
+
+Cell[TextData[{
+ "You have eliminated the first column, so you have ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"{", 
+    RowBox[{"wt", ",", "L1", ",", "L2", ",", "L3", ",", "ht", ",", "thck"}], 
+    "}"}], $CellContext`MR]],ExpressionUUID->
+  "e4da662f-cc7e-497f-8d0b-742be1005466"],
+ " in each row. The original file gives the height and thickness as a percent \
+of ",
+ Cell[BoxData[
+  FormBox["L3", $CellContext`MR]],ExpressionUUID->
+  "1b9ed110-6d5d-4eac-8386-c9a8b0f7e90b"],
+ ", so you will use that value in your calculations."
+}], "Text",
+ CellChangeTimes->{{3.57348500774219*^9, 3.573485088583807*^9}, {
+  3.573485151712507*^9, 3.573485203017513*^9}, {3.573493060997421*^9, 
+  3.573493062266726*^9}, {3.577203840711158*^9, 3.57720387095326*^9}, {
+  3.580032422594976*^9, 3.580032425401391*^9}, {3.631644520764099*^9, 
+  3.631644534824888*^9}},ExpressionUUID->"7fc24f2f-a1f0-4aa4-8d25-\
+5c75a22a28d8"],
+
+Cell["\<\
+Get the information from the first and fourth columns, and delete the row \
+with the missing value.\
+\>", "Text",
+ CellChangeTimes->{{3.573485247379321*^9, 3.573485296315077*^9}, 
+   3.631644540904422*^9},ExpressionUUID->"1aa9a613-9070-45ab-9ce1-\
+c322579f9901"],
+
+Cell[BoxData[
+ RowBox[{"fullRows", "=", 
+  RowBox[{"Delete", "[", 
+   RowBox[{
+    RowBox[{"breamDat2", "[", 
+     RowBox[{"[", 
+      RowBox[{"All", ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "4"}], "}"}]}], "]"}], "]"}], ",", "14"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.573485339696868*^9, 
+  3.573485376223234*^9}},ExpressionUUID->"65b58983-3dcf-4633-bef2-\
+2d3c1d44f7fd"],
+
+Cell["\<\
+Next, transpose the data to have it in column form, and then divide the first \
+column by the second.\
+\>", "Text",
+ CellChangeTimes->{{3.573485399560154*^9, 3.57348541107757*^9}, {
+   3.57348706696562*^9, 3.5734870916849813`*^9}, 3.580032485282429*^9, {
+   3.631644544744224*^9, 
+   3.631644553687786*^9}},ExpressionUUID->"bd9e56ba-151e-4b28-b12a-\
+93ebc114ab3a"],
+
+Cell[BoxData[
+ RowBox[{"cols", "=", 
+  RowBox[{"Transpose", "[", "fullRows", "]"}]}]], "Input",
+ CellChangeTimes->{{3.573487161591313*^9, 
+  3.573487183936461*^9}},ExpressionUUID->"cef40ae5-1500-4bcb-ab29-\
+c52773d43dff"],
+
+Cell[BoxData[
+ RowBox[{"rats", "=", 
+  RowBox[{"Apply", "[", 
+   RowBox[{"Divide", ",", "cols"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5734871925289598`*^9, 
+  3.573487233063851*^9}},ExpressionUUID->"0b990924-9225-4e76-8d6d-\
+9474b2fa1dc8"],
+
+Cell[TextData[{
+ "This gives an average scaling factor relating the ",
+ Cell[BoxData[
+  FormBox["L3", $CellContext`MR]],ExpressionUUID->
+  "be71b340-73f8-4891-934e-7d6295fcb669"],
+ " dimension to the weight. "
+}], "Text",
+ CellChangeTimes->{{3.5734872761476183`*^9, 3.573487322889051*^9}, 
+   3.577203900736628*^9},ExpressionUUID->"d0be2983-064c-4132-ac63-\
+1533a4fa52f0"],
+
+Cell[BoxData[
+ RowBox[{"mn", "=", 
+  RowBox[{"Mean", "[", "rats", "]"}]}]], "Input",
+ CellChangeTimes->{{3.573318428813695*^9, 3.573318442754581*^9}, {
+  3.5733184910051126`*^9, 3.573318550262409*^9}, {3.5733185964248953`*^9, 
+  3.573318605152508*^9}, {3.5733186656265388`*^9, 3.573318681259001*^9}, {
+  3.57331875364441*^9, 3.573318761452573*^9}, {3.573319082189335*^9, 
+  3.57331908333808*^9}, {3.573487240137426*^9, 
+  3.573487241217864*^9}},ExpressionUUID->"f27bf647-9d24-4145-8b33-\
+64873fa4e395"],
+
+Cell[TextData[{
+ "Replace the N/A in the fourteenth row with the scaled value of ",
+ Cell[BoxData[
+  FormBox["L3", $CellContext`MR]],ExpressionUUID->
+  "34cf17cd-495e-4226-b481-4150dc01f457"],
+ " in that row."
+}], "Text",
+ CellChangeTimes->{{3.573487347818151*^9, 3.5734873848742523`*^9}, 
+   3.577203929088763*^9, {3.580032513599607*^9, 
+   3.580032518543589*^9}},ExpressionUUID->"7c324e8c-4e2d-4e0d-8af7-\
+05fc7da90ce0"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"breamDat2", "[", 
+   RowBox[{"[", 
+    RowBox[{"14", ",", "1"}], "]"}], "]"}], "=", 
+  RowBox[{"N", "@", 
+   RowBox[{"Round", "[", 
+    RowBox[{"mn", " ", 
+     RowBox[{"breamDat2", "[", 
+      RowBox[{"[", 
+       RowBox[{"14", ",", "4"}], "]"}], "]"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.5733190471173906`*^9, 3.5733191168756127`*^9}, {
+  3.5733191807169533`*^9, 
+  3.5733192012607408`*^9}},ExpressionUUID->"095a69af-ccc1-4081-a7c1-\
+de554b81f562"],
+
+Cell[BoxData[
+ RowBox[{"TableView", "[", 
+  RowBox[{"breamDat2", ",", 
+   RowBox[{"ImageSize", "\[Rule]", " ", 
+    RowBox[{"{", 
+     RowBox[{"750", ",", "500"}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.573319128179247*^9, 
+  3.573319165614146*^9}},ExpressionUUID->"f12b750b-5e2b-4602-800d-\
+aafc23077154"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"7e60287c-6a0d-49dc-b084-e18c6765190c"],
+
+Cell[CellGroupData[{
+
+Cell["Temporal Data", "Section",
+ CellChangeTimes->{{3.572264654160531*^9, 
+  3.5722646578315887`*^9}},ExpressionUUID->"b6a16a32-5321-4c9a-897c-\
+d3f35e9edd26"],
+
+Cell[TextData[{
+ "In this example, you look at a typical example of easily read data, but a \
+structure that is basically incompatible with doing any serious analysis. Use \
+the ",
+ StyleBox[ButtonBox["TemporalData",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/TemporalData"],
+  FontWeight->"Bold"],
+ " function to make the data useful for your analysis, while leaving it in a \
+form that is easy for humans to read."
+}], "Text",
+ CellChangeTimes->{{3.5722647507722807`*^9, 3.572264840605751*^9}, {
+   3.573721626944949*^9, 3.573721696155104*^9}, {3.573721833579204*^9, 
+   3.573721965501377*^9}, 3.573978945077084*^9, 3.577203938924555*^9, {
+   3.580147284382576*^9, 3.5801472882764072`*^9}, {3.6316445757051783`*^9, 
+   3.631644622183419*^9}},ExpressionUUID->"5224ad4b-9274-4be3-91a7-\
+0aad020ca25f"],
+
+Cell[BoxData[
+ RowBox[{"?", "TemporalData"}]], "Input",
+ CellChangeTimes->{{3.572264690704266*^9, 
+  3.572264710490286*^9}},ExpressionUUID->"884bb508-725b-4f75-9b8c-\
+35def45e6b56"],
+
+Cell[BoxData[
+ RowBox[{"FileNames", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.573493178549074*^9, 
+  3.573493182295552*^9}},ExpressionUUID->"da734cd5-4881-4ab9-83d9-\
+ab44e258a100"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"stkDat2", "=", " ", 
+    RowBox[{"ToExpression", "[", 
+     RowBox[{"Import", "[", "\"\<stockhighlowclose.tsv\>\"", "]"}], "]"}]}], 
+   ")"}], "//", "Short"}]], "Input",
+ CellChangeTimes->{{3.573493156693497*^9, 3.573493169763548*^9}, {
+   3.573493255966473*^9, 3.573493281641553*^9}, 3.573493547343942*^9, {
+   3.57349363922545*^9, 3.5734936472317133`*^9}, {3.573494484890545*^9, 
+   3.573494492773541*^9}},ExpressionUUID->"21c18af5-d3ff-424c-a6da-\
+eef06eeaf877"],
+
+Cell[TextData[{
+ "This data consists of three datasets, as can be seen using ",
+ StyleBox[ButtonBox["Dimensions",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Dimensions"],
+  FontWeight->"Bold"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.5735478195574512`*^9, 3.573547851059977*^9}, 
+   3.5772039985727386`*^9, {3.580032546272502*^9, 3.580032551846772*^9}, {
+   3.6316446281961403`*^9, 
+   3.631644637739268*^9}},ExpressionUUID->"2c736a80-f70c-4427-aa91-\
+dd51bb1c2042"],
+
+Cell[BoxData[
+ RowBox[{"Dimensions", "[", "stkDat2", "]"}]], "Input",
+ CellChangeTimes->{{3.5735478569249773`*^9, 
+  3.573547864908248*^9}},ExpressionUUID->"c861c4c9-28f8-403c-bf53-\
+3d54a083d167"],
+
+Cell["Get the form of the entries in each set.", "Text",
+ CellChangeTimes->{{3.573547885486567*^9, 
+  3.5735478974282303`*^9}},ExpressionUUID->"0e2c49d0-ca79-44b5-818c-\
+51d9ad9c15a9"],
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"stkDat2", "[", 
+    RowBox[{"[", 
+     RowBox[{"i", ",", "1"}], "]"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "3"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.573547903486465*^9, 
+  3.573547929114533*^9}},ExpressionUUID->"b223b7c8-76c3-45aa-8c5a-\
+7065acb48604"],
+
+Cell[TextData[{
+ "Construct a ",
+ StyleBox[ButtonBox["TemporalData",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/TemporalData"],
+  FontWeight->"Bold"],
+ " object for your stock data."
+}], "Text",
+ CellChangeTimes->{{3.572269732725501*^9, 3.572269752300975*^9}, 
+   3.577204026552821*^9, {3.63164464846437*^9, 
+   3.631644660852791*^9}},ExpressionUUID->"156cc049-2596-4ca7-b46f-\
+8abeacbad469"],
+
+Cell[BoxData[
+ RowBox[{"td1", "=", 
+  RowBox[{"TemporalData", "[", "stkDat2", "]"}]}]], "Input",
+ CellChangeTimes->{{3.572265332412097*^9, 3.572265343741226*^9}, {
+  3.572265727520939*^9, 3.572265731155202*^9}, {3.572265838478249*^9, 
+  3.572265868758973*^9}, {3.573493350612712*^9, 3.573493357107985*^9}, {
+  3.573494566016649*^9, 
+  3.573494572256143*^9}},ExpressionUUID->"944a740c-9a25-4b1e-a669-\
+b39a6c66d5d2"],
+
+Cell[BoxData[
+ RowBox[{"td1", "[", "\"\<Properties\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.572266135563056*^9, 
+  3.572266143900054*^9}},ExpressionUUID->"da8d82fd-8584-4367-8e62-\
+ed14c222ce8e"],
+
+Cell["Find the values of each path for a particular day.", "Text",
+ CellChangeTimes->{{3.572269681620083*^9, 3.572269695844619*^9}, {
+  3.573547683900155*^9, 
+  3.573547688184511*^9}},ExpressionUUID->"058f4f4b-0105-4cfa-bf2a-\
+8db6426f8d28"],
+
+Cell[BoxData[
+ RowBox[{"td1", "[", 
+  RowBox[{"\"\<SliceData\>\"", ",", 
+   RowBox[{"{", "\"\<Jul 14 2006\>\"", "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.572266172073742*^9, 3.572266203220236*^9}, 
+   3.5722662421032877`*^9, {3.572266311655586*^9, 3.5722663479428062`*^9}, {
+   3.572266379641742*^9, 
+   3.572266396617201*^9}},ExpressionUUID->"03a72898-92ea-4cde-977e-\
+7feaced984e1"],
+
+Cell["Get the number of observations.", "Text",
+ CellChangeTimes->{{3.5722697093426843`*^9, 
+  3.572269718380995*^9}},ExpressionUUID->"aebca1ec-7f7c-44ba-81b0-\
+dcdff0d4d07b"],
+
+Cell[BoxData[
+ RowBox[{"td1", "[", "\"\<PathLengths\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.572266542816325*^9, 3.572266555850681*^9}, {
+  3.572266598620682*^9, 
+  3.572266600555434*^9}},ExpressionUUID->"ec9eed11-6afd-4bc9-920c-\
+9e66a52745a5"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"1fc9070b-338a-47bb-a276-06440cbd4927"],
+
+Cell[CellGroupData[{
+
+Cell["Temporal Data", "Section",
+ CellChangeTimes->{{3.573547989979658*^9, 
+  3.57354799566216*^9}},ExpressionUUID->"e2fb3309-7e8c-479a-b351-\
+9ef7d2935464"],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["TemporalData",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/TemporalData"],
+  FontWeight->"Bold"],
+ ", ",
+ StyleBox[ButtonBox["EventData",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/EventData"],
+  FontWeight->"Bold"],
+ ", and ",
+ StyleBox[ButtonBox["WeightedData",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/WeightedData"],
+  FontWeight->"Bold"],
+ " are essentially wrappers you can use on your data to allow the data to \
+provide additional information and to work with other functions. The examples \
+here show how you can visualize the stock data without doing a lot of \
+reorganizing or restructuring of the data."
+}], "Text",
+ CellChangeTimes->{{3.573548395218124*^9, 3.573548519599788*^9}, {
+   3.573548598760814*^9, 3.573548615753174*^9}, {3.577204033559732*^9, 
+   3.5772040392461863`*^9}, 3.580032608160371*^9, {3.631644677598461*^9, 
+   3.631644725135663*^9}},ExpressionUUID->"7b5269b1-51ff-42e5-8d5e-\
+e1c95dd756aa"],
+
+Cell[TextData[{
+ "Some answers may not be what you expect. Times are returned as absolute \
+times, and these are the times used in functions like ",
+ StyleBox[ButtonBox["ListPlot",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/ListPlot"],
+  FontWeight->"Bold"],
+ " to locate points and ticks."
+}], "Text",
+ CellChangeTimes->{{3.572269189156616*^9, 3.572269228523738*^9}, {
+   3.572269270420672*^9, 3.572269294252961*^9}, 3.577204072868662*^9, {
+   3.6316447328550863`*^9, 
+   3.631644740501732*^9}},ExpressionUUID->"e0ddbe9f-c827-4194-8c51-\
+2757c4cde3d1"],
+
+Cell[BoxData[
+ RowBox[{"td1", "[", "\"\<PathTimes\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.5722666182586527`*^9, 
+  3.572266626932147*^9}},ExpressionUUID->"c60dbac2-6276-4b31-b100-\
+8cfe22184c27"],
+
+Cell[TextData[{
+ "Use the ",
+ StyleBox[ButtonBox["FindDivisions",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/FindDivisions"],
+  FontWeight->"Bold"],
+ " function to determine where to place ticks."
+}], "Text",
+ CellChangeTimes->{{3.573548712565612*^9, 3.5735487303873262`*^9}, 
+   3.577204093987692*^9, {3.631644749552472*^9, 
+   3.631644760897657*^9}},ExpressionUUID->"fd65aad4-0cfc-42ea-869f-\
+83295669d5d3"],
+
+Cell[BoxData[
+ RowBox[{"divs", "=", 
+  RowBox[{"FindDivisions", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"td1", "[", "\"\<PathTimes\>\"", "]"}], "[", 
+     RowBox[{"[", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", 
+        RowBox[{"-", "1"}]}], "}"}], "]"}], "]"}], ",", "4"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.5735459873524647`*^9, 
+  3.573546045213551*^9}},ExpressionUUID->"3781b39d-0cdb-4841-88dc-\
+93a1484139a9"],
+
+Cell[TextData[{
+ "Combine the locations with labels obtained from ",
+ StyleBox[ButtonBox["DateString",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/DateString"],
+  FontWeight->"Bold"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.573548751351603*^9, 3.57354877882205*^9}, 
+   3.577204096979356*^9, {3.631644766431623*^9, 
+   3.631644779006312*^9}},ExpressionUUID->"7f024b28-549d-4b24-bc6e-\
+b42586e71f7f"],
+
+Cell[BoxData[
+ RowBox[{"dateTcks", "=", 
+  RowBox[{"Transpose", "[", 
+   RowBox[{"{", 
+    RowBox[{"divs", ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"DateString", "[", 
+        RowBox[{"#", ",", 
+         RowBox[{"{", 
+          RowBox[{"\"\<MonthName\>\"", ",", "\"\< \>\"", ",", "\"\<Day\>\""}],
+           "}"}]}], "]"}], "&"}], "/@", "divs"}]}], "}"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.573546053712206*^9, 3.573546072483542*^9}, {
+  3.573546175926661*^9, 3.5735462851842947`*^9}, {3.573546329699279*^9, 
+  3.573546338602685*^9}},ExpressionUUID->"815c7d11-76bb-4061-86f3-\
+88f60745aafa"],
+
+Cell[TextData[{
+ "Use ",
+ StyleBox[ButtonBox["AbsoluteTime",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/AbsoluteTime"],
+  FontWeight->"Bold"],
+ " to locate ticks in ",
+ StyleBox[ButtonBox["ListPlot",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/ListPlot"],
+  FontWeight->"Bold"],
+ ". Ticks are specified in the form ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"{", 
+    RowBox[{"location", ",", " ", "label"}], "}"}], $CellContext`MR]],
+  ExpressionUUID->"a78253d9-34d3-48a2-aa9c-5c937c657e86"],
+ ". "
+}], "Text",
+ CellChangeTimes->{{3.572269624516097*^9, 3.572269638739407*^9}, {
+   3.572272915446496*^9, 3.572272976050257*^9}, {3.572273011671502*^9, 
+   3.5722730116895037`*^9}, {3.577204150412773*^9, 3.57720416750965*^9}, 
+   3.577204201092744*^9, {3.63164478268685*^9, 3.631644792265786*^9}, {
+   3.632507712462201*^9, 
+   3.63250771462798*^9}},ExpressionUUID->"dc52af0b-fbae-4c07-b2f0-\
+d75c313ec568"],
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", 
+  RowBox[{"td1", ",", 
+   RowBox[{"Ticks", "\[Rule]", " ", 
+    RowBox[{"{", 
+     RowBox[{"dateTcks", ",", "Automatic"}], "}"}]}], ",", 
+   RowBox[{"Joined", "\[Rule]", " ", 
+    RowBox[{"{", 
+     RowBox[{"False", ",", "False", ",", "True"}], "}"}]}], ",", 
+   RowBox[{"Filling", "\[Rule]", " ", 
+    RowBox[{"{", 
+     RowBox[{"1", "\[Rule]", " ", 
+      RowBox[{"{", "2", "}"}]}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.572269383183542*^9, 3.572269535907992*^9}, {
+  3.573546348405132*^9, 3.573546351445384*^9}, {3.573546389004541*^9, 
+  3.573546405334025*^9}, {3.573546779722689*^9, 
+  3.573546794962276*^9}},ExpressionUUID->"8e6f1a2f-c5ea-4a7a-8dd9-\
+d8ce8778b929"],
+
+Cell[TextData[{
+ "Of course in this example you could have used ",
+ StyleBox[ButtonBox["DateListPlot",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/DateListPlot"],
+  FontWeight->"Bold"],
+ " to obtain a similar visualization, but you would have had to work much \
+harder to get the other information."
+}], "Text",
+ CellChangeTimes->{{3.573548975496367*^9, 3.573549040304959*^9}, 
+   3.577204215671295*^9, {3.631644804662016*^9, 
+   3.631644834307746*^9}},ExpressionUUID->"5fc2c497-e47b-46ce-af54-\
+b2f293b28b24"],
+
+Cell[BoxData[
+ RowBox[{"DateListPlot", "[", 
+  RowBox[{"stkDat2", ",", 
+   RowBox[{"Joined", "\[Rule]", " ", 
+    RowBox[{"{", 
+     RowBox[{"False", ",", "False", ",", "True"}], "}"}]}], ",", 
+   RowBox[{"Filling", "\[Rule]", " ", 
+    RowBox[{"{", 
+     RowBox[{"1", "\[Rule]", " ", 
+      RowBox[{"{", "2", "}"}]}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.5735488537478867`*^9, 
+  3.573548916968969*^9}},ExpressionUUID->"d3b55214-7617-43a3-ac13-\
+fdc16776e7f9"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"a601a7ac-2351-457c-af42-7947335be422"],
+
+Cell[CellGroupData[{
+
+Cell["Exporting Data", "Section",
+ CellChangeTimes->{{3.573549381074111*^9, 
+  3.5735493851189117`*^9}},ExpressionUUID->"365f4d8c-2b96-4786-8c89-\
+341b093b8dc6"],
+
+Cell[TextData[{
+ "The Wolfram Language supports exporting to a large variety of file types, \
+including Excel, comma-separated values, and tab-separated values. ",
+ StyleBox[ButtonBox["Export",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Export"],
+  FontWeight->"Bold"],
+ " will always create a new file of the designated type. It is not possible \
+in current versions of the Wolfram Language to write to an existing file. If \
+you have imported data from an Excel file, done some analysis on the data \
+from that file, and you want the results in the original file, you will have \
+to export to a new file and combine the results using Excel."
+}], "Text",
+ CellChangeTimes->{{3.5738929702587357`*^9, 3.573892989695822*^9}, {
+   3.573893047566568*^9, 3.573893099143287*^9}, {3.573893131455951*^9, 
+   3.573893289314913*^9}, 3.577204274800247*^9, {3.580032669661396*^9, 
+   3.5800326839554253`*^9}, 3.5801473116508417`*^9, {3.580147344818696*^9, 
+   3.580147351906792*^9}, {3.6222973344429693`*^9, 3.622297342132739*^9}, {
+   3.622382517987467*^9, 3.622382530880908*^9}, 
+   3.622394887302463*^9},ExpressionUUID->"d8ccc9de-c935-4c20-9cf6-\
+6253379b71f9"],
+
+Cell[TextData[{
+ "The syntax for ",
+ StyleBox[ButtonBox["Export",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Export"],
+  FontWeight->"Bold"],
+ " is essentially the same as for ",
+ StyleBox[ButtonBox["Import",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Import"],
+  FontWeight->"Bold"],
+ ", with the exception that you must include the contents of the new file as \
+a second argument to ",
+ StyleBox[ButtonBox["Export",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Export"],
+  FontWeight->"Bold"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.573893370780182*^9, 3.57389342777315*^9}, {
+   3.573894405938375*^9, 3.573894421567474*^9}, {3.5772043039795103`*^9, 
+   3.577204316334202*^9}, 3.580032722139571*^9, {3.6316448822370667`*^9, 
+   3.631644915791668*^9}},ExpressionUUID->"9b21b862-924e-475e-bc22-\
+9e0986e7adab"],
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{
+  "\"\<filename.csv\>\"", ",", "fileContents", ",", "elems", ",", "opts"}], 
+  "]"}]], "DisplayFormula",
+ CellChangeTimes->{{3.5738935238487263`*^9, 3.5738935702963552`*^9}, {
+  3.573893700360115*^9, 
+  3.5738937027158136`*^9}},ExpressionUUID->"1ac34354-8997-4f0c-a082-\
+3de7c88aebe9"],
+
+Cell[TextData[{
+ "You can find more information about exporting data in the tutorial ",
+ ButtonBox["Importing and Exporting Data",
+  BaseStyle->"Link",
+  ButtonData->"paclet:tutorial/ImportingAndExportingData"],
+ ". You should realize that ",
+ StyleBox[ButtonBox["Export",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Export"],
+  FontWeight->"Bold"],
+ " will overwrite an existing file if the name is the same as the file you \
+are exporting to. Some users find it handy to incorporate a date string in \
+the name of the exported file to ensure that does not happen."
+}], "Text",
+ CellChangeTimes->{{3.573894427823107*^9, 3.573894477026689*^9}, {
+   3.573977373109096*^9, 3.573977512588048*^9}, {3.577204346927835*^9, 
+   3.577204443759508*^9}, 3.5772045179957857`*^9, 
+   3.6316448911249847`*^9},ExpressionUUID->"b19bfcfc-1227-4806-acf6-\
+eac7047119bc"],
+
+Cell["Here is a file you worked with earlier.", "Text",
+ CellChangeTimes->{{3.573976616093988*^9, 3.573976628012555*^9}, {
+  3.631644925527482*^9, 
+  3.631644925823186*^9}},ExpressionUUID->"faba97d9-f29a-4544-a34e-\
+54b3ca095f1e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"data", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<table_1_14_a.xlsx\>\"", ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<XLSX\>\"", ",", "\"\<Data\>\"", ",", "1"}], "}"}]}], 
+    "]"}]}], ";"}]], "Input",ExpressionUUID->"cb6effad-a0a9-492f-be14-\
+0311973d5907"],
+
+Cell["\<\
+This gets the numerical data from the second and third columns together with \
+the column headings.\
+\>", "Text",
+ CellChangeTimes->{{3.573976703736531*^9, 
+  3.573976792287373*^9}},ExpressionUUID->"03535ff8-3c90-4f70-88a4-\
+bef97caffb73"],
+
+Cell[BoxData[
+ RowBox[{"wrkDat", "=", 
+  RowBox[{"Join", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"5", ",", 
+        RowBox[{"{", 
+         RowBox[{"2", ",", "3"}], "}"}]}], "]"}], "]"}], "}"}], ",", 
+    RowBox[{"Cases", "[", 
+     RowBox[{
+      RowBox[{"data", "[", 
+       RowBox[{"[", 
+        RowBox[{
+         RowBox[{"6", ";;"}], ",", 
+         RowBox[{"2", ";;", "3"}]}], "]"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"_", "?", "NumericQ"}], ",", 
+        RowBox[{"_", "?", "NumericQ"}]}], "}"}]}], "]"}]}], "]"}]}]], "Input",\
+
+ CellChangeTimes->{
+  3.573976754963819*^9, {3.573976843843639*^9, 
+   3.573976929251966*^9}},ExpressionUUID->"8974081c-61af-4501-9f69-\
+ba02e62c20cf"],
+
+Cell["\<\
+This exports the above data to a file called cleanDat:Wed 3 Apr 2013 \
+06:33:42.xlsx. You have created a folder called Exports to contain the \
+generated files. The file name may display differently on different operating \
+systems because of the use of the date string, but the file should work as \
+expected.\
+\>", "Text",
+ CellChangeTimes->{{3.573977098886387*^9, 3.573977137509297*^9}, {
+   3.573978433214782*^9, 3.573978436115623*^9}, {3.573978475485363*^9, 
+   3.573978540149376*^9}, {3.573978628566912*^9, 3.573978661183571*^9}, 
+   3.580147369498507*^9, {3.631644932909944*^9, 3.631644933719096*^9}, {
+   3.632663945257849*^9, 
+   3.632663951353153*^9}},ExpressionUUID->"33fb8871-2de4-4500-b937-\
+a4063b8dc27c"],
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{"FileNameJoin", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<Exports\>\"", ",", 
+      RowBox[{"StringJoin", "[", 
+       RowBox[{"\"\<cleanDat:\>\"", ",", 
+        RowBox[{"DateString", "[", "]"}], ",", "\"\<.xlsx\>\""}], "]"}]}], 
+     "}"}], "]"}], ",", "wrkDat"}], "]"}]], "Input",
+ CellChangeTimes->{{3.573977143265209*^9, 3.573977194776452*^9}, {
+  3.573977231522686*^9, 3.573977242777371*^9}, {3.573977523558669*^9, 
+  3.57397755574273*^9}, {3.573977588335567*^9, 
+  3.57397761698404*^9}},ExpressionUUID->"6b73ed17-9527-4078-8bb0-\
+51f0b6f43c47"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"687de5c4-5f3f-4fdf-b12a-5a3011d13c8e"],
+
+Cell[CellGroupData[{
+
+Cell["Summary", "Section",
+ CellChangeTimes->{{3.57354932647304*^9, 
+  3.57354932793377*^9}},ExpressionUUID->"b32fd98b-654f-4402-afec-\
+4829411209e9"],
+
+Cell["\<\
+In this section of the course you have looked at the following topics:\
+\>", "Text",
+ CellChangeTimes->{{3.573978699736161*^9, 3.573978729440303*^9}, {
+  3.6316449510387*^9, 
+  3.631644951348291*^9}},ExpressionUUID->"6db3525c-4a43-4345-91fd-\
+2bf05b5b7df5"],
+
+Cell["Configuring the Wolfram Language to make the workflow easier", "Subitem",
+ CellChangeTimes->{{3.573978757153444*^9, 3.5739787784173403`*^9}, 
+   3.580032753787211*^9, 
+   3.622382553352785*^9},ExpressionUUID->"40e3b504-a32f-4452-babc-\
+9e773dd85d65"],
+
+Cell["Working with Excel files", "Subitem",
+ CellChangeTimes->{{3.573978786385406*^9, 
+  3.5739787932334633`*^9}},ExpressionUUID->"6f969eb5-cea3-42ec-9bc1-\
+078f78010e40"],
+
+Cell["Working with text files", "Subitem",
+ CellChangeTimes->{{3.573978797561405*^9, 
+  3.573978804041765*^9}},ExpressionUUID->"7708c713-5d85-44d3-943c-\
+f190808a6c79"],
+
+Cell["Cleaning up data", "Subitem",
+ CellChangeTimes->{{3.573978810969936*^9, 3.573978816073926*^9}, {
+  3.6223949224680862`*^9, 
+  3.6223949228815*^9}},ExpressionUUID->"6852a355-bbe8-4d37-bbe4-7e2615bce406"],
+
+Cell["Exporting results from the Wolfram Language ", "Subitem",
+ CellChangeTimes->{{3.573978826954228*^9, 3.573978840866159*^9}, 
+   3.6223825573041987`*^9},ExpressionUUID->"a8aedf13-5c94-43c1-9f35-\
+a61a49148ac4"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"4a84c3a3-9dfc-4bcf-9cb1-68c8f767203e"],
+
+Cell[CellGroupData[{
+
+Cell["Initialization", "Section",
+ CellChangeTimes->{{3.574675800358649*^9, 
+  3.574675804493092*^9}},ExpressionUUID->"7013ee0b-ec9a-45b3-ad8a-\
+13e6edaa3647"],
+
+Cell[BoxData[
+ RowBox[{"SetDirectory", "[", 
+  RowBox[{"FileNameJoin", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<DataDir\>\""}], "}"}],
+    "]"}], "]"}]], "Input",ExpressionUUID->"3ff03f52-97d4-4167-a4ff-\
+92e7bbcfc1e6"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"NiceTable", "[", 
+        RowBox[{"lis_List", ",", 
+         RowBox[{"opts", ":", 
+          RowBox[{"OptionsPattern", "[", "Grid", "]"}]}]}], "]"}], ":=", " ", 
+       
+       RowBox[{"Grid", "[", 
+        RowBox[{"Partition", "[", 
+         RowBox[{"lis", ",", "4", ",", "4", ",", 
+          RowBox[{"{", 
+           RowBox[{"1", ",", 
+            RowBox[{"-", "1"}]}], "}"}], ","}]}]}]}], 
+      "\[CloseCurlyDoubleQuote]"}], "\[CloseCurlyDoubleQuote]"}], "]"}], ",", 
+   
+   RowBox[{"{", 
+    RowBox[{"opts", ",", 
+     RowBox[{"Alignment", "\[Rule]", " ", "Left"}]}], "}"}]}], "]"}]], "Input",\
+
+ CellChangeTimes->{{3.574675812238448*^9, 
+  3.574675817405183*^9}},ExpressionUUID->"4e5d6867-3b76-4c91-b22b-\
+53d391af6285"]
+}, Open  ]]
+}, Open  ]]
+},
+Saveable->False,
+WindowToolbars->{},
+WindowSize->{1024, 702},
+WindowMargins->{{Automatic, 112}, {Automatic, 0}},
+WindowTitle->"Getting and Organizing the Data",
+ShowSelection->True,
+TaggingRules->{
+ "WelcomeScreenSettings" -> {"FEStarting" -> False}, 
+  "SlideshowSettings" -> {"Toolbar" -> True}},
+FrontEndVersion->"14.3 for Mac OS X x86 (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"f5e79b5e-49a1-4a13-b93f-130ec786ec09"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "SlideShowHeader"->{
+  Cell[624, 23, 136, 2, 72, "SlideShowNavigationBar",ExpressionUUID->"7fe14d54-619e-4b9a-912a-c005f4469b58",
+   CellTags->"SlideShowHeader"],
+  Cell[4675, 121, 122, 2, 72, "SlideShowNavigationBar",ExpressionUUID->"0d809d1f-0d57-4014-bb81-f5524e0169b5",
+   CellTags->"SlideShowHeader"],
+  Cell[6914, 181, 122, 2, 72, "SlideShowNavigationBar",ExpressionUUID->"74927421-9028-4b88-80af-513348dd540d",
+   CellTags->"SlideShowHeader"],
+  Cell[8374, 224, 122, 2, 72, "SlideShowNavigationBar",ExpressionUUID->"92c4aec7-5d05-4142-ad0f-73820bda49c7",
+   CellTags->"SlideShowHeader"],
+  Cell[11822, 320, 122, 2, 72, "SlideShowNavigationBar",ExpressionUUID->"fff015d9-61d2-4ab3-a5a9-af21cd7efb15",
+   CellTags->"SlideShowHeader"],
+  Cell[14940, 416, 122, 2, 72, "SlideShowNavigationBar",ExpressionUUID->"738ea7bb-46e7-4da0-8f33-6e66dfbcf94f",
+   CellTags->"SlideShowHeader"],
+  Cell[20229, 545, 122, 2, 72, "SlideShowNavigationBar",ExpressionUUID->"a5559a94-920c-46f3-9cd6-3be1f256757f",
+   CellTags->"SlideShowHeader"],
+  Cell[22167, 605, 122, 2, 72, "SlideShowNavigationBar",ExpressionUUID->"0541526e-1ce4-4992-8231-db1c0d04e181",
+   CellTags->"SlideShowHeader"],
+  Cell[24773, 682, 122, 2, 72, "SlideShowNavigationBar",ExpressionUUID->"cd2d6971-be5a-42cc-bd63-9f40c5b618d4",
+   CellTags->"SlideShowHeader"],
+  Cell[27858, 774, 122, 2, 72, "SlideShowNavigationBar",ExpressionUUID->"79c6d041-66cd-4506-84b7-22ece4cf7673",
+   CellTags->"SlideShowHeader"],
+  Cell[29850, 830, 122, 2, 74, "SlideShowNavigationBar",ExpressionUUID->"308d9f22-7af6-41f2-922b-e5f367ba0683",
+   CellTags->"SlideShowHeader"],
+  Cell[33397, 937, 122, 2, 74, "SlideShowNavigationBar",ExpressionUUID->"20444a3c-4306-481d-a173-22bb43f9293b",
+   CellTags->"SlideShowHeader"],
+  Cell[36738, 1039, 122, 2, 1, "SlideShowNavigationBar",ExpressionUUID->"b29ac36c-01ba-4c14-b723-3096348f83cb",
+   CellTags->"SlideShowHeader"],
+  Cell[39538, 1128, 122, 2, 74, "SlideShowNavigationBar",ExpressionUUID->"89a93a05-73e1-46f1-92fa-ff3360e928f5",
+   CellTags->"SlideShowHeader"],
+  Cell[44451, 1266, 122, 2, 74, "SlideShowNavigationBar",ExpressionUUID->"61958262-f849-4ff0-908b-e9314785552d",
+   CellTags->"SlideShowHeader"],
+  Cell[52676, 1479, 122, 2, 74, "SlideShowNavigationBar",ExpressionUUID->"1603c7fc-220f-4e04-aa99-bfffde1fec96",
+   CellTags->"SlideShowHeader"],
+  Cell[57251, 1603, 122, 2, 74, "SlideShowNavigationBar",ExpressionUUID->"795a0d08-a5a2-435c-ace7-b84113aeab3b",
+   CellTags->"SlideShowHeader"],
+  Cell[59269, 1664, 122, 2, 74, "SlideShowNavigationBar",ExpressionUUID->"07b29ad5-63cf-45fd-88f5-8e5f60c1ae5c",
+   CellTags->"SlideShowHeader"],
+  Cell[64648, 1821, 122, 2, 74, "SlideShowNavigationBar",ExpressionUUID->"7e60287c-6a0d-49dc-b084-e18c6765190c",
+   CellTags->"SlideShowHeader"],
+  Cell[69992, 1973, 122, 2, 74, "SlideShowNavigationBar",ExpressionUUID->"1fc9070b-338a-47bb-a276-06440cbd4927",
+   CellTags->"SlideShowHeader"],
+  Cell[76580, 2167, 122, 2, 74, "SlideShowNavigationBar",ExpressionUUID->"a601a7ac-2351-457c-af42-7947335be422",
+   CellTags->"SlideShowHeader"],
+  Cell[83083, 2342, 122, 2, 1, "SlideShowNavigationBar",ExpressionUUID->"687de5c4-5f3f-4fdf-b12a-5a3011d13c8e",
+   CellTags->"SlideShowHeader"],
+  Cell[84731, 2391, 122, 2, 1, "SlideShowNavigationBar",ExpressionUUID->"4a84c3a3-9dfc-4bcf-9cb1-68c8f767203e",
+   CellTags->"SlideShowHeader"]},
+ "SelectFishData"->{
+  Cell[52823, 1485, 207, 3, 67, "Section",ExpressionUUID->"fb3409dd-05fd-4104-9723-58f88589e2c5",
+   CellTags->"SelectFishData"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"SlideShowHeader", 86745, 2459},
+ {"SelectFishData", 90104, 2506}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[624, 23, 136, 2, 72, "SlideShowNavigationBar",ExpressionUUID->"7fe14d54-619e-4b9a-912a-c005f4469b58",
+ CellTags->"SlideShowHeader"],
+Cell[763, 27, 670, 12, 229, "Title",ExpressionUUID->"6fb3aaea-08a6-4b07-868f-fe990331d2d0"],
+Cell[1436, 41, 3202, 75, 377, "Title",ExpressionUUID->"8a607f59-d262-4713-a73f-46a07f7cd1a5"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4675, 121, 122, 2, 72, "SlideShowNavigationBar",ExpressionUUID->"0d809d1f-0d57-4014-bb81-f5524e0169b5",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[4822, 127, 160, 3, 66, "Section",ExpressionUUID->"6c8cadd3-d208-4af2-9843-686538f686a0"],
+Cell[4985, 132, 813, 13, 99, "Text",ExpressionUUID->"d3c4c96b-954e-4222-acc8-ab66a01dd2b4"],
+Cell[5801, 147, 210, 4, 33, "Text",ExpressionUUID->"c965549e-8699-4f4e-a67b-9739bff152df"],
+Cell[6014, 153, 175, 3, 25, "Subitem",ExpressionUUID->"7d7e562e-eeb0-4fca-b5f4-3a66dc43bf75"],
+Cell[6192, 158, 181, 3, 25, "Subitem",ExpressionUUID->"de293f23-e879-48ad-ad99-e1c443b3a9f7"],
+Cell[6376, 163, 170, 2, 25, "Subitem",ExpressionUUID->"780ed56d-bcb7-43f9-8061-e51904a68844"],
+Cell[6549, 167, 158, 3, 25, "Subitem",ExpressionUUID->"249bd739-d932-4a85-bcc4-34e777778b6e"],
+Cell[6710, 172, 155, 3, 25, "Subitem",ExpressionUUID->"f4317e12-43ca-4286-9565-382758443684"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6914, 181, 122, 2, 72, "SlideShowNavigationBar",ExpressionUUID->"74927421-9028-4b88-80af-513348dd540d",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[7061, 187, 155, 3, 66, "Section",ExpressionUUID->"573674b0-8c29-4977-b632-4f186682b647"],
+Cell[7219, 192, 256, 4, 33, "Text",ExpressionUUID->"059bf69c-4977-4b65-bb4a-4912c4e76344"],
+Cell[7478, 198, 281, 4, 25, "Subitem",ExpressionUUID->"bb6e9679-3207-4b2f-9154-b19b4470a506"],
+Cell[7762, 204, 221, 4, 25, "Subitem",ExpressionUUID->"da68be9e-947c-4fd7-81b4-26ce68166a9e"],
+Cell[7986, 210, 162, 3, 25, "Subitem",ExpressionUUID->"6ddfbdd2-1205-4890-b7e9-73136c17a480"],
+Cell[8151, 215, 174, 3, 25, "Subitem",ExpressionUUID->"d04a9a32-2f0e-4e79-9be9-37ca1635d05c"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8374, 224, 122, 2, 72, "SlideShowNavigationBar",ExpressionUUID->"92c4aec7-5d05-4142-ad0f-73820bda49c7",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[8521, 230, 161, 3, 66, "Section",ExpressionUUID->"93ae67bf-e1c6-4ea1-8e95-00549b6683fc"],
+Cell[CellGroupData[{
+Cell[8707, 237, 165, 3, 53, "Subsection",ExpressionUUID->"3fa6b1e4-6a6b-4ea3-8d3b-04a8d6fa1242"],
+Cell[8875, 242, 1273, 25, 99, "Text",ExpressionUUID->"8252abf9-f2bd-4d55-b152-93469547239d"],
+Cell[10151, 269, 414, 11, 45, "Input",ExpressionUUID->"b89430c0-766f-41e4-af4b-2f8f3475b18f",
+ InitializationCell->True],
+Cell[10568, 282, 484, 12, 33, "Text",ExpressionUUID->"963cd0d0-ac96-46b5-9b5e-7ac42223243e"],
+Cell[11055, 296, 210, 5, 29, "Input",ExpressionUUID->"ef69db9f-e2a4-4047-a9f7-a910d5b3d87c"],
+Cell[11268, 303, 290, 4, 33, "Text",ExpressionUUID->"0415df62-991a-4dc1-a5ab-f52e638dd41b"],
+Cell[11561, 309, 200, 4, 29, "Input",ExpressionUUID->"f6e1f945-1814-4a69-8e89-735de1230f93"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11822, 320, 122, 2, 72, "SlideShowNavigationBar",ExpressionUUID->"fff015d9-61d2-4ab3-a5a9-af21cd7efb15",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[11969, 326, 183, 3, 66, "Section",ExpressionUUID->"b64613bb-2145-4823-bf1e-17534636f754"],
+Cell[CellGroupData[{
+Cell[12177, 333, 163, 3, 53, "Subsection",ExpressionUUID->"04d13430-7453-4a73-94b0-44ba08276628"],
+Cell[12343, 338, 1238, 31, 77, "Text",ExpressionUUID->"f6d150a5-f6ee-4967-86d2-bca65488390c"],
+Cell[13584, 371, 183, 3, 33, "Text",ExpressionUUID->"eb2d0160-0156-4cde-830d-ade1ca1432f9"],
+Cell[13770, 376, 333, 9, 29, "Input",ExpressionUUID->"f29ba706-d8dc-4d36-a3b6-8bc2fd1c10da"],
+Cell[14106, 387, 173, 3, 33, "Text",ExpressionUUID->"8f816a53-15ce-4019-b7bf-b316099802dc"],
+Cell[14282, 392, 352, 9, 29, "Input",ExpressionUUID->"9ee2b179-e74f-4eac-a779-53a2e955e95c"],
+Cell[14637, 403, 242, 6, 29, "Input",ExpressionUUID->"b03c6d7b-bf1f-415d-a477-c84706f1b848"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14940, 416, 122, 2, 72, "SlideShowNavigationBar",ExpressionUUID->"738ea7bb-46e7-4da0-8f33-6e66dfbcf94f",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[15087, 422, 220, 4, 66, "Section",ExpressionUUID->"7714aaad-a92d-4ada-9c93-c044eb804076"],
+Cell[15310, 428, 1152, 23, 77, "Text",ExpressionUUID->"32917d12-3fa2-4841-8dde-7cf0698bcc00"],
+Cell[16465, 453, 1053, 16, 99, "Text",ExpressionUUID->"60a6022c-330f-4883-9e30-f791b953bbe8"],
+Cell[CellGroupData[{
+Cell[17543, 473, 159, 3, 53, "Subsection",ExpressionUUID->"ed21e0b3-b1cb-492d-893e-a872f1caacad"],
+Cell[17705, 478, 1079, 22, 55, "Text",ExpressionUUID->"00625342-c599-4944-86ac-68a9f78671ec"],
+Cell[18787, 502, 247, 4, 33, "Text",ExpressionUUID->"4f8a3997-af83-4f4e-80a9-30e8a19696f7"],
+Cell[19037, 508, 183, 4, 29, "Input",ExpressionUUID->"ffa6a8eb-05dd-4df7-9b66-03f98db52db0"],
+Cell[19223, 514, 655, 16, 33, "Text",ExpressionUUID->"71faf5d6-6479-4d1f-bc8b-7ac1fc9e4e18"],
+Cell[19881, 532, 287, 6, 29, "Input",ExpressionUUID->"15425552-9e33-4615-aad9-e671669fdaaa"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20229, 545, 122, 2, 72, "SlideShowNavigationBar",ExpressionUUID->"a5559a94-920c-46f3-9cd6-3be1f256757f",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[20376, 551, 172, 3, 66, "Section",ExpressionUUID->"1eacd7ed-be60-4e48-b863-6d0d4f911440"],
+Cell[20551, 556, 180, 3, 33, "Text",ExpressionUUID->"95ffd7cd-c7f8-4ba2-92c0-a49ce44f9bde"],
+Cell[20734, 561, 350, 9, 29, "Input",ExpressionUUID->"30c4b136-7103-4524-b854-879a14742cda"],
+Cell[21087, 572, 225, 3, 33, "Text",ExpressionUUID->"89e92078-0953-4cab-b311-c9b9041940f9"],
+Cell[21315, 577, 304, 7, 29, "Input",ExpressionUUID->"5cca11e5-e73f-4241-a50d-2afb69396800"],
+Cell[21622, 586, 214, 5, 33, "Text",ExpressionUUID->"8978d593-65ba-4746-b272-146598d88db3"],
+Cell[21839, 593, 279, 6, 29, "Input",ExpressionUUID->"e309c070-a607-4533-967e-889e18f7087a"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22167, 605, 122, 2, 72, "SlideShowNavigationBar",ExpressionUUID->"0541526e-1ce4-4992-8231-db1c0d04e181",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[22314, 611, 162, 3, 66, "Section",ExpressionUUID->"5de067f9-eefc-43b5-8c94-e3080f78697e"],
+Cell[22479, 616, 601, 14, 55, "Text",ExpressionUUID->"4e6df645-d5b9-480e-a018-61d787d95afb"],
+Cell[23083, 632, 334, 7, 33, "Text",ExpressionUUID->"c72b2ecb-aa1b-4479-8aee-bbce634b4bf1"],
+Cell[23420, 641, 246, 5, 29, "Input",ExpressionUUID->"6b744259-d1eb-457f-b9c8-ec203971d5c1"],
+Cell[23669, 648, 513, 12, 55, "Text",ExpressionUUID->"1460e656-caf1-4a5a-9460-cdeb255c9822"],
+Cell[24185, 662, 296, 7, 29, "Input",ExpressionUUID->"e5fb7075-22fd-4731-afa6-f9a2d3862e86"],
+Cell[24484, 671, 240, 5, 29, "Input",ExpressionUUID->"df197550-207c-4f52-b5f1-b8328b19d470"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24773, 682, 122, 2, 72, "SlideShowNavigationBar",ExpressionUUID->"cd2d6971-be5a-42cc-bd63-9f40c5b618d4",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[24920, 688, 222, 4, 66, "Section",ExpressionUUID->"617e30d0-fab7-412f-bc70-95977e2d164a"],
+Cell[CellGroupData[{
+Cell[25167, 696, 211, 4, 53, "Subsection",ExpressionUUID->"2fc958ed-e69a-49d5-b04a-0288b8acf3f2"],
+Cell[25381, 702, 272, 4, 33, "Text",ExpressionUUID->"73d03b35-c2c1-427d-a70a-dab91ddb8ad8"],
+Cell[25656, 708, 200, 4, 29, "Input",ExpressionUUID->"48d84966-e206-42d9-abda-7e05854dad43"],
+Cell[25859, 714, 469, 11, 29, "Input",ExpressionUUID->"9162de33-1e13-4cf0-a913-1a7adffad87a"],
+Cell[26331, 727, 194, 4, 29, "Input",ExpressionUUID->"7a4cc694-a84c-415e-8560-5aaa4c1eaa21"],
+Cell[26528, 733, 290, 5, 29, "Input",ExpressionUUID->"422e410b-2366-4d4e-a8a9-c23c6455146b"],
+Cell[26821, 740, 516, 12, 55, "Text",ExpressionUUID->"551b09c5-fcad-4641-8030-d505b2c1f660"],
+Cell[27340, 754, 457, 13, 29, "Input",ExpressionUUID->"73940990-6ca9-4d49-b026-2a672523db34"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27858, 774, 122, 2, 72, "SlideShowNavigationBar",ExpressionUUID->"79c6d041-66cd-4506-84b7-22ece4cf7673",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[28005, 780, 321, 5, 67, "Section",ExpressionUUID->"762795e5-9bbf-46d8-8db6-e0cc3446b68d"],
+Cell[28329, 787, 365, 5, 35, "Text",ExpressionUUID->"b2581ba3-47a1-48a1-aa08-a075d4bcd3be"],
+Cell[28697, 794, 226, 6, 30, "Input",ExpressionUUID->"13da2e42-6b23-4354-bede-f0862a9d0681"],
+Cell[28926, 802, 392, 9, 35, "Text",ExpressionUUID->"8f3b387a-0dd3-4e87-be0a-a380ee641545"],
+Cell[29321, 813, 480, 11, 30, "Input",ExpressionUUID->"63c6cf3f-02ca-41d4-aa6c-ac4192ddcb26"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29850, 830, 122, 2, 74, "SlideShowNavigationBar",ExpressionUUID->"308d9f22-7af6-41f2-922b-e5f367ba0683",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[29997, 836, 227, 4, 67, "Section",ExpressionUUID->"14036b89-90c8-47fa-9425-13b02abd9b82"],
+Cell[30227, 842, 477, 9, 58, "Text",ExpressionUUID->"179aa63d-0667-494d-b5f8-ad0579062e1f"],
+Cell[30707, 853, 582, 16, 30, "Input",ExpressionUUID->"d7f37e02-f0ec-4d82-9861-f6b700a0ed70"],
+Cell[31292, 871, 350, 7, 35, "Text",ExpressionUUID->"bb03456a-b0e0-469b-a681-c4051baa2c48"],
+Cell[31645, 880, 351, 10, 30, "Input",ExpressionUUID->"ce181436-688c-4a4f-97bf-6b1468bc7e1e"],
+Cell[31999, 892, 629, 17, 35, "Text",ExpressionUUID->"cd5b9967-f6c2-48be-9fb5-cd0c1df3704c"],
+Cell[32631, 911, 235, 4, 35, "Text",ExpressionUUID->"358b791e-45f3-4e0c-ae01-d949094d5e46"],
+Cell[32869, 917, 479, 14, 30, "Input",ExpressionUUID->"81f6c890-e599-47d5-902c-615e711f02eb"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[33397, 937, 122, 2, 74, "SlideShowNavigationBar",ExpressionUUID->"20444a3c-4306-481d-a173-22bb43f9293b",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[33544, 943, 171, 3, 67, "Section",ExpressionUUID->"8c7d02f0-367d-40bb-ad38-47154dc1c549"],
+Cell[33718, 948, 863, 23, 58, "Text",ExpressionUUID->"260f5278-7fed-406f-a6df-4106e0b3f05c"],
+Cell[34584, 973, 323, 9, 30, "Input",ExpressionUUID->"87e2859a-2a90-4e0c-8b0f-9316da5274a8"],
+Cell[34910, 984, 299, 6, 35, "Text",ExpressionUUID->"8a110f6b-94b3-42d9-9183-de998962440d"],
+Cell[35212, 992, 426, 12, 45, "Input",ExpressionUUID->"78416c05-008d-40f2-b5a7-c869f1a5dea4"],
+Cell[35641, 1006, 563, 13, 75, "Text",ExpressionUUID->"68f1c0d8-2162-4a73-87ed-2390a41bb288"],
+Cell[36207, 1021, 482, 12, 45, "Input",ExpressionUUID->"da309a6c-32de-4cd6-a2df-9627a5f566a8"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36738, 1039, 122, 2, 1, "SlideShowNavigationBar",ExpressionUUID->"b29ac36c-01ba-4c14-b723-3096348f83cb",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[36885, 1045, 147, 3, 67, "Section",ExpressionUUID->"5bea998d-da4e-4f6d-a79e-86d41907baf1"],
+Cell[37035, 1050, 483, 11, 58, "Text",ExpressionUUID->"2948bda3-24de-4e6e-81eb-80899810afd5"],
+Cell[37521, 1063, 277, 8, 30, "Input",ExpressionUUID->"d72b6dfc-042a-4683-9911-ae3282d60488"],
+Cell[37801, 1073, 525, 12, 35, "Text",ExpressionUUID->"fd1c1763-35b3-4646-b507-777606c389d1"],
+Cell[38329, 1087, 505, 15, 30, "Input",ExpressionUUID->"f17ed0d1-3546-4f99-bd03-2aa1aeb36c8d"],
+Cell[38837, 1104, 203, 3, 35, "Text",ExpressionUUID->"031486a7-749f-4b70-bcf8-29972543dbec"],
+Cell[39043, 1109, 256, 7, 30, "Input",ExpressionUUID->"aba905f4-7862-4bce-af6b-74a60ac8efcc"],
+Cell[39302, 1118, 187, 4, 30, "Input",ExpressionUUID->"53899403-c11f-4aaa-9986-62cad991a491"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[39538, 1128, 122, 2, 74, "SlideShowNavigationBar",ExpressionUUID->"89a93a05-73e1-46f1-92fa-ff3360e928f5",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[39685, 1134, 318, 5, 67, "Section",ExpressionUUID->"88fdca54-d171-4f0d-98b8-de64f0537255"],
+Cell[CellGroupData[{
+Cell[40028, 1143, 301, 5, 54, "Subsection",ExpressionUUID->"67c2685a-1cb6-47af-8b29-a6988a80c515"],
+Cell[40332, 1150, 1251, 26, 81, "Text",ExpressionUUID->"e51c5bc6-2b22-4637-9cc5-e9e4eeb71fff"],
+Cell[41586, 1178, 301, 9, 35, "Text",ExpressionUUID->"d1bbe82e-67df-482a-96d6-50cd2762d073"],
+Cell[41890, 1189, 202, 4, 30, "Input",ExpressionUUID->"969ff728-42b2-47b0-94bb-d0a9f964d3df"],
+Cell[42095, 1195, 164, 3, 35, "Text",ExpressionUUID->"d120159d-f676-46a5-bdb7-8d3790eb7782"],
+Cell[42262, 1200, 328, 9, 30, "Input",ExpressionUUID->"3a066a14-b7b8-4ed9-8230-75ef1e8cee66"],
+Cell[42593, 1211, 163, 3, 35, "Text",ExpressionUUID->"2ebe884c-8f04-47ab-8b30-46b01b360c2c"],
+Cell[42759, 1216, 194, 4, 30, "Input",ExpressionUUID->"a4443190-bb8a-4307-a824-233e7e2f7324"],
+Cell[42956, 1222, 609, 14, 58, "Text",ExpressionUUID->"9d70df48-4db5-482b-a3b1-8df8e9b62931"],
+Cell[43568, 1238, 241, 6, 30, "Input",ExpressionUUID->"058b4291-0bba-4320-a97e-f80cc9ecd8a9"],
+Cell[43812, 1246, 578, 13, 35, "Text",ExpressionUUID->"926736ca-c0c5-4a89-bca9-5584d06f76f5"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[44451, 1266, 122, 2, 74, "SlideShowNavigationBar",ExpressionUUID->"61958262-f849-4ff0-908b-e9314785552d",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[44598, 1272, 165, 3, 67, "Section",ExpressionUUID->"6081329c-48c5-426b-a3e8-9d71b7fef2e4"],
+Cell[44766, 1277, 860, 20, 58, "Text",ExpressionUUID->"851f05d8-e7ad-444f-bfbf-8a589c47cf3f"],
+Cell[45629, 1299, 194, 3, 35, "Text",ExpressionUUID->"791b7c73-474d-409b-856d-10cdfccb085a"],
+Cell[45826, 1304, 330, 8, 30, "Input",ExpressionUUID->"5bda8e87-bcfd-46f4-b7a3-51140156908c"],
+Cell[46159, 1314, 308, 7, 35, "Text",ExpressionUUID->"8c77946c-80c6-4e14-a180-d9a42b2d5d3d"],
+Cell[46470, 1323, 986, 23, 30, "Input",ExpressionUUID->"d900f5ad-688e-4ac0-aada-b55b859829d8"],
+Cell[47459, 1348, 408, 8, 35, "Text",ExpressionUUID->"76683038-adb1-4af1-88b5-00346bcad139"],
+Cell[47870, 1358, 1488, 31, 94, "Input",ExpressionUUID->"3ac9c9ae-257e-4183-b5b8-febc36ed2141"],
+Cell[49361, 1391, 514, 9, 58, "Text",ExpressionUUID->"5abb7e0e-792c-49d4-bf2f-9dd63e9612b5"],
+Cell[49878, 1402, 584, 17, 30, "Input",ExpressionUUID->"73cf6e56-bf96-4c2e-ab36-84b38c2109a8"],
+Cell[50465, 1421, 1201, 29, 94, "Input",ExpressionUUID->"a6309940-64e2-46d2-b72c-c0decbfb158e"],
+Cell[51669, 1452, 219, 4, 35, "Text",ExpressionUUID->"139cce31-512d-4fc5-be76-2d1f33c737aa"],
+Cell[51891, 1458, 736, 15, 30, "Input",ExpressionUUID->"8222a945-9f6b-4e15-a6f2-48e8fcc0428a"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[52676, 1479, 122, 2, 74, "SlideShowNavigationBar",ExpressionUUID->"1603c7fc-220f-4e04-aa99-bfffde1fec96",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[52823, 1485, 207, 3, 67, "Section",ExpressionUUID->"fb3409dd-05fd-4104-9723-58f88589e2c5",
+ CellTags->"SelectFishData"],
+Cell[53033, 1490, 795, 15, 81, "Text",ExpressionUUID->"81b825eb-669b-464e-a8d3-4fa3fb392760"],
+Cell[53831, 1507, 248, 5, 30, "Input",ExpressionUUID->"51963d83-0e46-41d8-ba8e-633e54eef99c"],
+Cell[54082, 1514, 510, 9, 58, "Text",ExpressionUUID->"6c6b09dc-3d5c-4778-a0d4-1fc8ad699f2d"],
+Cell[54595, 1525, 651, 15, 30, "Input",ExpressionUUID->"a930148d-8367-4af5-9c5d-e31f90716386"],
+Cell[55249, 1542, 497, 9, 58, "Text",ExpressionUUID->"172ae068-2d9f-42f8-88e0-ff6e7e658d0a"],
+Cell[55749, 1553, 162, 3, 35, "Text",ExpressionUUID->"388fc9f4-d8c7-4089-a92e-9a413597c6d6"],
+Cell[55914, 1558, 229, 6, 30, "Input",ExpressionUUID->"c25b86ed-bdf0-41c0-8a75-330ade402eb2"],
+Cell[56146, 1566, 365, 8, 35, "Text",ExpressionUUID->"8e01bbff-c4b7-4f63-8063-30a505ab9b5f"],
+Cell[56514, 1576, 410, 12, 30, "Input",ExpressionUUID->"3625a71e-9f2c-4ec8-88e7-1a151fcc149f"],
+Cell[56927, 1590, 275, 7, 30, "Input",ExpressionUUID->"7ca331dd-20b0-4537-9ec2-acab7f858d74"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[57251, 1603, 122, 2, 74, "SlideShowNavigationBar",ExpressionUUID->"795a0d08-a5a2-435c-ace7-b84113aeab3b",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[57398, 1609, 164, 3, 67, "Section",ExpressionUUID->"e7b2f64b-cd34-4faf-9411-ba8432b2e54e"],
+Cell[57565, 1614, 568, 12, 58, "Text",ExpressionUUID->"bbed95fc-96f1-4b03-8cfd-40b1011444b9"],
+Cell[58136, 1628, 192, 3, 35, "Text",ExpressionUUID->"a9fdac86-9006-4cae-87a1-181f4f5e7433"],
+Cell[58331, 1633, 546, 15, 32, "Input",ExpressionUUID->"fbba4144-3e53-4aaf-bbda-23bc20128a22"],
+Cell[58880, 1650, 340, 8, 30, "Input",ExpressionUUID->"40d4c698-5567-4dce-89fd-2be75854a7c2"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[59269, 1664, 122, 2, 74, "SlideShowNavigationBar",ExpressionUUID->"07b29ad5-63cf-45fd-88f5-8e5f60c1ae5c",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[59416, 1670, 176, 3, 67, "Section",ExpressionUUID->"00785c5f-0bbf-47e7-95fe-358b687040c5"],
+Cell[59595, 1675, 222, 3, 35, "Text",ExpressionUUID->"470a373d-99a7-48d8-92ee-b685764cee66"],
+Cell[59820, 1680, 229, 6, 30, "Input",ExpressionUUID->"08d0ef5b-871a-464b-aefe-7c9be4bf7ae5"],
+Cell[60052, 1688, 904, 20, 58, "Text",ExpressionUUID->"7fc24f2f-a1f0-4aa4-8d25-5c75a22a28d8"],
+Cell[60959, 1710, 272, 6, 35, "Text",ExpressionUUID->"1aa9a613-9070-45ab-9ce1-c322579f9901"],
+Cell[61234, 1718, 394, 12, 30, "Input",ExpressionUUID->"65b58983-3dcf-4633-bef2-2d3c1d44f7fd"],
+Cell[61631, 1732, 374, 8, 35, "Text",ExpressionUUID->"bd9e56ba-151e-4b28-b12a-93ebc114ab3a"],
+Cell[62008, 1742, 221, 5, 30, "Input",ExpressionUUID->"cef40ae5-1500-4bcb-ab29-c52773d43dff"],
+Cell[62232, 1749, 244, 6, 30, "Input",ExpressionUUID->"0b990924-9225-4e76-8d6d-9474b2fa1dc8"],
+Cell[62479, 1757, 372, 9, 35, "Text",ExpressionUUID->"d0be2983-064c-4132-ac63-1533a4fa52f0"],
+Cell[62854, 1768, 502, 9, 30, "Input",ExpressionUUID->"f27bf647-9d24-4145-8b33-64873fa4e395"],
+Cell[63359, 1779, 422, 10, 35, "Text",ExpressionUUID->"7c324e8c-4e2d-4e0d-8af7-05fc7da90ce0"],
+Cell[63784, 1791, 495, 14, 30, "Input",ExpressionUUID->"095a69af-ccc1-4081-a7c1-de554b81f562"],
+Cell[64282, 1807, 317, 8, 30, "Input",ExpressionUUID->"f12b750b-5e2b-4602-800d-aafc23077154"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[64648, 1821, 122, 2, 74, "SlideShowNavigationBar",ExpressionUUID->"7e60287c-6a0d-49dc-b084-e18c6765190c",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[64795, 1827, 160, 3, 67, "Section",ExpressionUUID->"b6a16a32-5321-4c9a-897c-d3f35e9edd26"],
+Cell[64958, 1832, 805, 16, 58, "Text",ExpressionUUID->"5224ad4b-9274-4be3-91a7-0aad020ca25f"],
+Cell[65766, 1850, 181, 4, 30, "Input",ExpressionUUID->"884bb508-725b-4f75-9b8c-35def45e6b56"],
+Cell[65950, 1856, 183, 4, 30, "Input",ExpressionUUID->"da734cd5-4881-4ab9-83d9-ab44e258a100"],
+Cell[66136, 1862, 517, 11, 30, "Input",ExpressionUUID->"21c18af5-d3ff-424c-a6da-eef06eeaf877"],
+Cell[66656, 1875, 469, 12, 35, "Text",ExpressionUUID->"2c736a80-f70c-4427-aa91-dd51bb1c2042"],
+Cell[67128, 1889, 197, 4, 30, "Input",ExpressionUUID->"c861c4c9-28f8-403c-bf53-3d54a083d167"],
+Cell[67328, 1895, 184, 3, 35, "Text",ExpressionUUID->"0e2c49d0-ca79-44b5-818c-51d9ad9c15a9"],
+Cell[67515, 1900, 342, 10, 30, "Input",ExpressionUUID->"b223b7c8-76c3-45aa-8c5a-7065acb48604"],
+Cell[67860, 1912, 396, 11, 35, "Text",ExpressionUUID->"156cc049-2596-4ca7-b46f-8abeacbad469"],
+Cell[68259, 1925, 415, 8, 30, "Input",ExpressionUUID->"944a740c-9a25-4b1e-a669-b39a6c66d5d2"],
+Cell[68677, 1935, 199, 4, 30, "Input",ExpressionUUID->"da8d82fd-8584-4367-8e62-ed14c222ce8e"],
+Cell[68879, 1941, 241, 4, 35, "Text",ExpressionUUID->"058f4f4b-0105-4cfa-bf2a-8db6426f8d28"],
+Cell[69123, 1947, 390, 8, 30, "Input",ExpressionUUID->"03a72898-92ea-4cde-977e-7feaced984e1"],
+Cell[69516, 1957, 175, 3, 35, "Text",ExpressionUUID->"aebca1ec-7f7c-44ba-81b0-dcdff0d4d07b"],
+Cell[69694, 1962, 249, 5, 30, "Input",ExpressionUUID->"ec9eed11-6afd-4bc9-920c-9e66a52745a5"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[69992, 1973, 122, 2, 74, "SlideShowNavigationBar",ExpressionUUID->"1fc9070b-338a-47bb-a276-06440cbd4927",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[70139, 1979, 157, 3, 67, "Section",ExpressionUUID->"e2fb3309-7e8c-479a-b351-9ef7d2935464"],
+Cell[70299, 1984, 974, 24, 81, "Text",ExpressionUUID->"7b5269b1-51ff-42e5-8d5e-e1c95dd756aa"],
+Cell[71276, 2010, 557, 13, 58, "Text",ExpressionUUID->"e0ddbe9f-c827-4194-8c51-2757c4cde3d1"],
+Cell[71836, 2025, 200, 4, 30, "Input",ExpressionUUID->"c60dbac2-6276-4b31-b100-8cfe22184c27"],
+Cell[72039, 2031, 413, 11, 35, "Text",ExpressionUUID->"fd65aad4-0cfc-42ea-869f-83295669d5d3"],
+Cell[72455, 2044, 432, 13, 30, "Input",ExpressionUUID->"3781b39d-0cdb-4841-88dc-93a1484139a9"],
+Cell[72890, 2059, 401, 11, 35, "Text",ExpressionUUID->"7f024b28-549d-4b24-bc6e-b42586e71f7f"],
+Cell[73294, 2072, 606, 15, 30, "Input",ExpressionUUID->"815c7d11-76bb-4061-86f3-88f60745aafa"],
+Cell[73903, 2089, 909, 25, 35, "Text",ExpressionUUID->"dc52af0b-fbae-4c07-b2f0-d75c313ec568"],
+Cell[74815, 2116, 723, 17, 30, "Input",ExpressionUUID->"8e6f1a2f-c5ea-4a7a-8dd9-d8ce8778b929"],
+Cell[75541, 2135, 513, 12, 58, "Text",ExpressionUUID->"5fc2c497-e47b-46ce-af54-b2f293b28b24"],
+Cell[76057, 2149, 474, 12, 30, "Input",ExpressionUUID->"d3b55214-7617-43a3-ac13-fdc16776e7f9"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[76580, 2167, 122, 2, 74, "SlideShowNavigationBar",ExpressionUUID->"a601a7ac-2351-457c-af42-7947335be422",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[76727, 2173, 161, 3, 67, "Section",ExpressionUUID->"365f4d8c-2b96-4786-8c89-341b093b8dc6"],
+Cell[76891, 2178, 1156, 20, 104, "Text",ExpressionUUID->"d8ccc9de-c935-4c20-9cf6-6253379b71f9"],
+Cell[78050, 2200, 820, 23, 58, "Text",ExpressionUUID->"9b21b862-924e-475e-bc22-9e0986e7adab"],
+Cell[78873, 2225, 335, 8, 27, "DisplayFormula",ExpressionUUID->"1ac34354-8997-4f0c-a082-3de7c88aebe9"],
+Cell[79211, 2235, 856, 18, 81, "Text",ExpressionUUID->"b19bfcfc-1227-4806-acf6-eac7047119bc"],
+Cell[80070, 2255, 230, 4, 35, "Text",ExpressionUUID->"faba97d9-f29a-4544-a34e-54b3ca095f1e"],
+Cell[80303, 2261, 305, 8, 45, "Input",ExpressionUUID->"cb6effad-a0a9-492f-be14-0311973d5907"],
+Cell[80611, 2271, 249, 6, 75, "Text",ExpressionUUID->"03535ff8-3c90-4f70-88a4-bef97caffb73"],
+Cell[80863, 2279, 772, 25, 71, "Input",ExpressionUUID->"8974081c-61af-4501-9f69-ba02e62c20cf"],
+Cell[81638, 2306, 729, 13, 135, "Text",ExpressionUUID->"33fb8871-2de4-4500-b937-a4063b8dc27c"],
+Cell[82370, 2321, 664, 15, 70, "Input",ExpressionUUID->"6b73ed17-9527-4078-8bb0-51f0b6f43c47"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[83083, 2342, 122, 2, 1, "SlideShowNavigationBar",ExpressionUUID->"687de5c4-5f3f-4fdf-b12a-5a3011d13c8e",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[83230, 2348, 150, 3, 115, "Section",ExpressionUUID->"b32fd98b-654f-4402-afec-4829411209e9"],
+Cell[83383, 2353, 267, 6, 45, "Text",ExpressionUUID->"6db3525c-4a43-4345-91fd-2bf05b5b7df5"],
+Cell[83653, 2361, 256, 4, 45, "Subitem",ExpressionUUID->"40e3b504-a32f-4452-babc-9e773dd85d65"],
+Cell[83912, 2367, 171, 3, 45, "Subitem",ExpressionUUID->"6f969eb5-cea3-42ec-9bc1-078f78010e40"],
+Cell[84086, 2372, 168, 3, 45, "Subitem",ExpressionUUID->"7708c713-5d85-44d3-943c-f190808a6c79"],
+Cell[84257, 2377, 208, 3, 45, "Subitem",ExpressionUUID->"6852a355-bbe8-4d37-bbe4-7e2615bce406"],
+Cell[84468, 2382, 214, 3, 45, "Subitem",ExpressionUUID->"a8aedf13-5c94-43c1-9f35-a61a49148ac4"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[84731, 2391, 122, 2, 1, "SlideShowNavigationBar",ExpressionUUID->"4a84c3a3-9dfc-4bcf-9cb1-68c8f767203e",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[84878, 2397, 159, 3, 115, "Section",ExpressionUUID->"7013ee0b-ec9a-45b3-ad8a-13e6edaa3647"],
+Cell[85040, 2402, 270, 7, 44, "Input",ExpressionUUID->"3ff03f52-97d4-4167-a4ff-92e7bbcfc1e6"],
+Cell[85313, 2411, 831, 26, 71, "Input",ExpressionUUID->"4e5d6867-3b76-4c91-b22b-53d391af6285"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
