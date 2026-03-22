@@ -1,0 +1,2905 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    109057,       2897]
+NotebookOptionsPosition[     98800,       2712]
+NotebookOutlinePosition[     99228,       2729]
+CellTagsIndexPosition[     99185,       2726]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["2 - Graphics primitives", "Title",
+ CellChangeTimes->{{3.788062003189537*^9, 
+  3.788062018106422*^9}},ExpressionUUID->"7de2e2a1-231f-473d-9199-\
+340120b5660d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"BarChart", "[", 
+  RowBox[{"{", 
+   RowBox[{"2", ",", "3", ",", "4", ",", "2", ",", "2.5"}], "}"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.8205707666459184`*^9, 3.8205707856326623`*^9}},
+ CellLabel->"In[89]:=",ExpressionUUID->"ea80227a-7109-4e07-9c94-0178bec26405"],
+
+Cell[BoxData[
+ GraphicsBox[{
+   {Opacity[0], 
+    PointBox[{{0.45075018208302986`, 0.}, {5.451201747997087, 0.}}]}, {{}, 
+    {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+     0.6649999999999999], Thickness[Small]}], 
+     {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+      0.6649999999999999], Thickness[Small]}], 
+      TagBox[
+       TooltipBox[
+        TagBox[
+         TagBox[
+          DynamicBox[{
+            FEPrivate`If[
+             CurrentValue["MouseOver"], 
+             EdgeForm[{
+               GrayLevel[0.5], 
+               AbsoluteThickness[1.5], 
+               Opacity[0.66]}], {}, {}], 
+            
+            RectangleBox[{0.5487982520029133, 0.}, {1.4512017479970867`, 2.}, 
+             "RoundingRadius" -> 0]},
+           
+           ImageSizeCache->{{45.07910811383378, 
+            229.07996202142584`}, {-2.253324562118223, 308.03979015363916`}}],
+          "DelayedMouseEffectStyle"],
+         StatusArea[#, 2]& ,
+         TagBoxNote->"2"],
+        StyleBox["2", {}, StripOnInput -> False]],
+       Annotation[#, 
+        Style[2, {}], "Tooltip"]& ]}, 
+     {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+      0.6649999999999999], Thickness[Small]}], 
+      TagBox[
+       TooltipBox[
+        TagBox[
+         TagBox[
+          DynamicBox[{
+            FEPrivate`If[
+             CurrentValue["MouseOver"], 
+             EdgeForm[{
+               GrayLevel[0.5], 
+               AbsoluteThickness[1.5], 
+               Opacity[0.66]}], {}, {}], 
+            
+            RectangleBox[{1.5487982520029133`, 0.}, {2.4512017479970867`, 3.},
+              "RoundingRadius" -> 0]},
+           
+           ImageSizeCache->{{247.31774605985785`, 
+            431.3185999674499}, {-156.64988191999691`, 308.03979015363916`}}],
+          "DelayedMouseEffectStyle"],
+         StatusArea[#, 3]& ,
+         TagBoxNote->"3"],
+        StyleBox["3", {}, StripOnInput -> False]],
+       Annotation[#, 
+        Style[3, {}], "Tooltip"]& ]}, 
+     {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+      0.6649999999999999], Thickness[Small]}], 
+      TagBox[
+       TooltipBox[
+        TagBox[
+         TagBox[
+          DynamicBox[{
+            FEPrivate`If[
+             CurrentValue["MouseOver"], 
+             EdgeForm[{
+               GrayLevel[0.5], 
+               AbsoluteThickness[1.5], 
+               Opacity[0.66]}], {}, {}], 
+            
+            RectangleBox[{2.5487982520029133`, 0.}, {3.4512017479970867`, 4.},
+              "RoundingRadius" -> 0]},
+           
+           ImageSizeCache->{{449.556384005882, 
+            633.557237913474}, {-311.0464392778756, 308.03979015363916`}}],
+          "DelayedMouseEffectStyle"],
+         StatusArea[#, 4]& ,
+         TagBoxNote->"4"],
+        StyleBox["4", {}, StripOnInput -> False]],
+       Annotation[#, 
+        Style[4, {}], "Tooltip"]& ]}, 
+     {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+      0.6649999999999999], Thickness[Small]}], 
+      TagBox[
+       TooltipBox[
+        TagBox[
+         TagBox[
+          DynamicBox[{
+            FEPrivate`If[
+             CurrentValue["MouseOver"], 
+             EdgeForm[{
+               GrayLevel[0.5], 
+               AbsoluteThickness[1.5], 
+               Opacity[0.66]}], {}, {}], 
+            
+            RectangleBox[{3.5487982520029133`, 0.}, {4.451201747997087, 2.}, 
+             "RoundingRadius" -> 0]},
+           
+           ImageSizeCache->{{651.795021951906, 
+            835.7958758594981}, {-2.253324562118223, 308.03979015363916`}}],
+          "DelayedMouseEffectStyle"],
+         StatusArea[#, 2]& ,
+         TagBoxNote->"2"],
+        StyleBox["2", {}, StripOnInput -> False]],
+       Annotation[#, 
+        Style[2, {}], "Tooltip"]& ]}, 
+     {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+      0.6649999999999999], Thickness[Small]}], 
+      TagBox[
+       TooltipBox[
+        TagBox[
+         TagBox[
+          DynamicBox[{
+            FEPrivate`If[
+             CurrentValue["MouseOver"], 
+             EdgeForm[{
+               GrayLevel[0.5], 
+               AbsoluteThickness[1.5], 
+               Opacity[0.66]}], {}, {}], 
+            
+            RectangleBox[{4.548798252002913, 0.}, {5.451201747997087, 2.5}, 
+             "RoundingRadius" -> 0]},
+           
+           ImageSizeCache->{{854.0336598979302, 
+            1038.034513805522}, {-79.45160324105757, 308.03979015363916`}}],
+          "DelayedMouseEffectStyle"],
+         StatusArea[#, 2.5]& ,
+         TagBoxNote->"2.5"],
+        StyleBox["2.5`", {}, StripOnInput -> False]],
+       Annotation[#, 
+        Style[2.5, {}], "Tooltip"]& ]}}, {}, {}}, {}, {}, {}, {}, 
+   StyleBox[
+    StyleBox[{
+      {Thickness[Tiny], 
+       LineBox[{{0.45075018208302986`, 0.}, {5.551210779315368, 0.}}], 
+       StyleBox[{}, "GraphicsLabel",
+        StripOnInput->False]}, 
+      StyleBox[{
+        {Thickness[Tiny], 
+         LineBox[{{0.5487982520029133, 0.}, 
+           Offset[{-1.102182119232618*^-15, -6.}, {0.5487982520029133, 0.}]}],
+          LineBox[{{5.451201747997087, 0.}, 
+           Offset[{-1.102182119232618*^-15, -6.}, {5.451201747997087, 
+            0.}]}], {{}, {}, {}, {}, {}, {}, {}}}, 
+        StyleBox[{}, "GraphicsLabel",
+         StripOnInput->False]}, "GraphicsTicks",
+       StripOnInput->False]},
+     Antialiasing->False], "GraphicsAxes",
+    StripOnInput->False]},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{False, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0.45075018208302986`, 0.},
+  CoordinatesToolOptions:>{"DisplayFunction" -> ({
+      Identity[
+       Part[#, 1]], 
+      Identity[
+       Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+      Identity[
+       Part[#, 1]], 
+      Identity[
+       Part[#, 2]]}& )},
+  DisplayFunction->Identity,
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  PlotRange->{{All, All}, {All, All}},
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{None, Automatic}]], "Output",
+ CellChangeTimes->{3.820570786632922*^9},
+ CellLabel->"Out[89]=",ExpressionUUID->"843d6099-586c-4464-8826-8a8329b95957"]
+}, Open  ]],
+
+Cell[TextData[{
+ "All graphics in Mathematica are built from a few simple geometric shapes, \
+such as circles, rectangles and lines. These are called ",
+ StyleBox["graphics primitives",
+  FontWeight->"Bold"],
+ ". Functions such as ",
+ StyleBox["BarChart",
+  FontWeight->"Bold"],
+ " and ",
+ StyleBox["ListPlot",
+  FontWeight->"Bold"],
+ " create plots by arranging those shapes to construct the corresponding \
+charts. In many cases these built-in functions are all we need, but there are \
+scenarios where we may want to construct some custom chart that cannot be \
+obtained from Mathematica\[CloseCurlyQuote]s pre-defined functions. In those \
+cases, we need to build a chart from scratch by using graphics primitives.\n\n\
+Another use for graphics primitives is to add annotations to charts. For \
+example, we may want to draw an arrow to call attention to a particularly \
+interesting data point in a line plot, or we may want to draw a transparent \
+rectangle to highlight a region of a scatter plot. These chart annotations \
+are especially important in explanatory data visualisation.\n\nIn the \
+following, we will learn to use the graphics primitives to create new kinds \
+of charts from scratch, and to annotate plots. "
+}], "Text",
+ CellChangeTimes->{{3.7880620588598003`*^9, 3.7880625984969845`*^9}, {
+  3.7880626394774675`*^9, 3.788062760406953*^9}, {3.788062796417652*^9, 
+  3.7880628544684505`*^9}, {3.820570758351943*^9, 
+  3.820570764903144*^9}},ExpressionUUID->"326c731e-0d7b-4dc5-bdc4-\
+1f5357045b5c"],
+
+Cell[CellGroupData[{
+
+Cell["A tour of graphics primitives", "Section",
+ CellChangeTimes->{{3.788062865658337*^9, 
+  3.788062879699276*^9}},ExpressionUUID->"d08bdc04-cebf-487a-b3de-\
+95c9c3beab17"],
+
+Cell[TextData[{
+ "An example of a graphics primitive is a circle. ",
+ StyleBox["Circle[{x,y}, r]",
+  FontWeight->"Bold"],
+ " represents a circle with radius ",
+ StyleBox["r",
+  FontWeight->"Bold"],
+ " centred at point ",
+ StyleBox["{x,y}",
+  FontWeight->"Bold"],
+ ". However, by itself ",
+ StyleBox["Circle",
+  FontWeight->"Bold"],
+ " does nothing: "
+}], "Text",
+ CellChangeTimes->{{3.78806290025467*^9, 3.7880629278896923`*^9}, {
+  3.788062989231428*^9, 
+  3.78806307468301*^9}},ExpressionUUID->"bcdf19d7-5dfb-46e4-b2e8-\
+736c3d436a50"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Circle", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0"}], "}"}], ",", " ", "1"}], "]"}]], "Code",
+ InitializationCell->False,
+ CellChangeTimes->{{3.788063077083357*^9, 3.7880630920634513`*^9}, {
+  3.788063207938198*^9, 3.78806322771449*^9}},
+ CellLabel->"In[90]:=",ExpressionUUID->"c6025973-6266-4103-96e2-8237bc07ad95"],
+
+Cell[BoxData[
+ RowBox[{"Circle", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0"}], "}"}], ",", "1"}], "]"}]], "Output",
+ CellChangeTimes->{3.820562160546726*^9, 3.8205710790582466`*^9},
+ CellLabel->"Out[90]=",ExpressionUUID->"525f3928-983a-44c1-9758-59f4b5c70882"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Graphics primitives are only displayed inside a ",
+ StyleBox["Graphics",
+  FontWeight->"Bold"],
+ " command:"
+}], "Text",
+ CellChangeTimes->{{3.788063135593232*^9, 
+  3.7880631655439186`*^9}},ExpressionUUID->"e8c26243-4e1c-4ed2-9902-\
+de4ac1058c87"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{"Circle", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"0", ",", "0"}], "}"}], ",", " ", "1"}], "]"}], "]"}]], "Code",
+ InitializationCell->False,
+ CellChangeTimes->{{3.7880631680450764`*^9, 3.7880632305594873`*^9}, 
+   3.7881590404741507`*^9, 3.788159077140278*^9},
+ CellLabel->"In[2]:=",ExpressionUUID->"9db1c17e-13e3-4ea1-a1e5-3eae53afc4ba"],
+
+Cell[BoxData[
+ GraphicsBox[CircleBox[{0, 0}, 1]]], "Output",
+ CellChangeTimes->{3.820562275233937*^9},
+ CellLabel->"Out[2]=",ExpressionUUID->"2e7d50d7-cbb3-4227-b718-440e71fd8b90"]
+}, Open  ]],
+
+Cell[TextData[{
+ "We can plot multiple shapes by passing a list to ",
+ StyleBox["Graphics",
+  FontWeight->"Bold"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.7880632601526327`*^9, 
+  3.7880632826613617`*^9}},ExpressionUUID->"0063ea07-97a5-47f4-84d4-\
+7041db0593c0"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Circle", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}], ",", " ", "1"}], "]"}], ",", " ", 
+    RowBox[{"Circle", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"2", ",", "0"}], "}"}], ",", " ", "0.7"}], "]"}]}], "}"}], 
+  "]"}]], "Code",
+ InitializationCell->False,
+ CellChangeTimes->{{3.7880632851959896`*^9, 3.7880633510123177`*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"765f5066-240f-4348-8fb3-f94f72e18350"],
+
+Cell[BoxData[
+ GraphicsBox[{CircleBox[{0, 0}, 1], CircleBox[{2, 0}, 0.7]}]], "Output",
+ CellChangeTimes->{3.82056228256572*^9},
+ CellLabel->"Out[3]=",ExpressionUUID->"67a4a1c9-ed4d-46a8-83f0-2d539abbabf4"]
+}, Open  ]],
+
+Cell["Here are the most important graphics primitives:", "Text",
+ CellChangeTimes->{{3.7880633969783907`*^9, 
+  3.7880634130961914`*^9}},ExpressionUUID->"69c7093b-2e7e-44d9-bec9-\
+97fec56cfa41"],
+
+Cell[TextData[Cell[BoxData[GridBox[{
+   {
+    StyleBox[
+     RowBox[{"Circle", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"x", ",", "y"}], "}"}], ",", " ", "r"}], "]"}],
+     FontWeight->"Bold"], 
+    RowBox[{"circle", " ", "of", " ", "radius", " ", 
+     StyleBox["r",
+      FontWeight->"Bold"], " ", "centred", " ", "at", " ", 
+     StyleBox[
+      RowBox[{"{", 
+       RowBox[{"x", ",", "y"}], "}"}],
+      FontWeight->"Bold"]}]},
+   {
+    StyleBox[
+     RowBox[{"Disk", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"x", ",", "y"}], "}"}], ",", " ", "r"}], "]"}],
+     FontWeight->"Bold"], 
+    RowBox[{"disk", " ", "of", " ", "radius", " ", 
+     StyleBox["r",
+      FontWeight->"Bold"], " ", "centred", " ", "at", " ", 
+     StyleBox[
+      RowBox[{"{", 
+       RowBox[{"x", ",", "y"}], "}"}],
+      FontWeight->"Bold"]}]},
+   {
+    StyleBox[
+     RowBox[{"Rectangle", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["x", "1"], ",", 
+         SubscriptBox["y", "1"]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["x", "2"], ",", 
+         SubscriptBox["y", "2"]}], "}"}]}], "]"}],
+     FontWeight->"Bold"], 
+    RowBox[{
+     RowBox[{"rectangle", " ", "with", " ", "corners", " ", 
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["x", "1"], ",", 
+         SubscriptBox["y", "1"]}], "}"}],
+       FontWeight->"Bold"]}], ",", 
+     StyleBox[
+      RowBox[{"{", 
+       RowBox[{
+        SubscriptBox["x", "2"], ",", 
+        SubscriptBox["y", "2"]}], "}"}],
+      FontWeight->"Bold"]}]},
+   {
+    StyleBox[
+     RowBox[{"Polygon", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          SubscriptBox["x", "1"], ",", 
+          SubscriptBox["y", "1"]}], "}"}], ",", " ", "..."}], "}"}], "]"}],
+     FontWeight->"Bold"], 
+    RowBox[{
+     RowBox[{"polygon", " ", "with", " ", "corners", " ", 
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["x", "1"], ",", 
+         SubscriptBox["y", "1"]}], "}"}],
+       FontWeight->"Bold"]}], 
+     StyleBox[",",
+      FontWeight->"Bold"], 
+     StyleBox[" ",
+      FontWeight->"Bold"], 
+     StyleBox["...",
+      FontWeight->"Bold"]}]},
+   {
+    StyleBox[
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          SubscriptBox["x", "1"], ",", 
+          SubscriptBox["y", "1"]}], "}"}], ",", " ", "..."}], "}"}], "]"}],
+     FontWeight->"Bold"], 
+    RowBox[{
+     RowBox[{"lines", " ", "connecting", " ", "points", " ", 
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["x", "1"], ",", 
+         SubscriptBox["y", "1"]}], "}"}],
+       FontWeight->"Bold"]}], 
+     StyleBox[",",
+      FontWeight->"Bold"], 
+     StyleBox["...",
+      FontWeight->"Bold"], 
+     StyleBox[" ",
+      FontWeight->"Bold"]}]},
+   {
+    StyleBox[
+     RowBox[{"Arrow", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          SubscriptBox["x", "1"], ",", 
+          SubscriptBox["y", "1"]}], "}"}], ",", " ", "..."}], "}"}], "]"}],
+     FontWeight->"Bold"], 
+    RowBox[{
+     RowBox[{"like", " ", 
+      StyleBox["Line",
+       FontWeight->"Bold"]}], ",", 
+     RowBox[{
+     "but", " ", "with", " ", "an", " ", "arrow", " ", "at", " ", "the", " ", 
+      "end"}]}]},
+   {
+    StyleBox[
+     RowBox[{"Point", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"x", ",", "y"}], "}"}], ",", "..."}], "]"}],
+     FontWeight->"Bold"], 
+    RowBox[{
+     RowBox[{"points", " ", "at", " ", "positions", " ", 
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"x", ",", "y"}], "}"}],
+       FontWeight->"Bold"]}], 
+     StyleBox[",",
+      FontWeight->"Bold"], 
+     StyleBox["...",
+      FontWeight->"Bold"]}]},
+   {
+    StyleBox[
+     RowBox[{"Text", "[", 
+      RowBox[{"txt", ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "y"}], "}"}]}], "]"}],
+     FontWeight->"Bold"], 
+    RowBox[{"text", " ", 
+     StyleBox["txt",
+      FontWeight->"Bold"], " ", "at", " ", "position", " ", 
+     StyleBox[
+      RowBox[{"{", 
+       RowBox[{"x", ",", "y"}], "}"}],
+      FontWeight->"Bold"]}]}
+  },
+  GridBoxDividers->{
+   "Columns" -> {{True}}, 
+    "Rows" -> {{
+      True}}}]],ExpressionUUID->"badfd5b7-303a-46dd-ab93-627652ba4121"]], \
+"Text",
+ CellChangeTimes->{{3.7880634903404183`*^9, 3.7880635696805773`*^9}, {
+  3.788063623404007*^9, 3.788063658126875*^9}, {3.7880636914227867`*^9, 
+  3.7880637837211304`*^9}, {3.78806383005793*^9, 3.7880638895550632`*^9}, {
+  3.788063934278455*^9, 3.7880639858837*^9}, {3.788064132720231*^9, 
+  3.7880641620768886`*^9}, {3.788072697006241*^9, 3.788072726376301*^9}, {
+  3.788072776753364*^9, 3.7880727767552423`*^9}, {3.788072933115467*^9, 
+  3.788072933115971*^9}, {3.7880729689879417`*^9, 3.7880730321849813`*^9}, {
+  3.788073064467434*^9, 3.788073086333077*^9}, {3.78807658240178*^9, 
+  3.7880765901478786`*^9}},ExpressionUUID->"85aa0f76-8521-4d92-a631-\
+1ee2d4f26bae"],
+
+Cell["Here is an example showing all these primitives being used:", "Text",
+ CellChangeTimes->{{3.788064006704614*^9, 3.788064029284053*^9}, {
+  3.788064070235853*^9, 3.788064121524122*^9}, {3.7880731327522593`*^9, 
+  3.7880731621924467`*^9}},ExpressionUUID->"a71882f6-59ac-4f3c-8081-\
+3bb7809fc190"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{"{", "\n", "\t", 
+   RowBox[{
+    RowBox[{"Circle", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "3"}], "}"}], ",", " ", "1"}], "]"}], ",", "\n", 
+    "\t", 
+    RowBox[{"Disk", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"3", ",", "3"}], "}"}], ",", " ", "1"}], "]"}], ",", "\n", 
+    "\t", 
+    RowBox[{"Rectangle", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"5", ",", "2"}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"7", ",", "4"}], "}"}]}], "]"}], ",", "\n", "\t", 
+    RowBox[{"Polygon", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"8", ",", "2"}], "}"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"8", ",", "4"}], "}"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"10", ",", "3"}], "}"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"10", ",", "2"}], "}"}]}], "}"}], "]"}], ",", "\n", "\t", 
+    RowBox[{"Line", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "1"}], ",", "0"}], "}"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "1"}], "}"}]}], "}"}], "]"}], ",", "\n", "\t", 
+    RowBox[{"Arrow", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"2", ",", "0"}], "}"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "1"}], "}"}]}], "}"}], "]"}], ",", "\n", "\t", 
+    RowBox[{"Point", "[", 
+     RowBox[{"{", 
+      RowBox[{"6", ",", "1"}], "}"}], "]"}], ",", "\n", "\t", 
+    RowBox[{"Text", "[", 
+     RowBox[{"\"\<text\>\"", ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"9", ",", "1"}], "}"}]}], "]"}]}], "\n", "}"}], "]"}]], "Code",
+ InitializationCell->False,
+ CellChangeTimes->{{3.788073166596325*^9, 3.788073371911693*^9}, {
+  3.788073418375431*^9, 3.788073748847065*^9}},
+ CellLabel->"In[91]:=",ExpressionUUID->"73af4027-abe8-4fea-a569-122205f148f5"],
+
+Cell[BoxData[
+ GraphicsBox[{CircleBox[{0, 3}, 1], DiskBox[{3, 3}, 1], 
+   RectangleBox[{5, 2}, {7, 4}], 
+   PolygonBox[{{8, 2}, {8, 4}, {10, 3}, {10, 2}}], LineBox[{{-1, 0}, {1, 1}}],
+    ArrowBox[{{2, 0}, {4, 1}}], PointBox[{6, 1}], 
+   InsetBox["\<\"text\"\>", {9, 1}]}]], "Output",
+ CellChangeTimes->{3.8205622886185417`*^9, 3.820571328478868*^9},
+ CellLabel->"Out[91]=",ExpressionUUID->"81419bc4-b0d3-4198-bf89-75a4240e7917"]
+}, Open  ]],
+
+Cell["\<\
+Of course, we are not limited to manually list the graphics primitives; we \
+can use Mathematica\[CloseCurlyQuote]s list manipulation functions to \
+generate them for us:\
+\>", "Text",
+ CellChangeTimes->{{3.788073770564768*^9, 
+  3.7880738357250977`*^9}},ExpressionUUID->"9ca86d71-2636-4249-a0e9-\
+371f05ad6cdd"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"Disk", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"n", ",", " ", "0"}], "}"}], ",", " ", 
+      RowBox[{"1", "/", "n"}]}], "]"}], ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"n", ",", " ", "2", ",", " ", "10"}], "}"}]}], "]"}], 
+  "]"}]], "Code",
+ InitializationCell->False,
+ CellChangeTimes->{{3.7880738382710752`*^9, 3.7880739309320374`*^9}, {
+  3.820562297846737*^9, 3.8205623007808003`*^9}},
+ CellLabel->"In[6]:=",ExpressionUUID->"27ffbd4e-ae21-44b4-aabb-f67d556e50b5"],
+
+Cell[BoxData[
+ GraphicsBox[{DiskBox[{2, 0}, NCache[Rational[1, 2], 0.5]], 
+   DiskBox[{3, 0}, NCache[Rational[1, 3], 0.3333333333333333]], 
+   DiskBox[{4, 0}, NCache[Rational[1, 4], 0.25]], 
+   DiskBox[{5, 0}, NCache[Rational[1, 5], 0.2]], 
+   DiskBox[{6, 0}, NCache[Rational[1, 6], 0.16666666666666666`]], 
+   DiskBox[{7, 0}, NCache[Rational[1, 7], 0.14285714285714285`]], 
+   DiskBox[{8, 0}, NCache[Rational[1, 8], 0.125]], 
+   DiskBox[{9, 0}, NCache[Rational[1, 9], 0.1111111111111111]], 
+   DiskBox[{10, 0}, NCache[Rational[1, 10], 0.1]]}]], "Output",
+ CellChangeTimes->{{3.8205622943756623`*^9, 3.8205623050798163`*^9}},
+ CellLabel->"Out[6]=",ExpressionUUID->"3ac725ab-f775-4952-bf44-856b7b512efe"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Graphics directives", "Subsection",
+ CellChangeTimes->{{3.788073979195693*^9, 
+  3.78807398573977*^9}},ExpressionUUID->"484fe83b-d5aa-41b2-aa8a-\
+c71dc0f1f953"],
+
+Cell[TextData[{
+ "We can customise how the graphics primitives are drawn by using ",
+ StyleBox["graphics directives",
+  FontWeight->"Bold"],
+ ". For example, we can set the colour:"
+}], "Text",
+ CellChangeTimes->{{3.7880739969710493`*^9, 3.788074036116097*^9}, {
+  3.788074086611499*^9, 
+  3.788074106147128*^9}},ExpressionUUID->"258770b1-75e8-460c-9c19-\
+ada588f9427f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{"{", "\n", "\t", 
+   RowBox[{"Red", ",", " ", "\n", "\t", 
+    RowBox[{"Disk", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}], ",", " ", "1"}], "]"}], ",", " ", "\n",
+     "\t", 
+    RowBox[{"Polygon", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"2", ",", 
+         RowBox[{"-", "1"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", 
+         RowBox[{"-", "1"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "1"}], "}"}]}], "}"}], "]"}], ",", " ", "\n", "\t", 
+    "Blue", ",", " ", "\n", "\t", 
+    RowBox[{"Rectangle", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"5", ",", 
+        RowBox[{"-", "1"}]}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"7", ",", "1"}], "}"}]}], "]"}]}], "\n", "}"}], "]"}]], "Code",
+ InitializationCell->False,
+ CellChangeTimes->{{3.788074107932993*^9, 3.788074211318063*^9}, {
+  3.7880744073443203`*^9, 3.788074480138082*^9}, {3.788074790427737*^9, 
+  3.7880747986086483`*^9}, {3.788074971310327*^9, 3.788074983496232*^9}},
+ CellLabel->"In[7]:=",ExpressionUUID->"0831b001-3ecb-443d-93e6-3962fc1949da"],
+
+Cell[BoxData[
+ GraphicsBox[{
+   {RGBColor[1, 0, 0], DiskBox[{0, 0}, 1], 
+    PolygonBox[{{2, -1}, {4, -1}, {3, 1}}]}, 
+   {RGBColor[0, 0, 1], RectangleBox[{5, -1}, {7, 1}]}}]], "Output",
+ CellChangeTimes->{3.8205623084280586`*^9},
+ CellLabel->"Out[7]=",ExpressionUUID->"36956b7d-8e99-4ddc-92d4-db980ecc1c8a"]
+}, Open  ]],
+
+Cell[TextData[{
+ "The first object in the list above (",
+ StyleBox["Red",
+  FontWeight->"Bold"],
+ "), does not draw anything; it just sets the colour that will be used in \
+drawing from that point on. So the next two objects in the list are red. Then \
+we have ",
+ StyleBox["Blue",
+  FontWeight->"Bold"],
+ ", which resets the drawing colour to blue. The last element in the list, ",
+ StyleBox["Rectangle",
+  FontWeight->"Bold"],
+ ", is therefore coloured blue.\n\nWe can bind graphics directives to a set \
+of objects by grouping directives and objects in lists:"
+}], "Text",
+ CellChangeTimes->{{3.788074226648943*^9, 3.788074376187709*^9}, {
+  3.788074491264555*^9, 3.788074503802927*^9}, {3.788074833504343*^9, 
+  3.788074920897912*^9}, {3.8204988339890757`*^9, 
+  3.8204988344938116`*^9}},ExpressionUUID->"b5d713ef-c96a-4cd7-a5b1-\
+0ed6d962dea5"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{"{", "\n", "\t", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"Red", ",", " ", 
+      RowBox[{"Disk", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", " ", "1"}], "]"}]}], "}"}], ",",
+     " ", "\n", "\t", 
+    RowBox[{"Polygon", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"2", ",", 
+         RowBox[{"-", "1"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", 
+         RowBox[{"-", "1"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "1"}], "}"}]}], "}"}], "]"}], ",", " ", "\n", "\t", 
+    RowBox[{"{", 
+     RowBox[{"Blue", ",", " ", 
+      RowBox[{"Rectangle", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"5", ",", 
+          RowBox[{"-", "1"}]}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"7", ",", "1"}], "}"}]}], "]"}]}], "}"}]}], "\n", "}"}], 
+  "]"}]], "Code",
+ InitializationCell->False,
+ CellChangeTimes->{{3.7880749239861603`*^9, 3.78807499926413*^9}, {
+  3.78815972569246*^9, 3.7881597625584717`*^9}, {3.820562316846309*^9, 
+  3.8205623180848694`*^9}, {3.820571504498378*^9, 3.820571507006853*^9}},
+ CellLabel->"In[92]:=",ExpressionUUID->"8a7885b7-a9a6-4884-aa28-7259e860f083"],
+
+Cell[BoxData[
+ GraphicsBox[{
+   {RGBColor[1, 0, 0], DiskBox[{0, 0}, 1]}, 
+   PolygonBox[{{2, -1}, {4, -1}, {3, 1}}], 
+   {RGBColor[0, 0, 1], RectangleBox[{5, -1}, {7, 1}]}}]], "Output",
+ CellChangeTimes->{{3.8205623137054014`*^9, 3.820562319172202*^9}, 
+   3.820571508589216*^9},
+ CellLabel->"Out[92]=",ExpressionUUID->"ef30629b-6555-4a33-9150-2a1c4a84308b"]
+}, Open  ]],
+
+Cell["Here is a table of the most important graphics directives:", "Text",
+ CellChangeTimes->{{3.7880751582295628`*^9, 
+  3.788075177438591*^9}},ExpressionUUID->"83a86793-d31e-4979-b088-\
+0bc43607d61b"],
+
+Cell[BoxData[GridBox[{
+   {
+    StyleBox[
+     RowBox[{
+      RowBox[{"Red", ",", " ", "Green", ",", " ", "Blue"}], 
+      "\[LineSeparator]", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"r", ",", "g", ",", "b", ",", "a"}], "]"}]}],
+     FontWeight->"Bold"], 
+    RowBox[{"Set", " ", "colour"}]},
+   {
+    StyleBox[
+     RowBox[{"PointSize", "[", "d", "]"}],
+     FontWeight->"Bold"], 
+    RowBox[{"Set", " ", "point", " ", "size"}]},
+   {
+    StyleBox[
+     RowBox[{
+      RowBox[{"Thick", ",", " ", "Thin"}], "\[LineSeparator]", 
+      RowBox[{"Thickness", "[", "d", "]"}]}],
+     FontWeight->"Bold"], 
+    RowBox[{"Set", " ", "line", " ", "thickness"}]},
+   {
+    StyleBox[
+     RowBox[{
+      RowBox[{"Dashed", ",", " ", "Dotted", ",", " ", "DotDashed"}], 
+      "\[LineSeparator]", 
+      RowBox[{"Dashing", "[", "d", "]"}]}],
+     FontWeight->"Bold"], 
+    RowBox[{"Set", " ", "dashing", " ", "pattern", " ", "of", " ", "lines"}]},
+   {
+    StyleBox[
+     RowBox[{"GrayLevel", "[", "s", "]"}],
+     FontWeight->"Bold"], 
+    RowBox[{"Set", " ", "gray", " ", "level"}]}
+  },
+  GridBoxDividers->{"Columns" -> {{True}}, "Rows" -> {{True}}}]], "Text",
+ CellChangeTimes->{{3.788075217458178*^9, 3.788075281622623*^9}, {
+   3.788075313734831*^9, 3.788075315183239*^9}, {3.788075406764723*^9, 
+   3.788075610428554*^9}, {3.788075665979968*^9, 3.788075681684094*^9}, {
+   3.78807571505125*^9, 3.78807575921939*^9}, {3.788075829810655*^9, 
+   3.7880758748017282`*^9}, {3.78807645878516*^9, 3.788076461586835*^9}, 
+   3.78807650453233*^9, {3.788159813357848*^9, 3.7881598147671957`*^9}, {
+   3.8205717587750845`*^9, 
+   3.820571760246372*^9}},ExpressionUUID->"b9509e3e-a641-4c97-b475-\
+0f5feb9a5eca"],
+
+Cell["Here is an example using many of these directives:", "Text",
+ CellChangeTimes->{{3.788075893073702*^9, 
+  3.788075910016939*^9}},ExpressionUUID->"44e19a6d-1131-43fc-b362-\
+e955a5be76a9"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{"{", "\n", "\t", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"1", ",", "0", ",", "1"}], "]"}], ",", " ", 
+      RowBox[{"Circle", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "3"}], "}"}], ",", " ", "1"}], "]"}]}], "}"}], ",",
+     "\n", "\t", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"GrayLevel", "[", "0.5", "]"}], ",", " ", 
+      RowBox[{"Disk", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"3", ",", "3"}], "}"}], ",", " ", "1"}], "]"}]}], "}"}], ",",
+     "\n", "\t", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"1", ",", "0", ",", "1", ",", "0.3"}], "]"}], ",", " ", 
+      RowBox[{"Rectangle", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"5", ",", "2"}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"7", ",", "4"}], "}"}]}], "]"}]}], "}"}], ",", "\n", "\t", 
+    RowBox[{"Polygon", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"8", ",", "2"}], "}"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"8", ",", "4"}], "}"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"10", ",", "3"}], "}"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"10", ",", "2"}], "}"}]}], "}"}], "]"}], ",", "\n", "\t", 
+    RowBox[{"{", 
+     RowBox[{"Thick", ",", " ", "Dashed", ",", " ", "Red", ",", " ", 
+      RowBox[{"Line", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "1"}], ",", "0"}], "}"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", "1"}], "}"}]}], "}"}], "]"}]}], "}"}], ",", "\n", 
+    "\t", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Thickness", "[", "0.01", "]"}], ",", " ", 
+      RowBox[{"Arrow", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"2", ",", "0"}], "}"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"4", ",", "1"}], "}"}]}], "}"}], "]"}]}], "}"}], ",", "\n", 
+    "\t", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"PointSize", "[", "0.02", "]"}], ",", " ", 
+      RowBox[{"Point", "[", 
+       RowBox[{"{", 
+        RowBox[{"6", ",", "1"}], "}"}], "]"}]}], "}"}]}], "\n", "}"}], 
+  "]"}]], "Code",
+ InitializationCell->False,
+ CellChangeTimes->{{3.788075912708901*^9, 3.788076166211067*^9}, {
+   3.7880761969024887`*^9, 3.7880762976829243`*^9}, 3.788076436214162*^9, {
+   3.788160005665031*^9, 3.788160007633389*^9}},
+ CellLabel->"In[93]:=",ExpressionUUID->"b727a1cd-c4ad-4b24-b4d1-364a5df9f646"],
+
+Cell[BoxData[
+ GraphicsBox[{
+   {RGBColor[1, 0, 1], CircleBox[{0, 3}, 1]}, 
+   {GrayLevel[0.5], DiskBox[{3, 3}, 1]}, 
+   {RGBColor[1, 0, 1], Opacity[0.3], RectangleBox[{5, 2}, {7, 4}]}, 
+   PolygonBox[{{8, 2}, {8, 4}, {10, 3}, {10, 2}}], 
+   {RGBColor[1, 0, 0], Thickness[Large], Dashing[{Small, Small}], 
+    LineBox[{{-1, 0}, {1, 1}}]}, 
+   {Thickness[0.01], ArrowBox[{{2, 0}, {4, 1}}]}, 
+   {PointSize[0.02], PointBox[{6, 1}]}}]], "Output",
+ CellChangeTimes->{3.8205623243023767`*^9, 3.8205718094275293`*^9},
+ CellLabel->"Out[93]=",ExpressionUUID->"87541f69-971c-48cb-90af-bf437b780a87"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Options of ",
+ StyleBox["Graphics",
+  FontWeight->"Bold"]
+}], "Subsection",
+ CellChangeTimes->{{3.788077044834927*^9, 
+  3.788077052772344*^9}},ExpressionUUID->"3ff33944-488e-4757-87cc-\
+957a20f7f8f9"],
+
+Cell[TextData[{
+ "The command ",
+ StyleBox["Graphics",
+  FontWeight->"Bold"],
+ " accepts most of the options you are used to in Mathematica plotting \
+functions:"
+}], "Text",
+ CellChangeTimes->{{3.788077110907235*^9, 
+  3.788077158251987*^9}},ExpressionUUID->"538045b8-4ef5-4ea0-8870-\
+c97295256ea6"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Disk", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"n", ",", " ", "1.6"}], "}"}], ",", " ", 
+       RowBox[{"1", "/", "n"}]}], "]"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", " ", "2", ",", " ", "10"}], "}"}]}], "]"}], ",", "\n",
+    "\t", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<position\>\"", ",", " ", "None"}], "}"}]}], ",", "\n", "\t", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<A bunch of disks\>\""}], ",", "\n", 
+   "\t", 
+   RowBox[{"Axes", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"True", ",", "False"}], "}"}]}]}], "]"}]], "Code",
+ InitializationCell->False,
+ CellChangeTimes->{{3.78807716299887*^9, 3.78807732761169*^9}, {
+  3.8205718748392286`*^9, 3.8205718786151047`*^9}},
+ CellLabel->"In[94]:=",ExpressionUUID->"5e5ff3bf-dbb7-42a4-a75a-26bedf25932d"],
+
+Cell[BoxData[
+ GraphicsBox[{DiskBox[{2, 1.6}, NCache[Rational[1, 2], 0.5]], 
+   DiskBox[{3, 1.6}, NCache[Rational[1, 3], 0.3333333333333333]], 
+   DiskBox[{4, 1.6}, NCache[Rational[1, 4], 0.25]], 
+   DiskBox[{5, 1.6}, NCache[Rational[1, 5], 0.2]], 
+   DiskBox[{6, 1.6}, NCache[Rational[1, 6], 0.16666666666666666`]], 
+   DiskBox[{7, 1.6}, NCache[Rational[1, 7], 0.14285714285714285`]], 
+   DiskBox[{8, 1.6}, NCache[Rational[1, 8], 0.125]], 
+   DiskBox[{9, 1.6}, NCache[Rational[1, 9], 0.1111111111111111]], 
+   DiskBox[{10, 1.6}, NCache[Rational[1, 10], 0.1]]},
+  Axes->{True, False},
+  AxesLabel->{
+    FormBox["\"position\"", TraditionalForm], None},
+  PlotLabel->FormBox["\"A bunch of disks\"", TraditionalForm]]], "Output",
+ CellChangeTimes->{3.82056233043443*^9, 3.820571891061159*^9},
+ CellLabel->"Out[94]=",ExpressionUUID->"560a369d-2d29-42d6-89ee-2e9fbfd3fca4"]
+}, Open  ]],
+
+Cell[TextData[{
+ "By default, ",
+ StyleBox["Graphics",
+  FontWeight->"Bold"],
+ " does not plot axes, so you must enable them by setting the ",
+ StyleBox["Axes",
+  FontWeight->"Bold"],
+ " option if you want them."
+}], "Text",
+ CellChangeTimes->{{3.78807734693884*^9, 
+  3.788077386338852*^9}},ExpressionUUID->"23abf1b4-b43c-4335-b0d8-\
+5960c21f5266"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Using graphics primitives to annotate plots", "Section",
+ CellChangeTimes->{{3.7880897239227753`*^9, 
+  3.78808974475515*^9}},ExpressionUUID->"15d5a778-80f3-48cb-b86e-\
+2fdb61532724"],
+
+Cell["\<\
+One of the uses of graphics primitives is to add extra information to plots. \
+Let us use a line plot of the temperatures measured in London in January 2015 \
+as an example:\
+\>", "Text",
+ CellChangeTimes->{{3.788091453778697*^9, 
+  3.788091525755718*^9}},ExpressionUUID->"0858ccc7-f586-4d37-bc39-\
+c8f42da54b4f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  TemplateBox[{"\"London\"", 
+    RowBox[{"Entity", "[", 
+      RowBox[{"\"City\"", ",", 
+        RowBox[{"{", 
+          
+          RowBox[{"\"London\"", ",", "\"GreaterLondon\"", ",", 
+            "\"UnitedKingdom\""}], "}"}]}], "]"}], 
+    "\"Entity[\\\"City\\\", {\\\"London\\\", \\\"GreaterLondon\\\", \
+\\\"UnitedKingdom\\\"}]\"", "\"city\""},
+   "Entity"], "//", "InputForm"}]], "Input",
+ CellChangeTimes->{{3.7881602786376534`*^9, 3.788160304291531*^9}, {
+  3.8205719598014097`*^9, 3.820571967898754*^9}},
+ CellLabel->"In[95]:=",ExpressionUUID->"5ebd5c53-2242-46f2-8113-3943e3717946"],
+
+Cell["\<\
+Entity[\"City\", {\"London\", 
+  \"GreaterLondon\", 
+  \"UnitedKingdom\"}]\
+\>", "Output",
+ CellChangeTimes->{3.820571968420022*^9},
+ CellLabel->
+  "Out[95]//InputForm=",ExpressionUUID->"9d7ee9f4-6529-42df-88f5-\
+a6f44bafd621"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"tempLondon", " ", "=", " ", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"day", ",", " ", 
+      RowBox[{"AirTemperatureData", "[", 
+       RowBox[{
+        TemplateBox[{"\"London\"", 
+          RowBox[{"Entity", "[", 
+            RowBox[{"\"City\"", ",", 
+              RowBox[{"{", 
+                
+                RowBox[{
+                 "\"London\"", ",", "\"GreaterLondon\"", ",", 
+                  "\"UnitedKingdom\""}], "}"}]}], "]"}], 
+          "\"Entity[\\\"City\\\", {\\\"London\\\", \\\"GreaterLondon\\\", \
+\\\"UnitedKingdom\\\"}]\"", "\"city\""},
+         "Entity"], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+         "2015", ",", "1", ",", "day", ",", " ", "13", ",", "0", ",", "0"}], 
+         "}"}], ",", " ", "\n", "                                       ", 
+        RowBox[{"UnitSystem", "\[Rule]", "\"\<Metric\>\""}]}], "]"}]}], "}"}],
+     ",", "\n", "             ", 
+    RowBox[{"{", 
+     RowBox[{"day", ",", " ", "1", ",", " ", "30"}], "}"}]}], "]"}]}]], "Code",
+ InitializationCell->False,
+ CellChangeTimes->{{3.78809093577746*^9, 3.788091077876202*^9}, {
+  3.788091141530698*^9, 3.788091231048956*^9}, {3.788091300921743*^9, 
+  3.788091314982792*^9}, {3.788091531773522*^9, 3.7880915353569613`*^9}},
+ CellLabel->"In[96]:=",ExpressionUUID->"fe994303-015c-4f92-939a-a42adc8040f5"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", 
+     TemplateBox[{
+      "9.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", 
+     TemplateBox[{
+      "9.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", 
+     TemplateBox[{
+      "6.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", 
+     TemplateBox[{
+      "2.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", 
+     TemplateBox[{
+      "10.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", 
+     TemplateBox[{
+      "11.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", 
+     TemplateBox[{
+      "9.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", 
+     TemplateBox[{
+      "9.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", 
+     TemplateBox[{
+      "13.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", 
+     TemplateBox[{
+      "11.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"11", ",", 
+     TemplateBox[{
+      "9.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"12", ",", 
+     TemplateBox[{
+      "12.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"13", ",", 
+     TemplateBox[{
+      "9.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"14", ",", 
+     TemplateBox[{
+      "7.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", 
+     TemplateBox[{
+      "8.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"16", ",", 
+     TemplateBox[{
+      "6.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"17", ",", 
+     TemplateBox[{
+      "7.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"18", ",", 
+     TemplateBox[{
+      "4.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"19", ",", 
+     TemplateBox[{
+      "4.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"20", ",", 
+     TemplateBox[{
+      "4.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"21", ",", 
+     TemplateBox[{
+      "3.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"22", ",", 
+     TemplateBox[{
+      "5.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"23", ",", 
+     TemplateBox[{
+      "5.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"24", ",", 
+     TemplateBox[{
+      "6.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"25", ",", 
+     TemplateBox[{
+      "9.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"26", ",", 
+     TemplateBox[{
+      "10.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"27", ",", 
+     TemplateBox[{
+      "9.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"28", ",", 
+     TemplateBox[{
+      "8.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"29", ",", 
+     TemplateBox[{
+      "6.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"30", ",", 
+     TemplateBox[{
+      "6.`", "\"\[Degree]C\"", "degrees Celsius", "\"DegreesCelsius\""},
+      "Quantity"]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.820562384687004*^9, 3.820572101639697*^9},
+ CellLabel->"Out[96]=",ExpressionUUID->"fc396513-2154-4525-866f-3904cfc45648"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{"tempLondon", ",", " ", "\n", "\t", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", "\"\<Temperatures in London, January 2015\>\""}], 
+   ",", "\n", "\t", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<day\>\"", ",", " ", "\"\<temperature [Celsius]\>\""}], 
+     "}"}]}]}], "\n", "]"}]], "Code",
+ InitializationCell->False,
+ CellChangeTimes->{{3.788091347587124*^9, 3.78809142322894*^9}, {
+  3.788091566453783*^9, 3.788091596572199*^9}, {3.7881605917928123`*^9, 
+  3.788160594885301*^9}},
+ CellLabel->"In[97]:=",ExpressionUUID->"cc35c9c1-da50-4219-9b57-c72135fb06fd"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+      NCache[
+       Rational[7, 360], 0.019444444444444445`]], AbsoluteThickness[1.6], 
+     LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQA2IQDQEf7CG0kgNUwAGVzwGlJaC0AJo6ESitgqZODUrL
+oJmngMaH0Vpo5qih0TB1Gmi0Fpq8Dpq9emj2GqC50xBNvRGUhvnTGI1vgsY3
+hdKwcDKD0rBwMUfjW6DZb4nmfisoDQsHazR5GygN848tmnl2cD4AtNQZ0g==
+
+      "]]}}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox["\"day\"", TraditionalForm], 
+    FormBox["\"temperature [Celsius]\"", TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+   "\"Temperatures in London, January 2015\"", TraditionalForm],
+  PlotRange->{{0, 30.}, {0, 13.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.8205623991794643`*^9, 3.8205721437510653`*^9},
+ CellLabel->"Out[97]=",ExpressionUUID->"6c125868-35bf-477d-81c3-42ef0216a2f0"]
+}, Open  ]],
+
+Cell["\<\
+It is useful to show the average temperature during the period depicted in \
+the plot. Let us draw a straight line indicating where the average is:\
+\>", "Text",
+ CellChangeTimes->{{3.788091643568372*^9, 
+  3.78809175692251*^9}},ExpressionUUID->"33a9f0bf-7384-4ac2-9b6f-\
+9b41cdfa8a63"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Mean", "[", "tempLondon", "]"}], "\[LeftDoubleBracket]", "2", 
+   "\[RightDoubleBracket]"}], "//", "QuantityMagnitude"}]], "Input",
+ CellChangeTimes->{{3.8205722184089727`*^9, 3.820572234878026*^9}, {
+  3.8205722649201417`*^9, 3.8205723040649457`*^9}},
+ CellLabel->
+  "In[100]:=",ExpressionUUID->"738ccf7a-a5b9-4f93-8a24-119580fe2d15"],
+
+Cell[BoxData["7.533333333333333`"], "Output",
+ CellChangeTimes->{
+  3.8205722358845987`*^9, {3.8205722830374193`*^9, 3.820572305659882*^9}},
+ CellLabel->
+  "Out[100]=",ExpressionUUID->"ed71bc91-33c9-42dd-b98e-f44b4cf73ae7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Mean", "[", "tempLondon", "]"}], " ", "\[LeftDoubleBracket]", 
+    "2", "\[RightDoubleBracket]"}], " ", "//", " ", "QuantityMagnitude"}], 
+  " ", "//", " ", "N"}]], "Input",
+ CellChangeTimes->{{3.7880918429168797`*^9, 3.7880918627149677`*^9}, {
+  3.7880919822012377`*^9, 3.788091983449066*^9}, {3.788160554200205*^9, 
+  3.7881605710702057`*^9}, {3.788160632571603*^9, 3.788160663722703*^9}, {
+  3.788160713187498*^9, 3.788160714606833*^9}, {3.8205614538221254`*^9, 
+  3.8205614596371517`*^9}},
+ CellLabel->"In[14]:=",ExpressionUUID->"f8ea226c-5574-42ff-8c5a-184b7188e712"],
+
+Cell[BoxData["7.533333333333333`"], "Output",
+ CellChangeTimes->{3.820562405276451*^9},
+ CellLabel->"Out[14]=",ExpressionUUID->"1841e675-5ae0-4301-a6f3-296801cc40d2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"avgTemp", " ", "=", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Mean", "[", "tempLondon", "]"}], "\[LeftDoubleBracket]", "2", 
+     "\[RightDoubleBracket]"}], " ", "//", " ", "QuantityMagnitude"}]}], 
+  ";"}], "\n", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{"tempLondon", ",", " ", "\n", "\t", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", "\"\<Temperatures in London, January 2015\>\""}], 
+   ",", "\n", "\t", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<day\>\"", ",", " ", "\"\<temperature [Celsius]\>\""}], 
+     "}"}]}], ",", "\n", "\t", 
+   RowBox[{"Epilog", "\[Rule]", 
+    RowBox[{"{", "\n", "\t\t", 
+     RowBox[{"Dashed", ",", " ", "\n", "\t\t", 
+      RowBox[{"Line", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "avgTemp"}], "}"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"31", ",", "avgTemp"}], "}"}]}], "}"}], "]"}]}], "\n", "\t",
+      "}"}]}]}], "\n", "]"}]}], "Code",
+ InitializationCell->False,
+ CellChangeTimes->{{3.788091765320882*^9, 3.7880918370195017`*^9}, {
+  3.788091870057618*^9, 3.7880920103468027`*^9}, {3.8205724033273115`*^9, 
+  3.820572431030074*^9}},
+ CellLabel->
+  "In[101]:=",ExpressionUUID->"c8bc810e-eaff-4354-8359-51ce3391809b"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+      NCache[
+       Rational[7, 360], 0.019444444444444445`]], AbsoluteThickness[1.6], 
+     LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQA2IQDQEf7CG0kgNUwAGVzwGlJaC0AJo6ESitgqZODUrL
+oJmngMaH0Vpo5qih0TB1Gmi0Fpq8Dpq9emj2GqC50xBNvRGUhvnTGI1vgsY3
+hdKwcDKD0rBwMUfjW6DZb4nmfisoDQsHazR5GygN848tmnl2cD4AtNQZ0g==
+
+      "]]}}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox["\"day\"", TraditionalForm], 
+    FormBox["\"temperature [Celsius]\"", TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Epilog->{
+    Dashing[{Small, Small}], 
+    LineBox[{{0, 7.533333333333333}, {31, 7.533333333333333}}]},
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+   "\"Temperatures in London, January 2015\"", TraditionalForm],
+  PlotRange->{{0, 30.}, {0, 13.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.8205624137698026`*^9, 3.820572528711463*^9},
+ CellLabel->
+  "Out[102]=",ExpressionUUID->"b53c5dff-b70c-4670-8ed3-3e749fc0d404"]
+}, Open  ]],
+
+Cell[TextData[{
+ "You can add graphics primitives to a plot by setting the plot\
+\[CloseCurlyQuote]s ",
+ StyleBox["Epilog",
+  FontWeight->"Bold"],
+ " option to the list of primitives and directives you want to superimpose on \
+the plot. You can also use the ",
+ StyleBox["Prolog",
+  FontWeight->"Bold"],
+ " option, which draws the primitives before the rest of the plot is drawn. \
+In most cases, you should use the ",
+ StyleBox["Epilog",
+  FontWeight->"Bold"],
+ ". \n\nThis new version of the plot allows us to easily see which days had \
+above or below average temperatures. But there is a problem: nowhere in the \
+plot is it indicated that the dashed line means the average temperature. We \
+can indicate this by adding a text graphics primitive:"
+}], "Text",
+ CellChangeTimes->{{3.788092036306279*^9, 
+  3.78809229986596*^9}},ExpressionUUID->"6d23bddb-e812-47c0-819e-\
+a86f63656116"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"avgTemp", " ", "=", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Mean", "[", "tempLondon", "]"}], "\[LeftDoubleBracket]", "2", 
+     "\[RightDoubleBracket]"}], " ", "//", " ", "QuantityMagnitude"}]}], 
+  ";"}], "\n", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{"tempLondon", ",", " ", "\n", "\t", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", "\"\<Temperatures in London, January 2015\>\""}], 
+   ",", "\n", "\t", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<day\>\"", ",", " ", "\"\<temperature [Celsius]\>\""}], 
+     "}"}]}], ",", "\n", "\t", 
+   RowBox[{"Epilog", "\[Rule]", 
+    RowBox[{"{", "\n", "\t\t", 
+     RowBox[{"Dashed", ",", " ", "\n", "\t\t", 
+      RowBox[{"Line", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "avgTemp"}], "}"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"31", ",", "avgTemp"}], "}"}]}], "}"}], "]"}], ",", "\n", 
+      "\t    ", 
+      RowBox[{"Text", "[", 
+       RowBox[{"\"\<avg temp\>\"", ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"20", ",", " ", 
+          RowBox[{"avgTemp", "+", "0.8"}]}], "}"}]}], "]"}]}], "\n", "\t", 
+     "}"}]}]}], "\n", "]"}]}], "Code",
+ InitializationCell->False,
+ CellChangeTimes->{{3.7880923116937513`*^9, 3.788092444680232*^9}, {
+   3.8205624335978947`*^9, 3.820562444940469*^9}, 3.820572547662983*^9, {
+   3.8205725900547833`*^9, 3.820572624829733*^9}, {3.8205726559749084`*^9, 
+   3.8205726738708725`*^9}},
+ CellLabel->
+  "In[111]:=",ExpressionUUID->"487d0eb3-3b97-41a2-ac9f-106d285a0fb0"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+      NCache[
+       Rational[7, 360], 0.019444444444444445`]], AbsoluteThickness[1.6], 
+     LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQA2IQDQEf7CG0kgNUwAGVzwGlJaC0AJo6ESitgqZODUrL
+oJmngMaH0Vpo5qih0TB1Gmi0Fpq8Dpq9emj2GqC50xBNvRGUhvnTGI1vgsY3
+hdKwcDKD0rBwMUfjW6DZb4nmfisoDQsHazR5GygN848tmnl2cD4AtNQZ0g==
+
+      "]]}}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox["\"day\"", TraditionalForm], 
+    FormBox["\"temperature [Celsius]\"", TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Epilog->{
+    Dashing[{Small, Small}], 
+    LineBox[{{0, 7.533333333333333}, {31, 7.533333333333333}}], 
+    InsetBox[
+     FormBox["\"avg temp\"", TraditionalForm], {20, 8.333333333333334}]},
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+   "\"Temperatures in London, January 2015\"", TraditionalForm],
+  PlotRange->{{0, 30.}, {0, 13.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{
+  3.8205624513648877`*^9, {3.8205725916330347`*^9, 3.820572625751529*^9}, {
+   3.820572663055723*^9, 3.820572675778404*^9}},
+ CellLabel->
+  "Out[112]=",ExpressionUUID->"1f29de11-3ac2-49c2-b372-414877907fde"]
+}, Open  ]],
+
+Cell["\<\
+It is often important to display the expected fluctuation around the average. \
+This is most commonly measured by the standard deviation:\
+\>", "Text",
+ CellChangeTimes->{{3.788092631019875*^9, 
+  3.7880926833570538`*^9}},ExpressionUUID->"7b301e1c-e533-4e10-a00a-\
+301c8a32f388"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"stdDevTemp", " ", "=", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"StandardDeviation", "[", "tempLondon", "]"}], 
+    "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], " ", "//", " ", 
+   "N"}]}]], "Code",
+ InitializationCell->False,
+ CellChangeTimes->{{3.788092692076128*^9, 3.788092779789398*^9}},
+ CellLabel->"In[19]:=",ExpressionUUID->"9406128f-74c1-4615-a378-0fe212ff559e"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "2.738402924098761`", "\"\[Degree]C\"", "degrees Celsius", 
+   "\"DegreesCelsius\""},
+  "Quantity"]], "Output",
+ CellChangeTimes->{3.820562470901708*^9},
+ CellLabel->"Out[19]=",ExpressionUUID->"7c798260-8bf9-4761-bc38-6e73c7866bc8"]
+}, Open  ]],
+
+Cell["\<\
+We could represent the range of temperatures we would expect to see as a pair \
+of lines surrounding the average value, placed above and below it, and \
+shifted by one standard deviation:\
+\>", "Text",
+ CellChangeTimes->{{3.788092888303277*^9, 
+  3.788092990803768*^9}},ExpressionUUID->"d6bfff69-7c45-4d38-a902-\
+d2f443f506e8"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"avgTemp", " ", "=", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Mean", "[", "tempLondon", "]"}], "\[LeftDoubleBracket]", "2", 
+     "\[RightDoubleBracket]"}], " ", "//", " ", "QuantityMagnitude"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"stdDevTemp", " ", "=", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"StandardDeviation", "[", "tempLondon", "]"}], 
+     "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], " ", "//", " ", 
+    "QuantityMagnitude"}]}], ";"}], "\n", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{"tempLondon", ",", " ", "\n", "\t", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", "\"\<Temperatures in London, January 2015\>\""}], 
+   ",", "\n", "\t", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<day\>\"", ",", " ", "\"\<temperature [Celsius]\>\""}], 
+     "}"}]}], ",", "\n", "\t", 
+   RowBox[{"Epilog", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"Dashed", ",", " ", "\n", "\t\t\t", 
+      RowBox[{"Line", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "avgTemp"}], "}"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"31", ",", "avgTemp"}], "}"}]}], "}"}], "]"}], ",", "\n", 
+      "\t        ", 
+      RowBox[{"Text", "[", 
+       RowBox[{"\"\<avg temp\>\"", ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"10", ",", " ", 
+          RowBox[{"avgTemp", "-", "0.5"}]}], "}"}]}], "]"}], ",", "\n", 
+      "\t        ", "\n", "\t        ", "Thin", ",", " ", "\n", "\t        ", 
+      RowBox[{"Line", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", 
+           RowBox[{"avgTemp", "+", "stdDevTemp"}]}], "}"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"31", ",", 
+           RowBox[{"avgTemp", "+", "stdDevTemp"}]}], "}"}]}], "}"}], "]"}], 
+      ",", "\n", "\t        ", 
+      RowBox[{"Line", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", 
+           RowBox[{"avgTemp", "-", "stdDevTemp"}]}], "}"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"31", ",", 
+           RowBox[{"avgTemp", "-", "stdDevTemp"}]}], "}"}]}], "}"}], "]"}]}], 
+     "}"}]}]}], "\n", "]"}]}], "Code",
+ InitializationCell->False,
+ CellChangeTimes->{{3.788093028361258*^9, 3.7880931436138163`*^9}},
+ CellLabel->
+  "In[113]:=",ExpressionUUID->"73f365b0-01f2-4ddd-bebe-5cc4b7064b02"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+      NCache[
+       Rational[7, 360], 0.019444444444444445`]], AbsoluteThickness[1.6], 
+     LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQA2IQDQEf7CG0kgNUwAGVzwGlJaC0AJo6ESitgqZODUrL
+oJmngMaH0Vpo5qih0TB1Gmi0Fpq8Dpq9emj2GqC50xBNvRGUhvnTGI1vgsY3
+hdKwcDKD0rBwMUfjW6DZb4nmfisoDQsHazR5GygN848tmnl2cD4AtNQZ0g==
+
+      "]]}}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox["\"day\"", TraditionalForm], 
+    FormBox["\"temperature [Celsius]\"", TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Epilog->{
+    Dashing[{Small, Small}], 
+    LineBox[{{0, 7.533333333333333}, {31, 7.533333333333333}}], 
+    InsetBox[
+     FormBox["\"avg temp\"", TraditionalForm], {10, 7.033333333333333}], 
+    Thickness[Tiny], 
+    LineBox[{{0, 10.271736257432094`}, {31, 10.271736257432094`}}], 
+    LineBox[{{0, 4.794930409234572}, {31, 4.794930409234572}}]},
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+   "\"Temperatures in London, January 2015\"", TraditionalForm],
+  PlotRange->{{0, 30.}, {0, 13.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.820562476553832*^9, 3.8205728229867134`*^9},
+ CellLabel->
+  "Out[115]=",ExpressionUUID->"223fe2a6-ab25-46dd-86d3-07e6d3710193"]
+}, Open  ]],
+
+Cell["\<\
+Alternatively, we could indicate the standard deviation by drawing a \
+transparent rectangle:\
+\>", "Text",
+ CellChangeTimes->{{3.788093175201302*^9, 
+  3.788093211522835*^9}},ExpressionUUID->"a0362691-d022-456f-b541-\
+b166f12dd032"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"avgTemp", " ", "=", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Mean", "[", "tempLondon", "]"}], "\[LeftDoubleBracket]", "2", 
+     "\[RightDoubleBracket]"}], " ", "//", " ", "QuantityMagnitude"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"stdDevTemp", " ", "=", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"StandardDeviation", "[", "tempLondon", "]"}], 
+     "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], " ", "//", " ", 
+    "QuantityMagnitude"}]}], ";"}], "\n", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{"tempLondon", ",", " ", "\n", "\t", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", "\"\<Temperatures in London, January 2015\>\""}], 
+   ",", "\n", "\t", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<day\>\"", ",", " ", "\"\<temperature [Celsius]\>\""}], 
+     "}"}]}], ",", "\n", "\t", 
+   RowBox[{"Prolog", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"Dashed", ",", " ", "\n", "\t\t\t", 
+      RowBox[{"Line", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "avgTemp"}], "}"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"31", ",", "avgTemp"}], "}"}]}], "}"}], "]"}], ",", "\n", 
+      "\t        ", 
+      RowBox[{"Text", "[", 
+       RowBox[{"\"\<avg temp\>\"", ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"10", ",", " ", 
+          RowBox[{"avgTemp", "-", "0.5"}]}], "}"}]}], "]"}], ",", "\n", 
+      "\t        ", "\n", "\t        ", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"1", ",", "1", ",", "0", ",", "0.3"}], "]"}], ",", "\n", 
+      "\t        ", 
+      RowBox[{"Rectangle", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", 
+          RowBox[{"avgTemp", "-", "stdDevTemp"}]}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"31", ",", 
+          RowBox[{"avgTemp", "+", "stdDevTemp"}]}], "}"}]}], "]"}]}], 
+     "}"}]}]}], "\n", "]"}]}], "Code",
+ InitializationCell->False,
+ CellChangeTimes->{{3.788093214069256*^9, 3.7880932975005703`*^9}, {
+  3.8205728959273705`*^9, 3.8205729237972*^9}, {3.8205730133185353`*^9, 
+  3.8205730144146347`*^9}},
+ CellLabel->
+  "In[122]:=",ExpressionUUID->"42a5898b-e8a6-469c-91f8-2e679a9b5a2a"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+      NCache[
+       Rational[7, 360], 0.019444444444444445`]], AbsoluteThickness[1.6], 
+     LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQA2IQDQEf7CG0kgNUwAGVzwGlJaC0AJo6ESitgqZODUrL
+oJmngMaH0Vpo5qih0TB1Gmi0Fpq8Dpq9emj2GqC50xBNvRGUhvnTGI1vgsY3
+hdKwcDKD0rBwMUfjW6DZb4nmfisoDQsHazR5GygN848tmnl2cD4AtNQZ0g==
+
+      "]]}}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox["\"day\"", TraditionalForm], 
+    FormBox["\"temperature [Celsius]\"", TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  Method->{
+   "OptimizePlotMarkers" -> True, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+   "\"Temperatures in London, January 2015\"", TraditionalForm],
+  PlotRange->{{0, 30.}, {0, 13.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Prolog->{
+    Dashing[{Small, Small}], 
+    LineBox[{{0, 7.533333333333333}, {31, 7.533333333333333}}], 
+    InsetBox[
+     FormBox["\"avg temp\"", TraditionalForm], {10, 7.033333333333333}], 
+    RGBColor[1, 1, 0, 0.3], 
+    RectangleBox[{0, 4.794930409234572}, {31, 10.271736257432094`}]},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{
+  3.8205625221311855`*^9, {3.8205728978887596`*^9, 3.8205729259383516`*^9}, 
+   3.820573022738776*^9},
+ CellLabel->
+  "Out[124]=",ExpressionUUID->"f55e0fe2-a71f-48b5-a5b5-f17bd1e76373"]
+}, Open  ]],
+
+Cell[TextData[{
+ "The fourth argument of ",
+ StyleBox["RGBColor",
+  FontWeight->"Bold"],
+ " sets the transparency: 0 means completely transparent (invisible), and 1 \
+means opaque (you cannot see through it, it hides shapes beneath it)."
+}], "Text",
+ CellChangeTimes->{{3.78809331639132*^9, 3.788093411018756*^9}, {
+   3.7880934450426483`*^9, 3.788093480618722*^9}, 
+   3.788093579904582*^9},ExpressionUUID->"1c03abe6-a7a8-497f-aad9-\
+559c681dce53"],
+
+Cell[CellGroupData[{
+
+Cell["Challenges", "Subsection",
+ CellChangeTimes->{{3.788093591191325*^9, 
+  3.7880935935055943`*^9}},ExpressionUUID->"71448ad1-d31d-4309-a67c-\
+56a3fd0c3f87"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Add lines to the London temperature plot, indicating the times when the \
+maximum and minimum temperatures took place. They should be thin lines, \
+extending from the corresponding data points to the horizontal axis; they \
+should be coloured red for the maximum temperature, and blue for the minimum \
+temperature:\[LineSeparator]\[LineSeparator]",
+ Cell[BoxData[
+  GraphicsBox[{{}, {{{}, {}, 
+      {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+        NCache[
+         Rational[7, 360], 0.019444444444444445`]], AbsoluteThickness[1.6], 
+       LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQA2IQDQEf7CG0kgNUwAGVzwGlJaC0AJo6ESitgqZODUrL
+oJmngMaH0Vpo5qih0TB1Gmi0Fpq8Dpq9emj2GqC50xBNvRGUhvnTGI1vgsY3
+hdKwcDKD0rBwMUfjW6DZb4nmfisoDQsHazR5GygN848tmnl2cD4AtNQZ0g==
+
+        "]]}}, 
+     {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+       NCache[
+        Rational[7, 360], 0.019444444444444445`]], AbsoluteThickness[1.6]}, {
+      {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+        NCache[
+         Rational[7, 360], 0.019444444444444445`]], AbsoluteThickness[
+       1.6]}, {}}, {
+      {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+        NCache[
+         Rational[7, 360], 0.019444444444444445`]], AbsoluteThickness[
+       1.6]}, {}}}, {{}, {}}},
+   AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+   Axes->{True, True},
+   AxesLabel->{
+     FormBox["\"day\"", TraditionalForm], 
+     FormBox["\"temperature [Celsius]\"", TraditionalForm]},
+   AxesOrigin->{0, 0},
+   DisplayFunction->Identity,
+   Epilog->{{
+      Dashing[{Small, Small}], 
+      LineBox[
+       NCache[{{0, 
+          Rational[113, 15]}, {31, 
+          Rational[113, 15]}}, {{0, 7.533333333333333}, {
+         31, 7.533333333333333}}]]}, 
+     InsetBox[
+      FormBox["\"avg temp\"", TraditionalForm], {10, 7.033333333333333}], {
+      Thickness[Tiny], 
+      RGBColor[1, 0, 0], 
+      LineBox[{{9, 13}, {9, 0}}]}, {
+      Thickness[Tiny], 
+      RGBColor[0, 0, 1], 
+      LineBox[{{4, 2}, {4, 0}}]}, 
+     RGBColor[1, 1, 0, 0.3], 
+     RectangleBox[
+      NCache[{0, Rational[113, 15] - Rational[3262, 435]^Rational[1, 2]}, {
+       0, 4.794930409234572}], 
+      NCache[{31, Rational[113, 15] + Rational[3262, 435]^Rational[1, 2]}, {
+       31, 10.271736257432094`}]]},
+   Frame->{{False, False}, {False, False}},
+   FrameLabel->{{None, None}, {None, None}},
+   FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+   GridLines->{None, None},
+   GridLinesStyle->Directive[
+     GrayLevel[0.5, 0.4]],
+   Method->{
+    "OptimizePlotMarkers" -> True, 
+     "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+         (Identity[#]& )[
+          Part[#, 1]], 
+         (Identity[#]& )[
+          Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+         (Identity[#]& )[
+          Part[#, 1]], 
+         (Identity[#]& )[
+          Part[#, 2]]}& )}},
+   PlotLabel->FormBox[
+    "\"Temperatures in London, January 2015\"", TraditionalForm],
+   PlotRange->{{0, 30.}, {0, 13.}},
+   PlotRangeClipping->True,
+   PlotRangePadding->{{
+      Scaled[0.02], 
+      Scaled[0.02]}, {
+      Scaled[0.02], 
+      Scaled[0.05]}},
+   Ticks->{Automatic, Automatic}]], "Output",
+  CellChangeTimes->{3.788097803086965*^9, 3.7880982553100643`*^9, 
+   3.78809831922303*^9, 3.7880983581819363`*^9},ExpressionUUID->
+  "941a4427-bf3c-4d4a-96f2-cbe25c179dc7"],
+ "\[LineSeparator]\[LineSeparator]Hint: Checkout ",
+ StyleBox["MaximalBy",
+  FontWeight->"Bold"],
+ " and ",
+ StyleBox["MinimalBy",
+  FontWeight->"Bold"],
+ "."
+}], "ItemNumbered",
+ CellChangeTimes->{{3.7880974486427*^9, 3.788097661450789*^9}, {
+  3.7880984064230843`*^9, 3.788098453416031*^9}, {3.788099547053693*^9, 
+  3.788099570844274*^9}, {3.788161669944714*^9, 
+  3.788161673098104*^9}},ExpressionUUID->"26850819-a178-448b-b214-\
+b76232eeedee"],
+
+Cell[TextData[{
+ "Improve the plot by displaying the average temperature:\[LineSeparator]\
+\[LineSeparator]",
+ Cell[BoxData[
+  GraphicsBox[{{}, {{{}, {}, 
+      {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+        NCache[
+         Rational[7, 360], 0.019444444444444445`]], AbsoluteThickness[1.6], 
+       LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQA2IQDQEf7CG0kgNUwAGVzwGlJaC0AJo6ESitgqZODUrL
+oJmngMaH0Vpo5qih0TB1Gmi0Fpq8Dpq9emj2GqC50xBNvRGUhvnTGI1vgsY3
+hdKwcDKD0rBwMUfjW6DZb4nmfisoDQsHazR5GygN848tmnl2cD4AtNQZ0g==
+
+        "]]}}, 
+     {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+       NCache[
+        Rational[7, 360], 0.019444444444444445`]], AbsoluteThickness[1.6]}, {
+      {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+        NCache[
+         Rational[7, 360], 0.019444444444444445`]], AbsoluteThickness[
+       1.6]}, {}}, {
+      {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+        NCache[
+         Rational[7, 360], 0.019444444444444445`]], AbsoluteThickness[
+       1.6]}, {}}}, {{}, {}}},
+   AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+   Axes->{True, True},
+   AxesLabel->{
+     FormBox["\"day\"", TraditionalForm], 
+     FormBox["\"temperature [Celsius]\"", TraditionalForm]},
+   AxesOrigin->{0, 0},
+   DisplayFunction->Identity,
+   Epilog->{{
+      Dashing[{Small, Small}], 
+      LineBox[
+       NCache[{{0, 
+          Rational[113, 15]}, {31, 
+          Rational[113, 15]}}, {{0, 7.533333333333333}, {
+         31, 7.533333333333333}}]]}, 
+     InsetBox[
+      FormBox[
+       TemplateBox[{"\"avg temp: \"", "7.5333333333333333334`2."}, 
+        "RowDefault"], TraditionalForm], {9, 7.033333333333333}], {
+      Thickness[Tiny], 
+      RGBColor[1, 0, 0], 
+      LineBox[{{9, 13}, {9, 0}}]}, {
+      Thickness[Tiny], 
+      RGBColor[0, 0, 1], 
+      LineBox[{{4, 2}, {4, 0}}]}, 
+     RGBColor[1, 1, 0, 0.3], 
+     RectangleBox[
+      NCache[{0, Rational[113, 15] - Rational[3262, 435]^Rational[1, 2]}, {
+       0, 4.794930409234572}], 
+      NCache[{31, Rational[113, 15] + Rational[3262, 435]^Rational[1, 2]}, {
+       31, 10.271736257432094`}]]},
+   Frame->{{False, False}, {False, False}},
+   FrameLabel->{{None, None}, {None, None}},
+   FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+   GridLines->{None, None},
+   GridLinesStyle->Directive[
+     GrayLevel[0.5, 0.4]],
+   Method->{
+    "OptimizePlotMarkers" -> True, 
+     "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+         (Identity[#]& )[
+          Part[#, 1]], 
+         (Identity[#]& )[
+          Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+         (Identity[#]& )[
+          Part[#, 1]], 
+         (Identity[#]& )[
+          Part[#, 2]]}& )}},
+   PlotLabel->FormBox[
+    "\"Temperatures in London, January 2015\"", TraditionalForm],
+   PlotRange->{{0, 30.}, {0, 13.}},
+   PlotRangeClipping->True,
+   PlotRangePadding->{{
+      Scaled[0.02], 
+      Scaled[0.02]}, {
+      Scaled[0.02], 
+      Scaled[0.05]}},
+   Ticks->{Automatic, Automatic}]], "Output",
+  CellChangeTimes->{
+   3.788098913245352*^9, {3.7880992690714417`*^9, 3.788099277745426*^9}, {
+    3.788099327239962*^9, 3.7880993683030977`*^9}, 3.7880994179710484`*^9},
+  ExpressionUUID->"57ef3b1d-f223-4515-8f77-abfde431c79f"],
+ "\[LineSeparator]\[LineSeparator]Hint: Use the ",
+ StyleBox["Row",
+  FontWeight->"Bold"],
+ " function to display the text."
+}], "ItemNumbered",
+ CellChangeTimes->{{3.7880974486427*^9, 3.788097661450789*^9}, {
+   3.7880984064230843`*^9, 3.788098447097789*^9}, {3.788098535599015*^9, 
+   3.788098588758462*^9}, {3.788098651628697*^9, 3.788098717363821*^9}, {
+   3.788099192145341*^9, 3.788099214148942*^9}, 3.788099393214735*^9, {
+   3.788099425115234*^9, 3.788099438914989*^9}, {3.7880995786839247`*^9, 
+   3.788099606696754*^9}},ExpressionUUID->"d2e0829c-4d51-43ef-b443-\
+562bb75bcdcb"],
+
+Cell[TextData[{
+ "Create the function ",
+ StyleBox["tempPlot ",
+  FontWeight->"Bold"],
+ "that accepts two arguments: the year and the month. It then plots this same \
+temperature data of London for that year and month.\[LineSeparator]So ",
+ StyleBox["tempPlot[2019,7]",
+  FontWeight->"Bold"],
+ " should result in the following plot:\[LineSeparator]\[LineSeparator]",
+ Cell[BoxData[
+  GraphicsBox[{{}, {{{}, {}, 
+      {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+        NCache[
+         Rational[7, 360], 0.019444444444444445`]], AbsoluteThickness[1.6], 
+       LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQB2IQDQEf7CG0jANUAEpLQGkOKK0EpQWgtAKUFkHjw/Tp
+OKCaq4amDsaHmauCg0ZXp4HG10Lj66Dx9dDMM0DjG6K5ywhN3hjNHhM0d5mi
+8c3Q7DdHk7eA0jB/WKLZb4VmvzUa3waNb4tmnx2affZweQD7ABuS
+        "]]}}, 
+     {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+       NCache[
+        Rational[7, 360], 0.019444444444444445`]], AbsoluteThickness[1.6]}, {
+      {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+        NCache[
+         Rational[7, 360], 0.019444444444444445`]], AbsoluteThickness[
+       1.6]}, {}}, {
+      {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+        NCache[
+         Rational[7, 360], 0.019444444444444445`]], AbsoluteThickness[
+       1.6]}, {}}}, {{}, {}}},
+   AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+   Axes->{True, True},
+   AxesLabel->{
+     FormBox["\"day\"", TraditionalForm], 
+     FormBox["\"temperature [Celsius]\"", TraditionalForm]},
+   AxesOrigin->{0, 0},
+   DisplayFunction->Identity,
+   Epilog->{{
+      Dashing[{Small, Small}], 
+      LineBox[
+       NCache[{{0, 
+          Rational[302, 31]}, {31, 
+          Rational[302, 31]}}, {{0, 9.741935483870968}, {
+         31, 9.741935483870968}}]]}, 
+     InsetBox[
+      FormBox[
+       TemplateBox[{"\"avg temp: \"", "9.7419354838709677419`2."}, 
+        "RowDefault"], TraditionalForm], {9, 9.241935483870968}], {
+      Thickness[Tiny], 
+      RGBColor[1, 0, 0], 
+      LineBox[{{6, 14}, {6, 0}}]}, {
+      Thickness[Tiny], 
+      RGBColor[0, 0, 1], 
+      LineBox[{{2, 6}, {2, 0}}]}, 
+     RGBColor[1, 1, 0, 0.3], 
+     RectangleBox[
+      NCache[{0, Rational[302, 31] - Rational[254, 93]^Rational[1, 2]}, {
+       0, 8.089306428184567}], 
+      NCache[{31, Rational[302, 31] + Rational[254, 93]^Rational[1, 2]}, {
+       31, 11.394564539557368`}]]},
+   Frame->{{False, False}, {False, False}},
+   FrameLabel->{{None, None}, {None, None}},
+   FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+   GridLines->{None, None},
+   GridLinesStyle->Directive[
+     GrayLevel[0.5, 0.4]],
+   Method->{
+    "OptimizePlotMarkers" -> True, 
+     "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+         (Identity[#]& )[
+          Part[#, 1]], 
+         (Identity[#]& )[
+          Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+         (Identity[#]& )[
+          Part[#, 1]], 
+         (Identity[#]& )[
+          Part[#, 2]]}& )}},
+   PlotLabel->FormBox[
+     TemplateBox[{"\"Temperatures in London, \"", "12", "\"/\"", "2019"}, 
+      "RowDefault"], TraditionalForm],
+   PlotRange->{{0, 31.}, {0, 14.}},
+   PlotRangeClipping->True,
+   PlotRangePadding->{{
+      Scaled[0.02], 
+      Scaled[0.02]}, {
+      Scaled[0.02], 
+      Scaled[0.05]}},
+   Ticks->{Automatic, Automatic}]], "Output",
+  CellChangeTimes->{
+   3.7881000857195168`*^9, {3.788100147385951*^9, 3.788100176309228*^9}, 
+    3.788100218325848*^9, {3.788100267250543*^9, 3.788100312190421*^9}, 
+    3.788100349170676*^9},ExpressionUUID->
+  "4359b575-5629-45a1-aa23-186d66beea67"]
+}], "ItemNumbered",
+ CellChangeTimes->{{3.7880974486427*^9, 3.788097661450789*^9}, {
+   3.7880984064230843`*^9, 3.788098447097789*^9}, {3.788098535599015*^9, 
+   3.788098588758462*^9}, {3.788098651628697*^9, 3.788098717363821*^9}, {
+   3.788099192145341*^9, 3.788099214148942*^9}, 3.788099393214735*^9, {
+   3.788099425115234*^9, 3.7880995318350782`*^9}, {3.7880996192673388`*^9, 
+   3.7880996696133432`*^9}, 
+   3.788100381194942*^9},ExpressionUUID->"d840d599-6def-4a66-a582-\
+b2a31c4194ee"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Creating custom plots", "Section",
+ CellChangeTimes->{{3.788074154287299*^9, 3.78807416046449*^9}, {
+  3.7880766822774754`*^9, 
+  3.788076687149247*^9}},ExpressionUUID->"afccb017-5a7a-4eeb-9f38-\
+deb0fb6e2bc6"],
+
+Cell[TextData[{
+ "Mathematica\[CloseCurlyQuote]s predefined functions use the graphics \
+primitives and directives to draw charts such as scatter plots, line plots, \
+and so on. If Mathematica does not provide a ready-made function to make the \
+plot we want, we can use the graphics primitives and directives to create our \
+own custom plots.\n\nWe will demonstrate this by creating a function ",
+ StyleBox["diskChart",
+  FontWeight->"Bold"],
+ " that plots a list of quantities as a vertical sequence of disks whose \
+areas are proportional to those quantities. It is similar to a bar chart, but \
+instead of representing quantities by the height of bars, it represents them \
+by the size of disks:"
+}], "Text",
+ CellChangeTimes->{{3.788076703794774*^9, 3.7880767965356627`*^9}, {
+  3.78808192672478*^9, 3.78808203746891*^9}, {3.788082105004344*^9, 
+  3.7880821731736593`*^9}, {3.7880822485386763`*^9, 3.78808231609319*^9}, {
+  3.7880829185126266`*^9, 3.788082928546482*^9}, {3.7880836402628098`*^9, 
+  3.788083641438517*^9}},ExpressionUUID->"e7cef629-68b8-4d7d-a623-\
+fa1e2241a80f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ukParties", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<Tories\>\"", ",", "\"\<Labour\>\"", ",", "\"\<SNP\>\"", ",", 
+     "\"\<Others\>\""}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ukPartiesNums", "=", 
+    RowBox[{"{", 
+     RowBox[{"365", ",", "202", ",", "47", ",", "36"}], "}"}]}], ";"}], 
+  "\n"}], "\n", 
+ RowBox[{"diskChart", "[", 
+  RowBox[{
+  "ukPartiesNums", ",", " ", "ukParties", ",", " ", "\n", "          ", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<UK parliament composition\>\""}]}], 
+  "]"}]}], "Code",
+ InitializationCell->False,
+ CellChangeTimes->{{3.788082319341029*^9, 3.788082340010606*^9}, {
+  3.7880844248711033`*^9, 3.788084428120219*^9}, {3.7880855484898977`*^9, 
+  3.788085576355611*^9}},
+ CellLabel->
+  "In[134]:=",ExpressionUUID->"4453cdbd-6300-4837-a28e-996f6ebac75a"],
+
+Cell[BoxData[
+ GraphicsBox[{
+   DiskBox[NCache[{0, 2 (365/Pi)^Rational[1, 2]}, {0, 21.557653718072718`}], 
+    NCache[(365/Pi)^Rational[1, 2], 10.778826859036359`]], 
+   DiskBox[NCache[{0, 4 (365/Pi)^Rational[1, 2]}, {0, 43.115307436145436`}], 
+    NCache[(202/Pi)^Rational[1, 2], 8.018640596081465]], 
+   DiskBox[NCache[{0, 6 (365/Pi)^Rational[1, 2]}, {0, 64.67296115421816}], 
+    NCache[(47/Pi)^Rational[1, 2], 3.8678889139475245`]], 
+   DiskBox[NCache[{0, 8 (365/Pi)^Rational[1, 2]}, {0, 86.23061487229087}], 
+    NCache[6 Pi^Rational[-1, 2], 3.385137501286538]], 
+   InsetBox["\<\"Tories\"\>", 
+    NCache[{2 (365/Pi)^Rational[1, 2], 2 (365/Pi)^Rational[1, 2]}, {
+     21.557653718072718`, 21.557653718072718`}]], 
+   InsetBox["\<\"Labour\"\>", 
+    NCache[{2 (365/Pi)^Rational[1, 2], 4 (365/Pi)^Rational[1, 2]}, {
+     21.557653718072718`, 43.115307436145436`}]], 
+   InsetBox["\<\"SNP\"\>", 
+    NCache[{2 (365/Pi)^Rational[1, 2], 6 (365/Pi)^Rational[1, 2]}, {
+     21.557653718072718`, 64.67296115421816}]], 
+   InsetBox["\<\"Others\"\>", 
+    NCache[{2 (365/Pi)^Rational[1, 2], 8 (365/Pi)^Rational[1, 2]}, {
+     21.557653718072718`, 86.23061487229087}]]},
+  ImageSize->Small,
+  PlotLabel->FormBox[
+   "\"UK parliament composition\"", TraditionalForm]]], "Output",
+ CellChangeTimes->{{3.820562535659357*^9, 3.820562557694111*^9}, 
+   3.8205753521721063`*^9},
+ CellLabel->
+  "Out[136]=",ExpressionUUID->"ada76bb6-00c9-47fd-b931-dc912ea4032d"]
+}, Open  ]],
+
+Cell[TextData[{
+ "The area of a disk of radius ",
+ StyleBox["r",
+  FontWeight->"Bold"],
+ " is ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    RowBox[{"\[Pi]", " ", 
+     SuperscriptBox["r", "2"]}],
+    FontWeight->"Bold"], TraditionalForm]],ExpressionUUID->
+  "7d2bd1fe-521e-4946-944b-3a9b3f002216"],
+ ". Since we want the area of the circle to represent a quantity ",
+ StyleBox["x",
+  FontWeight->"Bold"],
+ ", the corresponding disk must have radius  ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    SqrtBox[
+     RowBox[{"x", "/", "\[Pi]"}]],
+    FontWeight->"Bold"], TraditionalForm]],ExpressionUUID->
+  "6df2cd05-9b10-4f2a-abff-9e8ecb140676"],
+ ".\n\nOne question is: how much space should separate centres of the disks? \
+I choose the spacing to be 2 times the radius of the largest disk, which \
+ensures they do not overlap.\n\nThis leads us to the first version of our \
+function:"
+}], "Text",
+ CellChangeTimes->{{3.78808239840067*^9, 3.78808243570535*^9}, {
+  3.788082507312931*^9, 3.7880829039038363`*^9}, {3.7880835596285954`*^9, 
+  3.78808360908634*^9}, {3.788083651444417*^9, 3.788083673962453*^9}, {
+  3.788083790366343*^9, 3.788083790623444*^9}, {3.788084315648877*^9, 
+  3.788084317211103*^9}, {3.7880843578887873`*^9, 3.7880843580901327`*^9}, {
+  3.788085601565757*^9, 
+  3.788085601566337*^9}},ExpressionUUID->"511b4db7-ae37-480b-a259-\
+aa5800b45d46"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"diskChart", "[", "data_", "]"}], " ", ":=", " ", 
+   RowBox[{"Module", "[", "\n", "\t", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"r", ",", " ", "dist"}], "}"}], ",", "\n", "\t", "\n", "\t", 
+     RowBox[{
+      RowBox[{"r", " ", "=", " ", 
+       RowBox[{"Sqrt", "[", 
+        RowBox[{"data", "/", "Pi"}], "]"}]}], ";", " ", 
+      RowBox[{"(*", " ", 
+       RowBox[{"radii", " ", "of", " ", "the", " ", "disks"}], " ", "*)"}], 
+      "\n", "\t", 
+      RowBox[{"dist", " ", "=", " ", 
+       RowBox[{"2", " ", 
+        RowBox[{"Max", "[", "r", "]"}]}]}], ";", "          ", 
+      RowBox[{"(*", " ", 
+       RowBox[{"distance", " ", "between", " ", "disks"}], " ", "*)"}], "\n", 
+      "\t", "\n", "\t", 
+      RowBox[{"Graphics", "[", "\n", "\t    ", 
+       RowBox[{
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"Disk", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", " ", 
+              RowBox[{"n", " ", "dist"}]}], "}"}], ",", " ", 
+            RowBox[{
+            "r", "\[LeftDoubleBracket]", "n", "\[RightDoubleBracket]"}]}], 
+           "]"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"n", ",", " ", "1", ",", " ", 
+            RowBox[{"Length", "[", "data", "]"}]}], "}"}]}], "]"}], ",", "\n",
+         "\t\t", 
+        RowBox[{"ImageSize", "\[Rule]", "Small"}]}], "\n", "\t", "]"}]}]}], 
+    "\n", "]"}]}], "\n"}], "\n", 
+ RowBox[{
+  RowBox[{"ukParties", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<Conserv\>\"", ",", "\"\<Labour\>\"", ",", "\"\<SNP\>\"", ",", 
+     "\"\<Others\>\""}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ukPartiesNums", "=", 
+   RowBox[{"{", 
+    RowBox[{"365", ",", "202", ",", "47", ",", "36"}], "}"}]}], ";"}], "\n", 
+ RowBox[{"diskChart", "[", "ukPartiesNums", "]"}]}], "Code",
+ InitializationCell->False,
+ CellChangeTimes->{{3.7880836767435293`*^9, 3.788083704778829*^9}, {
+  3.7880837453395557`*^9, 3.788084286819289*^9}, {3.78808432075819*^9, 
+  3.788084321780931*^9}, {3.788084363299156*^9, 3.7880844171933527`*^9}, {
+  3.78808484473059*^9, 3.788084942128697*^9}, {3.7880852348515253`*^9, 
+  3.788085247642517*^9}, {3.820574889890757*^9, 3.820574899661067*^9}, {
+  3.820575984165394*^9, 3.820575999387393*^9}, {3.8205761891170645`*^9, 
+  3.8205762066136646`*^9}},
+ CellLabel->
+  "In[157]:=",ExpressionUUID->"ec54aa67-4fcf-416e-93d6-941806f44c92"],
+
+Cell[BoxData[
+ GraphicsBox[{
+   DiskBox[NCache[{0, 2 (365/Pi)^Rational[1, 2]}, {0, 21.557653718072718`}], 
+    NCache[(365/Pi)^Rational[1, 2], 10.778826859036359`]], 
+   DiskBox[NCache[{0, 4 (365/Pi)^Rational[1, 2]}, {0, 43.115307436145436`}], 
+    NCache[(202/Pi)^Rational[1, 2], 8.018640596081465]], 
+   DiskBox[NCache[{0, 6 (365/Pi)^Rational[1, 2]}, {0, 64.67296115421816}], 
+    NCache[(47/Pi)^Rational[1, 2], 3.8678889139475245`]], 
+   DiskBox[NCache[{0, 8 (365/Pi)^Rational[1, 2]}, {0, 86.23061487229087}], 
+    NCache[6 Pi^Rational[-1, 2], 3.385137501286538]]},
+  ImageSize->Small]], "Output",
+ CellChangeTimes->{
+  3.820562544789013*^9, 3.820574905414103*^9, 3.8205758566577525`*^9, {
+   3.8205759922922845`*^9, 3.820576001049021*^9}, {3.8205761691115575`*^9, 
+   3.8205762071887197`*^9}},
+ CellLabel->
+  "Out[160]=",ExpressionUUID->"cfd5e2c1-ad55-42f0-be8a-b29521e54a76"]
+}, Open  ]],
+
+Cell["\<\
+It would be good to have labels as well, so we extend our function by adding \
+one argument, a list of labels corresponding to each data point. We modify \
+the function to print the label next to each disk, and place the labels at a \
+distance of 2 times the maximum radius, so that they are nicely aligned:\
+\>", "Text",
+ CellChangeTimes->{{3.7880844574306183`*^9, 3.788084568672378*^9}, {
+  3.788085297954999*^9, 
+  3.788085299019259*^9}},ExpressionUUID->"4abfa3a8-b545-4bf6-ae42-\
+6ed7d0204152"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"diskChart", "[", 
+    RowBox[{"data_", ",", " ", "labels_", ",", " ", 
+     RowBox[{"opts", ":", 
+      RowBox[{"OptionsPattern", "[", "Graphics", "]"}]}]}], "]"}], " ", ":=", 
+   " ", 
+   RowBox[{"Module", "[", "\n", "\t", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "r", ",", " ", "dist", ",", " ", "labelOffset", ",", " ", "disks", ",", 
+       " ", "lbls"}], "}"}], ",", "\n", "\t", "\n", "\t", 
+     RowBox[{
+      RowBox[{"r", " ", "=", " ", 
+       RowBox[{"Sqrt", "[", 
+        RowBox[{"data", "/", "Pi"}], "]"}]}], ";", " ", 
+      RowBox[{"(*", " ", 
+       RowBox[{"radii", " ", "of", " ", "the", " ", "disks"}], " ", "*)"}], 
+      "\n", "\t", 
+      RowBox[{"dist", " ", "=", " ", 
+       RowBox[{"2", " ", 
+        RowBox[{"Max", "[", "r", "]"}]}]}], ";", "          ", 
+      RowBox[{"(*", " ", 
+       RowBox[{"distance", " ", "between", " ", "disks"}], " ", "*)"}], "\n", 
+      "\t", 
+      RowBox[{"labelOffset", " ", "=", " ", 
+       RowBox[{"2", " ", 
+        RowBox[{"Max", "[", "r", "]"}]}]}], ";", "\n", "\t", "\n", "\t", 
+      RowBox[{"disks", " ", "=", " ", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"Disk", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"0", ",", " ", 
+             RowBox[{"n", " ", "dist"}]}], "}"}], ",", " ", 
+           RowBox[{
+           "r", "\[LeftDoubleBracket]", "n", "\[RightDoubleBracket]"}]}], 
+          "]"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"n", ",", " ", "1", ",", " ", 
+           RowBox[{"Length", "[", "data", "]"}]}], "}"}]}], "]"}]}], ";", 
+      "\n", "\t", 
+      RowBox[{"lbls", " ", "=", " ", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"Text", "[", 
+          RowBox[{
+           RowBox[{
+           "labels", "\[LeftDoubleBracket]", "n", "\[RightDoubleBracket]"}], 
+           ",", " ", 
+           RowBox[{"{", 
+            RowBox[{"labelOffset", ",", " ", 
+             RowBox[{"n", " ", "dist"}]}], "}"}]}], "]"}], ",", "\n", 
+         "\t             ", 
+         RowBox[{"{", 
+          RowBox[{"n", ",", " ", "1", ",", " ", 
+           RowBox[{"Length", "[", "data", "]"}]}], "}"}]}], "]"}]}], ";", 
+      "\n", "\t", "\n", "\t", 
+      RowBox[{"Graphics", "[", "\n", "\t\t", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"disks", ",", " ", "lbls"}], "}"}], ",", "\n", "\t\t", 
+        RowBox[{"ImageSize", "\[Rule]", "Small"}], ",", "\n", "\t\t", 
+        "opts"}], "]"}]}]}], "\n", "]"}]}], "\n"}], "\n", 
+ RowBox[{
+  RowBox[{"ukParties", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<Conserv\>\"", ",", "\"\<Labour\>\"", ",", "\"\<SNP\>\"", ",", 
+     "\"\<Others\>\""}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ukPartiesNums", "=", 
+   RowBox[{"{", 
+    RowBox[{"365", ",", "202", ",", "47", ",", "36"}], "}"}]}], ";"}], "\n", 
+ RowBox[{"diskChart", "[", 
+  RowBox[{
+  "ukPartiesNums", ",", " ", "ukParties", ",", " ", "\n", "          ", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<UK parliament composition\>\""}]}], 
+  "]"}]}], "Code",
+ InitializationCell->False,
+ CellChangeTimes->{{3.7880845711215897`*^9, 3.788084717386335*^9}, {
+  3.788084953472485*^9, 3.7880851196557627`*^9}, {3.788085183214835*^9, 
+  3.788085196705887*^9}, {3.788085257185403*^9, 3.788085292047278*^9}, {
+  3.7880853574512777`*^9, 3.788085415808545*^9}, {3.7881641715457497`*^9, 
+  3.788164185653006*^9}, {3.820574930134838*^9, 3.8205749312859716`*^9}, {
+  3.820576463621069*^9, 3.8205764678530464`*^9}},
+ CellLabel->
+  "In[165]:=",ExpressionUUID->"4c343707-4b8c-4603-bc4e-6cdf28d2f10d"],
+
+Cell[BoxData[
+ GraphicsBox[{{
+    DiskBox[NCache[{0, 2 (365/Pi)^Rational[1, 2]}, {0, 21.557653718072718`}], 
+     NCache[(365/Pi)^Rational[1, 2], 10.778826859036359`]], 
+    DiskBox[NCache[{0, 4 (365/Pi)^Rational[1, 2]}, {0, 43.115307436145436`}], 
+     NCache[(202/Pi)^Rational[1, 2], 8.018640596081465]], 
+    DiskBox[NCache[{0, 6 (365/Pi)^Rational[1, 2]}, {0, 64.67296115421816}], 
+     NCache[(47/Pi)^Rational[1, 2], 3.8678889139475245`]], 
+    DiskBox[NCache[{0, 8 (365/Pi)^Rational[1, 2]}, {0, 86.23061487229087}], 
+     NCache[6 Pi^Rational[-1, 2], 3.385137501286538]]}, {
+    InsetBox["\<\"Conserv\"\>", 
+     NCache[{2 (365/Pi)^Rational[1, 2], 2 (365/Pi)^Rational[1, 2]}, {
+      21.557653718072718`, 21.557653718072718`}]], 
+    InsetBox["\<\"Labour\"\>", 
+     NCache[{2 (365/Pi)^Rational[1, 2], 4 (365/Pi)^Rational[1, 2]}, {
+      21.557653718072718`, 43.115307436145436`}]], 
+    InsetBox["\<\"SNP\"\>", 
+     NCache[{2 (365/Pi)^Rational[1, 2], 6 (365/Pi)^Rational[1, 2]}, {
+      21.557653718072718`, 64.67296115421816}]], 
+    InsetBox["\<\"Others\"\>", 
+     NCache[{2 (365/Pi)^Rational[1, 2], 8 (365/Pi)^Rational[1, 2]}, {
+      21.557653718072718`, 86.23061487229087}]]}},
+  ImageSize->Small,
+  PlotLabel->FormBox[
+   "\"UK parliament composition\"", TraditionalForm]]], "Output",
+ CellChangeTimes->{
+  3.8205625497752633`*^9, 3.8205749321477685`*^9, {3.8205764553109546`*^9, 
+   3.820576475412361*^9}},
+ CellLabel->
+  "Out[168]=",ExpressionUUID->"c769a59f-79f8-45e0-b5f4-6669925c5dfd"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Challenges", "Subsection",
+ CellChangeTimes->{{3.788085498035877*^9, 
+  3.788085503269083*^9}},ExpressionUUID->"39c7c859-760c-46dc-ad4c-\
+05b414e0d343"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Create the following plot using graphics primitives and directives:\
+\[LineSeparator]\[LineSeparator]",
+ Cell[BoxData[
+  GraphicsBox[{
+    {RGBColor[0, 0, 1], DiskBox[{1, 0}, 0.4], DiskBox[{2, 0}, 0.4], 
+     DiskBox[{3, 0}, 0.4], DiskBox[{4, 0}, 0.4], DiskBox[{5, 0}, 0.4]}, 
+    {RGBColor[1, 0, 0], RectangleBox[{5.6, -0.4}, {6.4, 0.4}], 
+     RectangleBox[{6.6, -0.4}, {7.4, 0.4}], 
+     RectangleBox[{7.6, -0.4}, {8.4, 0.4}], 
+     RectangleBox[{8.6, -0.4}, {9.4, 0.4}]}}]], "Output",
+  CellChangeTimes->{3.788086376474595*^9},ExpressionUUID->
+  "d376d2bf-6ceb-4427-b048-1b0a3217d89f"],
+ "\[LineSeparator]\[LineSeparator]The circles have radius 0.4, and the \
+squares have side 0.8. The distance between the centres of successive shapes \
+is exactly 1. The centre of the first circle is ",
+ StyleBox["{0,0}",
+  FontWeight->"Bold"],
+ ". Hint: use ",
+ StyleBox["Table",
+  FontWeight->"Bold"],
+ " to generate sequences of disks and squares."
+}], "ItemNumbered",
+ CellChangeTimes->{{3.7880884729904003`*^9, 3.788088648680462*^9}, {
+  3.788088801758469*^9, 3.7880888021186743`*^9}, {3.788089392712886*^9, 
+  3.788089399129088*^9}},ExpressionUUID->"34cb6133-29d0-4e57-837c-\
+2c94b8fa7547"],
+
+Cell[TextData[{
+ "Create a function ",
+ StyleBox["diskSquares",
+  FontWeight->"Bold"],
+ " which takes two arguments, the number of circles and the number of \
+squares. The function returns the list of graphics primitives that make the \
+plot as in the previous challenge.\[LineSeparator]So ",
+ StyleBox["Graphics[diskSquares[5,4]]",
+  FontWeight->"Bold"],
+ " should create the plot shown in challenge 1."
+}], "ItemNumbered",
+ CellChangeTimes->{{3.7880884729904003`*^9, 3.788088642736693*^9}, {
+  3.7880886815349493`*^9, 3.788088852311933*^9}, {3.788088905654635*^9, 
+  3.788088974558363*^9}},ExpressionUUID->"4a7e84b5-c1ca-4712-b868-\
+23cd531dbcf8"],
+
+Cell[TextData[{
+ "In the version of diskSquares that you created above, the plot always \
+starts at the same location on the screen. Modify the function diskSquares so \
+that it accepts one extra argument, a point {x,y} defining the centre of the \
+first disk. This will allow us to move the plot created above to any location \
+of the screen. This will allow us to stack many plots on the same chart. The \
+command:\[LineSeparator]",
+ StyleBox["\[LineSeparator]\tGraphics[{\n\t\tdiskSquares[4, 8, {0,0}],\n\t\t\
+diskSquares[7, 3, {0,1}],\n\t\tdiskSquares[6, 6, {0,2}]\[LineSeparator]       \
+           }]\[LineSeparator]\n",
+  FontWeight->"Bold"],
+ "should generate this image:\[LineSeparator]\[LineSeparator]",
+ Cell[BoxData[
+  GraphicsBox[{{
+     {RGBColor[0, 0, 1], DiskBox[{1, 0}, 0.4], DiskBox[{2, 0}, 0.4], 
+      DiskBox[{3, 0}, 0.4], DiskBox[{4, 0}, 0.4]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{4.6, -0.4}, {5.4, 0.4}], 
+      RectangleBox[{5.6, -0.4}, {6.4, 0.4}], 
+      RectangleBox[{6.6, -0.4}, {7.4, 0.4}], 
+      RectangleBox[{7.6, -0.4}, {8.4, 0.4}], 
+      RectangleBox[{8.6, -0.4}, {9.4, 0.4}], 
+      RectangleBox[{9.6, -0.4}, {10.4, 0.4}], 
+      RectangleBox[{10.6, -0.4}, {11.4, 0.4}], 
+      RectangleBox[{11.6, -0.4}, {12.4, 0.4}]}}, {
+     {RGBColor[0, 0, 1], DiskBox[{1, 1}, 0.4], DiskBox[{2, 1}, 0.4], 
+      DiskBox[{3, 1}, 0.4], DiskBox[{4, 1}, 0.4], DiskBox[{5, 1}, 0.4], 
+      DiskBox[{6, 1}, 0.4], DiskBox[{7, 1}, 0.4]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{7.6, 0.6}, {8.4, 1.4}], 
+      RectangleBox[{8.6, 0.6}, {9.4, 1.4}], 
+      RectangleBox[{9.6, 0.6}, {10.4, 1.4}]}}, {
+     {RGBColor[0, 0, 1], DiskBox[{1, 2}, 0.4], DiskBox[{2, 2}, 0.4], 
+      DiskBox[{3, 2}, 0.4], DiskBox[{4, 2}, 0.4], DiskBox[{5, 2}, 0.4], 
+      DiskBox[{6, 2}, 0.4]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{6.6, 1.6}, {7.4, 2.4}], 
+      RectangleBox[{7.6, 1.6}, {8.4, 2.4}], 
+      RectangleBox[{8.6, 1.6}, {9.4, 2.4}], 
+      RectangleBox[{9.6, 1.6}, {10.4, 2.4}], 
+      RectangleBox[{10.6, 1.6}, {11.4, 2.4}], 
+      RectangleBox[{11.6, 1.6}, {12.4, 2.4}]}}}]], "Output",
+  CellChangeTimes->{
+   3.7880872657560587`*^9, {3.788087332015232*^9, 3.788087357711501*^9}, 
+    3.78808936424977*^9},ExpressionUUID->
+  "8539308f-787e-4b7c-8e5e-7a6ab824d043"],
+ "\[LineSeparator]"
+}], "ItemNumbered",
+ CellChangeTimes->{{3.7880884729904003`*^9, 3.788088642736693*^9}, {
+  3.7880886815349493`*^9, 3.788088804926203*^9}, {3.788088991605289*^9, 
+  3.788089009797731*^9}, {3.7880890527426043`*^9, 
+  3.788089425199155*^9}},ExpressionUUID->"a3e22c54-f254-411c-858b-\
+403474acefd7"],
+
+Cell[TextData[{
+ "Create a function ",
+ StyleBox["discSquarePlot",
+  FontWeight->"Bold"],
+ " so that it does this:\[LineSeparator]\[LineSeparator]",
+ StyleBox["diskSquarePlot[{{4, 8}, {7, 3}, {6, 6}, {2, 5}},\n               {\
+\[OpenCurlyDoubleQuote]label a\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]label b\[CloseCurlyDoubleQuote],\
+\[CloseCurlyDoubleQuote]label c\[CloseCurlyDoubleQuote],\
+\[CloseCurlyDoubleQuote]label d\[CloseCurlyDoubleQuote]}]\[LineSeparator]\
+\[LineSeparator]",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  GraphicsBox[{{
+     {RGBColor[0, 0, 1], DiskBox[{3, 1}, 0.4], DiskBox[{4, 1}, 0.4], 
+      DiskBox[{5, 1}, 0.4], DiskBox[{6, 1}, 0.4]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{6.6, 0.6}, {7.4, 1.4}], 
+      RectangleBox[{7.6, 0.6}, {8.4, 1.4}], 
+      RectangleBox[{8.6, 0.6}, {9.4, 1.4}], 
+      RectangleBox[{9.6, 0.6}, {10.4, 1.4}], 
+      RectangleBox[{10.6, 0.6}, {11.4, 1.4}], 
+      RectangleBox[{11.6, 0.6}, {12.4, 1.4}], 
+      RectangleBox[{12.6, 0.6}, {13.4, 1.4}], 
+      RectangleBox[{13.6, 0.6}, {14.4, 1.4}]}}, {
+     {RGBColor[0, 0, 1], DiskBox[{3, 2}, 0.4], DiskBox[{4, 2}, 0.4], 
+      DiskBox[{5, 2}, 0.4], DiskBox[{6, 2}, 0.4], DiskBox[{7, 2}, 0.4], 
+      DiskBox[{8, 2}, 0.4], DiskBox[{9, 2}, 0.4]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{9.6, 1.6}, {10.4, 2.4}], 
+      RectangleBox[{10.6, 1.6}, {11.4, 2.4}], 
+      RectangleBox[{11.6, 1.6}, {12.4, 2.4}]}}, {
+     {RGBColor[0, 0, 1], DiskBox[{3, 3}, 0.4], DiskBox[{4, 3}, 0.4], 
+      DiskBox[{5, 3}, 0.4], DiskBox[{6, 3}, 0.4], DiskBox[{7, 3}, 0.4], 
+      DiskBox[{8, 3}, 0.4]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{8.6, 2.6}, {9.4, 3.4}], 
+      RectangleBox[{9.6, 2.6}, {10.4, 3.4}], 
+      RectangleBox[{10.6, 2.6}, {11.4, 3.4}], 
+      RectangleBox[{11.6, 2.6}, {12.4, 3.4}], 
+      RectangleBox[{12.6, 2.6}, {13.4, 3.4}], 
+      RectangleBox[{13.6, 2.6}, {14.4, 3.4}]}}, {
+     {RGBColor[0, 0, 1], DiskBox[{3, 4}, 0.4], DiskBox[{4, 4}, 0.4]}, 
+     {RGBColor[1, 0, 0], RectangleBox[{4.6, 3.6}, {5.4, 4.4}], 
+      RectangleBox[{5.6, 3.6}, {6.4, 4.4}], 
+      RectangleBox[{6.6, 3.6}, {7.4, 4.4}], 
+      RectangleBox[{7.6, 3.6}, {8.4, 4.4}], 
+      RectangleBox[{8.6, 3.6}, {9.4, 4.4}]}}, 
+    InsetBox["\<\"label a\"\>", {0, 1}], InsetBox["\<\"label b\"\>", {0, 2}], 
+    InsetBox["\<\"label c\"\>", {0, 3}], 
+    InsetBox["\<\"label d\"\>", {0, 4}]}]], "Output",
+  CellChangeTimes->{{3.7880879031710453`*^9, 3.788087920340454*^9}, {
+   3.788088073864148*^9, 3.7880880984752703`*^9}},ExpressionUUID->
+  "7f6c9b4c-13bc-427b-88e5-056e7eddd7e1"]
+}], "ItemNumbered",
+ CellChangeTimes->{{3.7880884729904003`*^9, 3.788088642736693*^9}, {
+  3.7880886815349493`*^9, 3.788088804926203*^9}, {3.788088991605289*^9, 
+  3.788089009797731*^9}, {3.7880890527426043`*^9, 3.7880893737864103`*^9}, {
+  3.788089556379716*^9, 
+  3.7880896796359386`*^9}},ExpressionUUID->"d7b00264-cc05-4133-a9ea-\
+9befecab0e4d"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1920, 997},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+Magnification:>3. Inherited,
+FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"f0e692c0-9a6f-4304-9126-266f106b55fd"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 166, 3, 290, "Title",ExpressionUUID->"7de2e2a1-231f-473d-9199-340120b5660d"],
+Cell[CellGroupData[{
+Cell[771, 29, 292, 6, 123, "Input",ExpressionUUID->"ea80227a-7109-4e07-9c94-0178bec26405"],
+Cell[1066, 37, 6315, 176, 761, "Output",ExpressionUUID->"843d6099-586c-4464-8826-8a8329b95957"]
+}, Open  ]],
+Cell[7396, 216, 1518, 28, 1076, "Text",ExpressionUUID->"326c731e-0d7b-4dc5-bdc4-1f5357045b5c"],
+Cell[CellGroupData[{
+Cell[8939, 248, 174, 3, 199, "Section",ExpressionUUID->"d08bdc04-cebf-487a-b3de-95c9c3beab17"],
+Cell[9116, 253, 537, 18, 166, "Text",ExpressionUUID->"bcdf19d7-5dfb-46e4-b2e8-736c3d436a50"],
+Cell[CellGroupData[{
+Cell[9678, 275, 358, 8, 140, "Code",ExpressionUUID->"c6025973-6266-4103-96e2-8237bc07ad95",
+ InitializationCell->False],
+Cell[10039, 285, 277, 6, 135, "Output",ExpressionUUID->"525f3928-983a-44c1-9758-59f4b5c70882"]
+}, Open  ]],
+Cell[10331, 294, 266, 8, 101, "Text",ExpressionUUID->"e8c26243-4e1c-4ed2-9902-de4ac1058c87"],
+Cell[CellGroupData[{
+Cell[10622, 306, 399, 9, 140, "Code",ExpressionUUID->"9db1c17e-13e3-4ea1-a1e5-3eae53afc4ba",
+ InitializationCell->False],
+Cell[11024, 317, 180, 3, 1167, "Output",ExpressionUUID->"2e7d50d7-cbb3-4227-b718-440e71fd8b90"]
+}, Open  ]],
+Cell[11219, 323, 261, 8, 101, "Text",ExpressionUUID->"0063ea07-97a5-47f4-84d4-7041db0593c0"],
+Cell[CellGroupData[{
+Cell[11505, 335, 535, 15, 140, "Code",ExpressionUUID->"765f5066-240f-4348-8fb3-f94f72e18350",
+ InitializationCell->False],
+Cell[12043, 352, 205, 3, 691, "Output",ExpressionUUID->"67a4a1c9-ed4d-46a8-83f0-2d539abbabf4"]
+}, Open  ]],
+Cell[12263, 358, 194, 3, 101, "Text",ExpressionUUID->"69c7093b-2e7e-44d9-bec9-97fec56cfa41"],
+Cell[12460, 363, 5042, 167, 554, "Text",ExpressionUUID->"85aa0f76-8521-4d92-a631-1ee2d4f26bae"],
+Cell[17505, 532, 300, 4, 101, "Text",ExpressionUUID->"a71882f6-59ac-4f3c-8081-3bb7809fc190"],
+Cell[CellGroupData[{
+Cell[17830, 540, 1927, 56, 618, "Code",ExpressionUUID->"73af4027-abe8-4fea-a569-122205f148f5",
+ InitializationCell->False],
+Cell[19760, 598, 429, 7, 508, "Output",ExpressionUUID->"81419bc4-b0d3-4198-bf89-75a4240e7917"]
+}, Open  ]],
+Cell[20204, 608, 322, 7, 166, "Text",ExpressionUUID->"9ca86d71-2636-4249-a0e9-371f05ad6cdd"],
+Cell[CellGroupData[{
+Cell[20551, 619, 574, 15, 140, "Code",ExpressionUUID->"27ffbd4e-ae21-44b4-aabb-f67d556e50b5",
+ InitializationCell->False],
+Cell[21128, 636, 703, 11, 252, "Output",ExpressionUUID->"3ac725ab-f775-4952-bf44-856b7b512efe"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21868, 652, 166, 3, 159, "Subsection",ExpressionUUID->"484fe83b-d5aa-41b2-aa8a-c71dc0f1f953"],
+Cell[22037, 657, 370, 9, 166, "Text",ExpressionUUID->"258770b1-75e8-460c-9c19-ada588f9427f"],
+Cell[CellGroupData[{
+Cell[22432, 670, 1200, 32, 459, "Code",ExpressionUUID->"0831b001-3ecb-443d-93e6-3962fc1949da",
+ InitializationCell->False],
+Cell[23635, 704, 308, 6, 390, "Output",ExpressionUUID->"36956b7d-8e99-4ddc-92d4-db980ecc1c8a"]
+}, Open  ]],
+Cell[23958, 713, 849, 19, 491, "Text",ExpressionUUID->"b5d713ef-c96a-4cd7-a5b1-0ed6d962dea5"],
+Cell[CellGroupData[{
+Cell[24832, 736, 1279, 36, 353, "Code",ExpressionUUID->"8a7885b7-a9a6-4884-aa28-7259e860f083",
+ InitializationCell->False],
+Cell[26114, 774, 358, 7, 390, "Output",ExpressionUUID->"ef30629b-6555-4a33-9150-2a1c4a84308b"]
+}, Open  ]],
+Cell[26487, 784, 202, 3, 101, "Text",ExpressionUUID->"83a86793-d31e-4979-b088-0bc43607d61b"],
+Cell[26692, 789, 1700, 45, 592, "Text",ExpressionUUID->"b9509e3e-a641-4c97-b475-0f5feb9a5eca"],
+Cell[28395, 836, 192, 3, 101, "Text",ExpressionUUID->"44e19a6d-1131-43fc-b362-e955a5be76a9"],
+Cell[CellGroupData[{
+Cell[28612, 843, 2600, 75, 565, "Code",ExpressionUUID->"b727a1cd-c4ad-4b24-b4d1-364a5df9f646",
+ InitializationCell->False],
+Cell[31215, 920, 590, 11, 508, "Output",ExpressionUUID->"87541f69-971c-48cb-90af-bf437b780a87"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[31854, 937, 219, 7, 159, "Subsection",ExpressionUUID->"3ff33944-488e-4757-87cc-957a20f7f8f9"],
+Cell[32076, 946, 300, 9, 166, "Text",ExpressionUUID->"538045b8-4ef5-4ea0-8870-c97295256ea6"],
+Cell[CellGroupData[{
+Cell[32401, 959, 930, 24, 300, "Code",ExpressionUUID->"5e5ff3bf-dbb7-42a4-a75a-26bedf25932d",
+ InitializationCell->False],
+Cell[33334, 985, 869, 15, 310, "Output",ExpressionUUID->"560a369d-2d29-42d6-89ee-2e9fbfd3fca4"]
+}, Open  ]],
+Cell[34218, 1003, 349, 11, 166, "Text",ExpressionUUID->"23abf1b4-b43c-4335-b0d8-5960c21f5266"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[34616, 1020, 189, 3, 199, "Section",ExpressionUUID->"15d5a778-80f3-48cb-b86e-2fdb61532724"],
+Cell[34808, 1025, 323, 7, 166, "Text",ExpressionUUID->"0858ccc7-f586-4d37-bc39-c8f42da54b4f"],
+Cell[CellGroupData[{
+Cell[35156, 1036, 616, 14, 152, "Input",ExpressionUUID->"5ebd5c53-2242-46f2-8113-3943e3717946"],
+Cell[35775, 1052, 237, 8, 233, "Output",ExpressionUUID->"9d7ee9f4-6529-42df-88f5-a6f44bafd621"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36049, 1065, 1366, 31, 323, "Code",ExpressionUUID->"fe994303-015c-4f92-939a-a42adc8040f5",
+ InitializationCell->False],
+Cell[37418, 1098, 5203, 154, 422, "Output",ExpressionUUID->"fc396513-2154-4525-866f-3904cfc45648"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42658, 1257, 640, 14, 300, "Code",ExpressionUUID->"cc35c9c1-da50-4219-9b57-c72135fb06fd",
+ InitializationCell->False],
+Cell[43301, 1273, 1692, 46, 763, "Output",ExpressionUUID->"6c125868-35bf-477d-81c3-42ef0216a2f0"]
+}, Open  ]],
+Cell[45008, 1322, 296, 6, 166, "Text",ExpressionUUID->"33a9f0bf-7384-4ac2-9b6f-9b41cdfa8a63"],
+Cell[CellGroupData[{
+Cell[45329, 1332, 382, 8, 123, "Input",ExpressionUUID->"738ccf7a-a5b9-4f93-8a24-119580fe2d15"],
+Cell[45714, 1342, 223, 4, 135, "Output",ExpressionUUID->"ed71bc91-33c9-42dd-b98e-f44b4cf73ae7"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[45974, 1351, 632, 12, 123, "Input",ExpressionUUID->"f8ea226c-5574-42ff-8c5a-184b7188e712"],
+Cell[46609, 1365, 166, 2, 135, "Output",ExpressionUUID->"1841e675-5ae0-4301-a6f3-296801cc40d2"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[46812, 1372, 1286, 33, 565, "Code",ExpressionUUID->"c8bc810e-eaff-4354-8359-51ce3391809b",
+ InitializationCell->False],
+Cell[48101, 1407, 1801, 50, 763, "Output",ExpressionUUID->"b53c5dff-b70c-4670-8ed3-3e749fc0d404"]
+}, Open  ]],
+Cell[49917, 1460, 888, 20, 621, "Text",ExpressionUUID->"6d23bddb-e812-47c0-819e-a86f63656116"],
+Cell[CellGroupData[{
+Cell[50830, 1484, 1584, 40, 618, "Code",ExpressionUUID->"487d0eb3-3b97-41a2-ac9f-106d285a0fb0",
+ InitializationCell->False],
+Cell[52417, 1526, 1968, 54, 763, "Output",ExpressionUUID->"1f29de11-3ac2-49c2-b372-414877907fde"]
+}, Open  ]],
+Cell[54400, 1583, 289, 6, 166, "Text",ExpressionUUID->"7b301e1c-e533-4e10-a00a-301c8a32f388"],
+Cell[CellGroupData[{
+Cell[54714, 1593, 406, 9, 140, "Code",ExpressionUUID->"9406128f-74c1-4615-a378-0fe212ff559e",
+ InitializationCell->False],
+Cell[55123, 1604, 263, 6, 140, "Output",ExpressionUUID->"7c798260-8bf9-4761-bc38-6e73c7866bc8"]
+}, Open  ]],
+Cell[55401, 1613, 337, 7, 231, "Text",ExpressionUUID->"d6bfff69-7c45-4d38-a902-d2f443f506e8"],
+Cell[CellGroupData[{
+Cell[55763, 1624, 2401, 64, 777, "Code",ExpressionUUID->"73f365b0-01f2-4ddd-bebe-5cc4b7064b02",
+ InitializationCell->False],
+Cell[58167, 1690, 2045, 55, 763, "Output",ExpressionUUID->"223fe2a6-ab25-46dd-86d3-07e6d3710193"]
+}, Open  ]],
+Cell[60227, 1748, 243, 6, 166, "Text",ExpressionUUID->"a0362691-d022-456f-b541-b166f12dd032"],
+Cell[CellGroupData[{
+Cell[60495, 1758, 2210, 58, 724, "Code",ExpressionUUID->"42a5898b-e8a6-469c-91f8-2e679a9b5a2a",
+ InitializationCell->False],
+Cell[62708, 1818, 2045, 56, 763, "Output",ExpressionUUID->"f55e0fe2-a71f-48b5-a5b5-f17bd1e76373"]
+}, Open  ]],
+Cell[64768, 1877, 449, 10, 231, "Text",ExpressionUUID->"1c03abe6-a7a8-497f-aad9-559c681dce53"],
+Cell[CellGroupData[{
+Cell[65242, 1891, 160, 3, 159, "Subsection",ExpressionUUID->"71448ad1-d31d-4309-a67c-56a3fd0c3f87"],
+Cell[CellGroupData[{
+Cell[65427, 1898, 3809, 98, 1120, "ItemNumbered",ExpressionUUID->"26850819-a178-448b-b214-b76232eeedee"],
+Cell[69239, 1998, 3821, 97, 1002, "ItemNumbered",ExpressionUUID->"d2e0829c-4d51-43ef-b443-562bb75bcdcb"],
+Cell[73063, 2097, 4040, 101, 943, "ItemNumbered",ExpressionUUID->"d840d599-6def-4a66-a582-b2a31c4194ee"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[77164, 2205, 216, 4, 199, "Section",ExpressionUUID->"afccb017-5a7a-4eeb-9f38-deb0fb6e2bc6"],
+Cell[77383, 2211, 1084, 18, 621, "Text",ExpressionUUID->"e7cef629-68b8-4d7d-a623-fa1e2241a80f"],
+Cell[CellGroupData[{
+Cell[78492, 2233, 852, 23, 353, "Code",ExpressionUUID->"4453cdbd-6300-4837-a28e-996f6ebac75a",
+ InitializationCell->False],
+Cell[79347, 2258, 1450, 28, 737, "Output",ExpressionUUID->"ada76bb6-00c9-47fd-b931-dc912ea4032d"]
+}, Open  ]],
+Cell[80812, 2289, 1363, 35, 504, "Text",ExpressionUUID->"511b4db7-ae37-480b-a259-aa5800b45d46"],
+Cell[CellGroupData[{
+Cell[82200, 2328, 2418, 59, 883, "Code",ExpressionUUID->"ec54aa67-4fcf-416e-93d6-941806f44c92",
+ InitializationCell->False],
+Cell[84621, 2389, 880, 16, 737, "Output",ExpressionUUID->"cfd5e2c1-ad55-42f0-be8a-b29521e54a76"]
+}, Open  ]],
+Cell[85516, 2408, 508, 9, 296, "Text",ExpressionUUID->"4abfa3a8-b545-4bf6-ae42-6ed7d0204152"],
+Cell[CellGroupData[{
+Cell[86049, 2421, 3604, 90, 1201, "Code",ExpressionUUID->"4c343707-4b8c-4603-bc4e-6cdf28d2f10d",
+ InitializationCell->False],
+Cell[89656, 2513, 1504, 29, 737, "Output",ExpressionUUID->"c769a59f-79f8-45e0-b5f4-6669925c5dfd"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[91197, 2547, 158, 3, 159, "Subsection",ExpressionUUID->"39c7c859-760c-46dc-ad4c-05b414e0d343"],
+Cell[CellGroupData[{
+Cell[91380, 2554, 1205, 26, 583, "ItemNumbered",ExpressionUUID->"34cb6133-29d0-4e57-837c-2c94b8fa7547"],
+Cell[92588, 2582, 649, 14, 269, "ItemNumbered",ExpressionUUID->"4a7e84b5-c1ca-4712-b868-23cd531dbcf8"],
+Cell[93240, 2598, 2592, 49, 1206, "ItemNumbered",ExpressionUUID->"a3e22c54-f254-411c-858b-403474acefd7"],
+Cell[95835, 2649, 2913, 57, 637, "ItemNumbered",ExpressionUUID->"d7b00264-cc05-4133-a9ea-9befecab0e4d"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

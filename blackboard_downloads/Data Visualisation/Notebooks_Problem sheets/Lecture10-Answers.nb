@@ -1,0 +1,1150 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     46357,       1142]
+NotebookOptionsPosition[     45709,       1121]
+NotebookOutlinePosition[     46139,       1138]
+CellTagsIndexPosition[     46096,       1135]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\<\
+Data Visualisation
+Multiple plots - tutorial\
+\>", "Title",
+ CellChangeTimes->{{3.9423928973116016`*^9, 
+  3.942392916740095*^9}},ExpressionUUID->"9e4ddd5e-eb3d-4446-91d2-\
+cce9d5718f23"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"numReceived", "=", 
+   RowBox[{"{", 
+    RowBox[{"651", ",", "520", ",", "197", ",", "62"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"percReceived", "=", 
+   RowBox[{"N", "[", 
+    RowBox[{"numReceived", "/", 
+     RowBox[{"Total", "[", "numReceived", "]"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"receivedActions", "=", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<Received\>\"", ",", "\"\<Within scope\>\"", ",", 
+      "\"\<Sent to referees\>\"", ",", "\"\<Accepted\>\""}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"numNotSent", "=", 
+   RowBox[{"{", 
+    RowBox[{"101", ",", "86", ",", "65", ",", "40", ",", "31"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"notSentCategories", "=", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<Too long\>\"", ",", "\"\<Bad formatting\>\"", ",", 
+      "\"\<Over the deadline\>\"", ",", "\"\<Incorrect references\>\"", ",", 
+      "\"\<Other\>\""}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rejectedCategories", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<Insufficient evidence\>\"", ",", "\"\<Poorly presented\>\"", ",", 
+     "\"\<Lack of novelty\>\"", ",", "\"\<Other\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"numRejected", "=", 
+    RowBox[{"{", 
+     RowBox[{"51", ",", "39", ",", "31", ",", "14"}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+   "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+     "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+     "**", "**"}], "*****)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Code", " ", "for", " ", "main", " ", "plot"}], " ", "*)"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rejEdColour", "=", 
+   RowBox[{"RGBColor", "[", 
+    RowBox[{"1", ",", "0.5", ",", "0", ",", "1"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"rejColour", "=", 
+    RowBox[{"RGBColor", "[", 
+     RowBox[{"1", ",", "0.2", ",", "0", ",", "1"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"grayColour", "=", 
+   RowBox[{"RGBColor", "[", 
+    RowBox[{"0.4", ",", "0.4", ",", "0.4", ",", "1"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"receivedPlot", "=", 
+    RowBox[{"BarChart", "[", 
+     RowBox[{
+      RowBox[{"Reverse", "[", "numReceived", "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ChartLabels", "\[Rule]", 
+       RowBox[{"Map", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Style", "[", 
+           RowBox[{"#", ",", "grayColour", ",", "12"}], "]"}], "&"}], ",", 
+         " ", 
+         RowBox[{"Reverse", "[", "receivedActions", "]"}]}], "]"}]}], ",", 
+      "\n", "\t", 
+      RowBox[{"BarOrigin", "\[Rule]", "Left"}], ",", "\n", "\t", 
+      RowBox[{"BarSpacing", "\[Rule]", "0.4"}], ",", "\n", "\t", 
+      RowBox[{"Frame", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"True", ",", "True", ",", "False", ",", "False"}], "}"}]}], 
+      ",", "\n", "\t", 
+      RowBox[{"FrameStyle", "\[Rule]", 
+       RowBox[{"RGBColor", "[", 
+        RowBox[{"1", ",", "1", ",", "1", ",", "0"}], "]"}]}], ",", "\n", "\t", 
+      RowBox[{"FrameTicks", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"None", ",", " ", "Automatic"}], "}"}]}], ",", "\n", "\t", 
+      RowBox[{"ChartStyle", "\[Rule]", 
+       RowBox[{"Directive", "[", 
+        RowBox[{
+         RowBox[{"EdgeForm", "[", "None", "]"}], ",", " ", "grayColour"}], 
+        "]"}]}], ",", "\n", "\t", 
+      RowBox[{"LabelingFunction", "\[Rule]", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Placed", "[", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{"#", ",", 
+             RowBox[{"FontSize", "\[Rule]", "12"}], ",", " ", "White"}], 
+            "]"}], ",", "Right"}], "]"}], "&"}], ")"}]}], ",", "\n", "\t", 
+      RowBox[{"PlotLabel", "\[Rule]", 
+       RowBox[{"Style", "[", 
+        RowBox[{"\"\<\\n\>\"", ",", " ", "18"}], "]"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"AspectRatio", "->", "1.1"}], ",", "\[IndentingNewLine]", "\n", 
+      "\t", 
+      RowBox[{"Epilog", "\[Rule]", 
+       RowBox[{"{", "\n", "\t\t", 
+        RowBox[{
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Text", "[", 
+            RowBox[{
+            "\"\<Number of papers processed\>\"", ",", "\n", 
+             "\t\t           ", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "235"}], ",", "5"}], "}"}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "1"}], ",", 
+               RowBox[{"-", "1"}]}], "}"}]}], "]"}], ",", "\n", "\t\t      ", 
+           RowBox[{"FontSize", "\[Rule]", "16"}], ",", " ", 
+           RowBox[{"GrayLevel", "[", "0.2", "]"}]}], "]"}], ",", "\n", "\t\t", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Text", "[", 
+            RowBox[{
+            "\"\<January - December 2020\>\"", ",", "\n", "\t\t           ", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "235"}], ",", "4.75"}], "}"}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "1"}], ",", 
+               RowBox[{"-", "1"}]}], "}"}]}], "]"}], ",", "\n", "\t\t      ", 
+           RowBox[{"FontSize", "\[Rule]", "12"}], ",", " ", 
+           RowBox[{"GrayLevel", "[", "0.5", "]"}]}], "]"}], ",", 
+         "\[IndentingNewLine]", "\[IndentingNewLine]", "\t", "White", ",", 
+         "\[IndentingNewLine]", "\t", 
+         RowBox[{"EdgeForm", "[", 
+          RowBox[{"Directive", "[", 
+           RowBox[{"Dashed", ",", "rejEdColour", ",", "Thick"}], "]"}], "]"}],
+          ",", "\[IndentingNewLine]", "\t", 
+         RowBox[{"Rectangle", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"197", ",", "1.64"}], "}"}], ",", " ", 
+           RowBox[{"{", 
+            RowBox[{"520", ",", "2.36"}], "}"}]}], "]"}], ",", 
+         "\[IndentingNewLine]", "\t", "rejEdColour", ",", 
+         "\[IndentingNewLine]", "\t", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Text", "[", 
+            RowBox[{"\"\<Rejected by editors\>\"", ",", 
+             RowBox[{"{", 
+              RowBox[{"363", ",", "2"}], "}"}]}], "]"}], ",", 
+           RowBox[{"FontSize", "->", "11"}]}], "]"}], ",", 
+         "\[IndentingNewLine]", "\[IndentingNewLine]", "\t", "White", ",", 
+         "\[IndentingNewLine]", "\t", 
+         RowBox[{"EdgeForm", "[", 
+          RowBox[{"Directive", "[", 
+           RowBox[{"Dashed", ",", "rejColour", ",", "Thick"}], "]"}], "]"}], 
+         ",", "\[IndentingNewLine]", "\t", 
+         RowBox[{"Rectangle", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"62", ",", "0.64"}], "}"}], ",", " ", 
+           RowBox[{"{", 
+            RowBox[{"197", ",", "1.36"}], "}"}]}], "]"}], ",", 
+         "\[IndentingNewLine]", "\t", "rejColour", ",", "\[IndentingNewLine]",
+          "\t", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Text", "[", 
+            RowBox[{"\"\<Rejected\>\"", ",", 
+             RowBox[{"{", 
+              RowBox[{"130", ",", "1"}], "}"}]}], "]"}], ",", 
+           RowBox[{"FontSize", "->", "11"}]}], "]"}]}], "\n", "\t", "}"}]}]}],
+      "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Export", "[", 
+     RowBox[{
+      RowBox[{"FileNameJoin", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", 
+         "\"\<receivedPlot.png\>\""}], "}"}], "]"}], ",", 
+      RowBox[{"Magnify", "[", 
+       RowBox[{"receivedPlot", ",", "4"}], "]"}]}], "]"}], ";"}], " ", "*)"}],
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+   "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+     "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+     "**", "**"}], "*****)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Code", " ", "for", " ", "\"\<rejected by editors\>\"", " ", "plot"}], " ",
+    "*)"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rejEdFS", "=", "10"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"rejEdPlot", "=", 
+    RowBox[{"BarChart", "[", 
+     RowBox[{
+      RowBox[{"Reverse", "[", "numNotSent", "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"ChartLabels", "\[Rule]", 
+       RowBox[{"Map", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Style", "[", 
+           RowBox[{"#", ",", "grayColour", ",", "rejEdFS"}], "]"}], "&"}], 
+         ",", " ", 
+         RowBox[{"Reverse", "[", "notSentCategories", "]"}]}], "]"}]}], ",", 
+      "\n", "\t", 
+      RowBox[{"BarOrigin", "\[Rule]", "Left"}], ",", "\n", "\t", 
+      RowBox[{"BarSpacing", "\[Rule]", "0.2"}], ",", "\n", "\t", 
+      RowBox[{"Frame", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"True", ",", "True", ",", "False", ",", "False"}], "}"}]}], 
+      ",", "\n", "\t", 
+      RowBox[{"FrameStyle", "\[Rule]", 
+       RowBox[{"RGBColor", "[", 
+        RowBox[{"1", ",", "1", ",", "1", ",", "0"}], "]"}]}], ",", "\n", "\t", 
+      RowBox[{"FrameTicks", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"None", ",", " ", "Automatic"}], "}"}]}], ",", "\n", "\t", 
+      RowBox[{"ChartStyle", "\[Rule]", 
+       RowBox[{"Directive", "[", 
+        RowBox[{
+         RowBox[{"EdgeForm", "[", "None", "]"}], ",", "rejEdColour"}], " ", 
+        "]"}]}], ",", "\n", "\t", 
+      RowBox[{"LabelingFunction", "\[Rule]", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Placed", "[", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{"#", ",", 
+             RowBox[{"FontSize", "\[Rule]", "rejEdFS"}], ",", " ", "White"}], 
+            "]"}], ",", "Right"}], "]"}], "&"}], ")"}]}], ",", "\n", "\t", 
+      RowBox[{"PlotLabel", "\[Rule]", 
+       RowBox[{"Style", "[", 
+        RowBox[{"\"\<\\n\>\"", ",", " ", "16"}], "]"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"AspectRatio", "->", 
+       RowBox[{"1.0", "/", "2"}]}], ",", "\n", "\t", "\n", "\t", 
+      RowBox[{"Epilog", "\[Rule]", 
+       RowBox[{"{", "\n", "\t\t", 
+        RowBox[{
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Text", "[", 
+            RowBox[{
+            "\"\<Why editors reject papers\>\"", ",", "\n", "\t\t           ", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "38"}], ",", "6.5"}], "}"}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "1"}], ",", 
+               RowBox[{"-", "1"}]}], "}"}]}], "]"}], ",", "\n", "\t\t      ", 
+           RowBox[{"FontSize", "\[Rule]", "16"}], ",", " ", 
+           RowBox[{"GrayLevel", "[", "0.2", "]"}]}], "]"}], ",", "\n", "\t\t", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Text", "[", 
+            RowBox[{
+            "\"\<Number of papers rejected by editors\>\"", ",", "\n", 
+             "\t\t           ", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "38"}], ",", "5.9"}], "}"}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "1"}], ",", 
+               RowBox[{"-", "1"}]}], "}"}]}], "]"}], ",", "\n", "\t\t      ", 
+           RowBox[{"FontSize", "\[Rule]", "12"}], ",", " ", 
+           RowBox[{"GrayLevel", "[", "0.5", "]"}]}], "]"}]}], 
+        "\[IndentingNewLine]", "}"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+   ";"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Export", "[", 
+     RowBox[{
+      RowBox[{"FileNameJoin", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", 
+         "\"\<rejEdPlot.png\>\""}], "}"}], "]"}], ",", 
+      RowBox[{"Magnify", "[", 
+       RowBox[{"rejEdPlot", ",", "4"}], "]"}]}], "]"}], ";"}], " ", "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+   "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+     "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+     "**", "**"}], "*****)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Code", " ", "for", " ", "\"\<rejected by referees\>\"", " ", "plot"}], 
+   " ", "*)"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rejPlot", "=", 
+   RowBox[{"BarChart", "[", 
+    RowBox[{
+     RowBox[{"Reverse", "[", "numRejected", "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"ChartLabels", "\[Rule]", 
+      RowBox[{"Map", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Style", "[", 
+          RowBox[{"#", ",", "grayColour", ",", "rejEdFS"}], "]"}], "&"}], ",",
+         " ", 
+        RowBox[{"Reverse", "[", "rejectedCategories", "]"}]}], "]"}]}], ",", 
+     "\n", "\t", 
+     RowBox[{"BarOrigin", "\[Rule]", "Left"}], ",", "\n", "\t", 
+     RowBox[{"BarSpacing", "\[Rule]", "0.2"}], ",", "\n", "\t", 
+     RowBox[{"Frame", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"True", ",", "True", ",", "False", ",", "False"}], "}"}]}], 
+     ",", "\n", "\t", 
+     RowBox[{"FrameStyle", "\[Rule]", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"1", ",", "1", ",", "1", ",", "0"}], "]"}]}], ",", "\n", "\t", 
+     RowBox[{"FrameTicks", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"None", ",", " ", "Automatic"}], "}"}]}], ",", "\n", "\t", 
+     RowBox[{"ChartStyle", "\[Rule]", 
+      RowBox[{"Directive", "[", 
+       RowBox[{
+        RowBox[{"EdgeForm", "[", "None", "]"}], ",", "rejColour"}], " ", 
+       "]"}]}], ",", "\n", "\t", 
+     RowBox[{"LabelingFunction", "\[Rule]", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"Placed", "[", 
+         RowBox[{
+          RowBox[{"Style", "[", 
+           RowBox[{"#", ",", 
+            RowBox[{"FontSize", "\[Rule]", "rejEdFS"}], ",", " ", "White"}], 
+           "]"}], ",", "Right"}], "]"}], "&"}], ")"}]}], ",", "\n", "\t", 
+     RowBox[{"PlotLabel", "\[Rule]", 
+      RowBox[{"Style", "[", 
+       RowBox[{"\"\<\\n\>\"", ",", " ", "16"}], "]"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"AspectRatio", "->", 
+      RowBox[{"1.0", "/", "2"}]}], ",", "\n", "\t", "\n", "\t", 
+     RowBox[{"Epilog", "\[Rule]", 
+      RowBox[{"{", "\n", "\t\t", 
+       RowBox[{
+        RowBox[{"Style", "[", 
+         RowBox[{
+          RowBox[{"Text", "[", 
+           RowBox[{
+           "\"\<Why referees reject papers\>\"", ",", "\n", "\t\t           ", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "19.8"}], ",", "5.5"}], "}"}], ",", " ", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "1"}], ",", 
+              RowBox[{"-", "1"}]}], "}"}]}], "]"}], ",", "\n", "\t\t      ", 
+          RowBox[{"FontSize", "\[Rule]", "16"}], ",", " ", 
+          RowBox[{"GrayLevel", "[", "0.2", "]"}]}], "]"}], ",", "\n", "\t\t", 
+        RowBox[{"Style", "[", 
+         RowBox[{
+          RowBox[{"Text", "[", 
+           RowBox[{
+           "\"\<Number of papers rejected by referees\>\"", ",", "\n", 
+            "\t\t           ", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "19.8"}], ",", "4.9"}], "}"}], ",", " ", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "1"}], ",", 
+              RowBox[{"-", "1"}]}], "}"}]}], "]"}], ",", "\n", "\t\t      ", 
+          RowBox[{"FontSize", "\[Rule]", "12"}], ",", " ", 
+          RowBox[{"GrayLevel", "[", "0.5", "]"}]}], "]"}]}], 
+       "\[IndentingNewLine]", "}"}]}]}], "\[IndentingNewLine]", "]"}]}], ";", 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Export", "[", 
+     RowBox[{
+      RowBox[{"FileNameJoin", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", 
+         "\"\<rejPlot.png\>\""}], "}"}], "]"}], ",", 
+      RowBox[{"Magnify", "[", 
+       RowBox[{"rejPlot", ",", "4"}], "]"}]}], "]"}], ";"}], " ", "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"**", "**"}], "*", "*", "*", 
+    RowBox[{
+    "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+      "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", 
+     "**"}]}], "*****)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Code", " ", "to", " ", "create", " ", "the", " ", "final", " ", "plot"}], 
+   " ", "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Graphics", "[", 
+   RowBox[{
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Inset", "[", 
+       RowBox[{"receivedPlot", ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1.05"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"Left", ",", "Top"}], "}"}], ",", "1"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Inset", "[", 
+       RowBox[{"rejEdPlot", ",", 
+        RowBox[{"{", 
+         RowBox[{"1.05", ",", "0.5"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"Left", ",", "Bottom"}], "}"}], ",", "1"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Inset", "[", 
+       RowBox[{"rejPlot", ",", 
+        RowBox[{"{", 
+         RowBox[{"1.05", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"Left", ",", "Bottom"}], "}"}], ",", "1"}], "]"}]}], 
+     "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{"ImageSize", "->", "Full"}], ",", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{"PlotLabel", "->", "\"\<\\n\\n\>\""}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Epilog", "->", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{"Text", "[", 
+          RowBox[{"\"\<Most papers are rejected because of\>\"", ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "1.12"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"-", "1"}], ",", 
+             RowBox[{"-", "1"}]}], "}"}]}], "]"}], ",", "\[IndentingNewLine]",
+          "  ", 
+         RowBox[{"FontSize", "->", "24"}]}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{"Text", "[", 
+          RowBox[{"\"\<length and lack of evidence presented\>\"", ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "1.05"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"-", "1"}], ",", 
+             RowBox[{"-", "1"}]}], "}"}]}], "]"}], ",", "\[IndentingNewLine]",
+          "  ", 
+         RowBox[{"FontSize", "->", "24"}], ",", " ", "Bold"}], "]"}]}], 
+      "\[IndentingNewLine]", "}"}]}]}], "\[IndentingNewLine]", "]"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"receivedPlotIm", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{"FileNameJoin", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", 
+         "\"\<receivedPlot.png\>\""}], "}"}], "]"}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"rejPlotIm", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{"FileNameJoin", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", 
+         "\"\<rejPlot.png\>\""}], "}"}], "]"}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"rejEdPlotIm", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{"FileNameJoin", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", 
+         "\"\<rejEdPlot.png\>\""}], "}"}], "]"}], "]"}]}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"Graphics", "[", 
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Inset", "[", 
+         RowBox[{"receivedPlotIm", ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", "1.05"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"Left", ",", "Top"}], "}"}], ",", "1"}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Inset", "[", 
+         RowBox[{"rejEdPlotIm", ",", 
+          RowBox[{"{", 
+           RowBox[{"1.05", ",", "0.5"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"Left", ",", "Bottom"}], "}"}], ",", "1"}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Inset", "[", 
+         RowBox[{"rejPlotIm", ",", 
+          RowBox[{"{", 
+           RowBox[{"1.05", ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"Left", ",", "Bottom"}], "}"}], ",", "1"}], "]"}]}], 
+       "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"PlotLabel", "->", "\"\<\\n\\n\>\""}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Epilog", "->", 
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Text", "[", 
+            RowBox[{"\"\<Most papers are rejected because of\>\"", ",", 
+             RowBox[{"{", 
+              RowBox[{"0", ",", "1.16"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "1"}], ",", 
+               RowBox[{"-", "1"}]}], "}"}]}], "]"}], ",", 
+           "\[IndentingNewLine]", "  ", 
+           RowBox[{"FontSize", "->", "16"}]}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Text", "[", 
+            RowBox[{"\"\<length and lack of evidence presented\>\"", ",", 
+             RowBox[{"{", 
+              RowBox[{"0", ",", "1.05"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "1"}], ",", 
+               RowBox[{"-", "1"}]}], "}"}]}], "]"}], ",", 
+           "\[IndentingNewLine]", "  ", 
+           RowBox[{"FontSize", "->", "16"}], ",", " ", "Bold"}], "]"}]}], 
+        "\[IndentingNewLine]", "}"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+   "\[IndentingNewLine]", "*)"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.942393008008438*^9, 3.9423931289813747`*^9}, {
+   3.9423931805374203`*^9, 3.942393189627468*^9}, {3.9423932688974495`*^9, 
+   3.942393295215021*^9}, {3.9423933282885494`*^9, 3.942393364232399*^9}, {
+   3.942393415725176*^9, 3.942393430233124*^9}, {3.942393481569214*^9, 
+   3.9423935922688866`*^9}, {3.9423936282351723`*^9, 
+   3.9423938125333977`*^9}, {3.942393968628769*^9, 3.942394097728544*^9}, {
+   3.942394168045561*^9, 3.9423941993025303`*^9}, {3.9423942421717224`*^9, 
+   3.9423943496642933`*^9}, {3.9423943813800793`*^9, 3.942394416038252*^9}, {
+   3.942394457383375*^9, 3.9423947557925434`*^9}, {3.9423947882857265`*^9, 
+   3.9423948515048428`*^9}, {3.942394906574011*^9, 3.942394950157139*^9}, {
+   3.942394984511362*^9, 3.9423950885241947`*^9}, {3.9423951267496777`*^9, 
+   3.9423952927781925`*^9}, {3.9423953275390205`*^9, 
+   3.9423953628439426`*^9}, {3.942395426423975*^9, 3.942395786977644*^9}, {
+   3.9423958619537163`*^9, 3.942395889383711*^9}, {3.9423959194543533`*^9, 
+   3.9423959639881287`*^9}, {3.9423960064455814`*^9, 3.94239604941271*^9}, {
+   3.9423961119304314`*^9, 3.9423961322365646`*^9}, {3.942396168094692*^9, 
+   3.9423966372331867`*^9}, {3.9423966810640297`*^9, 3.942396736491209*^9}, {
+   3.942396773027193*^9, 3.942396922836355*^9}, {3.942396964678829*^9, 
+   3.942397010381443*^9}, {3.9423970448169537`*^9, 3.942397257950844*^9}, {
+   3.942397292410263*^9, 3.942397366036728*^9}, {3.942397402631752*^9, 
+   3.942397402762535*^9}, {3.9423974568855247`*^9, 3.9423974711390953`*^9}, {
+   3.942397506406578*^9, 3.942397555296755*^9}, {3.942397761019617*^9, 
+   3.9423977791057625`*^9}, {3.9423978296322365`*^9, 3.942397890151058*^9}, 
+   3.942397927406288*^9, {3.942398045878237*^9, 3.9423980790089054`*^9}, {
+   3.9423981615807076`*^9, 3.9423982032999077`*^9}, {3.942398297006462*^9, 
+   3.9423983015661163`*^9}, {3.9423983489023247`*^9, 
+   3.9423983667351055`*^9}, {3.942398455514351*^9, 3.94239860732234*^9}, {
+   3.9423986487220993`*^9, 3.9423986519106026`*^9}, 3.942398689337105*^9, {
+   3.9423989588971233`*^9, 3.942398977391905*^9}, {3.942399036867697*^9, 
+   3.9423990851290073`*^9}, {3.9423992000164356`*^9, 
+   3.9423992060114326`*^9}, {3.9423992845414867`*^9, 
+   3.9423992861419544`*^9}, {3.942399329704365*^9, 3.942399386091463*^9}, {
+   3.942399477452629*^9, 3.9423995002634068`*^9}, {3.942399606076229*^9, 
+   3.9423996231477833`*^9}, {3.9423997192968445`*^9, 3.942399757432743*^9}, {
+   3.942399799750143*^9, 3.9424000137078457`*^9}, 3.9424000736759644`*^9, {
+   3.9424003074074936`*^9, 3.9424004601665096`*^9}, {3.9424005320360184`*^9, 
+   3.94240053349769*^9}, {3.942400649717497*^9, 3.942400748245924*^9}, {
+   3.942400806248417*^9, 3.9424009131101475`*^9}, {3.9424009678282986`*^9, 
+   3.9424010200761986`*^9}, {3.942401054397642*^9, 3.942401057513981*^9}, {
+   3.9424010964229984`*^9, 3.9424011005538464`*^9}, {3.9424013045135574`*^9, 
+   3.9424014681427593`*^9}, {3.9424016245698166`*^9, 3.9424016455675735`*^9}, 
+   3.9424016925225353`*^9, {3.942401726441103*^9, 3.942401726866026*^9}, {
+   3.9424018911582127`*^9, 3.9424019693361034`*^9}, {3.9424020048451614`*^9, 
+   3.9424020135301914`*^9}, {3.942402054443987*^9, 3.94240205481481*^9}, {
+   3.9424020959613914`*^9, 3.9424021335890713`*^9}, 3.94240223452392*^9, {
+   3.942402505955347*^9, 3.9424025738339367`*^9}, {3.9424026171806583`*^9, 
+   3.9424029360872326`*^9}, {3.9424044191723766`*^9, 
+   3.9424044397254696`*^9}, {3.9424044991657352`*^9, 
+   3.9424045394596252`*^9}, {3.9424269024714565`*^9, 3.942426921718958*^9}, {
+   3.942427061813343*^9, 3.942427098425337*^9}, {3.9429881357567987`*^9, 
+   3.942988205103561*^9}},ExpressionUUID->"0909bd36-0d7e-d246-8651-\
+1ee802f822c2"],
+
+Cell[BoxData[
+ GraphicsBox[{InsetBox[
+    GraphicsBox[{
+      {Opacity[0], 
+       PointBox[{{0., 0.21142857142857152`}, {0., 
+        4.7142857142857135`}}]}, {{}, 
+       {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+        0.6719999999999999], Thickness[Small]}], 
+        {RGBColor[0.4, 0.4, 0.4], Opacity[1], EdgeForm[None], 
+         RectangleBox[{0., 0.6428571428571429}, {62., 1.3571428571428572},
+          RoundingRadius->0]}, 
+        {RGBColor[0.4, 0.4, 0.4], Opacity[1], EdgeForm[None], 
+         RectangleBox[{0., 1.642857142857143}, {197., 2.357142857142857},
+          RoundingRadius->0]}, 
+        {RGBColor[0.4, 0.4, 0.4], Opacity[1], EdgeForm[None], 
+         RectangleBox[{0., 2.642857142857143}, {520., 3.3571428571428568},
+          RoundingRadius->0]}, 
+        {RGBColor[0.4, 0.4, 0.4], Opacity[1], EdgeForm[None], 
+         RectangleBox[{0., 3.6428571428571423}, {651., 4.357142857142857},
+          RoundingRadius->0]}}, {}, {}}, {}, {InsetBox[
+        StyleBox["62",
+         StripOnInput->False,
+         LineColor->GrayLevel[1],
+         FrontFaceColor->GrayLevel[1],
+         BackFaceColor->GrayLevel[1],
+         GraphicsColor->GrayLevel[1],
+         FontSize->12,
+         FontColor->GrayLevel[1]], Offset[{-6, 0}, {62., 1.}], 
+        ImageScaled[{1, 0.5}]], InsetBox[
+        StyleBox["197",
+         StripOnInput->False,
+         LineColor->GrayLevel[1],
+         FrontFaceColor->GrayLevel[1],
+         BackFaceColor->GrayLevel[1],
+         GraphicsColor->GrayLevel[1],
+         FontSize->12,
+         FontColor->GrayLevel[1]], Offset[{-6, 0}, {197., 2.}], 
+        ImageScaled[{1, 0.5}]], InsetBox[
+        StyleBox["520",
+         StripOnInput->False,
+         LineColor->GrayLevel[1],
+         FrontFaceColor->GrayLevel[1],
+         BackFaceColor->GrayLevel[1],
+         GraphicsColor->GrayLevel[1],
+         FontSize->12,
+         FontColor->GrayLevel[1]], Offset[{-6, 0}, {520., 3.}], 
+        ImageScaled[{1, 0.5}]], InsetBox[
+        StyleBox["651",
+         StripOnInput->False,
+         LineColor->GrayLevel[1],
+         FrontFaceColor->GrayLevel[1],
+         BackFaceColor->GrayLevel[1],
+         GraphicsColor->GrayLevel[1],
+         FontSize->12,
+         FontColor->GrayLevel[1]], 
+        Offset[{-6, 0}, {651., 3.9999999999999996}], 
+        ImageScaled[{1, 0.5}]]}, {}, {}, {}},
+     AspectRatio->1.1,
+     Axes->{False, False},
+     AxesLabel->{None, None},
+     AxesOrigin->{0., 0.21142857142857152`},
+     CoordinatesToolOptions:>{"DisplayFunction" -> ({
+         Identity[
+          Part[#, 1]], 
+         Identity[
+          Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+         Identity[
+          Part[#, 1]], 
+         Identity[
+          Part[#, 2]]}& )},
+     DisplayFunction->Identity,
+     Epilog->{
+       StyleBox[
+        InsetBox[
+         FormBox["\"Number of papers processed\"", TraditionalForm], {-235, 
+         5}, 
+         ImageScaled[{0, 0}]], {FontSize -> 16, 
+         GrayLevel[0.2]}, StripOnInput -> False], 
+       StyleBox[
+        InsetBox[
+         FormBox[
+         "\"January - December 2020\"", TraditionalForm], {-235, 4.75}, 
+         ImageScaled[{0, 0}]], {FontSize -> 12, 
+         GrayLevel[0.5]}, StripOnInput -> False], 
+       GrayLevel[1], 
+       EdgeForm[
+        Directive[
+         Dashing[{Small, Small}], 
+         RGBColor[1, 0.5, 0, 1], 
+         Thickness[Large]]], 
+       RectangleBox[{197, 1.64}, {520, 2.36}], 
+       RGBColor[1, 0.5, 0, 1], 
+       StyleBox[
+        InsetBox[
+         FormBox["\"Rejected by editors\"", TraditionalForm], {363, 2}], {
+        FontSize -> 11}, StripOnInput -> False], 
+       GrayLevel[1], 
+       EdgeForm[
+        Directive[
+         Dashing[{Small, Small}], 
+         RGBColor[1, 0.2, 0, 1], 
+         Thickness[Large]]], 
+       RectangleBox[{62, 0.64}, {197, 1.36}], 
+       RGBColor[1, 0.2, 0, 1], 
+       StyleBox[
+        InsetBox[
+         FormBox["\"Rejected\"", TraditionalForm], {130, 1}], {
+        FontSize -> 11}, StripOnInput -> False]},
+     Frame->{True, True, False, False},
+     FrameLabel->{{None, None}, {None, None}},
+     FrameStyle->RGBColor[1, 1, 1, 0],
+     FrameTicks->{{{{1., 
+          FormBox[
+           TemplateBox[{0}, "Spacer1"], TraditionalForm], {0.004, 0}}, {1., 
+          FormBox[
+           StyleBox["\"Accepted\"", 
+            RGBColor[0.4, 0.4, 0.4, 1], 12, StripOnInput -> False], 
+           TraditionalForm], 0}, {2., 
+          FormBox[
+           TemplateBox[{0}, "Spacer1"], TraditionalForm], {0.004, 0}}, {2., 
+          FormBox[
+           StyleBox["\"Sent to referees\"", 
+            RGBColor[0.4, 0.4, 0.4, 1], 12, StripOnInput -> False], 
+           TraditionalForm], 0}, {3., 
+          FormBox[
+           TemplateBox[{0}, "Spacer1"], TraditionalForm], {0.004, 0}}, {3., 
+          FormBox[
+           StyleBox["\"Within scope\"", 
+            RGBColor[0.4, 0.4, 0.4, 1], 12, StripOnInput -> False], 
+           TraditionalForm], 0}, {3.9999999999999996`, 
+          FormBox[
+           TemplateBox[{0}, "Spacer1"], TraditionalForm], {0.004, 0}}, {
+         3.9999999999999996`, 
+          FormBox[
+           StyleBox["\"Received\"", 
+            RGBColor[0.4, 0.4, 0.4, 1], 12, StripOnInput -> False], 
+           TraditionalForm], 0}}, {{1., 
+          FormBox[
+           TemplateBox[{0}, "Spacer1"], TraditionalForm], {0.004, 0}}, {2., 
+          FormBox[
+           TemplateBox[{0}, "Spacer1"], TraditionalForm], {0.004, 0}}, {3., 
+          FormBox[
+           TemplateBox[{0}, "Spacer1"], TraditionalForm], {0.004, 0}}, {
+         3.9999999999999996`, 
+          FormBox[
+           TemplateBox[{0}, "Spacer1"], TraditionalForm], {0.004, 0}}}}, {
+       None, None}},
+     GridLines->{None, None},
+     GridLinesStyle->Directive[
+       GrayLevel[0.5, 0.4]],
+     PlotLabel->FormBox[
+       StyleBox["\"\\n\"", 18, StripOnInput -> False], TraditionalForm],
+     PlotRange->{{All, All}, {All, All}},
+     PlotRangePadding->{{
+        Scaled[0.02], 
+        Scaled[0.02]}, {None, 
+        Scaled[0.05]}},
+     Ticks->{Automatic, None}], {0, 1.05}, {Left, Top}, 1], InsetBox[
+    GraphicsBox[{
+      {Opacity[0], 
+       PointBox[{{0., 0.4866666666666667}, {0., 5.416666666666666}}]}, {{}, 
+       {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+        0.6649999999999999], Thickness[Small]}], 
+        {RGBColor[1, 0.5, 0], Opacity[1], EdgeForm[None], 
+         RectangleBox[{0., 0.5833333333333334}, {31., 1.4166666666666665},
+          RoundingRadius->0]}, 
+        {RGBColor[1, 0.5, 0], Opacity[1], EdgeForm[None], 
+         RectangleBox[{0., 1.5833333333333333}, {40., 2.4166666666666665},
+          RoundingRadius->0]}, 
+        {RGBColor[1, 0.5, 0], Opacity[1], EdgeForm[None], 
+         RectangleBox[{0., 2.583333333333333}, {65., 3.416666666666666},
+          RoundingRadius->0]}, 
+        {RGBColor[1, 0.5, 0], Opacity[1], EdgeForm[None], 
+         RectangleBox[{0., 3.5833333333333326}, {86., 4.416666666666666},
+          RoundingRadius->0]}, 
+        {RGBColor[1, 0.5, 0], Opacity[1], EdgeForm[None], 
+         RectangleBox[{0., 4.583333333333333}, {101., 5.416666666666666},
+          RoundingRadius->0]}}, {}, {}}, {}, {InsetBox[
+        StyleBox["31",
+         StripOnInput->False,
+         LineColor->GrayLevel[1],
+         FrontFaceColor->GrayLevel[1],
+         BackFaceColor->GrayLevel[1],
+         GraphicsColor->GrayLevel[1],
+         FontSize->10,
+         FontColor->GrayLevel[1]], Offset[{-6, 0}, {31., 1.}], 
+        ImageScaled[{1, 0.5}]], InsetBox[
+        StyleBox["40",
+         StripOnInput->False,
+         LineColor->GrayLevel[1],
+         FrontFaceColor->GrayLevel[1],
+         BackFaceColor->GrayLevel[1],
+         GraphicsColor->GrayLevel[1],
+         FontSize->10,
+         FontColor->GrayLevel[1]], Offset[{-6, 0}, {40., 2.}], 
+        ImageScaled[{1, 0.5}]], InsetBox[
+        StyleBox["65",
+         StripOnInput->False,
+         LineColor->GrayLevel[1],
+         FrontFaceColor->GrayLevel[1],
+         BackFaceColor->GrayLevel[1],
+         GraphicsColor->GrayLevel[1],
+         FontSize->10,
+         FontColor->GrayLevel[1]], Offset[{-6, 0}, {65., 2.9999999999999996}],
+         ImageScaled[{1, 0.5}]], InsetBox[
+        StyleBox["86",
+         StripOnInput->False,
+         LineColor->GrayLevel[1],
+         FrontFaceColor->GrayLevel[1],
+         BackFaceColor->GrayLevel[1],
+         GraphicsColor->GrayLevel[1],
+         FontSize->10,
+         FontColor->GrayLevel[1]], Offset[{-6, 0}, {86., 3.999999999999999}], 
+        ImageScaled[{1, 0.5}]], InsetBox[
+        StyleBox["101",
+         StripOnInput->False,
+         LineColor->GrayLevel[1],
+         FrontFaceColor->GrayLevel[1],
+         BackFaceColor->GrayLevel[1],
+         GraphicsColor->GrayLevel[1],
+         FontSize->10,
+         FontColor->GrayLevel[1]], Offset[{-6, 0}, {101., 5.}], 
+        ImageScaled[{1, 0.5}]]}, {}, {}, {}},
+     AspectRatio->0.5,
+     Axes->{False, False},
+     AxesLabel->{None, None},
+     AxesOrigin->{0., 0.4866666666666667},
+     CoordinatesToolOptions:>{"DisplayFunction" -> ({
+         Identity[
+          Part[#, 1]], 
+         Identity[
+          Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+         Identity[
+          Part[#, 1]], 
+         Identity[
+          Part[#, 2]]}& )},
+     DisplayFunction->Identity,
+     Epilog->{
+       StyleBox[
+        InsetBox[
+         FormBox[
+         "\"Why editors reject papers\"", TraditionalForm], {-38, 6.5}, 
+         ImageScaled[{0, 0}]], {FontSize -> 16, 
+         GrayLevel[0.2]}, StripOnInput -> False], 
+       StyleBox[
+        InsetBox[
+         FormBox[
+         "\"Number of papers rejected by editors\"", TraditionalForm], {-38, 
+          5.9}, 
+         ImageScaled[{0, 0}]], {FontSize -> 12, 
+         GrayLevel[0.5]}, StripOnInput -> False]},
+     Frame->{True, True, False, False},
+     FrameLabel->{{None, None}, {None, None}},
+     FrameStyle->RGBColor[1, 1, 1, 0],
+     FrameTicks->{{{{1., 
+          FormBox[
+           TemplateBox[{0}, "Spacer1"], TraditionalForm], {0.004, 0}}, {1., 
+          FormBox[
+           StyleBox["\"Other\"", 
+            RGBColor[0.4, 0.4, 0.4, 1], 10, StripOnInput -> False], 
+           TraditionalForm], 0}, {2., 
+          FormBox[
+           TemplateBox[{0}, "Spacer1"], TraditionalForm], {0.004, 0}}, {2., 
+          FormBox[
+           StyleBox["\"Incorrect references\"", 
+            RGBColor[0.4, 0.4, 0.4, 1], 10, StripOnInput -> False], 
+           TraditionalForm], 0}, {2.9999999999999996`, 
+          FormBox[
+           TemplateBox[{0}, "Spacer1"], TraditionalForm], {0.004, 0}}, {
+         2.9999999999999996`, 
+          FormBox[
+           StyleBox["\"Over the deadline\"", 
+            RGBColor[0.4, 0.4, 0.4, 1], 10, StripOnInput -> False], 
+           TraditionalForm], 0}, {3.999999999999999, 
+          FormBox[
+           TemplateBox[{0}, "Spacer1"], TraditionalForm], {0.004, 0}}, {
+         3.999999999999999, 
+          FormBox[
+           StyleBox["\"Bad formatting\"", 
+            RGBColor[0.4, 0.4, 0.4, 1], 10, StripOnInput -> False], 
+           TraditionalForm], 0}, {5., 
+          FormBox[
+           TemplateBox[{0}, "Spacer1"], TraditionalForm], {0.004, 0}}, {5., 
+          FormBox[
+           StyleBox["\"Too long\"", 
+            RGBColor[0.4, 0.4, 0.4, 1], 10, StripOnInput -> False], 
+           TraditionalForm], 0}}, {{1., 
+          FormBox[
+           TemplateBox[{0}, "Spacer1"], TraditionalForm], {0.004, 0}}, {2., 
+          FormBox[
+           TemplateBox[{0}, "Spacer1"], TraditionalForm], {0.004, 0}}, {
+         2.9999999999999996`, 
+          FormBox[
+           TemplateBox[{0}, "Spacer1"], TraditionalForm], {0.004, 0}}, {
+         3.999999999999999, 
+          FormBox[
+           TemplateBox[{0}, "Spacer1"], TraditionalForm], {0.004, 0}}, {5., 
+          FormBox[
+           TemplateBox[{0}, "Spacer1"], TraditionalForm], {0.004, 0}}}}, {
+       None, None}},
+     GridLines->{None, None},
+     GridLinesStyle->Directive[
+       GrayLevel[0.5, 0.4]],
+     PlotLabel->FormBox[
+       StyleBox["\"\\n\"", 16, StripOnInput -> False], TraditionalForm],
+     PlotRange->{{All, All}, {All, All}},
+     PlotRangePadding->{{
+        Scaled[0.02], 
+        Scaled[0.02]}, {None, 
+        Scaled[0.05]}},
+     Ticks->{Automatic, None}], {1.05, 0.5}, {Left, Bottom}, 1], InsetBox[
+    GraphicsBox[{
+      {Opacity[0], 
+       PointBox[{{0., 0.09000000000000008}, {0., 4.833333333333333}}]}, {{}, 
+       {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+        0.6719999999999999], Thickness[Small]}], 
+        {RGBColor[1, 0.2, 0], Opacity[1], EdgeForm[None], 
+         RectangleBox[{0., 0.5833333333333334}, {14., 1.4166666666666665},
+          RoundingRadius->0]}, 
+        {RGBColor[1, 0.2, 0], Opacity[1], EdgeForm[None], 
+         RectangleBox[{0., 1.5833333333333333}, {31., 2.4166666666666665},
+          RoundingRadius->0]}, 
+        {RGBColor[1, 0.2, 0], Opacity[1], EdgeForm[None], 
+         RectangleBox[{0., 2.583333333333333}, {39., 3.416666666666666},
+          RoundingRadius->0]}, 
+        {RGBColor[1, 0.2, 0], Opacity[1], EdgeForm[None], 
+         RectangleBox[{0., 3.5833333333333326}, {51., 4.416666666666666},
+          RoundingRadius->0]}}, {}, {}}, {}, {InsetBox[
+        StyleBox["14",
+         StripOnInput->False,
+         LineColor->GrayLevel[1],
+         FrontFaceColor->GrayLevel[1],
+         BackFaceColor->GrayLevel[1],
+         GraphicsColor->GrayLevel[1],
+         FontSize->10,
+         FontColor->GrayLevel[1]], Offset[{-6, 0}, {14., 1.}], 
+        ImageScaled[{1, 0.5}]], InsetBox[
+        StyleBox["31",
+         StripOnInput->False,
+         LineColor->GrayLevel[1],
+         FrontFaceColor->GrayLevel[1],
+         BackFaceColor->GrayLevel[1],
+         GraphicsColor->GrayLevel[1],
+         FontSize->10,
+         FontColor->GrayLevel[1]], Offset[{-6, 0}, {31., 2.}], 
+        ImageScaled[{1, 0.5}]], InsetBox[
+        StyleBox["39",
+         StripOnInput->False,
+         LineColor->GrayLevel[1],
+         FrontFaceColor->GrayLevel[1],
+         BackFaceColor->GrayLevel[1],
+         GraphicsColor->GrayLevel[1],
+         FontSize->10,
+         FontColor->GrayLevel[1]], Offset[{-6, 0}, {39., 2.9999999999999996}],
+         ImageScaled[{1, 0.5}]], InsetBox[
+        StyleBox["51",
+         StripOnInput->False,
+         LineColor->GrayLevel[1],
+         FrontFaceColor->GrayLevel[1],
+         BackFaceColor->GrayLevel[1],
+         GraphicsColor->GrayLevel[1],
+         FontSize->10,
+         FontColor->GrayLevel[1]], Offset[{-6, 0}, {51., 3.999999999999999}], 
+        ImageScaled[{1, 0.5}]]}, {}, {}, {}},
+     AspectRatio->0.5,
+     Axes->{False, False},
+     AxesLabel->{None, None},
+     AxesOrigin->{0., 0.09000000000000008},
+     CoordinatesToolOptions:>{"DisplayFunction" -> ({
+         Identity[
+          Part[#, 1]], 
+         Identity[
+          Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+         Identity[
+          Part[#, 1]], 
+         Identity[
+          Part[#, 2]]}& )},
+     DisplayFunction->Identity,
+     Epilog->{
+       StyleBox[
+        InsetBox[
+         FormBox["\"Why referees reject papers\"", TraditionalForm], {-19.8, 
+         5.5}, 
+         ImageScaled[{0, 0}]], {FontSize -> 16, 
+         GrayLevel[0.2]}, StripOnInput -> False], 
+       StyleBox[
+        InsetBox[
+         FormBox[
+         "\"Number of papers rejected by referees\"", 
+          TraditionalForm], {-19.8, 4.9}, 
+         ImageScaled[{0, 0}]], {FontSize -> 12, 
+         GrayLevel[0.5]}, StripOnInput -> False]},
+     Frame->{True, True, False, False},
+     FrameLabel->{{None, None}, {None, None}},
+     FrameStyle->RGBColor[1, 1, 1, 0],
+     FrameTicks->{{{{1., 
+          FormBox[
+           TemplateBox[{0}, "Spacer1"], TraditionalForm], {0.004, 0}}, {1., 
+          FormBox[
+           StyleBox["\"Other\"", 
+            RGBColor[0.4, 0.4, 0.4, 1], 10, StripOnInput -> False], 
+           TraditionalForm], 0}, {2., 
+          FormBox[
+           TemplateBox[{0}, "Spacer1"], TraditionalForm], {0.004, 0}}, {2., 
+          FormBox[
+           StyleBox["\"Lack of novelty\"", 
+            RGBColor[0.4, 0.4, 0.4, 1], 10, StripOnInput -> False], 
+           TraditionalForm], 0}, {2.9999999999999996`, 
+          FormBox[
+           TemplateBox[{0}, "Spacer1"], TraditionalForm], {0.004, 0}}, {
+         2.9999999999999996`, 
+          FormBox[
+           StyleBox["\"Poorly presented\"", 
+            RGBColor[0.4, 0.4, 0.4, 1], 10, StripOnInput -> False], 
+           TraditionalForm], 0}, {3.999999999999999, 
+          FormBox[
+           TemplateBox[{0}, "Spacer1"], TraditionalForm], {0.004, 0}}, {
+         3.999999999999999, 
+          FormBox[
+           StyleBox["\"Insufficient evidence\"", 
+            RGBColor[0.4, 0.4, 0.4, 1], 10, StripOnInput -> False], 
+           TraditionalForm], 0}}, {{1., 
+          FormBox[
+           TemplateBox[{0}, "Spacer1"], TraditionalForm], {0.004, 0}}, {2., 
+          FormBox[
+           TemplateBox[{0}, "Spacer1"], TraditionalForm], {0.004, 0}}, {
+         2.9999999999999996`, 
+          FormBox[
+           TemplateBox[{0}, "Spacer1"], TraditionalForm], {0.004, 0}}, {
+         3.999999999999999, 
+          FormBox[
+           TemplateBox[{0}, "Spacer1"], TraditionalForm], {0.004, 0}}}}, {
+       None, None}},
+     GridLines->{None, None},
+     GridLinesStyle->Directive[
+       GrayLevel[0.5, 0.4]],
+     PlotLabel->FormBox[
+       StyleBox["\"\\n\"", 16, StripOnInput -> False], TraditionalForm],
+     PlotRange->{{All, All}, {All, All}},
+     PlotRangePadding->{{
+        Scaled[0.02], 
+        Scaled[0.02]}, {None, 
+        Scaled[0.05]}},
+     Ticks->{Automatic, None}], {1.05, 0}, {Left, Bottom}, 1]},
+  Epilog->{
+    StyleBox[
+     InsetBox[
+      FormBox["\"Most papers are rejected because of\"", TraditionalForm], {
+      0, 1.12}, 
+      ImageScaled[{0, 0}]], {FontSize -> 24}, StripOnInput -> False], 
+    StyleBox[
+     InsetBox[
+      FormBox["\"length and lack of evidence presented\"", TraditionalForm], {
+      0, 1.05}, 
+      ImageScaled[{0, 0}]], {FontSize -> 24, Bold}, StripOnInput -> False]},
+  ImageSize->{747.3999999999937, Automatic},
+  PlotLabel->FormBox["\"\\n\\n\"", TraditionalForm]]], "Output",
+ CellChangeTimes->{
+  3.9424022715044518`*^9, {3.9424025434445724`*^9, 3.9424025554106617`*^9}, 
+   3.942402767464512*^9, {3.942402810585947*^9, 3.942402820669756*^9}, {
+   3.942402885185543*^9, 3.942402903094385*^9}, 3.9424029380699825`*^9, 
+   3.942404442743273*^9, 3.9424045410054893`*^9, 3.942426927406292*^9, 
+   3.942427071024725*^9, 3.942427101672205*^9},
+ CellLabel->
+  "Out[2826]=",ExpressionUUID->"98956c57-5f67-b042-a247-435df7b2d414"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1195.5, 630},
+WindowMargins->{{-2.25, Automatic}, {Automatic, -22.5}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"14.1 for Linux x86 (64-bit) (July 16, 2024)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"2a42dd71-9303-e942-b2db-1763808ee3fd"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 197, 6, 196, "Title",ExpressionUUID->"9e4ddd5e-eb3d-4446-91d2-cce9d5718f23"],
+Cell[CellGroupData[{
+Cell[798, 32, 26265, 619, 4065, "Input",ExpressionUUID->"0909bd36-0d7e-d246-8651-1ee802f822c2"],
+Cell[27066, 653, 18615, 464, 582, "Output",ExpressionUUID->"98956c57-5f67-b042-a247-435df7b2d414"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

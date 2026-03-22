@@ -1,0 +1,429 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     18950,        421]
+NotebookOptionsPosition[     16103,        378]
+NotebookOutlinePosition[     16528,        395]
+CellTagsIndexPosition[     16485,        392]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Challenges - 1", "Section",
+ CellChangeTimes->{{3.8203160857509995`*^9, 
+  3.820316089567793*^9}},ExpressionUUID->"a76596cd-33bc-4470-b6f9-\
+86b941d2b3f6"],
+
+Cell[TextData[StyleBox["BAR CHARTS:",
+ FontWeight->"Bold"]], "Text",
+ CellChangeTimes->{{3.8203161817669573`*^9, 3.820316183302856*^9}, 
+   3.8203162546709895`*^9},ExpressionUUID->"78ea3d3c-10e6-4146-bb93-\
+9a49c0c4a2cd"],
+
+Cell[TextData[{
+ "Make a (horizontal) bar chart showing the GDP per capita of all countries \
+in South America. Hints: ",
+ StyleBox["CountryData[\[OpenCurlyDoubleQuote]SouthAmerica\
+\[CloseCurlyDoubleQuote]]",
+  FontWeight->"Bold"],
+ " returns a list of all countries in South America; ",
+ StyleBox["CountryData[country, \[OpenCurlyDoubleQuote]GDPPerCapita\
+\[CloseCurlyDoubleQuote]]",
+  FontWeight->"Bold"],
+ " returns the GDP per capita of a country; "
+}], "ItemNumbered",
+ CellChangeTimes->{{3.78766146270336*^9, 3.787661509848934*^9}, {
+  3.787661551840349*^9, 3.787661585200135*^9}, {3.787661731930229*^9, 
+  3.787661778552841*^9}, {3.787662201357724*^9, 3.787662255898539*^9}, {
+  3.7876623548335133`*^9, 
+  3.78766235483425*^9}},ExpressionUUID->"1343562c-7b3f-4158-b23b-\
+d8b7e563d879"],
+
+Cell[TextData[{
+ "You want to compare male and female life expectancies for different \
+countries. What chart would you make? Create a function that accepts a list \
+of countries as an argument, and makes the appropriate plot. Test it with a \
+list of some countries, maybe the same countries we used as examples in the \
+notebook. Can you draw any conclusion from the plot? Hint: The command ",
+ StyleBox["CountryData[\[OpenCurlyDoubleQuote]Properties\
+\[CloseCurlyDoubleQuote]]",
+  FontWeight->"Bold"],
+ " lists all the quantities that you can get with ",
+ StyleBox["CountryData",
+  FontWeight->"Bold"],
+ ". "
+}], "ItemNumbered",
+ CellChangeTimes->{{3.78766146270336*^9, 3.787661509848934*^9}, {
+  3.787661551840349*^9, 3.787661585200135*^9}, {3.787661731930229*^9, 
+  3.787661778552841*^9}, {3.787662201357724*^9, 3.787662255898539*^9}, {
+  3.787662537764061*^9, 3.78766275302776*^9}, {3.7876635398863792`*^9, 
+  3.787663591949923*^9}, {3.7876638838945227`*^9, 3.78766393870361*^9}, {
+  3.7876662255088882`*^9, 3.787666229570045*^9}, {3.7878335498510056`*^9, 
+  3.7878335498510056`*^9}, {3.8203180077095385`*^9, 
+  3.8203180225653725`*^9}},ExpressionUUID->"02434586-a5d7-4ae3-8e5d-\
+8ac7d1a2b20c"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Create a single-bar stacked bar chart depicting the distribution of the UK \
+population according to city size, dividing cities into four categories: huge \
+(cities with population above one million); large (population above 100,000 \
+but below one million); small (population between 10,000 and 100,000); and \
+tiny (population below 10,000). The bars represent the total number of people \
+in the UK living in huge, large, small and tiny cities. \
+\[LineSeparator]Hints: ",
+ StyleBox["CityData[{All,\[CloseCurlyDoubleQuote]UnitedKingdom\
+\[CloseCurlyDoubleQuote]}]",
+  FontWeight->"Bold"],
+ " returns the list of all UK cities in the database. ",
+ StyleBox["CityData[city,\[CloseCurlyDoubleQuote]Population\
+\[CloseCurlyDoubleQuote]]",
+  FontWeight->"Bold"],
+ " returns the population of a given city; the population data may be \
+missing, so you should discard results that match the ",
+ StyleBox["_Missing",
+  FontWeight->"Bold"],
+ " pattern. The result will be in the form ",
+ StyleBox["Quantity[population, People]",
+  FontWeight->"Bold"],
+ ", so you should use the function ",
+ StyleBox["QuantityMagnitude",
+  FontWeight->"Bold"],
+ " to get just the population."
+}], "ItemNumbered",
+ CellChangeTimes->{{3.787682244065858*^9, 3.787682275553687*^9}, {
+  3.7876823068978376`*^9, 3.7876825221301775`*^9}, {3.787682567390065*^9, 
+  3.7876826800350084`*^9}, {3.7876827102901025`*^9, 3.7876828540823345`*^9}, {
+  3.7876840548172555`*^9, 
+  3.7876840548182526`*^9}},ExpressionUUID->"47e6de49-6139-4a58-941d-\
+60cfc0b13108"],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{
+   RowBox[{"cities", " ", "=", " ", 
+    RowBox[{"CityData", "[", 
+     RowBox[{"{", 
+      RowBox[{"All", ",", "\"\<UnitedKingdom\>\""}], "}"}], "]"}]}], ";"}],
+  FontWeight->"Bold"]], "Input",
+ CellChangeTimes->{{3.787904307134544*^9, 3.78790431722151*^9}},
+ CellLabel->"In[68]:=",ExpressionUUID->"934f1299-b955-496d-9348-ec3e4a857616"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"pops", " ", "=", " ", 
+   RowBox[{"Map", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"CityData", "[", 
+       RowBox[{"#", ",", " ", "\"\<Population\>\""}], "]"}], "&"}], ",", " ", 
+     "cities"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.787904389404217*^9, 3.787904421272416*^9}},
+ CellLabel->"In[69]:=",ExpressionUUID->"891a5c5e-b045-436c-a334-7b648be4b618"]
+}, Open  ]],
+
+Cell["\<\
+Define a function that accepts the name of a country as an argument, and \
+returns a list with the total number of people in that country living in \
+huge, large, small and tiny cities. Use this function to generate single-bar \
+stacked bar charts for a few countries, for example France and South Africa.\
+\>", "ItemNumbered",
+ CellChangeTimes->{{3.787682244065858*^9, 3.787682275553687*^9}, {
+  3.7876823068978376`*^9, 3.7876825221301775`*^9}, {3.787682567390065*^9, 
+  3.7876826800350084`*^9}, {3.7876827102901025`*^9, 3.7876828540823345`*^9}, {
+  3.7876840595316486`*^9, 3.7876842115211296`*^9}, {3.787685652165682*^9, 
+  3.7876856521666794`*^9}},ExpressionUUID->"99e3714a-2baa-47ef-8a95-\
+b84d7c83346d"],
+
+Cell["\<\
+Using the function you defined above, create a function that accepts a list \
+of countries, and generates a percentile stacked bar chart depicting the \
+fraction of the population living in huge, large, small and tiny cities.\
+\>", "ItemNumbered",
+ CellChangeTimes->{{3.787682244065858*^9, 3.787682275553687*^9}, {
+  3.7876823068978376`*^9, 3.7876825221301775`*^9}, {3.787682567390065*^9, 
+  3.7876826800350084`*^9}, {3.7876827102901025`*^9, 3.7876828540823345`*^9}, {
+  3.7876840595316486`*^9, 3.7876842115211296`*^9}, {3.787685659152*^9, 
+  3.787685777464654*^9}, {3.78783363352798*^9, 
+  3.78783363352798*^9}},ExpressionUUID->"de56b341-8a15-4f87-873a-\
+9ec80105015f"],
+
+Cell[TextData[StyleBox["SCATTER PLOTS:",
+ FontWeight->"Bold"]], "Text",
+ CellChangeTimes->{{3.8203162473906326`*^9, 
+  3.8203162509592624`*^9}},ExpressionUUID->"a37667ea-e602-4024-bde6-\
+1643e7111709"],
+
+Cell[TextData[{
+ "What quantities do you expect will correlate with a country's life \
+expectancy? Inspect the quantities in ",
+ StyleBox["CountryData[\"Properties\"]",
+  FontWeight->"Bold"],
+ " and choose a few that you expect to be strongly correlated to life \
+expectancy. Create scatter plots to test your ideas."
+}], "ItemNumbered",
+ CellChangeTimes->{{3.787976253475358*^9, 3.7879762662921*^9}, {
+  3.7879764242776814`*^9, 3.7879764298010616`*^9}, {3.787976550902897*^9, 
+  3.787976550904892*^9}},ExpressionUUID->"8ed2310c-8ed7-4a5c-b6fb-\
+886ca4954237"],
+
+Cell[TextData[{
+ "Create a function ",
+ StyleBox["mfDiff",
+  FontWeight->"Bold"],
+ " that accepts a ",
+ StyleBox["CountryData",
+  FontWeight->"Bold"],
+ "\[CloseCurlyQuote]s property (such as \
+\[OpenCurlyDoubleQuote]LiteracyFraction\[CloseCurlyDoubleQuote] or \
+\[OpenCurlyDoubleQuote]GDPPerCapita\[CloseCurlyDoubleQuote]) as an argument, \
+and plots a scatter data of that property versus the difference in life \
+expectancies between females and males for all countries. So\[LineSeparator]",
+ StyleBox["mfDiff[\[OpenCurlyDoubleQuote]GDPPerCapita\[CloseCurlyDoubleQuote]]\
+ ",
+  FontWeight->"Bold"],
+ "creates a scatter plot of GDP per capita versus the difference in \
+male/female life expectancies."
+}], "ItemNumbered",
+ CellChangeTimes->{{3.787976253475358*^9, 3.7879762662921*^9}, {
+  3.7879764242776814`*^9, 3.7879764298010616`*^9}, {3.78797655201196*^9, 
+  3.787976710457003*^9}, {3.787976741748265*^9, 3.787976744340335*^9}, {
+  3.78797682293182*^9, 3.7879768491642284`*^9}, {3.7879873512759438`*^9, 
+  3.787987447897211*^9}, {3.8203183925584407`*^9, 
+  3.8203183931839347`*^9}},ExpressionUUID->"94a73456-541e-40d0-8ba2-\
+8d51fb9a6dbc"],
+
+Cell["\<\
+Create a function that accepts a year as an argument, and plots a scatter \
+plot of population versus GDP per capita for all countries at that year.\
+\>", "ItemNumbered",
+ CellChangeTimes->{{3.787976253475358*^9, 3.7879762662921*^9}, {
+  3.7879764242776814`*^9, 3.7879764298010616`*^9}, {3.78797655201196*^9, 
+  3.787976714916087*^9}, {3.787976780051691*^9, 3.7879768457962356`*^9}, {
+  3.787982487340979*^9, 3.787982491124001*^9}, {3.820316265543055*^9, 
+  3.820316267553808*^9}},ExpressionUUID->"c42cb308-561b-45a9-9792-\
+1c167c031d05"],
+
+Cell[TextData[{
+ "In the first notebook, we defined a function ",
+ StyleBox["countryPlot",
+  FontWeight->"Bold"],
+ " that accepts the names of two ",
+ StyleBox["CountryData",
+  FontWeight->"Bold"],
+ " properties as arguments, and displays a scatter plot of those properties \
+for all countries in Mathematica\[CloseCurlyQuote]s database. Change this \
+function to make it accept a continent as its third argument. The countries \
+of that continent should be shown as points of a different colour from the \
+other countries."
+}], "ItemNumbered",
+ CellChangeTimes->{{3.7879771786840115`*^9, 3.787977223928288*^9}, {
+  3.7879772566140933`*^9, 3.7879772566140933`*^9}, {3.787977290458702*^9, 
+  3.787977380972024*^9}, {3.820318880037261*^9, 3.820318937469016*^9}, {
+  3.8203189929165525`*^9, 
+  3.82031909378872*^9}},ExpressionUUID->"3f6b59fb-fcab-4127-a44f-\
+9e5760aa5cf3"],
+
+Cell[TextData[{
+ "Modify ",
+ StyleBox["countryPlot",
+  FontWeight->"Bold"],
+ " so that when the mouse hovers over it, a tooltip showing the country's \
+name shows up."
+}], "ItemNumbered",
+ CellChangeTimes->{{3.7879771786840115`*^9, 
+  3.787977223928288*^9}},ExpressionUUID->"e3277282-d4b3-4492-9706-\
+3a38aee98f39"],
+
+Cell[TextData[{
+ "Change ",
+ StyleBox["countryPlot",
+  FontWeight->"Bold"],
+ " so that the tooltip shows the country\[CloseCurlyQuote]s flag instead of \
+its name."
+}], "ItemNumbered",
+ CellChangeTimes->{{3.7879771786840115`*^9, 
+  3.7879772534355936`*^9}},ExpressionUUID->"3b5318da-b1e0-44aa-a326-\
+3968e5f60f8a"],
+
+Cell[TextData[{
+ "Modify ",
+ StyleBox["countryPlot",
+  FontWeight->"Bold"],
+ " so that when the mouse hovers over it, a tooltip showing a table with \
+relevant information about the country shows up. Information on the table \
+could include the country's name, its capital city, its population, its \
+continent, etc."
+}], "ItemNumbered",
+ CellChangeTimes->{
+  3.7879771786840115`*^9, {3.7879773987953453`*^9, 3.787977400640029*^9}, {
+   3.820316332945463*^9, 
+   3.8203163329464855`*^9}},ExpressionUUID->"928a29ac-2343-435f-bbdd-\
+4aa23416267c"],
+
+Cell[TextData[StyleBox["Ignore this problem",
+ FontWeight->"Bold"]], "ItemNumbered",
+ CellChangeTimes->{{3.787687714311097*^9, 3.7876878198889527`*^9}, 
+   3.7876878553282123`*^9, {3.7876887503751163`*^9, 3.7876887656238317`*^9}, {
+   3.7876892199906206`*^9, 3.787689219991617*^9}, {3.787835388800218*^9, 
+   3.787835388800218*^9}, {3.7878363311564765`*^9, 3.787836395279237*^9}, {
+   3.7878470630588956`*^9, 3.787847063059896*^9}, {3.7879776281402225`*^9, 
+   3.787977656152562*^9}, {3.872844709755642*^9, 3.8728447188832283`*^9}, {
+   3.872844755401085*^9, 3.872844851137325*^9}, {3.872845627811233*^9, 
+   3.8728456326433887`*^9}},ExpressionUUID->"67f9fa0f-2c28-41c2-b311-\
+a68420a44d12"],
+
+Cell[TextData[{
+ "Create a function that accepts two lists of ",
+ StyleBox["CountryData",
+  FontWeight->"Bold"],
+ "\[CloseCurlyQuote]s properties, and creates a grid of scatter plots for \
+every combination of properties."
+}], "ItemNumbered",
+ CellChangeTimes->{{3.787687714311097*^9, 3.7876878198889527`*^9}, 
+   3.7876878553282123`*^9, {3.7876887503751163`*^9, 3.7876887656238317`*^9}, {
+   3.7876892199906206`*^9, 3.787689219991617*^9}, {3.787835388800218*^9, 
+   3.787835388800218*^9}, {3.7878363311564765`*^9, 3.787836395279237*^9}, {
+   3.7878470630588956`*^9, 3.787847063059896*^9}, {3.7879776281402225`*^9, 
+   3.7879777663282957`*^9}},ExpressionUUID->"e7566ad2-a755-41ba-b5cb-\
+09ea454745af"],
+
+Cell[TextData[{
+ "Create a function that accepts a list of ",
+ StyleBox["CountryData",
+  FontWeight->"Bold"],
+ "\[CloseCurlyQuote]s properties, and creates a TabView of scatter plots of \
+literacy versus each of the properties in the list."
+}], "ItemNumbered",
+ CellChangeTimes->{{3.787687714311097*^9, 3.7876878198889527`*^9}, 
+   3.7876878553282123`*^9, {3.7876887503751163`*^9, 3.7876887656238317`*^9}, {
+   3.7876892199906206`*^9, 3.787689219991617*^9}, {3.787835388800218*^9, 
+   3.787835388800218*^9}, {3.7878363311564765`*^9, 3.787836395279237*^9}, {
+   3.7878470630588956`*^9, 3.787847063059896*^9}, {3.7879776281402225`*^9, 
+   3.7879778163403144`*^9}, {3.8203164467428584`*^9, 
+   3.820316448585617*^9}},ExpressionUUID->"e2fc3caa-2fc9-49d7-af9a-\
+a28e90101162"],
+
+Cell[TextData[StyleBox["LINE PLOTS:",
+ FontWeight->"Bold"]], "Text",
+ CellChangeTimes->{{3.8203164656387453`*^9, 
+  3.8203164713825927`*^9}},ExpressionUUID->"e538afe2-7d0f-4004-a2d8-\
+3135b2c25267"],
+
+Cell[TextData[{
+ "Make a line plot showing the population changes over time for India, China, \
+and the United States. Each point in the plot indicates by how much the \
+population increased compared to the previous year. Hint: look up the \
+definition of the function ",
+ StyleBox["Differences",
+  FontWeight->"Bold"],
+ ". Compare with the population plots."
+}], "ItemNumbered",
+ CellChangeTimes->{{3.7878468121278057`*^9, 3.7878468742957344`*^9}, {
+  3.787846910015852*^9, 3.78784697596779*^9}, {3.8203179481026244`*^9, 
+  3.8203179582298403`*^9}},ExpressionUUID->"ac4495e0-74cb-4777-b875-\
+ac74980aa632"],
+
+Cell["\<\
+Create a function that accepts a list of countries, and creates a line plot \
+of population over time for those countries, starting in 1920 until the \
+present day.\
+\>", "ItemNumbered",
+ CellChangeTimes->{{3.7878468121278057`*^9, 3.7878468742957344`*^9}, {
+  3.787846910015852*^9, 3.78784692517557*^9}, {3.7878472669523787`*^9, 
+  3.787847318532794*^9}},ExpressionUUID->"c1c016b6-11dc-45d6-8f4d-\
+f9e017f5063c"],
+
+Cell["\<\
+Modify the function above to plot symbols as well as lines, and associate \
+each symbol with a tooltip that displays the GDP per capita at that time.\
+\>", "ItemNumbered",
+ CellChangeTimes->{{3.7878468121278057`*^9, 3.7878468742957344`*^9}, {
+  3.787846910015852*^9, 3.78784692517557*^9}, {3.7878472669523787`*^9, 
+  3.787847318207657*^9}, {3.787847387162243*^9, 3.7878473923753333`*^9}, {
+  3.7878474657928953`*^9, 3.7878475079122353`*^9}, {3.7878475412321596`*^9, 
+  3.787847595799447*^9}, {3.7878481507854147`*^9, 3.787848160574006*^9}, {
+  3.787848203880173*^9, 
+  3.787848216646064*^9}},ExpressionUUID->"1021eec0-561a-4b23-8b0b-\
+ed19d50cd4c3"],
+
+Cell[TextData[{
+ "Modify the function above to display the ",
+ StyleBox["percentile",
+  FontWeight->"Bold"],
+ " population for the given countries, that is, the fraction of the human \
+population in that country."
+}], "ItemNumbered",
+ CellChangeTimes->{{3.7878468121278057`*^9, 3.7878468742957344`*^9}, {
+  3.787846910015852*^9, 3.78784692517557*^9}, {3.7878472669523787`*^9, 
+  3.787847318207657*^9}, {3.787847387162243*^9, 3.7878473923753333`*^9}, {
+  3.7878474657928953`*^9, 3.7878475079122353`*^9}, {3.7878475412321596`*^9, 
+  3.787847595799447*^9}, {3.7878481507854147`*^9, 3.787848160574006*^9}, {
+  3.787848203880173*^9, 3.7878482158631954`*^9}, {3.7878488514966316`*^9, 
+  3.787848922452179*^9}},ExpressionUUID->"96ecb632-ec3c-459d-80ff-\
+5cfb54fd845c"]
+}, Open  ]]
+},
+WindowSize->{1454, 877},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>2. Inherited,
+FrontEndVersion->"12.3 for Microsoft Windows (64-bit) (July 9, 2021)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"d3a632a7-2ae5-42c7-ae9e-fca8f301974c"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 161, 3, 134, "Section",ExpressionUUID->"a76596cd-33bc-4470-b6f9-86b941d2b3f6"],
+Cell[744, 27, 221, 4, 69, "Text",ExpressionUUID->"78ea3d3c-10e6-4146-bb93-9a49c0c4a2cd"],
+Cell[968, 33, 793, 17, 104, "ItemNumbered",ExpressionUUID->"1343562c-7b3f-4158-b23b-d8b7e563d879"],
+Cell[1764, 52, 1200, 22, 186, "ItemNumbered",ExpressionUUID->"02434586-a5d7-4ae3-8e5d-8ac7d1a2b20c"],
+Cell[CellGroupData[{
+Cell[2989, 78, 1540, 32, 350, "ItemNumbered",ExpressionUUID->"47e6de49-6139-4a58-941d-60cfc0b13108"],
+Cell[4532, 112, 374, 9, 57, "Input",ExpressionUUID->"934f1299-b955-496d-9348-ec3e4a857616"],
+Cell[4909, 123, 407, 10, 57, "Input",ExpressionUUID->"891a5c5e-b045-436c-a334-7b648be4b618"]
+}, Open  ]],
+Cell[5331, 136, 718, 11, 145, "ItemNumbered",ExpressionUUID->"99e3714a-2baa-47ef-8a95-b84d7c83346d"],
+Cell[6052, 149, 680, 11, 104, "ItemNumbered",ExpressionUUID->"de56b341-8a15-4f87-873a-9ec80105015f"],
+Cell[6735, 162, 201, 4, 69, "Text",ExpressionUUID->"a37667ea-e602-4024-bde6-1643e7111709"],
+Cell[6939, 168, 560, 11, 145, "ItemNumbered",ExpressionUUID->"8ed2310c-8ed7-4a5c-b6fb-886ca4954237"],
+Cell[7502, 181, 1144, 24, 227, "ItemNumbered",ExpressionUUID->"94a73456-541e-40d0-8ba2-8d51fb9a6dbc"],
+Cell[8649, 207, 548, 9, 104, "ItemNumbered",ExpressionUUID->"c42cb308-561b-45a9-9792-1c167c031d05"],
+Cell[9200, 218, 870, 18, 227, "ItemNumbered",ExpressionUUID->"3f6b59fb-fcab-4127-a44f-9e5760aa5cf3"],
+Cell[10073, 238, 315, 9, 104, "ItemNumbered",ExpressionUUID->"e3277282-d4b3-4492-9706-3a38aee98f39"],
+Cell[10391, 249, 314, 9, 63, "ItemNumbered",ExpressionUUID->"3b5318da-b1e0-44aa-a326-3968e5f60f8a"],
+Cell[10708, 260, 545, 13, 145, "ItemNumbered",ExpressionUUID->"928a29ac-2343-435f-bbdd-4aa23416267c"],
+Cell[11256, 275, 691, 10, 63, "ItemNumbered",ExpressionUUID->"67f9fa0f-2c28-41c2-b311-a68420a44d12"],
+Cell[11950, 287, 701, 13, 104, "ItemNumbered",ExpressionUUID->"e7566ad2-a755-41ba-b5cb-09ea454745af"],
+Cell[12654, 302, 771, 14, 104, "ItemNumbered",ExpressionUUID->"e2fc3caa-2fc9-49d7-af9a-a28e90101162"],
+Cell[13428, 318, 198, 4, 69, "Text",ExpressionUUID->"e538afe2-7d0f-4004-a2d8-3135b2c25267"],
+Cell[13629, 324, 607, 12, 145, "ItemNumbered",ExpressionUUID->"ac4495e0-74cb-4777-b875-ac74980aa632"],
+Cell[14239, 338, 422, 8, 104, "ItemNumbered",ExpressionUUID->"c1c016b6-11dc-45d6-8f4d-f9e017f5063c"],
+Cell[14664, 348, 659, 11, 104, "ItemNumbered",ExpressionUUID->"1021eec0-561a-4b23-8b0b-ed19d50cd4c3"],
+Cell[15326, 361, 761, 14, 104, "ItemNumbered",ExpressionUUID->"96ecb632-ec3c-459d-80ff-5cfb54fd845c"]
+}, Open  ]]
+}
+]
+*)
+

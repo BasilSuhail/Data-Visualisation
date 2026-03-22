@@ -1,0 +1,427 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     20352,        419]
+NotebookOptionsPosition[     19040,        388]
+NotebookOutlinePosition[     19476,        405]
+CellTagsIndexPosition[     19433,        402]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\<\
+Data visualisation - 2nd Exam
+Deadline: 19/12/2025, 23:59 (UK time)\
+\>", "Title",
+ CellChangeTimes->{{3.9751135280705566`*^9, 
+  3.9751135328225574`*^9}},ExpressionUUID->"8734f3cd-b220-4651-86a6-\
+6889e05f180f"],
+
+Cell[CellGroupData[{
+
+Cell["Instructions", "Section",ExpressionUUID->"ec4a2a6a-07b6-4f90-8ffd-1b9af1913e21"],
+
+Cell[TextData[{
+ "This notebook contains the questions and the data for the exam. Each \
+question is preceded by the corresponding data. If you are making the plots \
+in Mathematica, execute the cells will create variables with the data you \
+need. Executing those cells will also create CSV files in the same folder \
+this notebook resides, containing the same data - in case you prefer to \
+create the plots using other tools. ",
+ StyleBox["For each question, you should create a single plot",
+  FontWeight->"Bold"],
+ " (which may be a multi-panel plot if you wish), ",
+ StyleBox["and generate a single image, in PDF or PNG format with good \
+resolution. ",
+  FontWeight->"Bold"],
+ "Each question has its own submission link in MyAberdeen; use that link to \
+submit the image of the corresponding plot.\n\nFor each question, you can \
+make multiple submissions within the deadline; only the latest submission \
+will count. The assignment is worth a total of ",
+ StyleBox["6",
+  FontWeight->"Bold"],
+ " marks, and each question indicates how many points it is worth. ",
+ StyleBox["The deadline is 19/12/2025 (for full-time students), at 23:59, UK \
+time. ",
+  FontWeight->"Bold"],
+ "Submissions after that will be accepted (up to two days after the \
+deadline), but your marks will be reduced (two fewer marks for each day past \
+the deadline)."
+}], "Text",
+ CellChangeTimes->{
+  3.9751134745900345`*^9, {3.9751168300047703`*^9, 3.9751168336589127`*^9}, {
+   3.975118899756424*^9, 
+   3.975118929612612*^9}},ExpressionUUID->"5517c917-157c-4b0d-b705-\
+a6ef1f4e8c78"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Questions", "Section",ExpressionUUID->"412b8034-50b4-4744-b191-bf26bbdcc015"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+    "PLEASE", " ", "EXECUTE", " ", "THIS", " ", "CODE", "\[IndentingNewLine]",
+      "\[IndentingNewLine]", "This", " ", "code", " ", "defines", " ", "the", 
+     " ", "variables", " ", "yearsUS"}], ",", " ", "indexUS", ",", " ", 
+    "yearsFrance", ",", " ", "indexFrance", ",", " ", 
+    RowBox[{
+     RowBox[{
+     "with", " ", "the", " ", "data", " ", "for", " ", "question", " ", "1.", 
+      " ", "It", " ", "also", " ", "creates", " ", "the", " ", "files", " ", 
+      "us"}], "-", 
+     RowBox[{
+      RowBox[{"ineq", ".", "csv"}], " ", "and", " ", "france"}], "-", 
+     RowBox[{"ineq", ".", "csv"}]}], ",", " ", "\[IndentingNewLine]", 
+    RowBox[{"containing", " ", "the", " ", "same", " ", "data"}], ",", " ", 
+    RowBox[{"in", " ", "case", " ", "you", " ", "find", " ", "them", " ", 
+     RowBox[{"useful", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"yearsUS", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "1913", ",", "1914", ",", "1915", ",", "1916", ",", "1917", ",", "1918",
+        ",", "1919", ",", "1920", ",", "1921", ",", "1922", ",", "1923", ",", 
+       "1924", ",", "1925", ",", "1926", ",", "1927", ",", "1928", ",", 
+       "1929", ",", "1930", ",", "1931", ",", "1932", ",", "1933", ",", 
+       "1934", ",", "1935", ",", "1936", ",", "1937", ",", "1938", ",", 
+       "1939", ",", "1940", ",", "1941", ",", "1942", ",", "1943", ",", 
+       "1944", ",", "1945", ",", "1946", ",", "1947", ",", "1948", ",", 
+       "1949", ",", "1950", ",", "1951", ",", "1952", ",", "1953", ",", 
+       "1954", ",", "1955", ",", "1956", ",", "1957", ",", "1958", ",", 
+       "1959", ",", "1960", ",", "1961", ",", "1962", ",", "1963", ",", 
+       "1964", ",", "1965", ",", "1966", ",", "1967", ",", "1968", ",", 
+       "1969", ",", "1970", ",", "1971", ",", "1972", ",", "1973", ",", 
+       "1974", ",", "1975", ",", "1976", ",", "1977", ",", "1978", ",", 
+       "1979", ",", "1980", ",", "1981", ",", "1982", ",", "1983", ",", 
+       "1984", ",", "1985", ",", "1986", ",", "1987", ",", "1988", ",", 
+       "1989", ",", "1990", ",", "1991", ",", "1992", ",", "1993", ",", 
+       "1994", ",", "1995", ",", "1996", ",", "1997", ",", "1998", ",", 
+       "1999", ",", "2000", ",", "2001", ",", "2002", ",", "2003", ",", 
+       "2004", ",", "2005", ",", "2006", ",", "2007", ",", "2008", ",", 
+       "2009", ",", "2010", ",", "2011", ",", "2012", ",", "2013", ",", 
+       "2014", ",", "2015", ",", "2016", ",", "2017", ",", "2018", ",", 
+       "2019", ",", "2020", ",", "2021"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"indexUS", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "20.43", ",", "20.92", ",", "20.28", ",", "21.369999", ",", "21.3", ",",
+        "19.699999", ",", "21.64", ",", "19.130001", ",", "19.18", ",", 
+       "18.58", ",", "17.710001", ",", "18.47", ",", "20.69", ",", "21.92", ",",
+        "21.24", ",", "22.29", ",", "22.18", ",", "19.380001", ",", 
+       "16.769999", ",", "16.52", ",", "17.48", ",", "19.07", ",", "19.33", ",",
+        "20.92", ",", "20.640001", ",", "18.64", ",", "19.57", ",", "20.86", ",",
+        "21.56", ",", "20.58", ",", "18.6", ",", "15.35", ",", "14.27", ",", 
+       "14.290001", ",", "14.9800005", ",", "16.300001", ",", "15.700001", ",",
+        "16.71", ",", "16.01", ",", "14.96", ",", "14.040001", ",", 
+       "13.940001", ",", "14.63", ",", "13.809999", ",", "13.53", ",", 
+       "12.67", ",", "13.21", ",", "12.68", ",", "12.530001", ",", "12.85", ",",
+        "12.99", ",", "13.12", ",", "13.03", ",", "12.95", ",", "12.38", ",", 
+       "12.620001", ",", "11.599999", ",", "10.69", ",", "11.06", ",", 
+       "11.07", ",", "10.89", ",", "10.37", ",", "10.440001", ",", "10.34", ",",
+        "10.59", ",", "10.360001", ",", "10.849999", ",", "10.43", ",", 
+       "10.66", ",", "10.99", ",", "11.48", ",", "12.15", ",", "12.3", ",", 
+       "11.97", ",", "13.2300005", ",", "15.22", ",", "14.7", ",", "14.7", ",",
+        "13.65", ",", "14.679999", ",", "14.139999", ",", "14.040001", ",", 
+       "14.5199995", ",", "15.24", ",", "15.98", ",", "16.32", ",", "16.76", ",",
+        "17.35", ",", "16.599998", ",", "16.1", ",", "16.33", ",", "17.06", ",",
+        "18.06", ",", "18.52", ",", "18.369999", ",", "17.94", ",", "16.71", ",",
+        "17.9", ",", "18.08", ",", "19.48", ",", "18.47", ",", "18.970001", ",",
+        "18.89", ",", "18.67", ",", "19.050001", ",", "19.25", ",", "19.06", ",",
+        "17.880001", ",", "19.03"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"yearsFrance", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "1910", ",", "1915", ",", "1916", ",", "1917", ",", "1918", ",", "1919",
+        ",", "1920", ",", "1921", ",", "1922", ",", "1923", ",", "1924", ",", 
+       "1925", ",", "1926", ",", "1927", ",", "1928", ",", "1929", ",", 
+       "1930", ",", "1931", ",", "1932", ",", "1933", ",", "1934", ",", 
+       "1935", ",", "1936", ",", "1937", ",", "1938", ",", "1939", ",", 
+       "1940", ",", "1941", ",", "1942", ",", "1943", ",", "1944", ",", 
+       "1945", ",", "1946", ",", "1947", ",", "1948", ",", "1949", ",", 
+       "1950", ",", "1951", ",", "1952", ",", "1953", ",", "1954", ",", 
+       "1955", ",", "1956", ",", "1957", ",", "1958", ",", "1959", ",", 
+       "1960", ",", "1961", ",", "1962", ",", "1963", ",", "1964", ",", 
+       "1965", ",", "1966", ",", "1967", ",", "1968", ",", "1969", ",", 
+       "1970", ",", "1971", ",", "1972", ",", "1973", ",", "1974", ",", 
+       "1975", ",", "1976", ",", "1977", ",", "1978", ",", "1979", ",", 
+       "1980", ",", "1981", ",", "1982", ",", "1983", ",", "1984", ",", 
+       "1985", ",", "1986", ",", "1987", ",", "1988", ",", "1989", ",", 
+       "1990", ",", "1991", ",", "1992", ",", "1993", ",", "1994", ",", 
+       "1995", ",", "1996", ",", "1997", ",", "1998", ",", "1999", ",", 
+       "2000", ",", "2001", ",", "2002", ",", "2003", ",", "2004", ",", 
+       "2005", ",", "2006", ",", "2007", ",", "2008", ",", "2009", ",", 
+       "2010", ",", "2011", ",", "2012", ",", "2013", ",", "2014", ",", 
+       "2015", ",", "2016", ",", "2017", ",", "2018"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"indexFrance", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "23.019999", ",", "19.89", ",", "22.93", ",", "22.66", ",", "20.14", ",",
+        "21.04", ",", "20.13", ",", "19.19", ",", "21", ",", "23.34", ",", 
+       "21.64", ",", "21.02", ",", "20.65", ",", "21.349998", ",", "21.49", ",",
+        "20.119999", ",", "17.33", ",", "16.55", ",", "16.96", ",", "17.75", ",",
+        "17.720001", ",", "18.47", ",", "17.39", ",", "17.550001", ",", 
+       "16.609999", ",", "16.51", ",", "16.88", ",", "16.12", ",", 
+       "14.749999", ",", "11.92", ",", "10.059999", ",", "8.54", ",", "10.51",
+        ",", "10.79", ",", "9.99", ",", "10.35", ",", "10.43", ",", "10.79", ",",
+        "11.05", ",", "10.94", ",", "11.14", ",", "11.36", ",", "11.06", ",", 
+       "11.33", ",", "10.46", ",", "11.32", ",", "11.53", ",", "11.65", ",", 
+       "11.05", ",", "10.82", ",", "10.94", ",", "11.03", ",", "10.82", ",", 
+       "10.809999", ",", "10.26", ",", "10", ",", "9.32", ",", "9.78", ",", 
+       "9.6", ",", "10.2", ",", "9.84", ",", "8.2", ",", "9.22", ",", "8.65", 
+       ",", "8.4", ",", "7.8599997", ",", "8.33", ",", "8.04", ",", "7.53", ",",
+        "7.44", ",", "7.5499997", ",", "7.76", ",", "8.349999", ",", "8.93", ",",
+        "9.15", ",", "9.35", ",", "9.33", ",", "8.85", ",", "8.429999", ",", 
+       "8.71", ",", "8.85", ",", "8.84", ",", "9.49", ",", "10.09", ",", 
+       "10.39", ",", "10.58", ",", "10.88", ",", "10.79", ",", "10.450001", ",",
+        "11.33", ",", "11.64", ",", "11.44", ",", "11.33", ",", "11.77", ",", 
+       "11.509999", ",", "10.19", ",", "10.78", ",", "11.469999", ",", 
+       "10.51", ",", "10.24", ",", "10.46", ",", "10.05", ",", "9.889999", ",",
+        "9.77", ",", "9.7300005"}], "}"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Export", "[", 
+     RowBox[{
+      RowBox[{"FileNameJoin", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], 
+         ",", "\"\<france-ineq.csv\>\""}], "}"}], "]"}], ",", " ", 
+      RowBox[{"Transpose", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Prepend", "[", 
+          RowBox[{"yearsFrance", ",", "\"\<year\>\""}], "]"}], ",", 
+         RowBox[{"Prepend", "[", 
+          RowBox[{"indexFrance", ",", "\"\<inequality index\>\""}], "]"}]}], 
+        "}"}], "]"}]}], "]"}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Export", "[", 
+     RowBox[{
+      RowBox[{"FileNameJoin", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], 
+         ",", "\"\<us-ineq.csv\>\""}], "}"}], "]"}], ",", " ", 
+      RowBox[{"Transpose", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Prepend", "[", 
+          RowBox[{"yearsUS", ",", "\"\<year\>\""}], "]"}], ",", 
+         RowBox[{"Prepend", "[", 
+          RowBox[{"indexUS", ",", "\"\<inequality index\>\""}], "]"}]}], 
+        "}"}], "]"}]}], "]"}], ";"}]}]}]], "Input",
+ InitializationCell->True,
+ CellLabel->"In[1]:=",ExpressionUUID->"4e45a794-7b9f-824a-875f-476ba6de4ec6"],
+
+Cell[TextData[{
+ StyleBox["[3 marks]",
+  FontWeight->"Bold"],
+ " Find above the data for the economic inequality index over the years, in \
+the US and in France. The ",
+ StyleBox["yearsUS",
+  FontWeight->"Bold"],
+ " variable lists the years for which we have data, and ",
+ StyleBox["indexUS",
+  FontWeight->"Bold"],
+ " shows the percentage of wealth in the hands of the richest 1% of the \
+population; so, higher values indicate greater inequality. ",
+ StyleBox["yearsFrance",
+  FontWeight->"Bold"],
+ " and ",
+ StyleBox["indexFrance",
+  FontWeight->"Bold"],
+ " have the corresponding values for France. Inequality overall decreased \
+after World War 2, until it started to increase sharply in the US in the 1980\
+\[CloseCurlyQuote]s; whereas in France, although it did increase in the \
+1980s, that increase was far less steep, and it started decreasing again in \
+the 2010s. ",
+ StyleBox["Create a plot that tells this story",
+  FontWeight->"Bold"],
+ ", using all the techniques you learned in the course to make it clean and \
+compelling. ",
+ StyleBox["Make just one plot, and do not use any interactive features. \
+Generate a single PDF or PNG image of your plot, and submit it to MyAberdeen \
+using the Question 1 submission link. Make sure your image is sharp:",
+  FontWeight->"Bold"],
+ " it should look reasonably sharp when you magnify it to fill the entire \
+screen."
+}], "ItemNumbered",ExpressionUUID->"6d77668d-db06-3749-8d60-dd66f7816307"],
+
+Cell["\<\
+
+\
+\>", "Text",ExpressionUUID->"5b416a26-89af-2349-b748-bf2eee552211"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+    "PLEASE", " ", "EXECUTE", " ", "THIS", " ", "CODE", "\[IndentingNewLine]",
+      "\[IndentingNewLine]", "This", " ", "code", " ", "defines", " ", "the", 
+     " ", "variables", " ", "causesOfDeath"}], ",", " ", "deaths15to49", ",", 
+    " ", "deaths50to69", ",", " ", 
+    RowBox[{
+    "with", " ", "the", " ", "data", " ", "for", " ", "question", " ", "2.", " ",
+      "It", " ", "also", " ", "creates", " ", "the", " ", "file", " ", 
+     RowBox[{"deaths", ".", "csv"}]}], ",", " ", "\[IndentingNewLine]", 
+    RowBox[{"containing", " ", "the", " ", "same", " ", "data"}], ",", " ", 
+    RowBox[{"in", " ", "case", " ", "you", " ", "find", " ", "them", " ", 
+     RowBox[{"useful", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"causesOfDeath", "=", 
+     RowBox[{"{", 
+      RowBox[{"\"\<Alcohol disorder\>\"", ",", "\"\<Cancers\>\"", 
+       ",", "\"\<Cardiovascular disease\>\"", ",", "\"\<Dementia\>\"", 
+       ",", "\"\<Diabetes\>\"", ",", "\"\<Diarrheal diseases\>\"", 
+       ",", "\"\<Digestive diseases\>\"", ",", "\"\<Drowning\>\"", 
+       ",", "\"\<Drug overdose\>\"", ",", "\"\<Fire\>\"", 
+       ",", "\"\<Heat-related deaths (hot or cold exposure)\>\"", 
+       ",", "\"\<Hepatitis\>\"", ",", "\"\<HIV/AIDS\>\"", 
+       ",", "\"\<Homicide\>\"", ",", "\"\<Kidney disease\>\"", 
+       ",", "\"\<Liver disease\>\"", 
+       ",", "\"\<Lower respiratory infections\>\"", ",", "\"\<Malaria\>\"", 
+       ",", "\"\<Natural disasters\>\"", 
+       ",", "\"\<Nutritional deficiencies\>\"", 
+       ",", "\"\<Parkinson's disease\>\"", 
+       ",", "\"\<Protein-energy malnutrition\>\"", 
+       ",", "\"\<Respiratory disease\>\"", ",", "\"\<Road accidents\>\"", 
+       ",", "\"\<Suicide\>\"", ",", "\"\<Tuberculosis\>\""}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"deaths15to49", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "58013", ",", "875097", ",", "1030000", ",", "1982", ",", "66611", ",", 
+       "153915", ",", "411733", ",", "134059", ",", "49458", ",", "49879", ",",
+        "21526", ",", "49514", ",", "231907", ",", "260425", ",", "129070", ",",
+        "265315", ",", "151607", ",", "74900", ",", "23810", ",", "24606", ",",
+        "1409", ",", "16668", ",", "206354", ",", "654651", ",", "511219", ",",
+        "519490"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"deaths50to69", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "81604", ",", "3960000", ",", "5150000", ",", "138261", ",", "55601", ",",
+        "239089", ",", "884065", ",", "48849", ",", "44799", ",", "25105", ",",
+        "18340", ",", "38186", ",", "142613", ",", "62402", ",", "402277", ",",
+        "592200", ",", "405835", ",", "71239", ",", "1963", ",", "28344", ",",
+        "36931", ",", "19151", ",", "1000000", ",", "311714", ",", "213121", ",",
+        "429672"}], "}"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Export", "[", 
+     RowBox[{
+      RowBox[{"FileNameJoin", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<deaths.csv\>\""}],
+         "}"}], "]"}], ",", " ", "\[IndentingNewLine]", 
+      RowBox[{"Transpose", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Prepend", "[", 
+          RowBox[{"causesOfDeath", ",", "\"\<cause of death\>\""}], "]"}], ",",
+          "\[IndentingNewLine]", "\t\t  ", 
+         RowBox[{"Prepend", "[", 
+          RowBox[{"deaths15to49", ",", " ", "\"\<num of deaths 15-49\>\""}], 
+          "]"}], ",", "\[IndentingNewLine]", "\t\t  ", 
+         RowBox[{"Prepend", "[", 
+          RowBox[{
+          "deaths50to69", ",", " ", "\"\<num of deaths 50 to 69\>\""}], 
+          "]"}]}], "}"}], "]"}]}], "]"}], ";"}]}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.9751136372958717`*^9, 3.9751136377357006`*^9}},
+ CellLabel->"In[7]:=",ExpressionUUID->"a1010424-f55d-bd40-a91a-925b5f24eaa5"],
+
+Cell[TextData[{
+ StyleBox["[3 marks] ",
+  FontWeight->"Bold"],
+ "Above are data using a representative sample on the number of deaths \
+worldwide due to different causes within one year, for different age groups: \
+one set of data is for ages 15 to 49, and the other is for ages 50 to 69. ",
+ StyleBox["Find a story in the data about how the causes of death change as \
+we grow older",
+  FontWeight->"Bold"],
+ ", and create a compelling plot that presents data telling that story, using \
+everything you learned in the explanatory data visualisation part of the \
+course.",
+ StyleBox[" Make just one plot, and do not use any interactive features. ",
+  FontWeight->"Bold"],
+ StyleBox["Generate a single PDF or PNG image of your plot, and submit it to \
+MyAberdeen using the Question 2 submission link. Make sure your image is \
+sharp:",
+  FontWeight->"Bold"],
+ StyleBox[" ",
+  FontWeight->"Bold"],
+ "it should look reasonably sharp when you magnify it to fill the entire \
+screen.\[LineSeparator]",
+ StyleBox["\[LineSeparator]Hints:",
+  FontWeight->"Bold"],
+ " You have a lot of data available, and you may need to decide to display \
+only a portion of it, in order to tell a good story with your plot. You may \
+also want to transform some of the data, for example by agglomerating many \
+kinds of causes of death into a single category."
+}], "ItemNumbered",ExpressionUUID->"efc201f1-174f-f54d-aa9e-5ae6b3eea157"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1199.25, 625.5},
+WindowMargins->{{0, Automatic}, {Automatic, 51.75}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"14.3 for Microsoft Windows (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"9e14f2ab-be17-3842-aad6-4ff4ca745623"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 222, 6, 196, "Title",ExpressionUUID->"8734f3cd-b220-4651-86a6-6889e05f180f"],
+Cell[CellGroupData[{
+Cell[827, 32, 86, 0, 82, "Section",ExpressionUUID->"ec4a2a6a-07b6-4f90-8ffd-1b9af1913e21"],
+Cell[916, 34, 1566, 31, 315, "Text",ExpressionUUID->"5517c917-157c-4b0d-b705-a6ef1f4e8c78"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2519, 70, 83, 0, 82, "Section",ExpressionUUID->"412b8034-50b4-4744-b191-bf26bbdcc015"],
+Cell[2605, 72, 9383, 160, 1054, "Input",ExpressionUUID->"4e45a794-7b9f-824a-875f-476ba6de4ec6",
+ InitializationCell->True],
+Cell[11991, 234, 1450, 32, 212, "ItemNumbered",ExpressionUUID->"6d77668d-db06-3749-8d60-dd66f7816307"],
+Cell[13444, 268, 80, 3, 69, "Text",ExpressionUUID->"5b416a26-89af-2349-b748-bf2eee552211"],
+Cell[13527, 273, 4069, 81, 554, "Input",ExpressionUUID->"a1010424-f55d-bd40-a91a-925b5f24eaa5",
+ InitializationCell->True],
+Cell[17599, 356, 1413, 28, 261, "ItemNumbered",ExpressionUUID->"efc201f1-174f-f54d-aa9e-5ae6b3eea157"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
