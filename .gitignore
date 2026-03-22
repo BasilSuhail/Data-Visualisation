@@ -1,11 +1,5 @@
 venv/
 __pycache__/
-*.pyc
 .DS_Store
-.DS_Store
-# Temporary Chrome profiles
-bb_chrome_profile*/
-# Editor files
-.vscode/
-*.swp
-*~
+*.pdf
+pdf_text*
