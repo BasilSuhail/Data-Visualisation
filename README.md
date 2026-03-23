@@ -36,6 +36,13 @@ blackboard_downloads/
 |   |-- 06_Assessments and Grading/
 |   |-- 07_Data sets/           (CSV, XLSX, TSV, SQL, TXT)
 |   |-- 08_Examples of thesis/  (PDFs + docx)
+|
+|-- Machine Learning/
+|   |-- Lectures/               (Ch0-Ch9 .nb notebooks, .ipynb, .pptx)
+|   |-- Practicals/             (Questions + Answers .nb files)
+|   |-- Data/                   (Campylobacter dataset .csv)
+|   |-- Additional materials - Papers, etc./  (PDFs)
+|   |-- Course Guide/           (Timetable)
 ```
 
 ## How to Download From Blackboard

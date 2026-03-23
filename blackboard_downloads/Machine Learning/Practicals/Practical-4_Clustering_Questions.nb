@@ -1,0 +1,190 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7063,        182]
+NotebookOptionsPosition[      5614,        149]
+NotebookOutlinePosition[      6048,        166]
+CellTagsIndexPosition[      6005,        163]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Unsupervised classification of Iris flowers", "Chapter",
+ CellChangeTimes->{{3.7818436481067004`*^9, 3.781843675733021*^9}, {
+  3.7821011363504925`*^9, 
+  3.782101139327403*^9}},ExpressionUUID->"170e08ae-7b2e-49bd-8e90-\
+342166b0cf40"],
+
+Cell["\<\
+In the first part of the practical, you will find clusters in the Iris \
+flowers dataset. The main aim is to check to what extent the three species \
+defined by biologists (Setosa, Versicolor, Virginica) are supported by the \
+unsupervised clustering obtained using four features (sepal length, sepal \
+width, petal length and petal width). \
+\>", "Text",
+ CellChangeTimes->{{3.781851883249484*^9, 3.7818519460042987`*^9}, {
+  3.7818522737514687`*^9, 3.7818523412537937`*^9}, {3.781852488961841*^9, 
+  3.7818525076856813`*^9}, {3.781852546281977*^9, 
+  3.7818525556287403`*^9}},ExpressionUUID->"d9645a40-5ea1-4b6a-ad0e-\
+d3a1fd3d14e4"],
+
+Cell[CellGroupData[{
+
+Cell["Task 1", "Section",
+ CellChangeTimes->{{3.7818526033701134`*^9, 
+  3.7818526068800287`*^9}},ExpressionUUID->"9cb2884c-1cb5-4b37-8f9a-\
+925bd41ad90a"],
+
+Cell["\<\
+To start with, you should import and manipulate the data following the steps \
+shown in Chapter 3.2 for classification of Iris flowers.\
+\>", "Text",
+ CellChangeTimes->{{3.781852924789688*^9, 3.7818529690041046`*^9}, {
+  3.9550017359783726`*^9, 
+  3.9550017405646267`*^9}},ExpressionUUID->"aea38682-c055-426e-8a7b-\
+1042f3899dbe"],
+
+Cell["\<\
+Import the Iris flowers data from \
+\[OpenCurlyDoubleQuote]https://archive.ics.uci.edu/ml/machine-learning-\
+databases/iris/iris.data\[CloseCurlyDoubleQuote]\
+\>", "Item",
+ CellChangeTimes->{{3.781852611944407*^9, 3.7818526678710275`*^9}, {
+  3.7818527376499987`*^9, 3.781852813715849*^9}, {3.7818529132297997`*^9, 
+  3.781852917865345*^9}, {3.7818529733273563`*^9, 
+  3.7818529809137273`*^9}},ExpressionUUID->"6709914f-b56a-4eb2-bcca-\
+7329e88d2792"],
+
+Cell[TextData[{
+ "Clean the data (the resulting list was called ",
+ StyleBox["irisDataUCI", "CodeText"],
+ ")"
+}], "Item",
+ CellChangeTimes->{{3.781852611944407*^9, 3.7818526678710275`*^9}, {
+  3.7818527376499987`*^9, 3.7818528330873585`*^9}, {3.781852863794607*^9, 
+  3.7818528975554276`*^9}, {3.7818529842591166`*^9, 3.7818529875942287`*^9}, {
+  3.7818531469893208`*^9, 3.7818531618000555`*^9}, {3.781853203557217*^9, 
+  3.781853225179006*^9}, {3.781876604379651*^9, 3.7818766077121863`*^9}, {
+  3.78187666163379*^9, 
+  3.7818767002917194`*^9}},ExpressionUUID->"68ff8a12-ea32-4e19-8d9a-\
+8f50d64b41a0"],
+
+Cell[TextData[{
+ "Define a list in which examples in the dataset are organised by species (I \
+will refer to it as ",
+ StyleBox["bySpecies", "CodeText"],
+ StyleBox[" below", "Text"],
+ ")."
+}], "Item",
+ CellChangeTimes->{{3.781852611944407*^9, 3.7818526678710275`*^9}, {
+  3.7818527376499987`*^9, 3.7818528330873585`*^9}, {3.781852863794607*^9, 
+  3.7818528975554276`*^9}, {3.7818529842591166`*^9, 3.7818529870077763`*^9}, {
+  3.7818531758621006`*^9, 3.7818531900447655`*^9}, {3.781853240961508*^9, 
+  3.7818532672398853`*^9}, {3.781876623299637*^9, 3.781876643116048*^9}, {
+  3.781876938155423*^9, 
+  3.781876942692729*^9}},ExpressionUUID->"2a30d765-ab07-4415-bc7b-\
+49bca18017f5"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Task 2", "Section",
+ CellChangeTimes->{{3.7818533221529694`*^9, 
+  3.7818533239303684`*^9}},ExpressionUUID->"70f67b42-6f8b-4aae-b8b4-\
+0b3c5ef9a2d0"],
+
+Cell[TextData[{
+ "Use a scree plot to study how the clustering error described in lectures \
+depends on clustering obtained with the KMC method as a function of the \
+number of clusters ",
+ StyleBox["k",
+  FontSlant->"Italic"],
+ ". Do the results indicate that the data is best partitioned for ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"k", "=", "3"}], TraditionalForm]],ExpressionUUID->
+  "936f43e7-2f27-471c-af14-ba8d2c3f8d90"],
+ "? In other words, is the classification into three species supported by the \
+KMC unsupervised clustering method? "
+}], "Text",
+ CellChangeTimes->{{3.781860207967193*^9, 3.7818602262980022`*^9}, {
+  3.7818603773893785`*^9, 3.7818604775550137`*^9}, {3.781860659892021*^9, 
+  3.781860704354192*^9}, {3.781864204292101*^9, 
+  3.7818643050816994`*^9}},ExpressionUUID->"cd3fdd3e-7a4e-4a52-a352-\
+1f022d9d0d9c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Task 3", "Section",
+ CellChangeTimes->{{3.781878570352788*^9, 
+  3.781878577969454*^9}},ExpressionUUID->"5a09bff1-71e0-40d8-9c5a-\
+5c4d2a9f9ec7"],
+
+Cell["\<\
+Use the ClusterClassify to define 3 classes for Iris flowers in an \
+unsupervised way (use the KMC method). Calculate the purity of the \
+unsupervised classification with respect to the true classes given in the \
+dataset. For which species is the clustering \[OpenCurlyDoubleQuote]less pure\
+\[CloseCurlyDoubleQuote]?\
+\>", "Text",
+ CellChangeTimes->{{3.781878596074737*^9, 3.781878608690441*^9}, {
+  3.7818788712032385`*^9, 3.7818789424518595`*^9}, {3.7818789898677883`*^9, 
+  3.781879056901224*^9}, {3.781879105892663*^9, 
+  3.781879159305352*^9}},ExpressionUUID->"08b09a9d-8b79-4ae8-91ed-\
+38b59eb355cb"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1920, 1018},
+WindowMargins->{{-5.5, Automatic}, {Automatic, -5.5}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"13.1 for Microsoft Windows (64-bit) (June 16, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"b8499257-241c-4319-938e-0a8aebcbe15c"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 241, 4, 102, "Chapter",ExpressionUUID->"170e08ae-7b2e-49bd-8e90-342166b0cf40"],
+Cell[824, 28, 645, 11, 87, "Text",ExpressionUUID->"d9645a40-5ea1-4b6a-ad0e-d3a1fd3d14e4"],
+Cell[CellGroupData[{
+Cell[1494, 43, 155, 3, 100, "Section",ExpressionUUID->"9cb2884c-1cb5-4b37-8f9a-925bd41ad90a"],
+Cell[1652, 48, 340, 7, 52, "Text",ExpressionUUID->"aea38682-c055-426e-8a7b-1042f3899dbe"],
+Cell[1995, 57, 461, 9, 48, "Item",ExpressionUUID->"6709914f-b56a-4eb2-bcca-7329e88d2792"],
+Cell[2459, 68, 603, 12, 48, "Item",ExpressionUUID->"68ff8a12-ea32-4e19-8d9a-8f50d64b41a0"],
+Cell[3065, 82, 681, 14, 48, "Item",ExpressionUUID->"2a30d765-ab07-4415-bc7b-49bca18017f5"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3783, 101, 155, 3, 100, "Section",ExpressionUUID->"70f67b42-6f8b-4aae-b8b4-0b3c5ef9a2d0"],
+Cell[3941, 106, 836, 18, 87, "Text",ExpressionUUID->"cd3fdd3e-7a4e-4a52-a352-1f022d9d0d9c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4814, 129, 151, 3, 100, "Section",ExpressionUUID->"5a09bff1-71e0-40d8-9c5a-5c4d2a9f9ec7"],
+Cell[4968, 134, 618, 11, 87, "Text",ExpressionUUID->"08b09a9d-8b79-4ae8-91ed-38b59eb355cb"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

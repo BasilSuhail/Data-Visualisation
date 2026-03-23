@@ -1,0 +1,68 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      2095,         60]
+NotebookOptionsPosition[      1649,         45]
+NotebookOutlinePosition[      2050,         61]
+CellTagsIndexPosition[      2007,         58]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+The aim is to train a classifier to distinguish the temperature in Aberdeen, \
+Auckland and Jeddah using data from  January, 2020 to December, 2023. 
+
+To do that, use the WeatherData function to obtain the time series for the \
+mean daily temperature in Aberdeen, Auckland and Jeddah from  January, 2020 \
+to December, 2023. 
+
+Split the data into a training and testing dataset as follows: The training \
+dataset consists of 200 randomly chosen temperature values from each city; \
+the rest of values from each city define the testing dataset. 
+
+Train a classifier using the training data and study its performance using \
+the ROC curves for the test data. Comment on the results.\
+\>", "Text",
+ CellChangeTimes->{{3.906181893850789*^9, 3.9061823494773083`*^9}, {
+  3.953868148681534*^9, 3.9538682943426495`*^9}, {3.9538683368698425`*^9, 
+  3.953868356618263*^9}},ExpressionUUID->"d38cb6fc-d984-4cd2-84d8-\
+343d159f9475"],
+
+Cell["Answer", "Section",
+ CellChangeTimes->{{3.9061825201815767`*^9, 
+  3.906182524694211*^9}},ExpressionUUID->"3b01d258-a1cd-4e6f-90f3-\
+be6881578be1"]
+},
+WindowSize->{949, 472.5},
+WindowMargins->{{Automatic, 59}, {Automatic, 196}},
+FrontEndVersion->"13.1 for Microsoft Windows (64-bit) (June 16, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"2de2926b-9bb8-4b53-a326-eda8161fb9ca"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 931, 18, 242, "Text",ExpressionUUID->"d38cb6fc-d984-4cd2-84d8-343d159f9475"],
+Cell[1492, 40, 153, 3, 67, "Section",ExpressionUUID->"3b01d258-a1cd-4e6f-90f3-be6881578be1"]
+}
+]
+*)
+
