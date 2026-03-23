@@ -1,0 +1,106 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      3286,         96]
+NotebookOptionsPosition[      1976,         64]
+NotebookOutlinePosition[      2577,         86]
+CellTagsIndexPosition[      2501,         81]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["", "SlideShowNavigationBar",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"edbce187-caa0-4ec4-b949-9cc947185611"],
+
+Cell["Depression : Medicine for treatment", "Title",
+ CellChangeTimes->{{3.812755275622931*^9, 
+  3.812755283002355*^9}},ExpressionUUID->"cd208037-3bce-400e-8785-\
+20da1c7c68d8"],
+
+Cell[CellGroupData[{
+
+Cell["depression", "Section",ExpressionUUID->"5f45c6f2-3630-433f-ada7-b7c8ca9987a9"],
+
+Cell[TextData[{
+ "Depression affects ",
+ StyleBox["6% ",
+  FontWeight->"Bold"],
+ "of adults each year and is the",
+ StyleBox[" leading cause of suicide",
+  FontWeight->"Bold"],
+ ". The ",
+ StyleBox["exact cause",
+  FontWeight->"Bold"],
+ " of depression is ",
+ StyleBox["unknown",
+  FontWeight->"Bold"],
+ "."
+}], "Text",ExpressionUUID->"12f61f5d-acb9-4217-afe7-7564e9957335"],
+
+Cell["Symptoms can be disabling and its effects pervasive", "Item",ExpressionUUID->"50b17547-4f4c-477f-837a-8168fa86ab93"],
+
+Cell["\<\
+People with depression have a consistently low mood and other symptoms severe \
+enough to interfere with normal day-to-day activities. \
+\>", "SideNote",ExpressionUUID->"fd2fce19-6bfd-416f-a352-93110e12323d"],
+
+Cell["It can become chronic if treated inadequately ", "Item",ExpressionUUID->"12e21767-8753-4008-a60d-3c4b92ce8649"],
+
+Cell["Current medications: Lithium and Imipramine", "Item",ExpressionUUID->"8fd78a7e-1ba3-4d2f-aeae-3fd05736f4ae"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{808, 692},
+WindowMargins->{{Automatic, -1114}, {Automatic, -175}},
+FrontEndVersion->"14.2 for Mac OS X ARM (64-bit) (December 26, 2024)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"2d682767-3ffd-4b3a-9771-57ad3c834b93"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "SlideShowHeader"->{
+  Cell[576, 22, 122, 2, 72, "SlideShowNavigationBar",ExpressionUUID->"edbce187-caa0-4ec4-b949-9cc947185611",
+   CellTags->"SlideShowHeader"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"SlideShowHeader", 2335, 75}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 122, 2, 72, "SlideShowNavigationBar",ExpressionUUID->"edbce187-caa0-4ec4-b949-9cc947185611",
+ CellTags->"SlideShowHeader"],
+Cell[701, 26, 178, 3, 96, "Title",ExpressionUUID->"cd208037-3bce-400e-8785-20da1c7c68d8"],
+Cell[CellGroupData[{
+Cell[904, 33, 84, 0, 66, "Section",ExpressionUUID->"5f45c6f2-3630-433f-ada7-b7c8ca9987a9"],
+Cell[991, 35, 374, 14, 55, "Text",ExpressionUUID->"12f61f5d-acb9-4217-afe7-7564e9957335"],
+Cell[1368, 51, 122, 0, 30, "Item",ExpressionUUID->"50b17547-4f4c-477f-837a-8168fa86ab93"],
+Cell[1493, 53, 218, 3, 63, "SideNote",ExpressionUUID->"fd2fce19-6bfd-416f-a352-93110e12323d"],
+Cell[1714, 58, 117, 0, 30, "Item",ExpressionUUID->"12e21767-8753-4008-a60d-3c4b92ce8649"],
+Cell[1834, 60, 114, 0, 30, "Item",ExpressionUUID->"8fd78a7e-1ba3-4d2f-aeae-3fd05736f4ae"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
