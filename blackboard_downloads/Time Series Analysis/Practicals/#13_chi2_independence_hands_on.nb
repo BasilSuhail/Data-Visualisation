@@ -1,0 +1,94 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      3021,         86]
+NotebookOptionsPosition[      2448,         68]
+NotebookOutlinePosition[      2847,         84]
+CellTagsIndexPosition[      2804,         81]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Example: chi-squared independence test", "Section",
+ CellChangeTimes->{{3.95425976496506*^9, 
+  3.954259781419063*^9}},ExpressionUUID->"81090f06-17a5-4c6e-b064-\
+65694e8b4c23"],
+
+Cell[TextData[{
+ "Heumann et al. (2023) Example 10.8.1.\n\nThe following contingency table \
+summarises the observed number of people who have a preference for a \
+particular political party Y (party A, B, or C), depending on their \
+educational level X (level 1, 2, or 3).\n\n",
+ Cell[BoxData[
+  FormBox[GridBox[{
+     {" ", " ", " ", 
+      RowBox[{"Party", " ", "Y"}], " ", " "},
+     {" ", " ", "A", "B", "C", "Total"},
+     {"Education", "1", "100", "200", "300", "600"},
+     {"level", "2", "100", "100", "100", "300"},
+     {"X", "3", "80", "10", "10", "100"},
+     {" ", "Total", "280", "310", "410", "1000"}
+    }], TraditionalForm]],ExpressionUUID->
+  "8b74a618-ef1c-47d6-abdb-1d011e497a72"]
+}], "Text",
+ CellChangeTimes->{{3.954259846923009*^9, 3.954260136209429*^9}, {
+  3.954260188953989*^9, 3.954260191934926*^9}, {3.954260562148159*^9, 
+  3.9542605622606707`*^9}, {3.954261949594152*^9, 
+  3.954261952122673*^9}},ExpressionUUID->"88417ff0-8b79-4209-ba10-\
+d18bcef9ca62"],
+
+Cell["\<\
+The null hypothesis H0: Party choice and  level of education are independent \
+of each other.
+The alternative hypothesis H1: Party choice and level of education are not \
+independent of each other.
+
+- Create an equivalent table containing the expected number of people in each \
+of the nine categories, assuming the party and education level are independent.
+- Compute the chi-squared statistic.
+- Perform a chi-squared test at the 5% significance level to test whether to \
+reject H0.\
+\>", "Text",
+ CellChangeTimes->{{3.954260146174921*^9, 3.954260294620659*^9}, {
+  3.95426196445467*^9, 
+  3.954261984903232*^9}},ExpressionUUID->"71c4a425-6967-4ec5-8902-\
+cff9f2c537e1"]
+}, Open  ]]
+},
+WindowSize->{1453, 852},
+WindowMargins->{{12, Automatic}, {-86, Automatic}},
+FrontEndVersion->"14.2 for Mac OS X ARM (64-bit) (December 26, 2024)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"cd533191-46d1-4234-acee-9374b6730dfe"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 182, 3, 66, "Section",ExpressionUUID->"81090f06-17a5-4c6e-b064-65694e8b4c23"],
+Cell[761, 27, 985, 21, 212, "Text",ExpressionUUID->"88417ff0-8b79-4209-ba10-d18bcef9ca62"],
+Cell[1749, 50, 683, 15, 143, "Text",ExpressionUUID->"71c4a425-6967-4ec5-8902-cff9f2c537e1"]
+}, Open  ]]
+}
+]
+*)
+

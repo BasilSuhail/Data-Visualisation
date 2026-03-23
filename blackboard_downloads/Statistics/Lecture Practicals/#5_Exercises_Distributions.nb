@@ -1,0 +1,267 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12869,        259]
+NotebookOptionsPosition[     12080,        239]
+NotebookOutlinePosition[     12473,        255]
+CellTagsIndexPosition[     12430,        252]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Exercises: Distributions", "Section",
+ CellChangeTimes->{{3.9479054070007057`*^9, 
+  3.947905412857245*^9}},ExpressionUUID->"6c15128d-34df-4774-80a1-\
+74dd6740b767"],
+
+Cell[TextData[{
+ "1. A study on breeding birds collects information such as the length of \
+their eggs (in mm). Assume that the length is normally distributed with \[Mu] \
+= 42.1mm and ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["\[Sigma]", "2"], TraditionalForm]],ExpressionUUID->
+  "608436a1-103d-43fb-ba79-bc51f583c582"],
+ "= ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
+    RowBox[{"(", "20.8", ")"}], "2"], TraditionalForm]],ExpressionUUID->
+  "f24b4a4e-7af5-455b-8094-9c62ae7e999e"],
+ ". What is the probability of:\n(a) finding an egg with a length greater \
+than 50 mm?\n(b) finding an egg between 30 and 40 mm in length?\n"
+}], "Subsubsection",
+ CellChangeTimes->{{3.947905416965939*^9, 3.947905487662099*^9}, {
+  3.947905540282009*^9, 3.947905581866295*^9}, {3.947905852395067*^9, 
+  3.947905862893476*^9}, {3.947905933284548*^9, 
+  3.947905936055468*^9}},ExpressionUUID->"d4e99adf-9a7f-4918-a0bc-\
+ccedf3c27f08"],
+
+Cell["\<\
+2. Felix states that he is able to distinguish a freshly ground coffee blend \
+from an ordinary supermarket coffee. One of his friends asks him to taste 10 \
+cups of coffee and tell him which coffee he has tasted. Suppose that Felix \
+has actually no clue about coffee and simply guesses the brand. What is the \
+probability of at least 8 correct guesses?
+\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.947905579458556*^9, 
+  3.9479056103875732`*^9}},ExpressionUUID->"3d7d2f17-b467-4af0-8bab-\
+d9774be13be2"],
+
+Cell[TextData[{
+ "3. An advertising board is illuminated by several hundred bulbs. Some of \
+the bulbs are fused or smashed regularly. If there are more than 5 fused \
+bulbs on a day, the owner of the board replaces them, otherwise not. Consider \
+the following data collected over a month which captures the number of days \
+",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    SubscriptBox["n", "i"]}], TraditionalForm]],ExpressionUUID->
+  "526b528c-513e-4c1c-842c-e7eb1558f202"],
+ ") on which i bulbs were broken:\n",
+ Cell[BoxData[
+  GraphicsBox[
+   TagBox[RasterBox[CompressedData["
+1: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
+mt2/QoROo+an3BCC3E0LMSMtZ26VuNxFP9JyAVr3jQT3Pg+sSOlRTUc3mvrq
+D1OeE7qJLZoNW1Zfz85gek1RVC+kOH/nKBtTGB3QmutDyYOk8R2I7iZJRaIl
+pOTB/mDXfmuOVs4KsmI6FZ1bBfcqqXJ2r9VgOlR4WGPdbJfmQpTnrfjdp3nC
+d/rPu6g/lhRdQLe61tV0xJTETa2Pbjra0TjU2Wc2TRJ6iYS0HjjrWN6j37LY
+SKAoqhHCPxUy1DF8R57S65tIzfWh9NBya+17QaFoCSkf70ujaOup+XTwVc5M
+Z8+q8jAN08n9MT7lD74sqzKPL/Phhzz8Ls27FyItJR6/vZ+yan1a/s43+Yo+
++evciuN1NZ2CnaF8hOTb+p8aYTqV0Uof/PDlf3JKhUfUv13va8UPedzWpBlq
+zlqBLdOKQkqImmZ8Ot1z5npTeIRfpBb1Qbi1X9t4Ro50jEf3HSmb1+oQOdGG
+u7S6Dlq8dm1s0onChszTMDWfDn5d+0X7hGxZ0jESZZlOi2mbNA8BiB31yo0E
+nsO+uKr56t30MEth4aawfHEkKK7iCVzVuaTx3qNT79Orq3y4j5qOiL5ePg6q
+q+n8NLd7I2ff1PuVn1ZYmPZcGU8tTKcyGvdlL5v4m5qhDb/plBDLt3c98tKf
+9MOh2nZ2drEn1wsyvYdDRUzddKQcR33z8Lzo+HyqWGquD3fiJhHrHgm3lD27
+ZlgIM9Nrd89HdiQ9Pzig5HGObKZTdmJ1Z8F0tIceOlxJHsbPm70ctjX5u4SP
+/d0dO3IV09Iq9iJftzM+7E/6z/5V3O5VeGVxe82bN1Rpm/sJKz1W/Sa89891
+74f4du1gpXnuO+dkyAsWxJx4zt9w7Nqf5xJjxTGF1fC563ZLdGaq2IrqzJcj
+7KwqHiG/HTepCSGt+0//7OuUL1cEe3bnH2Fu6hN5WSwg1ZiOdDThyxUbTcWW
+0WzzfiSqeQ1O19f33BFeg3PjxyktTPM1OCLZqZNN2XRyv4t2atpm0NTgSmbN
+GGpvYn2AS2vHPNv2+YqX+KkyfpjRW+tNC8qFRdO5Lk6hl5+Owpy98/o7BCl/
+HC33Cz9buw6N+Gd8un7fjusHbg7pKry37kWP8ZtPnotxJq1se40Nj0r9nWYs
+827v5GrvNiggOGSCR7d+CyrfMZh7OG5qT2GPunkT26HTtF+iqLqw/x0f4dlM
+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
+AAAAAAAAAAAAAAAAAACglvw/ODtNVA==
+     "], {{0, 104.}, {551., 0}}, {0, 255},
+     ColorFunction->RGBColor,
+     ImageResolution->{72., 72.},
+     SmoothingQuality->"High"],
+    BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
+    Selectable->False],
+   DefaultBaseStyle->"ImageGraphics",
+   ImageSize->Automatic,
+   ImageSizeRaw->{551., 104.},
+   PlotRange->{{0, 551.}, {0, 104.}}]], "Input",ExpressionUUID->
+  "83962e9f-1905-43e2-b998-1dddcdf6e955"],
+ "\n(a) Suggest an appropriate distribution for X : \"number of broken bulbs \
+per day .\n(b) What is the average number of broken bulbs per day? What is \
+the variance?\n(c) Determine the probabilities P(X = x) using the \
+distribution you chose in (a)\nand using the average number of broken bulbs \
+you calculated in (b) . Compare\nthe probabilities with the proportions \
+obtained from the data . \n(d) Calculate the probability that at least 6 \
+bulbs are fused, which means they need\nto be replaced. \n(e) Consider the \
+random variable Y : \"time until next bulb breaks\". What is the distribution \
+of Y?\n(f) Calculate and interpret E (Y) .\n"
+}], "Subsubsection",
+ CellChangeTimes->{{3.947905616728078*^9, 3.9479056545046377`*^9}, {
+   3.947905733372034*^9, 3.9479057705731087`*^9}, 
+   3.947906932657886*^9},ExpressionUUID->"6aef08ea-bbad-441a-bb03-\
+66995a991505"],
+
+Cell["\<\
+4. A fishermen catches, on average, three fish in an hour. Let Y be a random \
+variable denoting the number of fish caught in one hour and let X be the time \
+interval between catching two fishes. We assume that X follows an exponential \
+distribution.
+(a) What is the distribution of Y ?
+(b) Determine E(Y ) and E(X).
+(c) Calculate P(Y = 5) and P(Y < 1).\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.947905807386298*^9, 3.947905867051806*^9}, 
+   3.9479154478976707`*^9},ExpressionUUID->"1acf043d-be66-47c9-b235-\
+52ba693d61cc"]
+}, Open  ]]
+},
+WindowSize->{808, 617},
+WindowMargins->{{177, Automatic}, {Automatic, 0}},
+FrontEndVersion->"13.3 for Mac OS X ARM (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"75b0d818-d2ed-4942-b306-0cb056b837f6"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 171, 3, 67, "Section",ExpressionUUID->"6c15128d-34df-4774-80a1-74dd6740b767"],
+Cell[754, 27, 929, 21, 175, "Subsubsection",ExpressionUUID->"d4e99adf-9a7f-4918-a0bc-ccedf3c27f08"],
+Cell[1686, 50, 517, 10, 141, "Subsubsection",ExpressionUUID->"3d7d2f17-b467-4af0-8bab-d9774be13be2"],
+Cell[2206, 62, 9316, 161, 505, "Subsubsection",ExpressionUUID->"6aef08ea-bbad-441a-bb03-66995a991505"],
+Cell[11525, 225, 539, 11, 167, "Subsubsection",ExpressionUUID->"1acf043d-be66-47c9-b235-52ba693d61cc"]
+}, Open  ]]
+}
+]
+*)
+

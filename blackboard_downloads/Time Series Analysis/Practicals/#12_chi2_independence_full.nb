@@ -1,0 +1,905 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     34736,        897]
+NotebookOptionsPosition[     28606,        802]
+NotebookOutlinePosition[     29006,        818]
+CellTagsIndexPosition[     28963,        815]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Example: chi-squared independence test", "Section",
+ CellChangeTimes->{{3.95425976496506*^9, 
+  3.954259781419063*^9}},ExpressionUUID->"81090f06-17a5-4c6e-b064-\
+65694e8b4c23"],
+
+Cell[TextData[{
+ "Heumann et al. (2023) Example 10.8.1.\n\nThe following contingency table \
+summarises the observed number of people who have a preference for a \
+particular political party Y (part A, B, or C), depending on their \
+educational level X (Level 1, 2, or 3).\n\n",
+ Cell[BoxData[
+  FormBox[GridBox[{
+     {" ", " ", " ", 
+      RowBox[{"Party", " ", "Y"}], " ", " "},
+     {" ", " ", "A", "B", "C", "Total"},
+     {"Education", "1", "100", "200", "300", "600"},
+     {"level", "2", "100", "100", "100", "300"},
+     {"X", "3", "80", "10", "10", "100"},
+     {" ", "Total", "280", "310", "410", "1000"}
+    }], TraditionalForm]],ExpressionUUID->
+  "8b74a618-ef1c-47d6-abdb-1d011e497a72"]
+}], "Text",
+ CellChangeTimes->{{3.954259846923009*^9, 3.954260136209429*^9}, {
+  3.954260188953989*^9, 3.954260191934926*^9}, {3.954260551750045*^9, 
+  3.9542605519191093`*^9}},ExpressionUUID->"88417ff0-8b79-4209-ba10-\
+d18bcef9ca62"],
+
+Cell["\<\
+The null hypothesis H0: Party choice and  level of education are independent \
+of each other.
+The alternative hypothesis H1: Party choice and level of education are not \
+independent of each other.
+
+- Create an equivalent table containing the expected number of people in each \
+of the nine categories, assuming the party and education level are independent.
+- Compute the chi-squared statistic.
+- Perform a chi-squared test at the 5% significance level to test whether to \
+reject H0.\
+\>", "Text",
+ CellChangeTimes->{{3.954260146174921*^9, 3.954260294620659*^9}, 
+   3.9542620004216413`*^9},ExpressionUUID->"71c4a425-6967-4ec5-8902-\
+cff9f2c537e1"],
+
+Cell["\<\
+The contingency table is small so we just specify each of the boxes manually:\
+\
+\>", "Text",
+ CellChangeTimes->{{3.9542603238044157`*^9, 3.954260360158537*^9}, {
+  3.954261843065696*^9, 
+  3.954261844397334*^9}},ExpressionUUID->"2136f1bd-73f5-4955-8f9a-\
+347a162d3a19"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{
+   "oA1", ",", "oA2", ",", "oA3", ",", "oB1", ",", "oB2", ",", "oB3", ",", 
+    "oC1", ",", "oC2", ",", "oC3"}], "}"}], "=", 
+  RowBox[{"{", 
+   RowBox[{
+   "100", ",", "100", ",", "80", ",", "200", ",", "100", ",", "10", ",", 
+    "300", ",", "100", ",", "10"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.954260363313621*^9, 3.9542604002047157`*^9}, {
+  3.954260536707295*^9, 3.954260539222484*^9}, {3.9542617858591146`*^9, 
+  3.954261815023592*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"dd5c5905-041a-4c11-a4d3-4e4a8558dd34"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "100", ",", "100", ",", "80", ",", "200", ",", "100", ",", "10", ",", "300",
+    ",", "100", ",", "10"}], "}"}]], "Output",
+ CellChangeTimes->{3.981196648581827*^9},
+ CellLabel->"Out[1]=",ExpressionUUID->"0376d392-13ff-cc4e-a3af-eb55e50abeb6"]
+}, Open  ]],
+
+Cell["Calculate the various totals.", "Text",
+ CellChangeTimes->{{3.954260408051598*^9, 3.954260417815175*^9}, {
+  3.954262019475801*^9, 
+  3.9542620241729927`*^9}},ExpressionUUID->"55a2b707-b68d-43b1-bb2c-\
+98a0b0f96685"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"oAtotal", "=", 
+  RowBox[{"oA1", "+", "oA2", "+", "oA3"}]}], "\[IndentingNewLine]", 
+ RowBox[{"oBtotal", "=", 
+  RowBox[{"oB1", "+", "oB2", "+", "oB3"}]}], "\[IndentingNewLine]", 
+ RowBox[{"oCtotal", "=", 
+  RowBox[{"oC1", "+", "oC2", "+", "oC3"}]}], "\[IndentingNewLine]", 
+ RowBox[{"o1total", "=", 
+  RowBox[{"oA1", "+", "oB1", "+", "oC1"}]}], "\[IndentingNewLine]", 
+ RowBox[{"o2total", "=", 
+  RowBox[{"oA2", "+", "oB2", "+", "oC2"}]}], "\[IndentingNewLine]", 
+ RowBox[{"o3total", "=", 
+  RowBox[{"oA3", "+", "oB3", "+", "oC3"}]}], "\[IndentingNewLine]", 
+ RowBox[{"ototal", "=", 
+  RowBox[{"oAtotal", "+", "oBtotal", "+", "oCtotal"}]}]}], "Input",
+ CellChangeTimes->{{3.954260419878319*^9, 3.954260484284607*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"b00b60b6-da99-4659-9372-410f61303407"],
+
+Cell[BoxData["280"], "Output",
+ CellChangeTimes->{3.981196652724598*^9},
+ CellLabel->"Out[2]=",ExpressionUUID->"8ad90842-ec42-eb41-aca1-5485f07777a4"],
+
+Cell[BoxData["310"], "Output",
+ CellChangeTimes->{3.9811966527403736`*^9},
+ CellLabel->"Out[3]=",ExpressionUUID->"935e7e76-1f9d-964d-87d7-29bb8a70146c"],
+
+Cell[BoxData["410"], "Output",
+ CellChangeTimes->{3.9811966527416706`*^9},
+ CellLabel->"Out[4]=",ExpressionUUID->"cfb23a29-e19b-fa4e-a32b-1ecb3739c217"],
+
+Cell[BoxData["600"], "Output",
+ CellChangeTimes->{3.9811966527416706`*^9},
+ CellLabel->"Out[5]=",ExpressionUUID->"5503d8e4-9aeb-a342-bfd0-702559c831b8"],
+
+Cell[BoxData["300"], "Output",
+ CellChangeTimes->{3.9811966527416706`*^9},
+ CellLabel->"Out[6]=",ExpressionUUID->"dbedaac9-294a-d446-ba3d-efdd7f4a7088"],
+
+Cell[BoxData["100"], "Output",
+ CellChangeTimes->{3.9811966527416706`*^9},
+ CellLabel->"Out[7]=",ExpressionUUID->"ac0f2585-bdc1-f641-b446-e301f7fa82ac"],
+
+Cell[BoxData["1000"], "Output",
+ CellChangeTimes->{3.9811966527416706`*^9},
+ CellLabel->"Out[8]=",ExpressionUUID->"9fb2ed94-c23a-9f4b-b313-0bbbc65b23b2"]
+}, Open  ]],
+
+Cell["\<\
+If party and educational level are independent, then the frequency of party \
+choice should be the same for each education level.
+This means the expected number for party Y for education level X is given by \
+the total number of people with education level X multiplied by the fraction \
+of the total who support party Y.
+From this we can compute all the expected numbers.\
+\>", "Text",
+ CellChangeTimes->{{3.954260586405344*^9, 
+  3.954260694377028*^9}},ExpressionUUID->"9efca6c4-691a-40cf-af18-\
+1085beae58d8"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"eA1", "=", 
+  RowBox[{"o1total", "*", 
+   RowBox[{"oAtotal", "/", "ototal"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{"eB1", "=", 
+  RowBox[{"o1total", "*", 
+   RowBox[{"oBtotal", "/", "ototal"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{"eC1", "=", 
+  RowBox[{"o1total", "*", 
+   RowBox[{"oCtotal", "/", "ototal"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{"eA2", "=", 
+  RowBox[{"o2total", "*", 
+   RowBox[{"oAtotal", "/", "ototal"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{"eB2", "=", 
+  RowBox[{"o2total", "*", 
+   RowBox[{"oBtotal", "/", "ototal"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{"eC2", "=", 
+  RowBox[{"o2total", "*", 
+   RowBox[{"oCtotal", "/", "ototal"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{"eA3", "=", 
+  RowBox[{"o3total", "*", 
+   RowBox[{"oAtotal", "/", "ototal"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{"eB3", "=", 
+  RowBox[{"o3total", "*", 
+   RowBox[{"oBtotal", "/", "ototal"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{"eC3", "=", 
+  RowBox[{"o3total", "*", 
+   RowBox[{"oCtotal", "/", "ototal"}]}]}]}], "Input",
+ CellChangeTimes->{{3.954260699218547*^9, 3.954260771287271*^9}},
+ CellLabel->"In[9]:=",ExpressionUUID->"6ad43902-0e1a-4c2f-82fc-de5ee89b5455"],
+
+Cell[BoxData["168"], "Output",
+ CellChangeTimes->{3.981198746559601*^9},
+ CellLabel->"Out[9]=",ExpressionUUID->"95057763-49e5-5b48-b71f-73064ff6d380"],
+
+Cell[BoxData["186"], "Output",
+ CellChangeTimes->{3.9811987465638847`*^9},
+ CellLabel->"Out[10]=",ExpressionUUID->"cf3cd1d8-9ab8-e542-9a15-633296e3b9fa"],
+
+Cell[BoxData["246"], "Output",
+ CellChangeTimes->{3.9811987465638847`*^9},
+ CellLabel->"Out[11]=",ExpressionUUID->"ea4b150c-5f5a-5342-80aa-24ecff46591a"],
+
+Cell[BoxData["84"], "Output",
+ CellChangeTimes->{3.9811987465638847`*^9},
+ CellLabel->"Out[12]=",ExpressionUUID->"2b5b260a-d094-d549-81bf-53087337bc26"],
+
+Cell[BoxData["93"], "Output",
+ CellChangeTimes->{3.9811987465638847`*^9},
+ CellLabel->"Out[13]=",ExpressionUUID->"73bac3e7-7a87-3d47-bad8-a6a5d7fc5a87"],
+
+Cell[BoxData["123"], "Output",
+ CellChangeTimes->{3.9811987465638847`*^9},
+ CellLabel->"Out[14]=",ExpressionUUID->"38da4d2f-43e6-ab4a-b072-29caffbc1783"],
+
+Cell[BoxData["28"], "Output",
+ CellChangeTimes->{3.9811987465638847`*^9},
+ CellLabel->"Out[15]=",ExpressionUUID->"4077bb54-44b9-2143-a110-7a647d1e1997"],
+
+Cell[BoxData["31"], "Output",
+ CellChangeTimes->{3.98119874657514*^9},
+ CellLabel->"Out[16]=",ExpressionUUID->"12051f6c-568a-2843-8dc6-7e5f7fe7859c"],
+
+Cell[BoxData["41"], "Output",
+ CellChangeTimes->{3.98119874657514*^9},
+ CellLabel->"Out[17]=",ExpressionUUID->"d6b630e1-ef03-6a4f-b735-7c0681515e91"]
+}, Open  ]],
+
+Cell["\<\
+Now we can construct the contingency table of expected values.\
+\>", "Text",
+ CellChangeTimes->{{3.9542607964968843`*^9, 
+  3.95426081301031*^9}},ExpressionUUID->"0c1c201d-456b-4925-a445-\
+413df1a9f22a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"expected", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"\"\<\>\"", ",", "\"\<A\>\"", ",", "\"\<B\>\"", ",", "\"\<C\>\"",
+       ",", "\"\<Total\>\""}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "eA1", ",", "eB1", ",", "eC1", ",", 
+      RowBox[{"eA1", "+", "eB1", "+", "eC1"}]}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"2", ",", "eA2", ",", "eB2", ",", "eC2", ",", 
+      RowBox[{"eA2", "+", "eB2", "+", "eC2"}]}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"3", ",", "eA3", ",", "eB3", ",", "eC3", ",", 
+      RowBox[{"eA3", "+", "eB3", "+", "eC3"}]}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Total\>\"", ",", 
+      RowBox[{"eA1", "+", "eA2", "+", "eA3"}], ",", 
+      RowBox[{"eB1", "+", "eB2", "+", "eB3"}], ",", 
+      RowBox[{"eC1", "+", "eC2", "+", "eC3"}], ",", 
+      RowBox[{
+      "eA1", "+", "eA2", "+", "eA3", "+", "eB1", "+", "eB2", "+", "eB3", "+", 
+       "eC1", "+", "eC2", "+", "eC3"}]}], "}"}]}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"expected", "//", "TableForm"}]}], "Input",
+ CellChangeTimes->{{3.954260828574033*^9, 3.954260939913219*^9}, {
+  3.954261871878664*^9, 3.954261875034864*^9}, {3.9543063630792437`*^9, 
+  3.9543063632115192`*^9}},
+ CellLabel->"In[18]:=",ExpressionUUID->"0ad5e3d6-19d0-42e9-a5e7-6d57cedb5b80"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"\"\>", ",", "\<\"A\"\>", ",", "\<\"B\"\>", ",", "\<\"C\"\>", 
+     ",", "\<\"Total\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "168", ",", "186", ",", "246", ",", "600"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "84", ",", "93", ",", "123", ",", "300"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "28", ",", "31", ",", "41", ",", "100"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Total\"\>", ",", "280", ",", "310", ",", "410", ",", 
+     "1000"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.981198753065693*^9},
+ CellLabel->"Out[18]=",ExpressionUUID->"b7d15a8c-cd0c-124f-8db7-185fbe9813ba"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"\"\>", "\<\"A\"\>", "\<\"B\"\>", "\<\"C\"\>", "\<\"Total\"\>"},
+    {"1", "168", "186", "246", "600"},
+    {"2", "84", "93", "123", "300"},
+    {"3", "28", "31", "41", "100"},
+    {"\<\"Total\"\>", "280", "310", "410", "1000"}
+   },
+   GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.9811987530831833`*^9},
+ CellLabel->
+  "Out[19]//TableForm=",ExpressionUUID->"c56690d4-1781-d846-b031-\
+8b8ceb3a74ea"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\"\<\>\"", ",", "\"\<A\>\"", ",", "\"\<B\>\"", ",", "\"\<C\>\"", 
+     ",", "\"\<Total\>\""}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "168", ",", "186", ",", "246", ",", "600"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "84", ",", "93", ",", "123", ",", "300"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "28", ",", "31", ",", "41", ",", "100"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\"\<Total\>\"", ",", "280", ",", "310", ",", "410", ",", 
+     "1000"}], "}"}]}], "}"}]], "Input",
+ CellChangeTimes->{{3.954264627339307*^9, 3.954264627525457*^9}},
+ CellLabel->
+  "In[305]:=",ExpressionUUID->"528fb0e4-54d3-42e3-8c63-83ed9c1f979f"],
+
+Cell["\<\
+There are no expected counts less than 5 so we don\[CloseCurlyQuote]t have to \
+combine any outcomes. Also display the table of observed values in the same \
+way.\
+\>", "Text",
+ CellChangeTimes->{{3.954260947875495*^9, 3.954260961329872*^9}, {
+  3.954264464469825*^9, 3.954264484340959*^9}, {3.981198844548296*^9, 
+  3.9811988453978443`*^9}},ExpressionUUID->"95ebf5ec-3b74-45ce-b9b8-\
+55b75250a9ce"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"observed", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"\"\<\>\"", ",", "\"\<A\>\"", ",", "\"\<B\>\"", ",", "\"\<C\>\"",
+       ",", "\"\<Total\>\""}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "oA1", ",", "oB1", ",", "oC1", ",", 
+      RowBox[{"oA1", "+", "oB1", "+", "oC1"}]}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"2", ",", "oA2", ",", "oB2", ",", "oC2", ",", 
+      RowBox[{"oA2", "+", "oB2", "+", "oC2"}]}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"3", ",", "oA3", ",", "oB3", ",", "oC3", ",", 
+      RowBox[{"oA3", "+", "oB3", "+", "oC3"}]}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Total\>\"", ",", 
+      RowBox[{"oA1", "+", "oA2", "+", "oA3"}], ",", 
+      RowBox[{"oB1", "+", "oB2", "+", "oB3"}], ",", 
+      RowBox[{"oC1", "+", "oC2", "+", "oC3"}], ",", 
+      RowBox[{
+      "oA1", "+", "oA2", "+", "oA3", "+", "oB1", "+", "oB2", "+", "oB3", "+", 
+       "oC1", "+", "oC2", "+", "oC3"}]}], "}"}]}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"observed", "//", "TableForm"}]}], "Input",
+ CellChangeTimes->{{3.954260966412249*^9, 3.954261010183361*^9}, {
+  3.95426187897959*^9, 3.954261882097568*^9}, {3.954306365387208*^9, 
+  3.954306365551814*^9}},
+ CellLabel->"In[20]:=",ExpressionUUID->"13d2f090-8617-414c-967d-3607318184b7"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"\"\>", ",", "\<\"A\"\>", ",", "\<\"B\"\>", ",", "\<\"C\"\>", 
+     ",", "\<\"Total\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "100", ",", "200", ",", "300", ",", "600"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "100", ",", "100", ",", "100", ",", "300"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "80", ",", "10", ",", "10", ",", "100"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Total\"\>", ",", "280", ",", "310", ",", "410", ",", 
+     "1000"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.981198849834406*^9},
+ CellLabel->"Out[20]=",ExpressionUUID->"d376c95f-d256-694f-8223-159c5ee33e03"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"\"\>", "\<\"A\"\>", "\<\"B\"\>", "\<\"C\"\>", "\<\"Total\"\>"},
+    {"1", "100", "200", "300", "600"},
+    {"2", "100", "100", "100", "300"},
+    {"3", "80", "10", "10", "100"},
+    {"\<\"Total\"\>", "280", "310", "410", "1000"}
+   },
+   GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.981198849834406*^9},
+ CellLabel->
+  "Out[21]//TableForm=",ExpressionUUID->"06eacb94-0177-4f48-8442-\
+1753de127133"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\"\<\>\"", ",", "\"\<A\>\"", ",", "\"\<B\>\"", ",", "\"\<C\>\"", 
+     ",", "\"\<Total\>\""}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "100", ",", "200", ",", "300", ",", "600"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "100", ",", "100", ",", "100", ",", "300"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "80", ",", "10", ",", "10", ",", "100"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\"\<Total\>\"", ",", "280", ",", "310", ",", "410", ",", 
+     "1000"}], "}"}]}], "}"}]], "Input",
+ CellChangeTimes->{{3.954264624114278*^9, 3.9542646242583523`*^9}},
+ CellLabel->
+  "In[308]:=",ExpressionUUID->"e60cc53a-ce99-474c-9af3-7ff9216343a7"],
+
+Cell["Now we can display a table of differences (drop the totals).", "Text",
+ CellChangeTimes->{{3.9542610383711033`*^9, 3.954261067322567*^9}, 
+   3.9542620295807877`*^9},ExpressionUUID->"472535e0-b076-4d1c-b8ee-\
+41a15394c186"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"expminusobs", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"\"\<\>\"", ",", "\"\<A\>\"", ",", "\"\<B\>\"", 
+      ",", "\"\<C\>\""}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", 
+      RowBox[{"eA1", "-", "oA1"}], ",", 
+      RowBox[{"eB1", "-", "oB1"}], ",", 
+      RowBox[{"eC1", "-", "oC1"}]}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"2", ",", 
+      RowBox[{"eA2", "-", "oA2"}], ",", 
+      RowBox[{"eB2", "-", "oB2"}], ",", 
+      RowBox[{"eC2", "-", "oC2"}]}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"3", ",", 
+      RowBox[{"eA3", "-", "oA3"}], ",", 
+      RowBox[{"eB3", "-", "oB3"}], ",", 
+      RowBox[{"eC3", "-", "oC3"}]}], "}"}]}], 
+   "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"expminusobs", "//", "TableForm"}]}], "Input",
+ CellChangeTimes->{{3.954261052481929*^9, 3.9542611183496113`*^9}, {
+  3.954261886958153*^9, 3.954261889064631*^9}, {3.954306368026722*^9, 
+  3.954306368181664*^9}},
+ CellLabel->"In[22]:=",ExpressionUUID->"396839f2-9b9c-44ec-b8bd-ebc2e47ce807"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"\"\>", ",", "\<\"A\"\>", ",", "\<\"B\"\>", 
+     ",", "\<\"C\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "68", ",", 
+     RowBox[{"-", "14"}], ",", 
+     RowBox[{"-", "54"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", 
+     RowBox[{"-", "16"}], ",", 
+     RowBox[{"-", "7"}], ",", "23"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", 
+     RowBox[{"-", "52"}], ",", "21", ",", "31"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.9811988674016037`*^9},
+ CellLabel->"Out[22]=",ExpressionUUID->"0aa10c03-b6d7-1e48-b1be-6ff2502145a1"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"\"\>", "\<\"A\"\>", "\<\"B\"\>", "\<\"C\"\>"},
+    {"1", "68", 
+     RowBox[{"-", "14"}], 
+     RowBox[{"-", "54"}]},
+    {"2", 
+     RowBox[{"-", "16"}], 
+     RowBox[{"-", "7"}], "23"},
+    {"3", 
+     RowBox[{"-", "52"}], "21", "31"}
+   },
+   GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.9811988674016037`*^9},
+ CellLabel->
+  "Out[23]//TableForm=",ExpressionUUID->"753733ab-0df9-d34c-afa7-\
+b10b9a43dda2"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\"\<\>\"", ",", "\"\<A\>\"", ",", "\"\<B\>\"", 
+     ",", "\"\<C\>\""}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "68", ",", 
+     RowBox[{"-", "14"}], ",", 
+     RowBox[{"-", "54"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", 
+     RowBox[{"-", "16"}], ",", 
+     RowBox[{"-", "7"}], ",", "23"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", 
+     RowBox[{"-", "52"}], ",", "21", ",", "31"}], "}"}]}], "}"}]], "Input",
+ CellChangeTimes->{{3.9542646208967447`*^9, 3.9542646210401983`*^9}},
+ CellLabel->
+  "In[311]:=",ExpressionUUID->"62c9bed9-51b4-435f-9b66-a3eadfd0b899"],
+
+Cell["\<\
+As a check - each column and row should add up to zero separately.
+Display the table of normalised differences.\
+\>", "Text",
+ CellChangeTimes->{{3.954264566301152*^9, 
+  3.9542645769972754`*^9}},ExpressionUUID->"84cd39c8-eb39-4d9a-ae23-\
+8a5c3e218c77"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"expminusobsnorm", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"\"\<\>\"", ",", "\"\<A\>\"", ",", "\"\<B\>\"", 
+      ",", "\"\<C\>\""}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", 
+      RowBox[{"N", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"eA1", "-", "oA1"}], ")"}], "^", "2"}], "/", "eA1"}], "]"}],
+       ",", 
+      RowBox[{"N", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"eB1", "-", "oB1"}], ")"}], "^", "2"}], "/", "eB1"}], "]"}],
+       ",", 
+      RowBox[{"N", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"eC1", "-", "oC1"}], ")"}], "^", "2"}], "/", "eC1"}], 
+       "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"2", ",", 
+      RowBox[{"N", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"eA2", "-", "oA2"}], ")"}], "^", "2"}], "/", "eA2"}], "]"}],
+       ",", 
+      RowBox[{"N", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"eB2", "-", "oB2"}], ")"}], "^", "2"}], "/", "eB2"}], "]"}],
+       ",", 
+      RowBox[{"N", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"eC2", "-", "oC2"}], ")"}], "^", "2"}], "/", "eC2"}], 
+       "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"3", ",", 
+      RowBox[{"N", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"eA3", "-", "oA3"}], ")"}], "^", "2"}], "/", "eA3"}], "]"}],
+       ",", 
+      RowBox[{"N", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"eB3", "-", "oB3"}], ")"}], "^", "2"}], "/", "eB3"}], "]"}],
+       ",", 
+      RowBox[{"N", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"eC3", "-", "oC3"}], ")"}], "^", "2"}], "/", "eC3"}], 
+       "]"}]}], "}"}]}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"expminusobsnorm", "//", "TableForm"}]}], "Input",
+ CellChangeTimes->{{3.9542645845652857`*^9, 3.954264716874317*^9}, 
+   3.9812004652922955`*^9},
+ CellLabel->"In[24]:=",ExpressionUUID->"57d82946-7cd9-459d-938e-87b67ca7963f"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"\"\>", ",", "\<\"A\"\>", ",", "\<\"B\"\>", 
+     ",", "\<\"C\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "27.523809523809526`", ",", "1.053763440860215`", ",", 
+     "11.853658536585366`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "3.0476190476190474`", ",", "0.5268817204301075`", ",", 
+     "4.300813008130081`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "3", ",", "96.57142857142857`", ",", "14.225806451612904`", ",", 
+     "23.4390243902439`"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.981200468784813*^9},
+ CellLabel->"Out[24]=",ExpressionUUID->"bbf51cf7-d6d2-9c43-b1ec-51174961c7c5"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"\"\>", "\<\"A\"\>", "\<\"B\"\>", "\<\"C\"\>"},
+    {"1", "27.523809523809526`", "1.053763440860215`", 
+     "11.853658536585366`"},
+    {"2", "3.0476190476190474`", "0.5268817204301075`", 
+     "4.300813008130081`"},
+    {"3", "96.57142857142857`", "14.225806451612904`", "23.4390243902439`"}
+   },
+   GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.981200468800562*^9},
+ CellLabel->
+  "Out[25]//TableForm=",ExpressionUUID->"86c59573-c0f4-204b-904b-\
+abcf180ee964"]
+}, Open  ]],
+
+Cell["\<\
+Now we can compute the chi-squared statistic for this contingency table.\
+\>", "Text",
+ CellChangeTimes->{{3.9542611294126377`*^9, 3.9542611641504583`*^9}, 
+   3.954264563227396*^9, {3.954264746396495*^9, 
+   3.954264747700371*^9}},ExpressionUUID->"3a20de19-17a0-4498-889f-\
+51312169410b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"chi2", "=", 
+  RowBox[{"N", "[", 
+   RowBox[{"Total", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"expminusobs", "[", 
+        RowBox[{"[", 
+         RowBox[{
+          RowBox[{"2", ";;", "4"}], ",", 
+          RowBox[{"2", ";;", "4"}]}], "]"}], "]"}], "^", "2"}], "/", 
+      RowBox[{"expected", "[", 
+       RowBox[{"[", 
+        RowBox[{
+         RowBox[{"2", ";;", "4"}], ",", 
+         RowBox[{"2", ";;", "4"}]}], "]"}], "]"}]}], ",", "2"}], "]"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.9542611450389433`*^9, 3.954261268159292*^9}, {
+  3.9542613054981117`*^9, 3.954261320505136*^9}},
+ CellLabel->"In[26]:=",ExpressionUUID->"32fb6e37-5810-4cd5-8c59-afb4fd4aa45e"],
+
+Cell[BoxData["182.54280469071972`"], "Output",
+ CellChangeTimes->{3.9812004839440117`*^9},
+ CellLabel->"Out[26]=",ExpressionUUID->"34457a64-9b5f-d349-b102-d250744590cd"]
+}, Open  ]],
+
+Cell["\<\
+There are three parties and three educational levels so the number of degrees \
+of freedom is\
+\>", "Text",
+ CellChangeTimes->{{3.954261165837267*^9, 3.954261166449177*^9}, {
+  3.954261336161427*^9, 
+  3.9542613602384443`*^9}},ExpressionUUID->"ba46c526-2ed9-480a-a590-\
+fc6b120a535f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"df", "=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"3", "-", "1"}], ")"}], "*", 
+   RowBox[{"(", 
+    RowBox[{"3", "-", "1"}], ")"}]}]}]], "Input",
+ CellChangeTimes->{{3.9542613616131363`*^9, 3.9542613650264177`*^9}},
+ CellLabel->"In[27]:=",ExpressionUUID->"c52f6fee-149e-441e-a10e-970fc5ea31d4"],
+
+Cell[BoxData["4"], "Output",
+ CellChangeTimes->{3.9812004888471603`*^9},
+ CellLabel->"Out[27]=",ExpressionUUID->"df53c88f-c0b8-bc41-804b-d3854909c78d"]
+}, Open  ]],
+
+Cell["\<\
+Look up the critical value of the chi-squared distribution for 4 degrees of \
+freedom at 5% significance.\
+\>", "Text",
+ CellChangeTimes->{{3.9542613734357567`*^9, 
+  3.9542614055537786`*^9}},ExpressionUUID->"f24b377a-b330-4455-8e60-\
+116fd7d866f8"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Quantile", "[", 
+  RowBox[{
+   RowBox[{"ChiSquareDistribution", "[", "df", "]"}], ",", "0.95"}], 
+  "]"}]], "Input",
+ CellLabel->"In[28]:=",ExpressionUUID->"98ef5d13-7d69-4a20-b8f9-0dbd1be13446"],
+
+Cell[BoxData["9.487729036781156`"], "Output",
+ CellChangeTimes->{3.98120049219166*^9},
+ CellLabel->"Out[28]=",ExpressionUUID->"47b67198-a935-8547-a37a-235c0cc071f1"]
+}, Open  ]],
+
+Cell["\<\
+Equivalently, calculate the p-value for the measured chi-squared value.\
+\>", "Text",
+ CellChangeTimes->{{3.9542615586942863`*^9, 
+  3.954261571731187*^9}},ExpressionUUID->"54e96801-59de-42a6-bf63-\
+e8805d28734b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"1", "-", 
+   RowBox[{"CDF", "[", 
+    RowBox[{
+     RowBox[{"ChiSquareDistribution", "[", "df", "]"}], ",", "chi2"}], 
+    "]"}]}], "//", "N"}]], "Input",
+ CellChangeTimes->{{3.95426157351785*^9, 3.954261589524559*^9}, {
+  3.95426173656153*^9, 3.954261737031847*^9}},
+ CellLabel->"In[29]:=",ExpressionUUID->"110b2518-1d2b-4d69-ae1e-b8bac013efa0"],
+
+Cell[BoxData["0.`"], "Output",
+ CellChangeTimes->{3.981200495186302*^9},
+ CellLabel->"Out[29]=",ExpressionUUID->"ee08f663-4e4c-6440-a643-cf6ff1a95c5c"]
+}, Open  ]],
+
+Cell["\<\
+The measured chi - squared value is (much) more than the critical value at \
+the 5% significance level (equivalently, the p-value is much less than 0.05).
+So the null hypothesis is rejected - there is evidence that party choice is \
+not independent of educational level.\
+\>", "Text",
+ CellChangeTimes->{{3.9542614269136257`*^9, 3.954261458893505*^9}, {
+  3.954261748122507*^9, 3.95426174916968*^9}, {3.954261927478835*^9, 
+  3.954261937083253*^9}, {3.954264512225918*^9, 
+  3.954264521322007*^9}},ExpressionUUID->"9fee4b31-b30c-4b5c-a50f-\
+e841ec9cc70f"]
+}, Open  ]]
+},
+WindowSize->{1141.2, 604.8},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"14.3 for Microsoft Windows (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"6c8e02cb-7f1d-494d-9b18-1eacdc596090"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 182, 3, 66, "Section",ExpressionUUID->"81090f06-17a5-4c6e-b064-65694e8b4c23"],
+Cell[761, 27, 935, 20, 234, "Text",ExpressionUUID->"88417ff0-8b79-4209-ba10-d18bcef9ca62"],
+Cell[1699, 49, 660, 14, 143, "Text",ExpressionUUID->"71c4a425-6967-4ec5-8902-cff9f2c537e1"],
+Cell[2362, 65, 280, 7, 33, "Text",ExpressionUUID->"2136f1bd-73f5-4955-8f9a-347a162d3a19"],
+Cell[CellGroupData[{
+Cell[2667, 76, 580, 13, 28, "Input",ExpressionUUID->"dd5c5905-041a-4c11-a4d3-4e4a8558dd34"],
+Cell[3250, 91, 285, 6, 32, "Output",ExpressionUUID->"0376d392-13ff-cc4e-a3af-eb55e50abeb6"]
+}, Open  ]],
+Cell[3550, 100, 222, 4, 33, "Text",ExpressionUUID->"55a2b707-b68d-43b1-bb2c-98a0b0f96685"],
+Cell[CellGroupData[{
+Cell[3797, 108, 821, 16, 142, "Input",ExpressionUUID->"b00b60b6-da99-4659-9372-410f61303407"],
+Cell[4621, 126, 150, 2, 32, "Output",ExpressionUUID->"8ad90842-ec42-eb41-aca1-5485f07777a4"],
+Cell[4774, 130, 152, 2, 32, "Output",ExpressionUUID->"935e7e76-1f9d-964d-87d7-29bb8a70146c"],
+Cell[4929, 134, 152, 2, 32, "Output",ExpressionUUID->"cfb23a29-e19b-fa4e-a32b-1ecb3739c217"],
+Cell[5084, 138, 152, 2, 32, "Output",ExpressionUUID->"5503d8e4-9aeb-a342-bfd0-702559c831b8"],
+Cell[5239, 142, 152, 2, 32, "Output",ExpressionUUID->"dbedaac9-294a-d446-ba3d-efdd7f4a7088"],
+Cell[5394, 146, 152, 2, 32, "Output",ExpressionUUID->"ac0f2585-bdc1-f641-b446-e301f7fa82ac"],
+Cell[5549, 150, 153, 2, 32, "Output",ExpressionUUID->"9fb2ed94-c23a-9f4b-b313-0bbbc65b23b2"]
+}, Open  ]],
+Cell[5717, 155, 522, 10, 99, "Text",ExpressionUUID->"9efca6c4-691a-40cf-af18-1085beae58d8"],
+Cell[CellGroupData[{
+Cell[6264, 169, 1189, 29, 180, "Input",ExpressionUUID->"6ad43902-0e1a-4c2f-82fc-de5ee89b5455"],
+Cell[7456, 200, 150, 2, 32, "Output",ExpressionUUID->"95057763-49e5-5b48-b71f-73064ff6d380"],
+Cell[7609, 204, 153, 2, 32, "Output",ExpressionUUID->"cf3cd1d8-9ab8-e542-9a15-633296e3b9fa"],
+Cell[7765, 208, 153, 2, 32, "Output",ExpressionUUID->"ea4b150c-5f5a-5342-80aa-24ecff46591a"],
+Cell[7921, 212, 152, 2, 32, "Output",ExpressionUUID->"2b5b260a-d094-d549-81bf-53087337bc26"],
+Cell[8076, 216, 152, 2, 32, "Output",ExpressionUUID->"73bac3e7-7a87-3d47-bad8-a6a5d7fc5a87"],
+Cell[8231, 220, 153, 2, 32, "Output",ExpressionUUID->"38da4d2f-43e6-ab4a-b072-29caffbc1783"],
+Cell[8387, 224, 152, 2, 32, "Output",ExpressionUUID->"4077bb54-44b9-2143-a110-7a647d1e1997"],
+Cell[8542, 228, 149, 2, 32, "Output",ExpressionUUID->"12051f6c-568a-2843-8dc6-7e5f7fe7859c"],
+Cell[8694, 232, 149, 2, 32, "Output",ExpressionUUID->"d6b630e1-ef03-6a4f-b735-7c0681515e91"]
+}, Open  ]],
+Cell[8858, 237, 213, 5, 33, "Text",ExpressionUUID->"0c1c201d-456b-4925-a445-413df1a9f22a"],
+Cell[CellGroupData[{
+Cell[9096, 246, 1428, 31, 123, "Input",ExpressionUUID->"0ad5e3d6-19d0-42e9-a5e7-6d57cedb5b80"],
+Cell[10527, 279, 714, 16, 32, "Output",ExpressionUUID->"b7d15a8c-cd0c-124f-8db7-185fbe9813ba"],
+Cell[11244, 297, 778, 21, 109, "Output",ExpressionUUID->"c56690d4-1781-d846-b031-8b8ceb3a74ea"]
+}, Open  ]],
+Cell[12037, 321, 741, 17, 28, "Input",ExpressionUUID->"528fb0e4-54d3-42e3-8c63-83ed9c1f979f"],
+Cell[12781, 340, 409, 8, 33, "Text",ExpressionUUID->"95ebf5ec-3b74-45ce-b9b8-55b75250a9ce"],
+Cell[CellGroupData[{
+Cell[13215, 352, 1423, 31, 123, "Input",ExpressionUUID->"13d2f090-8617-414c-967d-3607318184b7"],
+Cell[14641, 385, 716, 16, 32, "Output",ExpressionUUID->"d376c95f-d256-694f-8223-159c5ee33e03"],
+Cell[15360, 403, 778, 21, 109, "Output",ExpressionUUID->"06eacb94-0177-4f48-8442-1753de127133"]
+}, Open  ]],
+Cell[16153, 427, 745, 17, 28, "Input",ExpressionUUID->"e60cc53a-ce99-474c-9af3-7ff9216343a7"],
+Cell[16901, 446, 229, 3, 33, "Text",ExpressionUUID->"472535e0-b076-4d1c-b8ee-41a15394c186"],
+Cell[CellGroupData[{
+Cell[17155, 453, 1116, 27, 104, "Input",ExpressionUUID->"396839f2-9b9c-44ec-b8bd-ebc2e47ce807"],
+Cell[18274, 482, 642, 18, 32, "Output",ExpressionUUID->"0aa10c03-b6d7-1e48-b1be-6ff2502145a1"],
+Cell[18919, 502, 788, 25, 93, "Output",ExpressionUUID->"753733ab-0df9-d34c-afa7-b10b9a43dda2"]
+}, Open  ]],
+Cell[19722, 530, 671, 19, 28, "Input",ExpressionUUID->"62c9bed9-51b4-435f-9b66-a3eadfd0b899"],
+Cell[20396, 551, 263, 6, 55, "Text",ExpressionUUID->"84cd39c8-eb39-4d9a-ae23-8a5c3e218c77"],
+Cell[CellGroupData[{
+Cell[20684, 561, 2241, 70, 104, "Input",ExpressionUUID->"57d82946-7cd9-459d-938e-87b67ca7963f"],
+Cell[22928, 633, 717, 19, 32, "Output",ExpressionUUID->"bbf51cf7-d6d2-9c43-b1ec-51174961c7c5"],
+Cell[23648, 654, 842, 22, 93, "Output",ExpressionUUID->"86c59573-c0f4-204b-904b-abcf180ee964"]
+}, Open  ]],
+Cell[24505, 679, 299, 6, 33, "Text",ExpressionUUID->"3a20de19-17a0-4498-889f-51312169410b"],
+Cell[CellGroupData[{
+Cell[24829, 689, 717, 20, 28, "Input",ExpressionUUID->"32fb6e37-5810-4cd5-8c59-afb4fd4aa45e"],
+Cell[25549, 711, 169, 2, 32, "Output",ExpressionUUID->"34457a64-9b5f-d349-b102-d250744590cd"]
+}, Open  ]],
+Cell[25733, 716, 294, 7, 33, "Text",ExpressionUUID->"ba46c526-2ed9-480a-a590-fc6b120a535f"],
+Cell[CellGroupData[{
+Cell[26052, 727, 320, 8, 28, "Input",ExpressionUUID->"c52f6fee-149e-441e-a10e-970fc5ea31d4"],
+Cell[26375, 737, 151, 2, 32, "Output",ExpressionUUID->"df53c88f-c0b8-bc41-804b-d3854909c78d"]
+}, Open  ]],
+Cell[26541, 742, 259, 6, 33, "Text",ExpressionUUID->"f24b377a-b330-4455-8e60-116fd7d866f8"],
+Cell[CellGroupData[{
+Cell[26825, 752, 219, 5, 28, "Input",ExpressionUUID->"98ef5d13-7d69-4a20-b8f9-0dbd1be13446"],
+Cell[27047, 759, 165, 2, 32, "Output",ExpressionUUID->"47b67198-a935-8547-a37a-235c0cc071f1"]
+}, Open  ]],
+Cell[27227, 764, 223, 5, 33, "Text",ExpressionUUID->"54e96801-59de-42a6-bf63-e8805d28734b"],
+Cell[CellGroupData[{
+Cell[27475, 773, 381, 9, 28, "Input",ExpressionUUID->"110b2518-1d2b-4d69-ae1e-b8bac013efa0"],
+Cell[27859, 784, 151, 2, 32, "Output",ExpressionUUID->"ee08f663-4e4c-6440-a643-cf6ff1a95c5c"]
+}, Open  ]],
+Cell[28025, 789, 565, 10, 55, "Text",ExpressionUUID->"9fee4b31-b30c-4b5c-a50f-e841ec9cc70f"]
+}, Open  ]]
+}
+]
+*)
+

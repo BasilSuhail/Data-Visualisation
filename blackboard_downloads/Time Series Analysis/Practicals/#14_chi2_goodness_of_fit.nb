@@ -1,0 +1,485 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     17520,        477]
+NotebookOptionsPosition[     14551,        422]
+NotebookOutlinePosition[     14951,        438]
+CellTagsIndexPosition[     14908,        435]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Example: chi-squared goodness-of-fit test", "Section",
+ CellChangeTimes->{{3.9542426900064917`*^9, 
+  3.9542427078041267`*^9}},ExpressionUUID->"c0170e08-7881-443d-b262-\
+31ed6fca9662"],
+
+Cell["\<\
+Heumann et al. (2023) Example 10.7.3.
+
+Gregor Mendel (1822\[Dash]1884) conducted genetic cross-breeding experiments \
+with pea plants of different shape and colour. 
+In one experiment, the following numbers of four different types of plant \
+were obtained:\
+\>", "Text",
+ CellChangeTimes->{{3.9542427562286053`*^9, 3.9542428268777657`*^9}, {
+   3.954242940434561*^9, 3.954242957846829*^9}, {3.9542470398591747`*^9, 
+   3.954247073677408*^9}, 
+   3.9812006316675644`*^9},ExpressionUUID->"5599e63b-dc51-48a4-b41d-\
+2e5a6226c872"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"dataobs", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"\"\<yellow+round\>\"", ",", "315"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\"\<green+round\>\"", ",", "108"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\"\<yellow+edged\>\"", ",", "101"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\"\<green+edged\>\"", ",", "32"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Total\>\"", ",", "556"}], "}"}]}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"dataobs", "//", "TableForm"}]}], "Input",
+ CellChangeTimes->{{3.954242828665484*^9, 3.9542429298147984`*^9}, {
+  3.954242997549474*^9, 3.954242997715189*^9}, {3.95424303870257*^9, 
+  3.954243104088587*^9}, {3.954243161624349*^9, 3.95424317465346*^9}},
+ CellLabel->"In[30]:=",ExpressionUUID->"e550d2fd-5f69-4da8-a20b-cc57bead480f"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"yellow+round\"\>", ",", "315"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"green+round\"\>", ",", "108"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"yellow+edged\"\>", ",", "101"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"green+edged\"\>", ",", "32"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Total\"\>", ",", "556"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.98120064304764*^9},
+ CellLabel->"Out[30]=",ExpressionUUID->"e3f50621-1f3a-2e48-92ef-e860e3041c7e"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"yellow+round\"\>", "315"},
+    {"\<\"green+round\"\>", "108"},
+    {"\<\"yellow+edged\"\>", "101"},
+    {"\<\"green+edged\"\>", "32"},
+    {"\<\"Total\"\>", "556"}
+   },
+   GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.9812006430545807`*^9},
+ CellLabel->
+  "Out[31]//TableForm=",ExpressionUUID->"d07d1c97-3fde-cd4c-9f5a-\
+2fe2aa260fa3"]
+}, Open  ]],
+
+Cell["\<\
+Mendel\[CloseCurlyQuote]s hypothesis predicted that the four types of plant \
+would occur in the following proportions:\
+\>", "Text",
+ CellChangeTimes->{{3.954242963345819*^9, 3.95424298840093*^9}, {
+  3.954247018420063*^9, 
+  3.954247026234973*^9}},ExpressionUUID->"6b2b5d1a-155d-4a86-8052-\
+d751870a57e6"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"hypothesis", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"\"\<yellow+round\>\"", ",", "9"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\"\<green+round\>\"", ",", "3"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\"\<yellow+edged\>\"", ",", "3"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\"\<green+edged\>\"", ",", "1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Total\>\"", ",", "16"}], "}"}]}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"hypothesis", "//", "TableForm"}]}], "Input",
+ CellChangeTimes->{{3.954243008579915*^9, 3.9542430180010242`*^9}, {
+  3.954243114188857*^9, 3.95424312332803*^9}, {3.9542431658645*^9, 
+  3.954243172853551*^9}},
+ CellLabel->"In[32]:=",ExpressionUUID->"1e47f34e-fc81-4308-bbe3-ed31a511c959"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"yellow+round\"\>", ",", "9"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"green+round\"\>", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"yellow+edged\"\>", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"green+edged\"\>", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Total\"\>", ",", "16"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.9812006628792744`*^9},
+ CellLabel->"Out[32]=",ExpressionUUID->"500d38b8-60f4-0945-a096-82d5d8e394fb"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"yellow+round\"\>", "9"},
+    {"\<\"green+round\"\>", "3"},
+    {"\<\"yellow+edged\"\>", "3"},
+    {"\<\"green+edged\"\>", "1"},
+    {"\<\"Total\"\>", "16"}
+   },
+   GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.981200662881895*^9},
+ CellLabel->
+  "Out[33]//TableForm=",ExpressionUUID->"903c4ee7-27e5-e645-81dc-\
+f05e9e9fa3a2"]
+}, Open  ]],
+
+Cell["\<\
+Let\[CloseCurlyQuote]s perform a chi-squared goodness-of-fit test to see if \
+the observations fit the hypothesis.
+The null hypothesis H0: The observed numbers of plants match the expected \
+number of plants under the hypothesis.
+The alternative hypothesis H1: The observed numbers of plants don\
+\[CloseCurlyQuote]t match the expected number of plants under the hypothesis.
+Construct a table of expected numbers of each type of plant.\
+\>", "Text",
+ CellChangeTimes->{{3.954243240315321*^9, 3.95424325395341*^9}, {
+  3.954246913793551*^9, 3.9542469645228453`*^9}, {3.9542643835443687`*^9, 
+  3.9542644062120867`*^9}},ExpressionUUID->"8e2e99c3-3442-4d1c-85b6-\
+aa825644f3f8"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"dataexp", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"hypothesis", "[", 
+       RowBox[{"[", 
+        RowBox[{"#", ",", "1"}], "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"hypothesis", "[", 
+         RowBox[{"[", 
+          RowBox[{"#", ",", "2"}], "]"}], "]"}], "/", 
+        RowBox[{"hypothesis", "[", 
+         RowBox[{"[", 
+          RowBox[{"5", ",", "2"}], "]"}], "]"}]}], "*", 
+       RowBox[{"N", "[", 
+        RowBox[{"dataobs", "[", 
+         RowBox[{"[", 
+          RowBox[{"5", ",", "2"}], "]"}], "]"}], "]"}]}]}], "}"}], "&"}], "/@", 
+   RowBox[{"Range", "[", 
+    RowBox[{"1", ",", "4"}], "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{"dataexp", "//", "TableForm"}]}], "Input",
+ CellChangeTimes->{{3.95424673901442*^9, 3.9542468089471827`*^9}, {
+  3.9542468471275587`*^9, 3.954246859712789*^9}},
+ CellLabel->"In[36]:=",ExpressionUUID->"a778ea4d-4bff-437c-83fa-00c666c27eb7"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"yellow+round\"\>", ",", "312.75`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"green+round\"\>", ",", "104.25`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"yellow+edged\"\>", ",", "104.25`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"green+edged\"\>", ",", "34.75`"}], "}"}]}], "}"}]], "Output",\
+
+ CellChangeTimes->{3.981200687928688*^9, 3.9812007516418457`*^9},
+ CellLabel->"Out[36]=",ExpressionUUID->"5bf26c1d-666e-9641-a21e-4f2b4f6fb5a0"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"yellow+round\"\>", "312.75`"},
+    {"\<\"green+round\"\>", "104.25`"},
+    {"\<\"yellow+edged\"\>", "104.25`"},
+    {"\<\"green+edged\"\>", "34.75`"}
+   },
+   GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.981200687928688*^9, 3.9812007516418457`*^9},
+ CellLabel->
+  "Out[37]//TableForm=",ExpressionUUID->"6a1bfdbd-8470-c840-a806-\
+e0ca56e465d3"]
+}, Open  ]],
+
+Cell["Compute the chi-squared statistic.", "Text",
+ CellChangeTimes->{{3.954243373025453*^9, 3.954243398079115*^9}, 
+   3.954246642243126*^9, 
+   3.954261660262998*^9},ExpressionUUID->"2d48d0df-dbb7-49fc-85a2-\
+a4d15bb9d2de"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"chi2", "=", 
+  RowBox[{"Total", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"dataexp", "[", 
+        RowBox[{"[", 
+         RowBox[{
+          RowBox[{"1", ";;", "4"}], ",", "2"}], "]"}], "]"}], "-", 
+       RowBox[{"dataobs", "[", 
+        RowBox[{"[", 
+         RowBox[{
+          RowBox[{"1", ";;", "4"}], ",", "2"}], "]"}], "]"}]}], ")"}], "^", 
+     "2"}], "/", 
+    RowBox[{"dataexp", "[", 
+     RowBox[{"[", 
+      RowBox[{
+       RowBox[{"1", ";;", "4"}], ",", "2"}], "]"}], "]"}]}], "]"}]}]], "Input",\
+
+ CellChangeTimes->{{3.954243399330832*^9, 3.9542434547766333`*^9}, {
+  3.954246653497919*^9, 3.954246690022935*^9}, {3.9542616614546137`*^9, 
+  3.954261662216506*^9}},
+ CellLabel->"In[38]:=",ExpressionUUID->"c642b90a-749f-43fa-8c99-050bcb4f5f5a"],
+
+Cell[BoxData["0.47002398081534774`"], "Output",
+ CellChangeTimes->{3.98120075943565*^9},
+ CellLabel->"Out[38]=",ExpressionUUID->"786b5a77-7185-1349-bd43-07de2649bead"]
+}, Open  ]],
+
+Cell["\<\
+The number of degrees of freedom is the number of types of plant minus 1.\
+\>", "Text",
+ CellChangeTimes->{{3.9542434762674828`*^9, 3.954243481213016*^9}, 
+   3.954246643385391*^9, {3.954246978158265*^9, 
+   3.954246988997642*^9}},ExpressionUUID->"d3f0cc6e-95f5-4f83-9bd3-\
+6dcd090fc365"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"df", "=", 
+  RowBox[{"4", "-", "1"}]}]], "Input",
+ CellChangeTimes->{{3.95424348342035*^9, 3.9542434886719637`*^9}},
+ CellLabel->"In[39]:=",ExpressionUUID->"1c40e0b2-e911-4080-ad06-c1177d798ed2"],
+
+Cell[BoxData["3"], "Output",
+ CellChangeTimes->{3.9812007651998005`*^9},
+ CellLabel->"Out[39]=",ExpressionUUID->"41cc4952-9b29-4b4d-9338-b0def05334e0"]
+}, Open  ]],
+
+Cell["\<\
+Look up the critical value for the chi-squared test with 3 degrees of freedom \
+at 5% significance.\
+\>", "Text",
+ CellChangeTimes->{{3.954243492986538*^9, 3.9542435173983088`*^9}, {
+  3.9542596945869303`*^9, 
+  3.954259695060009*^9}},ExpressionUUID->"9c2f5885-c561-47d8-aad7-\
+f6a56cb1449c"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Quantile", "[", 
+  RowBox[{
+   RowBox[{"ChiSquareDistribution", "[", "df", "]"}], ",", "0.95"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.954243541397093*^9, 3.954243549863694*^9}, 
+   3.9542469963418493`*^9},
+ CellLabel->"In[40]:=",ExpressionUUID->"9a355b2b-d64e-4f8a-860e-fa081ca6605a"],
+
+Cell[BoxData["7.814727903251181`"], "Output",
+ CellChangeTimes->{3.981201468266382*^9},
+ CellLabel->"Out[40]=",ExpressionUUID->"9a2047a8-4c95-984c-86c1-a1727b1e5b4d"]
+}, Open  ]],
+
+Cell["\<\
+Equivalently, calculate the p-value for the measured chi-squared value.\
+\>", "Text",
+ CellChangeTimes->{{3.954261686779047*^9, 
+  3.954261698252236*^9}},ExpressionUUID->"c86f733f-d994-4cfb-a1e5-\
+1aae0904db03"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"1", "-", 
+   RowBox[{"CDF", "[", 
+    RowBox[{
+     RowBox[{"ChiSquareDistribution", "[", "df", "]"}], ",", "chisquared"}], 
+    "]"}]}], "//", "N"}]], "Input",
+ CellChangeTimes->{{3.9542617043570127`*^9, 3.954261704836344*^9}},
+ CellLabel->"In[41]:=",ExpressionUUID->"708088b8-e82a-42df-af44-05e342ea6758"],
+
+Cell[BoxData[
+ RowBox[{"1.`", "\[VeryThinSpace]", "-", 
+  RowBox[{"1.`", " ", 
+   RowBox[{"(", 
+    TagBox[GridBox[{
+       {"\[Piecewise]", GridBox[{
+          {
+           RowBox[{"GammaRegularized", "[", 
+            RowBox[{"1.5`", ",", "0.`", ",", 
+             RowBox[{"0.5`", " ", "chisquared"}]}], "]"}], 
+           RowBox[{"chisquared", ">", "0.`"}]},
+          {"0.`", 
+           TagBox["True",
+            "PiecewiseDefault",
+            AutoDelete->True]}
+         },
+         AllowedDimensions->{2, Automatic},
+         Editable->True,
+         GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+         GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
+         GridBoxSpacings->{"Columns" -> {
+             Offset[0.27999999999999997`], {
+              Offset[0.84]}, 
+             Offset[0.27999999999999997`]}, "Rows" -> {
+             Offset[0.2], {
+              Offset[0.4]}, 
+             Offset[0.2]}},
+         Selectable->True]}
+      },
+      GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+      GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.35]}, 
+          Offset[0.27999999999999997`]}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}}],
+     "Piecewise",
+     DeleteWithContents->True,
+     Editable->False,
+     SelectWithContents->True,
+     Selectable->False,
+     StripWrapperBoxes->True], ")"}]}]}]], "Output",
+ CellChangeTimes->{3.9812014707315063`*^9},
+ CellLabel->"Out[41]=",ExpressionUUID->"566dbb8a-7126-6147-afe6-5d1a0a1b5ce3"]
+}, Open  ]],
+
+Cell["\<\
+The measured chi-squared value is less than the critical value (or the \
+p-value is more than 0.05), so the null hypothesis is retained - the \
+observations match the hypothesis.\
+\>", "Text",
+ CellChangeTimes->{{3.954243557818364*^9, 3.954243573847931*^9}, {
+  3.954246902953952*^9, 3.9542469071898117`*^9}, {3.9542470021151543`*^9, 
+  3.95424701371349*^9}, {3.9542470953171883`*^9, 3.954247117287136*^9}, {
+  3.954259642122437*^9, 3.954259643956153*^9}, {3.954259700272936*^9, 
+  3.954259731118429*^9}, {3.9542617168842497`*^9, 
+  3.9542617239255753`*^9}},ExpressionUUID->"3eaef097-f229-42b1-804b-\
+22b75f9d9610"]
+}, Open  ]]
+},
+WindowSize->{1141.2, 568.8},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"14.3 for Microsoft Windows (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"80352f6d-295a-4ae5-96c7-e8be539abc5d"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 190, 3, 66, "Section",ExpressionUUID->"c0170e08-7881-443d-b262-31ed6fca9662"],
+Cell[769, 27, 537, 12, 99, "Text",ExpressionUUID->"5599e63b-dc51-48a4-b41d-2e5a6226c872"],
+Cell[CellGroupData[{
+Cell[1331, 43, 838, 18, 47, "Input",ExpressionUUID->"e550d2fd-5f69-4da8-a20b-cc57bead480f"],
+Cell[2172, 63, 563, 14, 32, "Output",ExpressionUUID->"e3f50621-1f3a-2e48-92ef-e860e3041c7e"],
+Cell[2738, 79, 715, 21, 109, "Output",ExpressionUUID->"d07d1c97-3fde-cd4c-9f5a-2fe2aa260fa3"]
+}, Open  ]],
+Cell[3468, 103, 317, 7, 33, "Text",ExpressionUUID->"6b2b5d1a-155d-4a86-8052-d751870a57e6"],
+Cell[CellGroupData[{
+Cell[3810, 114, 789, 18, 47, "Input",ExpressionUUID->"1e47f34e-fc81-4308-bbe3-ed31a511c959"],
+Cell[4602, 134, 558, 14, 32, "Output",ExpressionUUID->"500d38b8-60f4-0945-a096-82d5d8e394fb"],
+Cell[5163, 150, 705, 21, 109, "Output",ExpressionUUID->"903c4ee7-27e5-e645-81dc-f05e9e9fa3a2"]
+}, Open  ]],
+Cell[5883, 174, 685, 12, 99, "Text",ExpressionUUID->"8e2e99c3-3442-4d1c-85b6-aa825644f3f8"],
+Cell[CellGroupData[{
+Cell[6593, 190, 966, 26, 47, "Input",ExpressionUUID->"a778ea4d-4bff-437c-83fa-00c666c27eb7"],
+Cell[7562, 218, 533, 13, 32, "Output",ExpressionUUID->"5bf26c1d-666e-9641-a21e-4f2b4f6fb5a0"],
+Cell[8098, 233, 723, 20, 93, "Output",ExpressionUUID->"6a1bfdbd-8470-c840-a806-e0ca56e465d3"]
+}, Open  ]],
+Cell[8836, 256, 225, 4, 33, "Text",ExpressionUUID->"2d48d0df-dbb7-49fc-85a2-a4d15bb9d2de"],
+Cell[CellGroupData[{
+Cell[9086, 264, 819, 24, 28, "Input",ExpressionUUID->"c642b90a-749f-43fa-8c99-050bcb4f5f5a"],
+Cell[9908, 290, 167, 2, 32, "Output",ExpressionUUID->"786b5a77-7185-1349-bd43-07de2649bead"]
+}, Open  ]],
+Cell[10090, 295, 298, 6, 33, "Text",ExpressionUUID->"d3f0cc6e-95f5-4f83-9bd3-6dcd090fc365"],
+Cell[CellGroupData[{
+Cell[10413, 305, 219, 4, 28, "Input",ExpressionUUID->"1c40e0b2-e911-4080-ad06-c1177d798ed2"],
+Cell[10635, 311, 151, 2, 32, "Output",ExpressionUUID->"41cc4952-9b29-4b4d-9338-b0def05334e0"]
+}, Open  ]],
+Cell[10801, 316, 302, 7, 33, "Text",ExpressionUUID->"9c2f5885-c561-47d8-aad7-f6a56cb1449c"],
+Cell[CellGroupData[{
+Cell[11128, 327, 313, 7, 28, "Input",ExpressionUUID->"9a355b2b-d64e-4f8a-860e-fa081ca6605a"],
+Cell[11444, 336, 166, 2, 32, "Output",ExpressionUUID->"9a2047a8-4c95-984c-86c1-a1727b1e5b4d"]
+}, Open  ]],
+Cell[11625, 341, 221, 5, 33, "Text",ExpressionUUID->"c86f733f-d994-4cfb-a1e5-1aae0904db03"],
+Cell[CellGroupData[{
+Cell[11871, 350, 342, 8, 28, "Input",ExpressionUUID->"708088b8-e82a-42df-af44-05e342ea6758"],
+Cell[12216, 360, 1679, 45, 45, "Output",ExpressionUUID->"566dbb8a-7126-6147-afe6-5d1a0a1b5ce3"]
+}, Open  ]],
+Cell[13910, 408, 625, 11, 55, "Text",ExpressionUUID->"3eaef097-f229-42b1-804b-22b75f9d9610"]
+}, Open  ]]
+}
+]
+*)
+

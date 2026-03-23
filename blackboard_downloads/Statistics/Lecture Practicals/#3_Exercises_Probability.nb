@@ -1,0 +1,290 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     13758,        282]
+NotebookOptionsPosition[     12721,        256]
+NotebookOutlinePosition[     13123,        272]
+CellTagsIndexPosition[     13080,        269]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Exercises: Probability", "Section",
+ CellChangeTimes->{{3.94789847711871*^9, 
+  3.947898498849167*^9}},ExpressionUUID->"9fd01d7c-f74e-4c5d-a015-\
+21d29a7518d2"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+1. A driving licence examination consists of two parts which are based on a \
+theoretical and a practical examination. Suppose 25% of people fail the \
+practical examination, 15% of people fail the theoretical examination, and \
+10% of people fail both the examinations. If a person is randomly chosen, \
+then what is the probability that this person:
+(a) fails at least one of the examinations?
+(b) only fails the practical examination, but not the theoretical \
+examination?
+(c) successfully passes both the tests?
+(d) fails exactly in one exam?\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.94789850829116*^9, 3.9478985087907667`*^9}, {
+   3.947898566003408*^9, 3.947898600801017*^9}, 3.9479000495348377`*^9, {
+   3.9510149385311327`*^9, 
+   3.951014942447905*^9}},ExpressionUUID->"dc39ff6b-0f85-4cb7-8f98-\
+a8e3e4610c94"],
+
+Cell["\<\
+(a) 0.25+0.15-0.1 = 0.3
+(b) 0.25-0.1 = 0.15\[LineSeparator](c) 1-0.3 = 0.7\[LineSeparator](d) \
+0.3-0.1=0.2\
+\>", "Text",
+ CellChangeTimes->{{3.9801673219104652`*^9, 3.980167476708042*^9}, {
+  3.980167552871542*^9, 3.9801675562995358`*^9}, {3.9801676197388935`*^9, 
+  3.9801676563339405`*^9}, {3.9801677020676937`*^9, 3.9801677324155445`*^9}, {
+  3.9801678287000866`*^9, 
+  3.980167834922903*^9}},ExpressionUUID->"984d5961-cac8-f14f-98eb-\
+e29b0d207cba"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+2. A bank considers changing its credit card policy. Currently 5% of credit \
+card owners are not able to pay their bills in any month, i.e. they never pay \
+their bills. Among those who are generally able to pay their bills, there is \
+still a 20% probability that the bill is paid too late in a particular month.
+(a) What is the probability that someone is not paying his bill in a \
+particular month?
+(b) A credit card owner did not pay his bill in a particular month. What is \
+the probability that he never pays back the money?
+(c) Should the bank consider blocking the credit card if a customer does not \
+pay his
+bill on time?\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.947898634965225*^9, 3.947898683981532*^9}, {
+  3.980167951932045*^9, 
+  3.980167952557667*^9}},ExpressionUUID->"0250a610-9b9b-4891-b1e6-\
+0370246f9d1d"],
+
+Cell["\<\
+> Credit Card Owners that never pay their bills = 0.05 = P(A) 
+> Bill paid to late = ? \[LineSeparator]> Bill paid in a particular month = \
+0.2%\[LineSeparator]> P(M|A) = 1\
+\>", "Text",
+ CellChangeTimes->{{3.9801678975152397`*^9, 3.9801679355996704`*^9}, {
+  3.980167969019705*^9, 3.9801680447924232`*^9}, {3.980168079687641*^9, 
+  3.980168108763529*^9}, {3.9801681812403584`*^9, 
+  3.980168255432188*^9}},ExpressionUUID->"62369e16-79c3-6842-beff-\
+ded2fdd7d763"],
+
+Cell["\<\
+(a) 0.05*2+0.2*0.95=0.24\[LineSeparator](b) P(A)*P(M|A)/P(M) = 0.05/0.24 = \
+0.208
+(c) If the bill was not paid in a particular month, the probability is 20.8% \
+that it will never be paid, and 78.2% that it will be paid. One could argue \
+that a preventive measure that affects almost 79 % of trustworthy customers \
+are not ideal and the bank should therefore not block a credit card if a bill \
+is not paid on time.\
+\>", "Text",
+ CellChangeTimes->{{3.980168268483568*^9, 3.9801682693540897`*^9}, {
+  3.9801683698503494`*^9, 3.9801684092649384`*^9}, {3.980168498386347*^9, 
+  3.9801685018114395`*^9}, {3.9801685425967712`*^9, 
+  3.980168591606102*^9}},ExpressionUUID->"c00fc5bb-bf0e-1e43-8225-\
+890d56f67385"]
+}, Open  ]],
+
+Cell[TextData[{
+ "3. There are epidemics which affect animals such as cows, pigs, and others. \
+Suppose 200 cows are tested to see whether they are infected with a virus or \
+not. Let event A describe whether a cow has been transported by a truck \
+recently or not and let B denote the event that a cow has been tested \
+positive with a virus. The data are summarised in the following table:\n",
+ Cell[BoxData[
+  GraphicsBox[
+   TagBox[RasterBox[CompressedData["
+1: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
+AAAAAAAANBD/AS7QH7U=
+     "], {{0, 155.}, {273., 0}}, {0, 255},
+     ColorFunction->RGBColor,
+     ImageResolution->{72., 72.},
+     RasterInterpolation->"High"],
+    BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
+    Selectable->False],
+   DefaultBaseStyle->"ImageGraphics",
+   ImageSize->Automatic,
+   ImageSizeRaw->{273., 155.},
+   PlotRange->{{0, 273.}, {0, 155.}}]], "Input",ExpressionUUID->
+  "415357b1-2148-4528-9da4-b60bbfa6c911"],
+ "\n(a) What is the probability that a cow is infected and has been \
+transported by a truck\nrecently?\n(b) What is the probability of having an \
+infected cow given that it has been transported by the truck?\n(c) Determine \
+and interpret P (B) ."
+}], "Subsubsection",
+ CellChangeTimes->{{3.947898734573824*^9, 3.9478987782361593`*^9}, 
+   3.947898850129445*^9, {3.980168782113159*^9, 
+   3.9801687824258595`*^9}},ExpressionUUID->"c833d8aa-1077-40bf-b106-\
+97fe840a3855"]
+}, Open  ]]
+},
+WindowSize->{574.8, 573.6},
+WindowMargins->{{-4.8, Automatic}, {Automatic, 0}},
+FrontEndVersion->"14.3 for Microsoft Windows (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"4b5de62c-d433-4455-89ea-8d3e92b773ab"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 166, 3, 66, "Section",ExpressionUUID->"9fd01d7c-f74e-4c5d-a015-21d29a7518d2"],
+Cell[CellGroupData[{
+Cell[771, 29, 834, 16, 317, "Subsubsection",ExpressionUUID->"dc39ff6b-0f85-4cb7-8f98-a8e3e4610c94"],
+Cell[1608, 47, 464, 10, 99, "Text",ExpressionUUID->"984d5961-cac8-f14f-98eb-e29b0d207cba"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2109, 62, 841, 16, 367, "Subsubsection",ExpressionUUID->"0250a610-9b9b-4891-b1e6-0370246f9d1d"],
+Cell[2953, 80, 475, 9, 99, "Text",ExpressionUUID->"62369e16-79c3-6842-beff-ded2fdd7d763"],
+Cell[3431, 91, 722, 13, 164, "Text",ExpressionUUID->"c00fc5bb-bf0e-1e43-8225-890d56f67385"]
+}, Open  ]],
+Cell[4168, 107, 8537, 146, 497, "Subsubsection",ExpressionUUID->"c833d8aa-1077-40bf-b106-97fe840a3855"]
+}, Open  ]]
+}
+]
+*)
+

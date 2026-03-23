@@ -1,0 +1,17 @@
+So to put it simply: 
+
+1. x -> rows ; y -> columns
+2. Joint absolute frequencies: 
+ 	-> n1 = 20 Economy & Poor, n2 = 25 Economy  & Average, n3 = 15 Economy & Good. 
+ 	-> n4 = 5 Business & Poor, n5 = 10 Business & Average, n6 = 25 Business & Good.
+ 	
+3. Marginal Absolute frequency -> sum of each row (Y) and column (X). 
+4. Joint Relative frequency -> Divide each value by total observations. 
+5. Marginal Relative Frequency -> Divide each total of row and column with total observations
+6. Conditional frequency of:
+ 	X given Y -> Based on the condition, we divide each column value (X) with its sum total (Y)
+ 	Y given X -> Based on the condition, we divide each row value (Y) with its sum total (X)
+____________________________________________________________________________________________________
+
+> Bernoulli Distribution: is P and p different?
+> Binomial Distribution: Try it with a 4th phone. 
