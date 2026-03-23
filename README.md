@@ -43,6 +43,16 @@ blackboard_downloads/
 |   |-- Data/                   (Campylobacter dataset .csv)
 |   |-- Additional materials - Papers, etc./  (PDFs)
 |   |-- Course Guide/           (Timetable)
+|
+|-- Statistics/
+|   |-- Lecture Slides/         (10 presentations, (1)-(10) .pptx)
+|   |-- Notebooks/              (6 .nb notebooks + data files .dat, .csv)
+|   |-- Lecture Practicals/     (Exercises + solutions .nb, assessment notes)
+|
+|-- Time Series Analysis/
+|   |-- Lectures/               (6 presentations, (11)-(16) .pptx)
+|   |-- Practicals/             (5 .nb notebooks + datasets)
+|   |-- Code/                   (TimeFreqFiltering.nb)
 ```
 
 ## How to Download From Blackboard
