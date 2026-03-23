@@ -1,0 +1,341 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12940,        333]
+NotebookOptionsPosition[      9638,        272]
+NotebookOutlinePosition[     10931,        307]
+CellTagsIndexPosition[     10853,        302]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["", "SlideShowNavigationBar", "FirstSlide",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"cf721f71-a249-4404-a41c-c1abbc17bcc1"],
+
+Cell["\<\
+Tutorial Lecture 2 : Conceptual introduction to data types and  databases\
+\>", "Title",
+ CellChangeTimes->{{3.811597485733861*^9, 
+  3.811597513495739*^9}},ExpressionUUID->"574b8a72-cb5f-4eeb-ba7d-\
+8a3d50af167a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"6a078e22-481c-4d58-b4bd-4e7722b2bbdf"],
+
+Cell["\<\
+Exercise 1 : Conceptual questions  on data science and data structures \
+[Chapters 1 and 2, TB by Shah]\
+\>", "Title",
+ CellChangeTimes->{{3.811597523431114*^9, 3.811597554184411*^9}, {
+  3.811598863166101*^9, 3.811598863630541*^9}, {3.8115989724110622`*^9, 
+  3.81159902004309*^9}},ExpressionUUID->"cd8303ff-9ad4-4272-8f87-\
+6aee558f2e19"],
+
+Cell["\<\
+What is data science? How does it relate to and differ from statistics?\
+\>", "ItemNumbered",
+ CellChangeTimes->{{3.811597558054982*^9, 3.8115976057370243`*^9}, {
+  3.8115988669025307`*^9, 
+  3.811598885346279*^9}},ExpressionUUID->"a04b0c87-b27a-4c7c-9818-\
+9acb7afeb878"],
+
+Cell["\<\
+Identify three areas or domains in which data science is being used and \
+describe how.\
+\>", "ItemNumbered",
+ CellChangeTimes->{{3.811597558054982*^9, 3.8115976057370243`*^9}, {
+  3.8115988669025307`*^9, 
+  3.811598906759768*^9}},ExpressionUUID->"4a67ec1d-fb1f-4167-bc97-\
+c16f39e03a12"],
+
+Cell["\<\
+I have the option today of making a SIM card contract with Lebara. 3GB/month \
+per \[Sterling]5, 15GB/month per \[Sterling]10, 30GB/month per \[Sterling]15, \
+or unlimited data per \[Sterling]25. I go by bus to work on a 45min \
+round-trip a day and during this time I watch movies by Netflix with a stream \
+of SD videos with 1.5GB/hour. Assuming that I work 20 days a month, which \
+contract should I make?  \
+\>", "ItemNumbered",
+ CellChangeTimes->{{3.811597558054982*^9, 3.8115976057370243`*^9}, {
+   3.8115988669025307`*^9, 3.811598947701604*^9}, 3.8739673203997087`*^9, 
+   3.883633320554978*^9},ExpressionUUID->"542dfc13-03e0-48de-96da-\
+2845923fee29"],
+
+Cell["\<\
+List at least two differences between structured and unstructured data.\
+\>", "ItemNumbered",
+ CellChangeTimes->{{3.811597558054982*^9, 
+  3.8115976057370243`*^9}},ExpressionUUID->"3b35e172-57e5-4617-b067-\
+4e03f1fb7d64"],
+
+Cell["Give three examples of structured data formats.", "ItemNumbered",
+ CellChangeTimes->{{3.811597558054982*^9, 
+  3.8115976393975573`*^9}},ExpressionUUID->"cd082854-6f17-42fa-85a6-\
+114016624ff0"],
+
+Cell["Give three examples of unstructured data formats.", "ItemNumbered",
+ CellChangeTimes->{{3.811597558054982*^9, 
+  3.811597641437386*^9}},ExpressionUUID->"8f93b7a6-069e-434c-b913-\
+49a5e601d9b3"],
+
+Cell["\<\
+How will you convert a CSV file to a TSV file? List at least two different \
+strategies. \
+\>", "ItemNumbered",
+ CellChangeTimes->{{3.811597558054982*^9, 
+  3.811597683017454*^9}},ExpressionUUID->"64a7c023-0ed6-432f-a600-\
+d2f51c489b5a"],
+
+Cell["\<\
+You are looking at employee records. Some have no middle name, some have a \
+middle initial, and others have a complete middle name. How do you explain \
+such inconsistency in the data? Provide at least two explanations.   
+
+\
+\>", "ItemNumbered",
+ CellChangeTimes->{{3.811597558054982*^9, 
+  3.811597756907136*^9}},ExpressionUUID->"b9730cdb-408c-4fba-b018-\
+a998dd0083f6"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"7ba8ced5-5ee4-435f-96d3-6ac8b8ece8da"],
+
+Cell["\<\
+Exercise 2 : Try it yourself 2.1 : Data Pre - processing [TB by Shah]\
+\>", "Title",
+ CellChangeTimes->{{3.811597804139524*^9, 3.811597805420599*^9}, {
+  3.8115978863709583`*^9, 
+  3.811597908353054*^9}},ExpressionUUID->"8bb4aee8-9fcf-41c2-ab77-\
+25954fb88c0e"],
+
+Cell["\<\
+This exercises trains you to understand how to collect data and organize it \
+in a relational type dataset to solve your problem :
+
+This is extracted from your TB page 59, \[OpenCurlyDoubleQuote]Try it \
+Yourself 2.1: Data Pre-processing\[CloseCurlyDoubleQuote]\
+\>", "Text",
+ CellChangeTimes->{{3.811598090828949*^9, 3.81159812479241*^9}, {
+  3.811835472903613*^9, 3.81183549327288*^9}, {3.811835529839776*^9, 
+  3.811835566099328*^9}},ExpressionUUID->"99e85d6e-77f9-4dc3-9ffa-\
+42466def6009"],
+
+Cell[TextData[StyleBox["Imagine you want to open a new bakery, and you are \
+trying to figure out which item in the menu will help you to keep maximum \
+profit margin. You have the following few options:",
+ FontSize->24,
+ FontWeight->"Regular"]], "Text",
+ CellChangeTimes->{{3.811598090828949*^9, 3.81159812479241*^9}, {
+  3.811835472903613*^9, 3.81183549327288*^9}, {3.811835529839776*^9, 
+  3.8118356110525417`*^9}},ExpressionUUID->"b7de6f78-51b0-4e66-b377-\
+d4de7134ddff"],
+
+Cell[TextData[{
+ StyleBox["For ",
+  FontSize->24,
+  FontWeight->"Regular"],
+ StyleBox["cookies",
+  FontSize->24,
+  FontWeight->"Bold"],
+ StyleBox[", you would need flour, chocolate, butter, and other ingredients, \
+which comes at $3.75 per pound (lb). The initial setup cost is $",
+  FontSize->24,
+  FontWeight->"Regular"],
+ StyleBox["1580",
+  FontSize->24,
+  FontWeight->"Regular",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox[", while the labour charge is another $30 per hour. In one hour you \
+can serve two batches of cookies, while making 250 cookies per batch. Each \
+batch requires 15lb of ingredients, and each cookie can be priced at $2.",
+  FontSize->24,
+  FontWeight->"Regular"]
+}], "Item",
+ CellChangeTimes->{{3.811598090828949*^9, 3.81159812479241*^9}, {
+   3.811835472903613*^9, 3.81183549327288*^9}, {3.811835529839776*^9, 
+   3.8118356223843727`*^9}, {3.8119267514047327`*^9, 3.8119267711260366`*^9}, 
+   3.812365157617282*^9, 
+   3.977385892296913*^9},ExpressionUUID->"829ddfb9-d5de-4385-88d7-\
+b97ac7c2e538"],
+
+Cell[TextData[{
+ StyleBox["For your second option, you can make ",
+  FontSize->24,
+  FontWeight->"Regular"],
+ StyleBox["cake",
+  FontSize->24,
+  FontWeight->"Bold"],
+ StyleBox[" with the same ingredients. However, the ratio of the ingredients \
+being different, it will cost you $4 per lb. The initial setup cost is $",
+  FontSize->24,
+  FontWeight->"Regular"],
+ StyleBox["2000",
+  FontSize->24,
+  FontWeight->"Regular",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox[", while the labour charge remains the same. However, baking two \
+batches of cake will require 3 hours in total, with five cakes in each batch. \
+Each cake when baked with 2 lb of ingredient can be sold at $34.",
+  FontSize->24,
+  FontWeight->"Regular"]
+}], "Item",
+ CellChangeTimes->{{3.811598090828949*^9, 3.81159812479241*^9}, {
+   3.811835472903613*^9, 3.81183549327288*^9}, {3.811835529839776*^9, 
+   3.811835631204544*^9}, {3.811926781238442*^9, 3.811926781449523*^9}, 
+   3.977385899481516*^9},ExpressionUUID->"59b9c5c4-26ab-4d0c-93d2-\
+f08c149e1fd4"],
+
+Cell[TextData[{
+ StyleBox["In the third option, you can make ",
+  FontSize->24,
+  FontWeight->"Regular"],
+ StyleBox["bagels",
+  FontSize->24,
+  FontWeight->"Bold"],
+ StyleBox[" in your shop, which will require flour, butter and other \
+ingredients, which will cost you $2.50 per lb. The initial setup cost is low, \
+at $",
+  FontSize->24,
+  FontWeight->"Regular"],
+ StyleBox["680",
+  FontSize->24,
+  FontWeight->"Regular",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox[", as is the labour cost. $25 per hour. In one batch, using 20 lb \
+of ingredients, you can make 300 bagels in 45 minutes. Each bagel can be sold \
+at $1.75.",
+  FontSize->24,
+  FontWeight->"Regular"]
+}], "Item",
+ CellChangeTimes->{{3.811598090828949*^9, 3.81159812479241*^9}, {
+   3.811835472903613*^9, 3.81183549327288*^9}, {3.811835529839776*^9, 
+   3.8118356397592382`*^9}, {3.811926822750106*^9, 3.8119268229743023`*^9}, 
+   3.977385897105946*^9},ExpressionUUID->"09e9ddc2-9613-4af2-a9e7-\
+a215df8fd44b"],
+
+Cell[TextData[{
+ StyleBox["For the fourth and final option, you can bake ",
+  FontSize->24,
+  FontWeight->"Regular"],
+ StyleBox["loaves of bread",
+  FontSize->24,
+  FontWeight->"Bold"],
+ StyleBox[", where you will need only flour and butter for the ingredients, \
+which will cost you $3 per lb. The initial setup cost is marginal between $",
+  FontSize->24,
+  FontWeight->"Regular"],
+ StyleBox["270",
+  FontSize->24,
+  FontWeight->"Regular",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox[" and $",
+  FontSize->24,
+  FontWeight->"Regular"],
+ StyleBox["350",
+  FontSize->24,
+  FontWeight->"Regular",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["; however, the labour charge is high, $40 per hour. However, you \
+can bake as many as 1000 loaves in 2 hours; each can be priced at $3. Use \
+this information to create a dataset that can be used to decide the menu for \
+your bakery.",
+  FontSize->24,
+  FontWeight->"Regular"],
+ "\n"
+}], "Item",
+ CellChangeTimes->{{3.811598090828949*^9, 3.81159812479241*^9}, {
+   3.811835472903613*^9, 3.81183549327288*^9}, {3.811835529839776*^9, 
+   3.811835648207366*^9}, 
+   3.977385900736465*^9},ExpressionUUID->"0a59a7dd-6677-419c-8cdc-\
+40f470d396b6"]
+}, Open  ]]
+},
+ScreenStyleEnvironment->"Slideshow Working",
+WindowSize->{1074, 969},
+WindowMargins->{{Automatic, -1233}, {-37, Automatic}},
+TaggingRules->{
+ "PresenterSettings" -> {
+   "ShowNavigationBar" -> False, "SlideBreakStyles" -> {}, "ShowSlideBreaks" -> 
+    True, "Theme" -> {
+     "ThemeName" -> "Default", "FontSetName" -> "Default", "ColorSetName" -> 
+      "Default"}, "Dialogs" -> {}}},
+Magnification:>0.75 Inherited,
+FrontEndVersion->"14.3 for Mac OS X ARM (64-bit) (July 8, 2025)",
+StyleDefinitions->FrontEnd`FileName[{"PresenterTools"}, "Default.nb", 
+  CharacterEncoding -> "UTF-8"],
+ExpressionUUID->"77895a45-112b-4e65-9b1e-0a49a7b0da46"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "SlideShowHeader"->{
+  Cell[580, 22, 136, 2, 52, "SlideShowNavigationBar",ExpressionUUID->"cf721f71-a249-4404-a41c-c1abbc17bcc1",
+   CellTags->"SlideShowHeader"],
+  Cell[980, 36, 122, 2, 52, "SlideShowNavigationBar",ExpressionUUID->"6a078e22-481c-4d58-b4bd-4e7722b2bbdf",
+   CellTags->"SlideShowHeader"],
+  Cell[4024, 118, 122, 2, 52, "SlideShowNavigationBar",ExpressionUUID->"7ba8ced5-5ee4-435f-96d3-6ac8b8ece8da",
+   CellTags->"SlideShowHeader"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"SlideShowHeader", 10401, 292}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 136, 2, 52, "SlideShowNavigationBar",ExpressionUUID->"cf721f71-a249-4404-a41c-c1abbc17bcc1",
+ CellTags->"SlideShowHeader"],
+Cell[719, 26, 224, 5, 101, "Title",ExpressionUUID->"574b8a72-cb5f-4eeb-ba7d-8a3d50af167a"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[980, 36, 122, 2, 52, "SlideShowNavigationBar",ExpressionUUID->"6a078e22-481c-4d58-b4bd-4e7722b2bbdf",
+ CellTags->"SlideShowHeader"],
+Cell[1105, 40, 350, 7, 142, "Title",ExpressionUUID->"cd8303ff-9ad4-4272-8f87-6aee558f2e19"],
+Cell[1458, 49, 282, 6, 28, "ItemNumbered",ExpressionUUID->"a04b0c87-b27a-4c7c-9818-9acb7afeb878"],
+Cell[1743, 57, 298, 7, 28, "ItemNumbered",ExpressionUUID->"4a67ec1d-fb1f-4167-bc97-c16f39e03a12"],
+Cell[2044, 66, 669, 11, 64, "ItemNumbered",ExpressionUUID->"542dfc13-03e0-48de-96da-2845923fee29"],
+Cell[2716, 79, 231, 5, 28, "ItemNumbered",ExpressionUUID->"3b35e172-57e5-4617-b067-4e03f1fb7d64"],
+Cell[2950, 86, 199, 3, 28, "ItemNumbered",ExpressionUUID->"cd082854-6f17-42fa-85a6-114016624ff0"],
+Cell[3152, 91, 199, 3, 28, "ItemNumbered",ExpressionUUID->"8f93b7a6-069e-434c-b913-49a5e601d9b3"],
+Cell[3354, 96, 247, 6, 28, "ItemNumbered",ExpressionUUID->"64a7c023-0ed6-432f-a600-d2f51c489b5a"],
+Cell[3604, 104, 383, 9, 82, "ItemNumbered",ExpressionUUID->"b9730cdb-408c-4fba-b018-a998dd0083f6"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4024, 118, 122, 2, 52, "SlideShowNavigationBar",ExpressionUUID->"7ba8ced5-5ee4-435f-96d3-6ac8b8ece8da",
+ CellTags->"SlideShowHeader"],
+Cell[4149, 122, 271, 6, 101, "Title",ExpressionUUID->"8bb4aee8-9fcf-41c2-ab77-25954fb88c0e"],
+Cell[4423, 130, 504, 10, 62, "Text",ExpressionUUID->"99e85d6e-77f9-4dc3-9ffa-42466def6009"],
+Cell[4930, 142, 475, 8, 55, "Text",ExpressionUUID->"b7de6f78-51b0-4e66-b377-d4de7134ddff"],
+Cell[5408, 152, 1025, 26, 81, "Item",ExpressionUUID->"829ddfb9-d5de-4385-88d7-b97ac7c2e538"],
+Cell[6436, 180, 1023, 25, 104, "Item",ExpressionUUID->"59b9c5c4-26ab-4d0c-93d2-f08c149e1fd4"],
+Cell[7462, 207, 975, 26, 81, "Item",ExpressionUUID->"09e9ddc2-9613-4af2-a9e7-a215df8fd44b"],
+Cell[8440, 235, 1182, 34, 122, "Item",ExpressionUUID->"0a59a7dd-6677-419c-8cdc-40f470d396b6"]
+}, Open  ]]
+}
+]
+*)
+

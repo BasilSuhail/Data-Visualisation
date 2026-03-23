@@ -105,3 +105,17 @@ Execute the main script. Chrome will open for you to log in physically. Navigate
 ```bash
 python download_course.py
 ```
+
+---
+
+## 💡 Developer Notes for Future Improvement
+
+**Blackboard API vs DOM Scraping**
+The current iteration uses Selenium for UI automation and DOM scraping to find `href` links physically present on the page. However, Blackboard Ultra securely uses its internal REST API for frontend rendering. 
+
+For future development, the downloader should be rewritten to query the JSON API natively:
+1. Extract the active session cookie (`BbRouter`) from the initial manual SSO login.
+2. Query the endpoint directly: `https://abdn.blackboard.com/learn/api/public/v1/courses/{course_id}/contents/{folder_id}/attachments`
+3. Parse the JSON response (`results -> fileName`).
+
+*Why?* The API reliably returns all nested folders, hidden files, and assignment attachments cleanly as JSON without requiring robotic UI expansion clicks or navigating through `iframe` structures that traditional DOM scraping fails to catch.
