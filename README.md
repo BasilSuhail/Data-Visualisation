@@ -1,6 +1,11 @@
-# Wolfram Resources
+# Data Visualisation
 
-University of Aberdeen course materials downloaded from MyAberdeen (Blackboard Ultra).
+A comprehensive collection of data visualisation resources, notebooks, and tools from the University of Aberdeen MSc Data Science course.
+
+## Project Goals
+- Provide a structured repository for course materials and notebooks.
+- Demonstrate advanced data visualisation techniques using Wolfram Language and other tools.
+- Serve as a reference for exploratory data analysis (EDA) and presentation-ready charts.
 
 ## Course Structure
 
@@ -130,10 +135,8 @@ for item in all_items:
 | `/learn/api/public/v1/courses/{COURSE_ID}/contents/{id}/attachments` | Downloadable files for an item |
 | `/learn/api/public/v1/courses/{COURSE_ID}/contents/{id}/attachments/{att_id}/download` | File download |
 
-### 4. Notes
+### 4. Contributing
+Contributions are welcome! Please open an issue first to discuss any major changes.
 
-- `COURSE_ID` is in the Blackboard URL: `ultra/courses/_72119_1/outline` -> `_72119_1`
-- Selenium is only needed for SSO login - the actual downloads use `requests` with the session cookies
-- Skip items with handler `resource/x-bb-blti-link` (lecture recordings / Panopto)
-- Skip `.mp4` files if you only want documents and datasets
-- GitHub rejects files over 100MB - split large datasets with `split -b 95m` if needed
+### 5. License
+This project is licensed under the MIT License - see the LICENSE file for details.
